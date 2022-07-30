@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="right">44.1dp</dimen>
+    <dimen name="left">44.2dp</dimen>
+    <dimen name="up">128dp</dimen>
+    <dimen name="down">570dp</dimen>
+</resources>
