@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey"
+    tools:context=".RegisterActivity1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="40.2dp">
+
+
+            <TextView
+                android:id="@+id/register_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46dp"
+                android:text="@string/login_title"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/register_sub_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3.3dp"
+                android:fontFamily="@font/nanumgothic_regular"
+                android:text="@string/login_subtitle"
+                android:textAlignment="center"
+                android:textSize="10.5sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/register_title_tv" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/register_user_input_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:layout_marginTop="36.7dp"
+                android:background="@drawable/login_background_drawable"
+                android:elevation="2dp"
+                android:paddingHorizontal="33.1dp"
+                android:paddingVertical="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/register_sub_title_tv">
+
+                <EditText
+                    android:id="@+id/register_user_pwd_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="33dp"
+                    android:hint=""
+                    android:textSize="13.8sp"
+                    app:layout_constraintBottom_toTopOf="@+id/register_user_cfpwd_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/register_user_pwd_tv" />
+
+                <TextView
+                    android:id="@+id/register_user_email_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="@font/nanumgothic_regular"
+                    android:text="@string/login_email_txt"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toTopOf="@+id/register_user_email_et"
+                    app:layout_constraintStart_toStartOf="@+id/register_user_email_et"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <EditText
+                    android:id="@+id/register_user_email_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint=""
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/register_user_pwd_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/register_user_email_tv" />
+
+                <TextView
+                    android:id="@+id/register_user_pwd_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="34.1dp"
+                    android:fontFamily="@font/nanumgothic_regular"
+                    android:text="@string/login_password_txt"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toTopOf="@+id/register_user_pwd_et"
+                    app:layout_constraintStart_toStartOf="@+id/register_user_pwd_et"
+                    app:layout_constraintTop_toBottomOf="@+id/register_user_email_et"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/register_user_cfpwd_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="34.1dp"
+                    android:fontFamily="@font/nanumgothic_regular"
+                    android:text="@string/register1_confirm_password_tx"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/register_user_pwd_et" />
+
+                <EditText
+                    android:id="@+id/register_user_cfpwe_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint=""
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/register_user_cfpwd_tv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/login_kakao_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="43.3dp"-->
+<!--                android:background="@drawable/login_kakao_btn_background_drawable"-->
+<!--                android:elevation="2dp"-->
+<!--                android:fontFamily="@font/nanumgothic_bold"-->
+<!--                android:paddingVertical="11dp"-->
+<!--                android:text="@string/login_kakao_login"-->
+<!--                android:textColor="#000000"-->
+<!--                android:textSize="15sp"-->
+<!--                android:layout_marginHorizontal="2dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/login_border_v" />-->
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/register_next1_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/login_background_drawable"
+                android:elevation="2dp"
+                android:layout_marginBottom="41dp"
+                android:layout_marginTop="437dp"
+                android:text="@string/register_next1_btn"
+                android:textColor="@color/green_blue"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/register_user_input_cl" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
