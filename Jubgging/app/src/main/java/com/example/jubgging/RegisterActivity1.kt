@@ -6,6 +6,6 @@ import android.os.Bundle
 class RegisterActivity1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register1)
+        setContentView(R.layout.activity_signup_first)
     }
 }

@@ -4,4 +4,10 @@
     <dimen name="left">44.2dp</dimen>
     <dimen name="up">128dp</dimen>
     <dimen name="down">570dp</dimen>
+    <dimen name="logo_top">46dp</dimen>
+    <dimen name="input_beside">34.1dp</dimen>
+    <dimen name="button_bottom">41dp</dimen>
+    <dimen name="layout_side">40.2dp</dimen>
+    <dimen name="input_layout_side">37dp</dimen>
+    <dimen name="input_layout_vertical">39.2dp</dimen>
 </resources>

@@ -22,31 +22,42 @@
         android:paddingHorizontal="40.2dp">
 
 
-        <TextView
-            android:id="@+id/login_title_tv"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/app_logo_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="46dp"
-            android:text="@string/login_title"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            >
 
-        <TextView
-            android:id="@+id/login_sub_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3.3dp"
-            android:fontFamily="@font/nanumgothic_regular"
-            android:text="@string/login_subtitle"
-            android:textAlignment="center"
-            android:textSize="10.5sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_title_tv" />
+
+            <TextView
+                android:id="@+id/app_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_title"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/app_sub_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3.3dp"
+                android:fontFamily="@font/nanumgothic_regular"
+                android:text="@string/login_subtitle"
+                android:textAlignment="center"
+                android:textSize="10.5sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/app_title_tv" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/login_user_input_cl"
@@ -61,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_sub_title_tv">
+            app:layout_constraintTop_toBottomOf="@+id/app_logo_cl">
 
             <EditText
                 android:id="@+id/login_user_pwd_et"
@@ -79,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumgothic_regular"
-                android:text="@string/login_email_txt"
+                android:text="@string/login_email"
                 android:textSize="13sp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toTopOf="@+id/login_user_email_et"
@@ -105,7 +116,7 @@
                 android:layout_marginTop="34.1dp"
                 android:layout_marginStart="3dp"
                 android:fontFamily="@font/nanumgothic_regular"
-                android:text="@string/login_password_txt"
+                android:text="@string/login_password"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/login_user_pwd_et"
                 app:layout_constraintStart_toStartOf="@+id/login_user_pwd_et"
@@ -127,7 +138,7 @@
                 android:id="@+id/login_find_id_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_findID"
+                android:text="@string/login_find_id"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/login_slash_tv"
@@ -153,7 +164,7 @@
                 android:id="@+id/login_find_pwd_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_findPW"
+                android:text="@string/login_find_pwd"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -173,7 +184,7 @@
             android:fontFamily="@font/nanumgothic_bold"
             android:paddingVertical="11dp"
 
-            android:text="@string/login_loginbtn"
+            android:text="@string/login_login_btn"
             android:textColor="@color/white"
             android:textSize="20sp"
 
@@ -190,7 +201,7 @@
             android:elevation="2dp"
             android:fontFamily="@font/nanumgothic_bold"
             android:paddingVertical="11dp"
-            android:text="@string/login_registerbtn"
+            android:text="@string/login_signup_btn"
             android:textColor="@color/green_blue"
             android:textSize="20sp"
             android:layout_marginHorizontal="2dp"
