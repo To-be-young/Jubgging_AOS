@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Jubgging">
         <activity
+            android:name=".Signup_third_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Signup_second_Activity"
             android:exported="true">
             <intent-filter>
@@ -19,18 +22,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity1"
-            android:exported="true">
-
-        </activity>
+            android:name=".Signup_first_Activity"
+            android:exported="true"></activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
