@@ -91,15 +91,34 @@
 
             <EditText
                 android:id="@+id/signup_user_email_et"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint=""
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/signup_first_auth_bt"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/signup_user_email_tv" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signup_first_auth_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="20dp"
+                android:minHeight="10dp"
+                android:paddingVertical="6dp"
+                android:paddingHorizontal="18dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/signup_authenfication_btn_background_drawable"
+                android:text="인증"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/green_blue"
+                android:textSize="14sp"
+                android:fontFamily="@font/nanumgothic_bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/signup_user_email_et" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -16,4 +16,10 @@
     <string name="signup_second_phonenum_tx">전화번호</string>
     <string name="signup_second_authenfication_tx">인증번호</string>
     <string name="signup_third_fin_btn">완료</string>
+    <string name="signup_user_name">이름</string>
+    <string name="signup_user_nickname">닉네임</string>
+    <string name="signup_user_phone_num">전화번호</string>
+    <string name="signup_user_age">나이</string>
+    <string name="signup_user_gender">성별</string>
+    <string name="easy_signup_fin_btn">다음 단계로 이동하기 (1/2)</string>
 </resources>
