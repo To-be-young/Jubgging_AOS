@@ -10,28 +10,20 @@
         <entry key="../../TO_BE_YOUNG/Jubgging/app/src/main/res/layout/activity_example.xml" value="0.2941976427923844" />
         <entry key="../../TO_BE_YOUNG/Jubgging/app/src/main/res/layout/activity_login.xml" value="0.2536468505859375" />
         <entry key="../../TO_BE_YOUNG/Jubgging/app/src/main/res/layout/activity_main.xml" value="0.1889564336372847" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/drawable/ic_checked_radiobtn.xml" value="0.182" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/drawable/ic_unchecked_radiobtn.xml" value="0.182" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/drawable/login_background_drawable.xml" value="0.1925" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/drawable/login_kakao_btn_background_drawable.xml" value="0.1925" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/drawable/login_naver_btn_background_drawable.xml" value="0.1925" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/drawable/signup_authenfication_btn_background_drawable.xml" value="0.1925" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/drawable/signup_gender_radio_btn.xml" value="0.182" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_easy_signup.xml" value="0.17799945776013354" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_easy_signup_second.xml" value="0.29393115942028986" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_login.xml" value="0.2741724759919597" />
+        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_login.xml" value="0.19846201080410225" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_main.xml" value="0.29393115942028986" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_register1.xml" value="0.21024280492810232" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_register2.xml" value="0.20655017797497735" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_signup_first.xml" value="0.2047027587890625" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_signup_second.xml" value="0.29912638659189" />
-        <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_signup_third.xml" value="0.23824826177273686" />
+        <entry key="app/src/main/res/drawable/login_background_drawable.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/login_kakao_btn_background_drawable.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/login_layount_shape.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/login_login_btn_shape.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/login_naver_btn_background_drawable.xml" value="0.5805" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.45611098440069897" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.4404135028540999" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
+        <entry key="app/src/main/res/layout/activity_signup_first.xml" value="0.44374718008951247" />
       </map>
     </option>
   </component>
