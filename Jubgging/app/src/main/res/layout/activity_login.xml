@@ -19,7 +19,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingHorizontal="35.7dp">
+        android:paddingHorizontal="@dimen/layout_side">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

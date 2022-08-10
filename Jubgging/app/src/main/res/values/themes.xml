@@ -33,4 +33,9 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">19.7sp</item>
     </style>
+    <style name="signUpInputTextTheme" parent="Widget.AppCompat.EditText">
+        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
