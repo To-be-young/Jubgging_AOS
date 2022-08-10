@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/light_grey"
     android:paddingHorizontal="@dimen/layout_side"
-    tools:context=".Easy_signup_first_Activity">
+    tools:context=".Signup_second_Activity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,12 +18,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <TextView
             android:id="@+id/app_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_title"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="26sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,10 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3.3dp"
-            android:fontFamily="@font/nanumgothic_regular"
             android:text="@string/login_subtitle"
+            style="@style/logoTextTheme"
             android:textAlignment="center"
-            android:textSize="10.5sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_title_tv" />
@@ -46,28 +46,28 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/easy_signup_user_input_cl"
+        android:id="@+id/signup_user_input_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="2dp"
-        android:layout_marginTop="@dimen/input_beside"
+        android:layout_marginTop="@dimen/input_layout_margin_top"
         android:background="@drawable/login_background_drawable"
         android:elevation="2dp"
-        android:paddingHorizontal="@dimen/input_layout_side"
-        android:paddingVertical="@dimen/input_layout_vertical"
-        app:layout_constraintBottom_toTopOf="@+id/easy_signup_fin_btn"
+        android:paddingHorizontal="@dimen/input_layout_padding_horizontal"
+        android:paddingVertical="@dimen/input_layout_padding_vertical"
+        app:layout_constraintBottom_toTopOf="@+id/signup_second_fin_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_logo_cl"
         app:layout_constraintVertical_chainStyle="spread_inside">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/easy_signup_phone_number_cl"
+            android:id="@+id/signup_phone_number_cl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/easy_signup_auth_num_cl"
+            app:layout_constraintBottom_toTopOf="@+id/signup_auth_num_cl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,93 +76,92 @@
 
 
             <TextView
-                android:id="@+id/easy_signup_phone_number_tv"
+                android:id="@+id/signup_phone_number_tv"
+                style="@style/inputTextTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:fontFamily="@font/nanumgothic_regular"
                 android:text="@string/signup_second_phonenum_tx"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toTopOf="@+id/easy_signup_phone_number_et"
-                app:layout_constraintStart_toStartOf="@+id/easy_signup_phone_number_et"
+                app:layout_constraintBottom_toTopOf="@+id/signup_phone_number_et"
+                app:layout_constraintStart_toStartOf="@+id/signup_phone_number_et"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <EditText
-                android:id="@+id/easy_signup_phone_number_et"
+                android:id="@+id/signup_phone_number_et"
+                style="@style/signUpInputTextTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint=""
-                android:textSize="14sp"
                 android:layout_marginTop="10dp"
+                android:hint=""
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/easy_signup_auth_bt"
+                app:layout_constraintEnd_toStartOf="@+id/signup_auth_bt"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/easy_signup_phone_number_tv" />
+                app:layout_constraintTop_toBottomOf="@+id/signup_phone_number_tv" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/easy_signup_auth_bt"
+                android:id="@+id/signup_auth_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/signup_authenfication_btn_background_drawable"
+                android:fontFamily="@font/nanumgothic_bold"
                 android:minWidth="20dp"
                 android:minHeight="10dp"
-                android:paddingVertical="6dp"
                 android:paddingHorizontal="18dp"
-                android:layout_marginEnd="2dp"
-                android:background="@drawable/signup_authenfication_btn_background_drawable"
+                android:paddingVertical="6dp"
                 android:text="인증"
-                android:layout_marginBottom="8dp"
                 android:textColor="@color/green_blue"
                 android:textSize="14sp"
-                android:fontFamily="@font/nanumgothic_bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/easy_signup_phone_number_et" />
+                app:layout_constraintStart_toEndOf="@+id/signup_phone_number_et" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/easy_signup_auth_num_cl"
+            android:id="@+id/signup_auth_num_cl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/input_beside"
+            android:layout_marginTop="@dimen/layout_input_margin_space"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/easy_signup_phone_number_cl">
+            app:layout_constraintTop_toBottomOf="@+id/signup_phone_number_cl">
+
 
             <TextView
-                android:id="@+id/easy_signup_auth_num_tv"
+                android:id="@+id/signup_auth_num_tv"
+                style="@style/inputTextTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:fontFamily="@font/nanumgothic_regular"
                 android:text="@string/signup_second_authenfication_tx"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toTopOf="@+id/easy_signup_auth_num_et"
-                app:layout_constraintStart_toStartOf="@+id/easy_signup_auth_num_et"
+                app:layout_constraintBottom_toTopOf="@+id/signup_auth_num_et"
+                app:layout_constraintStart_toStartOf="@+id/signup_auth_num_et"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <EditText
-                android:id="@+id/easy_signup_auth_num_et"
+                android:id="@+id/signup_auth_num_et"
+                style="@style/signUpInputTextTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint=""
-                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/easy_signup_auth_num_tv" />
+                app:layout_constraintTop_toBottomOf="@+id/signup_auth_num_tv" />
 
             <TextView
-                android:id="@+id/easy_signup_count_tv"
+                android:id="@+id/signup_second_count_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumgothic_bold"
                 android:layout_marginBottom="15dp"
+                android:fontFamily="@font/nanumgothic_bold"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="14sp"
                 android:text="00:57"
@@ -170,26 +169,28 @@
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/easy_signup_fin_btn"
+        android:id="@+id/signup_second_fin_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="2dp"
-        android:layout_marginBottom="@dimen/button_bottom"
+        android:layout_marginBottom="@dimen/button_margin_bottom"
         android:background="@drawable/login_background_drawable"
         android:elevation="2dp"
-        android:text="@string/easy_signup_fin_btn"
+        android:text="@string/signup_second_fin_btn"
         android:textColor="@color/green_blue"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/easy_signup_user_input_cl" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_user_input_cl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

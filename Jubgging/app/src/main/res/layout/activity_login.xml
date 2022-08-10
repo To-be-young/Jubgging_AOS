@@ -66,7 +66,7 @@
             android:layout_marginTop="36.7dp"
             android:background="@drawable/login_background_drawable"
             android:elevation="2dp"
-            android:paddingHorizontal="37.1dp"
+            android:paddingHorizontal="@dimen/input_layout_padding_horizontal"
             android:paddingVertical="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -81,6 +81,7 @@
                 android:hint=""
                 android:textSize="16.7sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/login_user_pwd_tv" />
 
@@ -104,6 +105,7 @@
                 android:hint=""
                 android:textSize="16.7sp"
                 app:layout_constraintBottom_toTopOf="@+id/login_user_pwd_tv"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/login_user_email_tv" />
 
