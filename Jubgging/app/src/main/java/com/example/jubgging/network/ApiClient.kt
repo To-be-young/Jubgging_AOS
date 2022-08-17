@@ -1,6 +1,6 @@
 package com.example.jubgging.network
 
-import com.example.jubgging.network.C.C
+import com.example.jubgging.network.c.C
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
