@@ -1,5 +1,6 @@
 package com.example.jubgging.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -17,5 +18,10 @@ class SignUpUserInfoActivity:AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup_user_info)
         binding.lifecycleOwner =this
         binding.signUpVm = viewModel
+
+        binding.signupThirdFinBtn.setOnClickListener {
+            val intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

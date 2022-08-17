@@ -7,8 +7,8 @@
             name="login"
             type="com.example.jubgging.view.LoginActivity" />
         <variable
-            name="login_vm"
-            type="com.example.jubgging.viewmodel.LoginViewModel" />
+            name="signUpVm"
+            type="com.example.jubgging.viewmodel.SignUpViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
