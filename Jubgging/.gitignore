@@ -233,5 +233,6 @@ fabric.properties
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
+src/main/java/com/example/jubgging/network/c/
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,android,androidstudio
