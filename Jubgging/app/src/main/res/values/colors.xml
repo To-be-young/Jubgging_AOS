@@ -6,4 +6,6 @@
     <color name="green_blue">#00b786</color>
     <color name="red">#ff0000</color>
     <color name="lightish_blue">#335aff</color>
+    <color name="grey">#c1c1c1</color>
+    <color name="brownish_grey">#747474</color>
 </resources>
