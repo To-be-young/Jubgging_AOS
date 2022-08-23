@@ -63,14 +63,14 @@ class SignUpAuthActivity : AppCompatActivity() {
 
 
         //전화번호 인증 check
-        // 전화번호 입력 -> 인증 버튼 활성화
+        // 전화번호 입력 -> 인증 버튼 활성화 O
         // regex O
         // 국제 전화번호 적용 O
-        // 인증번호 발송버튼 누른 후 -> Timer 시작 timer 규격
+        // 인증번호 발송버튼 누른 후 -> Timer 시작 O  timer 규격 수정 필요
 
         // 유효시간 내 입력 및 버튼 누른 후 인증 , 유효시간 지나면 안내 O
         // 인증 완료시 다음단계 버튼 활성화
-        
+
         //발송 버튼
         binding.signupSendSmsBtn.setOnClickListener {
             //전화번호 formatting

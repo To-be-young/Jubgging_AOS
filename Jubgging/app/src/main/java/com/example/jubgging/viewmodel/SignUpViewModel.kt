@@ -55,6 +55,9 @@ class SignUpViewModel : ViewModel() {
             while (_timeoutCount.value!! > 0) {
                 _timeoutCount.value = _timeoutCount.value!!.minus(1)
                 _timeoutText.value = "${_timeoutCount.value!! / 100}:${_timeoutCount.value!! % 100}"
+                if(_timeoutCount.value!! <10){
+                    _timeoutText.value = "${_timeoutCount.value!! / 100}:0${_timeoutCount.value!! % 100}"
+                }
                 delay(1000L)
                 if (_timeoutCount.value!! == 0) {
                     updateCodeSentFlag(false)
