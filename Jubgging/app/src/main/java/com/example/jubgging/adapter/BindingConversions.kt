@@ -1,6 +1,7 @@
 package com.example.jubgging.adapter
 
 import android.widget.Button
+import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import com.example.jubgging.R
 
@@ -55,8 +56,18 @@ object BindingConversions {
     //ii) 6자리 regex pass -> btn 활성화
 
     //인증 과정이 끝난 뒤 입력값이 바뀌게 되면 다시 원상 복구
-
+    @JvmStatic
+    @BindingAdapter("setSentCodeFlag")
+    fun setEnableCodeEt(editText: EditText, sentCodeFlag: Boolean) {
+        if (sentCodeFlag) {
+            editText.isEnabled = true
+        } else {
+            editText.isEnabled = false
+            editText.text = null
+        }
+    }
     // 결과 성공에 따라 다음단계 성공 btn 활성화
+
 
     @JvmStatic
     @BindingAdapter("setSentCodeFlag", "setInputCode")
