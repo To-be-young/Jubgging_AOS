@@ -6,6 +6,10 @@ import androidx.databinding.BindingAdapter
 import com.example.jubgging.R
 
 object BindingConversions {
+
+    //editText들 이전 값과 새로 입력한 값이 다를 때 처리 필요함, 회원가입 시!!
+    //이메일 인증 및 중복 검사 구현 필요
+
     @JvmStatic
     @BindingAdapter("setEmailText", "setPwdText", "setPwdChkText", "setEmailAuthFlag")
     fun setAccountBtnEnable(
@@ -66,9 +70,8 @@ object BindingConversions {
             editText.text = null
         }
     }
+
     // 결과 성공에 따라 다음단계 성공 btn 활성화
-
-
     @JvmStatic
     @BindingAdapter("setSentCodeFlag", "setInputCode")
     fun setEnableAuthBtn(authBtn: Button, sentCodeFlag: Boolean, text: String) {
@@ -82,9 +85,23 @@ object BindingConversions {
     }
 
     @JvmStatic
-    @BindingAdapter("setPassAuthFlag")
-    fun setEnableSecondFinBtn(finBtn: Button, passAuthFlag: Boolean) {
-        if (passAuthFlag) {
+    @BindingAdapter("setInputNickname")
+    fun setEnableOverlapBtn(overlapBtn: Button,nickname: String){
+        if(nickname.isNotBlank()){
+            overlapBtn.isEnabled = true
+            overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.green_blue))
+        }else{
+            overlapBtn.isEnabled = false
+            overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.brownish_grey))
+        }
+    }
+
+
+
+    @JvmStatic
+    @BindingAdapter("setPassAuthFlag","setOverlapFlag")
+    fun setEnableSignUpFinBtn(finBtn: Button, passAuthFlag: Boolean,overlapFlag:Boolean) {
+        if (passAuthFlag &&!overlapFlag) {
             finBtn.isEnabled = true
             finBtn.setTextColor(finBtn.context.getColor(R.color.green_blue))
         } else {

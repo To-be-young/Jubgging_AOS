@@ -1,15 +1,20 @@
 package com.example.jubgging.viewmodel
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.jubgging.network.data.request.LoginRequest
+import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.repository.SignUpRepositoryImpl
 import com.example.jubgging.view.SignUpAuthActivity
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -23,8 +28,12 @@ class SignUpViewModel : ViewModel() {
     private val _passAuthFlag = MutableLiveData<Boolean>()
     private val _timeoutCount = MutableLiveData<Int>()
     private val _timeoutText = MutableLiveData<String>()
-    private lateinit var timerJob: Job
 
+    private val _userInfo = MutableLiveData<SignUpRequest>()
+
+    private val _nicknameOverlapFlag = MutableLiveData<Boolean>()
+
+    private lateinit var timerJob: Job
 
     val emailAuthFlag: LiveData<Boolean>
         get() = _emailAuthFlag
@@ -38,11 +47,18 @@ class SignUpViewModel : ViewModel() {
     val timeoutText: LiveData<String>
         get() = _timeoutText
 
+    val userInfo: LiveData<SignUpRequest>
+        get() = _userInfo
+
+    // 중복이면 true, 중복아니면 false
+    val nicknameOverlapFlag: LiveData<Boolean>
+        get() = _nicknameOverlapFlag
 
     init {
         _emailAuthFlag.value = false
         _codeSentFlag.value = false
         _passAuthFlag.value = false
+        _nicknameOverlapFlag.value = false
         _timeoutCount.value = 60
         _timeoutText.value = "1:00"
     }
@@ -55,13 +71,14 @@ class SignUpViewModel : ViewModel() {
             while (_timeoutCount.value!! > 0) {
                 _timeoutCount.value = _timeoutCount.value!!.minus(1)
                 _timeoutText.value = "${_timeoutCount.value!! / 100}:${_timeoutCount.value!! % 100}"
-                if(_timeoutCount.value!! <10){
-                    _timeoutText.value = "${_timeoutCount.value!! / 100}:0${_timeoutCount.value!! % 100}"
+                if (_timeoutCount.value!! < 10) {
+                    _timeoutText.value =
+                        "${_timeoutCount.value!! / 100}:0${_timeoutCount.value!! % 100}"
                 }
                 delay(1000L)
                 if (_timeoutCount.value!! == 0) {
                     updateCodeSentFlag(false)
-                    _timeoutText.value = "00:00"
+                    _timeoutText.value = "0:00"
                     showToast(4)
                 }
             }
@@ -70,7 +87,7 @@ class SignUpViewModel : ViewModel() {
 
     private fun timerStop() {
         if (::timerJob.isInitialized) timerJob.cancel()
-        _timeoutText.value = "00:00"
+        _timeoutText.value = "0:00"
     }
 
     fun updateEmailAuthFlag(flag: Boolean) {
@@ -85,6 +102,22 @@ class SignUpViewModel : ViewModel() {
         _passAuthFlag.value = flag
     }
 
+    @SuppressLint("CheckResult")
+    fun checkNickNameOverlap(nickname: String,showToast: (tag: Int) -> Unit) {
+        signUpRepository.checkNicknameOverlap(nickname).subscribeBy(
+            onSuccess = {
+                _nicknameOverlapFlag.value = it.data!!
+                if(it.data){
+                    //중복 O
+                    showToast(6)
+                }else{
+                    //중복 X
+                    showToast(7)
+                }
+            },
+            onError = { it.printStackTrace() }
+        )
+    }
 
     //전화번호 발송 코드
     fun sendSMSCode(
@@ -136,5 +169,42 @@ class SignUpViewModel : ViewModel() {
                     }
                 }
             }
+    }
+
+    @SuppressLint("CheckResult")
+    fun signUp(
+        signUpRequest: SignUpRequest,
+        moveToLogin: () -> Unit,
+        showToast: (tag: Int) -> Unit,
+    ) {
+        signUpRepository.signUp(signUpRequest).subscribeBy(
+            onSuccess = {
+                if (it.code == 0) {
+                    moveToLogin().apply {
+                        showToast(5)
+                    }
+                }else{
+                   //회원가입 실패 시 예외처리 필요
+                }
+            },
+            onError = {
+                it.printStackTrace()
+            }
+        )
+    }
+
+    @SuppressLint("CheckResult")
+    fun login(loginRequest: LoginRequest, moveToMain: () -> Unit, showToast: (tag: Int) -> Unit) {
+        signUpRepository.login(loginRequest).subscribeBy(onSuccess = {
+            if (it.code == 0) {
+                moveToMain().apply {
+                    showToast(0)
+                }
+            }else{
+                showToast(1)
+            }
+        }, onError = {
+            it.printStackTrace()
+        })
     }
 }

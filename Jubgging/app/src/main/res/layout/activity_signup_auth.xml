@@ -66,7 +66,7 @@
             android:elevation="2dp"
             android:paddingHorizontal="@dimen/input_layout_padding_horizontal"
             android:paddingVertical="@dimen/input_layout_padding_vertical"
-            app:layout_constraintBottom_toTopOf="@+id/signup_second_fin_btn"
+            app:layout_constraintBottom_toTopOf="@+id/signup_fin_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,15 +75,73 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/signup_user_nickname_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/signup_phone_number_cl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/signup_user_nickname_tv"
+                    style="@style/inputTextTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/signup_user_nickname"
+                    app:layout_constraintBottom_toTopOf="@+id/signup_user_nickname_et"
+                    app:layout_constraintStart_toStartOf="@+id/signup_user_nickname_et"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <EditText
+                    android:id="@+id/signup_user_nickname_et"
+                    style="@style/signUpInputTextTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/signup_overlap_chk_btn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signup_user_nickname_tv" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/signup_overlap_chk_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/button_enable_selector"
+                    android:fontFamily="@font/nanumgothic_bold"
+                    android:minWidth="20dp"
+                    android:minHeight="10dp"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="6dp"
+                    android:text="중복"
+                    setInputNickname="@{signupUserNicknameEt.text.toString()}"
+                    android:enabled="false"
+                    android:textColor="@color/brownish_grey"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/signup_user_nickname_et" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/signup_phone_number_cl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_input_margin_space"
                 app:layout_constraintBottom_toTopOf="@+id/signup_auth_num_cl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed">
+                app:layout_constraintTop_toBottomOf="@+id/signup_user_nickname_cl">
 
 
                 <TextView
@@ -143,7 +201,7 @@
                 android:layout_marginTop="@dimen/layout_input_margin_space"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/signup_phone_number_cl">
 
@@ -164,13 +222,13 @@
                 <EditText
                     android:id="@+id/signup_auth_code_et"
                     style="@style/signUpInputTextTheme"
+                    setSentCodeFlag="@{signUpVm.codeSentFlag}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:hint=""
                     android:inputType="number"
                     android:maxLength="6"
-                    setSentCodeFlag="@{signUpVm.codeSentFlag}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/signup_pnum_auth_btn"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -179,6 +237,8 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/signup_pnum_auth_btn"
+                    setInputCode="@{signupAuthCodeEt.text.toString()}"
+                    setSentCodeFlag="@{signUpVm.codeSentFlag}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="2dp"
@@ -190,8 +250,6 @@
                     android:minHeight="10dp"
                     android:paddingHorizontal="18dp"
                     android:paddingVertical="6dp"
-                    setSentCodeFlag="@{signUpVm.codeSentFlag}"
-                    setInputCode="@{signupAuthCodeEt.text.toString()}"
                     android:text="확인"
                     android:textColor="@color/brownish_grey"
                     android:textSize="14sp"
@@ -222,18 +280,19 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/signup_second_fin_btn"
+            android:id="@+id/signup_fin_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="2dp"
             android:layout_marginBottom="@dimen/button_margin_bottom"
             android:background="@drawable/button_enable_selector"
             android:elevation="2dp"
-            android:text="@string/signup_second_fin_btn"
+            android:text="@string/signup_finish_btn"
             android:textColor="@color/brownish_grey"
             android:textSize="20sp"
             android:enabled="false"
             setPassAuthFlag="@{signUpVm.passAuthFlag}"
+            setOverlapFlag="@{signUpVm.nicknameOverlapFlag}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
