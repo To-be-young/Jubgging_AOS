@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.PloggingActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/plogging_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/back_main_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumgothic_regular"
+            android:text="@string/plogging_navigation_tx"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="21.7sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/plogging_context_cl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/light_grey"
+        android:paddingHorizontal="@dimen/layout_side"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plogging_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/plogging_time_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/plogging_background_drawable"
+            android:elevation="2dp"
+            android:layout_marginHorizontal="2dp"
+            android:layout_marginTop="28.3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/ploggingFixTextTheme"
+                android:id="@+id/plogging_fix_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plogging_time_tx"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <TextView
+                style="@style/ploggingContextTextTheme"
+                android:id="@+id/plogging_time_context_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="20.7dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plogging_fix_time_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="00:00"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/plogging_distance_cl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="15.7dp"
+            android:layout_marginRight="9.6dp"
+            android:background="@drawable/plogging_background_drawable"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toStartOf="@+id/plogging_pace_cl"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plogging_time_cl">
+
+            <TextView
+                style="@style/ploggingFixTextTheme"
+                android:id="@+id/plogging_fix_distance_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plogging_distance_tx"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                style="@style/ploggingContextTextTheme"
+                android:id="@+id/plogging_distance_context_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0km"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="20.7dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plogging_fix_distance_tv"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/plogging_pace_cl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9.6dp"
+            android:layout_marginTop="15.7dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/plogging_background_drawable"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/plogging_distance_cl"
+            app:layout_constraintTop_toBottomOf="@+id/plogging_time_cl">
+
+            <TextView
+                android:id="@+id/plogging_fix_pace_tv"
+                style="@style/ploggingFixTextTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/plogging_pace_tx"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/plogging_pace_context_tv"
+                style="@style/ploggingContextTextTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="20.7dp"
+                android:text="00`00"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plogging_fix_pace_tv" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/plogging_map_cl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/plogging_background_drawable"
+            android:elevation="2dp"
+            android:paddingHorizontal="15.3dp"
+            android:paddingVertical="13.3dp"
+            android:layout_marginTop="13.3dp"
+            app:layout_constraintBottom_toTopOf="@+id/plogging_start_bt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plogging_distance_cl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/plogging_kakao_map_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/plogging_background_drawable"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <ToggleButton
+                android:id="@+id/plogging_cleanhouse_tb"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="9.7dp"
+                android:layout_marginRight="9.7dp"
+                android:background="@drawable/plogging_cleanhouse_togglebtn_drawable"
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintEnd_toEndOf="@+id/plogging_kakao_map_view"
+                app:layout_constraintTop_toTopOf="@+id/plogging_kakao_map_view" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/plogging_current_location_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/plogging_kakao_map_view"
+                app:layout_constraintEnd_toEndOf="@+id/plogging_kakao_map_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/plogging_start_bt"
+            style="@style/buttonTextTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:layout_marginBottom="37dp"
+            android:background="@drawable/login_btn_background_drawable"
+            android:paddingVertical="15.5dp"
+            android:text="@string/plogging_start_tx"
+            android:visibility="visible"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plogging_map_cl" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/plogging_stop_bt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="37dp"
+            android:background="@drawable/plogging_stop_btn_background_drawable"
+            android:fontFamily="@font/nanumgothic_bold"
+            android:paddingVertical="15.5dp"
+            android:text="@string/plogging_stop_tx"
+            android:textColor="@color/white"
+            android:textSize="20.7sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/plogging_pause_bt"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plogging_map_cl" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/plogging_pause_bt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginBottom="37dp"
+            android:background="@drawable/plogging_pause_btn_background_drawable"
+            android:fontFamily="@font/nanumgothic_bold"
+            android:paddingVertical="15.5dp"
+            android:text="@string/plogging_pause_tx"
+            android:textColor="@color/white"
+            android:textSize="20.7sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="2.5"
+            app:layout_constraintStart_toEndOf="@+id/plogging_stop_bt"
+            app:layout_constraintTop_toBottomOf="@+id/plogging_map_cl" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/plogging_store_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:layout_marginBottom="37dp"
+            android:background="@drawable/plogging_store_btn_background_drawable"
+            android:paddingVertical="15.5dp"
+            android:text="@string/plogging_store_tx"
+            android:visibility="invisible"
+            android:fontFamily="@font/nanumgothic_bold"
+            android:textSize="20.7sp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plogging_map_cl" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
