@@ -40,4 +40,18 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="ploggingFixTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/nanumgothic_regular</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ploggingContextTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">38.3sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
