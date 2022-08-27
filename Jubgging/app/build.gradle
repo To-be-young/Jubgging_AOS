@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 apply plugin: 'kotlin-kapt'
+
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 def kakaomapkey = properties.getProperty('kakao.api.key')
@@ -17,8 +18,11 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "api_key", properties['cleanhouse_api']
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [kakaoSdkAppkey:kakaomapkey]
+
     }
 
     buildTypes {

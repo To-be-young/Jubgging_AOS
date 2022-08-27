@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.jubgging.BuildConfig
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityPloggingBinding
 import net.daum.mf.map.api.*
@@ -208,8 +209,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     inner class NetworkThread : Thread() {
         override fun run() {
             // API 정보를 가지고 있는 주소
-            val site =
-                "https://gist.githubusercontent.com/Yummy-sk/162dd1e4349ebf821f43db6c3c67f744/raw/ed25686c4f36e2b1474a8eeab2fa52837bdb5d93/jeju_clean_house"
+            val site = BuildConfig.api_key
 
             val url = URL(site)
             val conn = url.openConnection()
