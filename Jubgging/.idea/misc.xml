@@ -15,7 +15,13 @@
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_main.xml" value="0.29393115942028986" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_register1.xml" value="0.21024280492810232" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_register2.xml" value="0.20655017797497735" />
+        <entry key="app/src/main/res/drawable/button_enable_selector.xml" value="0.1285" />
+        <entry key="app/src/main/res/drawable/grey_dim_button_background.xml" value="0.1285" />
+        <entry key="app/src/main/res/drawable/icon_community_drawable.xml" value="0.1345" />
+        <entry key="app/src/main/res/drawable/icon_home_drawable.xml" value="0.1345" />
+        <entry key="app/src/main/res/drawable/icon_my_drawable.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/login_background_drawable.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable/login_btn_background_drawable.xml" value="0.1285" />
         <entry key="app/src/main/res/drawable/login_kakao_btn_background_drawable.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/login_layount_shape.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/login_login_btn_shape.xml" value="0.5805" />
@@ -25,14 +31,19 @@
         <entry key="app/src/main/res/layout/activity_easy_signup_first.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_easy_signup_second.xml" value="0.5120468139648438" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.20166473388671877" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28399529999739903" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
-        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.5206244206082994" />
+        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.23800354003906252" />
+        <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.25433502197265623" />
         <entry key="app/src/main/res/layout/activity_signup_first.xml" value="0.44374718008951247" />
         <entry key="app/src/main/res/layout/activity_signup_second.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_third.xml" value="0.3211050724637681" />
-        <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.6027175903320312" />
+        <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.1699909218663386" />
+        <entry key="app/src/main/res/layout/fragment_community.xml" value="0.18161094224924013" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18161094224924013" />
+        <entry key="app/src/main/res/layout/fragment_my.xml" value="0.18161094224924013" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.2962962962962963" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.1274062816616008" />
       </map>
     </option>
   </component>

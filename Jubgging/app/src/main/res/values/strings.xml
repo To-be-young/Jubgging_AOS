@@ -22,4 +22,7 @@
     <string name="signup_user_age">나이</string>
     <string name="signup_user_gender">성별</string>
     <string name="easy_signup_fin_btn">다음 단계로 이동하기 (1/2)</string>
+    <string name="my_title">마이</string>
+    <string name="home_title">홈</string>
+    <string name="community_title">커뮤니티</string>
 </resources>
