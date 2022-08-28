@@ -16,6 +16,14 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_background</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Jubgging</item>
+    </style>
+
     <style name="logoTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_regular</item>
         <item name="android:textAlignment">center</item>
@@ -35,9 +43,21 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">19.7sp</item>
     </style>
+
     <style name="signUpInputTextTheme" parent="Widget.AppCompat.EditText">
         <item name="fontFamily">@font/nanumgothic_bold</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="navigationInActiveTextTheme" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="fontFamily">@font/nanumgothic_regular</item>
+        <item name="android:textColor">@color/greyish_brown</item>
+    </style>
+
+    <style name="navigationActiveTextTheme" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="android:textAppearance">@color/black</item>
+    </style>
+
 </resources>
