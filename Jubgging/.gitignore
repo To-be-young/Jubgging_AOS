@@ -224,6 +224,7 @@ atlassian-ide-plugin.xml
 # Mongo Explorer plugin
 .idea/mongoSettings.xml
 
+
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
@@ -236,4 +237,6 @@ fabric.properties
 src/main/java/com/example/jubgging/network/c/
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,android,androidstudio
+/app/google-services.json
+
 /app/src/main/java/com/example/jubgging/network/c/
