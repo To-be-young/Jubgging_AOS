@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="splash_background">#FF000000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#f7f7f7</color>
@@ -8,4 +9,5 @@
     <color name="lightish_blue">#335aff</color>
     <color name="grey">#c1c1c1</color>
     <color name="brownish_grey">#747474</color>
+    <color name="greyish_brown">#404040</color>
 </resources>
