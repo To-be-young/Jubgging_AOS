@@ -54,6 +54,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun moveToMain() {
         val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        finish()
         startActivity(intent)
     }
 }
