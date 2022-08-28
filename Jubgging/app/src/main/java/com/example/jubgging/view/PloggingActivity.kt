@@ -29,6 +29,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
 import java.util.*
+import kotlin.collections.HashMap
 import kotlin.concurrent.timer
 
 class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
@@ -73,6 +74,10 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     //클린하우스 관련 변수
     var jsonArray: JSONArray? = null
     var marker: Array<MapPOIItem?>? = null
+
+    //마커 관련 변수
+    var address_hashMap = HashMap<Int, String>()
+    var time_hashMap = HashMap<Int, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -167,6 +172,10 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                 thread.start()
                 thread.join()
 
+                //클린하우스 마커 사라지면서 해시맵 초기화
+                address_hashMap.clear()
+                time_hashMap.clear()
+
                 for (i in 0 until jsonArray!!.length()) {
                     val obj = jsonArray!!.getJSONObject(i)
 
@@ -174,6 +183,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                     val location = obj.getString("location")
                     val marker_Lat = obj.getString("latitude").toDouble()
                     val marker_Lon = obj.getString("longitude").toDouble()
+                    val cleanhouse_address = obj.getString("address")
+                    val cleanhouse_time = obj.getString("time")
 
                     val tempmapPoint = MapPoint.mapPointWithGeoCoord(marker_Lat, marker_Lon)
 
@@ -190,11 +201,15 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                     if (distanceKiloMeter < 2) {
                         marker!![i] = MapPOIItem()
 
-                        marker!![i]!!.tag = 100
+                        marker!![i]!!.tag = i
                         marker!![i]!!.itemName = location
                         marker!![i]!!.mapPoint = tempmapPoint
                         marker!![i]!!.markerType = MapPOIItem.MarkerType.BluePin
                         marker!![i]!!.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+
+                        //해시맵에 태그, 값으로 매핑
+                        address_hashMap.put(i, cleanhouse_address)
+                        time_hashMap.put(i, cleanhouse_time)
 
                         mapView!!.addPOIItem(marker!![i])
                     }
@@ -209,7 +224,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     inner class NetworkThread : Thread() {
         override fun run() {
             // API 정보를 가지고 있는 주소
-            val site = BuildConfig.api_key
+            val site = "https://gist.githubusercontent.com/Yummy-sk/162dd1e4349ebf821f43db6c3c67f744/raw/ed25686c4f36e2b1474a8eeab2fa52837bdb5d93/jeju_clean_house"
 
             val url = URL(site)
             val conn = url.openConnection()
@@ -256,15 +271,19 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         }
     }
 
-    class CustomBalloonAdapter(inflater: LayoutInflater) : CalloutBalloonAdapter {
+    //커스텀 말풍선 어댑터
+    inner class CustomBalloonAdapter(inflater: LayoutInflater) : CalloutBalloonAdapter {
         val mCalloutBalloon: View = inflater.inflate(R.layout.ballon_layout, null)
         val name: TextView = mCalloutBalloon.findViewById(R.id.ball_tv_name)
         val address: TextView = mCalloutBalloon.findViewById(R.id.ball_tv_address)
+        val time : TextView = mCalloutBalloon.findViewById(R.id.ball_tv_time)
 
         override fun getCalloutBalloon(poiItem: MapPOIItem?): View {
             // 마커 클릭 시 나오는 말풍선
             name.text = poiItem?.itemName   // 해당 마커의 정보 이용 가능
-            address.text = "getCalloutBalloon"
+            address.text = address_hashMap.get(poiItem?.tag)
+            time.text = time_hashMap.get(poiItem?.tag)
+
             return mCalloutBalloon
         }
 
