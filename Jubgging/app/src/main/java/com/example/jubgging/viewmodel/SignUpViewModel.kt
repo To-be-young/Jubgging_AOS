@@ -179,12 +179,14 @@ class SignUpViewModel : ViewModel() {
     ) {
         signUpRepository.signUp(signUpRequest).subscribeBy(
             onSuccess = {
-                if (it.code == 0) {
+                if (it.success) {
                     moveToLogin().apply {
                         showToast(5)
                     }
                 }else{
                    //회원가입 실패 시 예외처리 필요
+                    Log.d("TAG", "signUp: ${signUpRequest.userId}")
+                    Log.d("TAG", "signUp:${it.message} ")
                 }
             },
             onError = {

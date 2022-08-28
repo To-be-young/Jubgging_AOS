@@ -67,7 +67,7 @@ class SignUpAuthActivity : AppCompatActivity() {
             viewModel.signUp(signUpRequest = SignUpRequest(userId!!,
                 userPwd!!,
                 binding.signupUserNicknameEt.text.toString(),
-                phoneNumber),::moveToLogin,::showToast)
+                binding.signupPhoneNumberEt.text.toString()),::moveToLogin,::showToast)
 
 
         }
