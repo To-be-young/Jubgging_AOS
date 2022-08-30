@@ -234,4 +234,29 @@ fabric.properties
 
 !/gradle/wrapper/gradle-wrapper.jar
 
+# Created by https://www.toptal.com/developers/gitignore/api/android
+# Edit at https://www.toptal.com/developers/gitignore?templates=android
+
+### Android ###
+
+
+# Android Studio generated files and folders
+.externalNativeBuild/
+
+# IntelliJ
+.idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Replacement of .externalNativeBuild directories introduced
+# with Android Studio 3.5.
+
+# End of https://www.toptal.com/developers/gitignore/api/android
+
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,android,androidstudio
+/app/src/main/java/com/example/jubgging/network/c/
