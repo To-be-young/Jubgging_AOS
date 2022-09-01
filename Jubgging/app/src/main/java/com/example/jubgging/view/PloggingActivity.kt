@@ -204,13 +204,13 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                         marker!![i]!!.tag = i
                         marker!![i]!!.itemName = location
                         marker!![i]!!.mapPoint = tempmapPoint
-                        marker!![i]!!.markerType = MapPOIItem.MarkerType.BluePin
-                        marker!![i]!!.selectedMarkerType = MapPOIItem.MarkerType.RedPin
-
+                        marker!![i]!!.markerType = MapPOIItem.MarkerType.CustomImage
+                        marker!![i]!!.customImageResourceId = R.drawable.plogging_cleanhouse_marker_imsi_img
+//                        marker!![i]!!.isCustomImageAutoscale = false
+//                        marker!![i]!!.setCustomImageAnchor(0.5f, 1.0f)
                         //해시맵에 태그, 값으로 매핑
                         address_hashMap.put(i, cleanhouse_address)
                         time_hashMap.put(i, cleanhouse_time)
-
                         mapView!!.addPOIItem(marker!![i])
                     }
                 }
