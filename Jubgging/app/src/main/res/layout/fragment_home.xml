@@ -30,16 +30,15 @@
             android:id="@+id/main_user_profile_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_21dp"
+            android:layout_marginTop="@dimen/_35dp"
             android:background="@drawable/login_background_drawable"
             android:elevation="1.5dp"
             android:padding="@dimen/_15dp"
-            app:layout_constraintBottom_toBottomOf="@+id/main_user_do_history_btn"
             app:layout_constraintEnd_toStartOf="@+id/main_user_do_history_cl"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="@+id/main_user_do_history_cl"
+            app:layout_constraintStart_toStartOf="@+id/main_rm_route_cl"
+            app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
             app:layout_constraintVertical_bias="1.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +52,7 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/main_user_profile_iv"
-                    android:layout_width="67dp"
+                    android:layout_width="@dimen/_67dp"
                     android:layout_height="@dimen/_67dp"
                     android:layout_marginHorizontal="@dimen/_3dp"
                     android:layout_marginVertical="@dimen/_3dp"
@@ -95,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumgothic_bold"
                     android:text="님"
+                    android:layout_marginStart="@dimen/_3dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/main_user_name_tv"
@@ -112,7 +112,6 @@
             android:id="@+id/main_user_do_history_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_35dp"
             android:layout_marginEnd="@dimen/_25dp"
             android:background="@drawable/login_background_drawable"
             android:elevation="1.5dp"
@@ -122,14 +121,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/main_user_profile_cl"
-            app:layout_constraintTop_toBottomOf="@+id/app_title_iv">
+            app:layout_constraintTop_toTopOf="@id/main_user_profile_cl">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/main_user_distance_total_cl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_19dp"
-                android:layout_marginEnd="@dimen/_35dp"
+                android:layout_marginEnd="@dimen/_36dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/main_user_time_total_cl"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -163,6 +162,7 @@
                         android:text="활동 거리"
                         android:textSize="@dimen/_10dp"
                         android:theme="@style/regularBlackTextTheme"
+                        android:layout_marginStart="@dimen/_3dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -249,6 +249,7 @@
                         android:text="활동 시간"
                         android:textSize="@dimen/_10dp"
                         android:theme="@style/regularBlackTextTheme"
+                        android:layout_marginStart="@dimen/_3dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -296,10 +297,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/main_user_do_history_btn"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/_11dp"
             android:background="@drawable/login_background_drawable"
             android:elevation="1.5dp"
@@ -308,30 +310,30 @@
             android:text="자세히 보기"
             android:textSize="@dimen/_11dp"
             android:theme="@style/regularBlackTextTheme"
+            app:layout_constraintBottom_toBottomOf="@+id/main_user_profile_cl"
             app:layout_constraintEnd_toEndOf="@id/main_user_do_history_cl"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/main_user_do_history_cl"
             app:layout_constraintTop_toBottomOf="@+id/main_user_do_history_cl" />
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_rm_route_cl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_25dp"
             android:layout_marginTop="@dimen/_23dp"
             android:background="@drawable/login_background_drawable"
             android:elevation="1.5dp"
             android:paddingHorizontal="@dimen/_15dp"
             android:paddingVertical="@dimen/_21dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_user_profile_cl">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/main_rm_route_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_109dp"
                 android:gravity="start"
                 android:lineHeight="@dimen/_40dp"
                 android:lineSpacingExtra="@dimen/_15dp"
@@ -359,16 +361,18 @@
             android:id="@+id/main_ch_map_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25dp"
             android:layout_marginTop="@dimen/_23dp"
             android:layout_marginEnd="@dimen/_21dp"
             android:background="@drawable/login_background_drawable"
             android:elevation="1.5dp"
             android:paddingHorizontal="@dimen/_15dp"
+
             android:paddingVertical="@dimen/_19dp"
             app:layout_constraintEnd_toStartOf="@+id/main_plogging_cl"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/main_rm_route_cl">
 
             <TextView
@@ -380,6 +384,7 @@
                 android:lineSpacingExtra="@dimen/_15dp"
                 android:text="내 주변\n클린하우스\n보러가기"
                 android:textSize="18dp"
+
                 android:theme="@style/boldBlackTextTheme"
                 app:layout_constraintBottom_toTopOf="@+id/main_ch_map_iv"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -443,20 +448,6 @@
                 app:layout_constraintVertical_chainStyle="spread_inside" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.069" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.0931" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
