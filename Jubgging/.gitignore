@@ -260,3 +260,5 @@ google-services.json
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,android,androidstudio
 /app/src/main/java/com/example/jubgging/network/c/
+
+
