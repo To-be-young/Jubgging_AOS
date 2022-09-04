@@ -22,8 +22,4 @@
             android:name=".view.MainActivity"
             android:exported="true" />
     </application>
-    <!--Google Map API_KEY-->
-    <meta-data android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyDFlevUMaqJKZeEUfECA5EB4F_7quna67c" />
-
 </manifest>
