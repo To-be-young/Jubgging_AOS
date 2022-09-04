@@ -21,8 +21,10 @@
         <entry key="app/src/main/res/drawable/ic_checked_rb.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_back_main_bt.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_marker.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_off_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_on_bt.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/ic_plogging_clh.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_unchecked_rb.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/login_background_drawable.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/login_btn_background_drawable.xml" value="0.1285" />
@@ -31,7 +33,10 @@
         <entry key="app/src/main/res/drawable/login_login_btn_shape.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/login_naver_btn_background_drawable.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/plogging_background_drawable.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/plogging_cleanhouse.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/plogging_cleanhouse_marker_drawable.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/plogging_cleanhouse_togglebtn_drawable.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/plogging_clh_drawahble.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/plogging_pause_btn_background_drawable.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/plogging_stop_btn_background_drawable.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/plogging_store_btn_background_drawable.xml" value="0.2175" />
