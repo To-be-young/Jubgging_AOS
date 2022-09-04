@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FindIdFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/find_id_account_user_input_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="2dp"
+        android:background="@drawable/login_background_drawable"
+        android:elevation="2dp"
+        android:paddingHorizontal="@dimen/input_layout_padding_horizontal"
+        android:paddingVertical="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/find_id_account_user_pwd_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint=""
+            android:textSize="16.7sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/find_id_account_user_pwd_tv" />
+
+        <TextView
+            android:id="@+id/find_id_account_user_email_tv"
+            style="@style/inputTextTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/find_account_user_name"
+            app:layout_constraintBottom_toTopOf="@+id/find_id_account_user_email_et"
+            app:layout_constraintStart_toStartOf="@+id/find_id_account_user_email_et"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <EditText
+            android:id="@+id/find_id_account_user_email_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint=""
+            android:textSize="16.7sp"
+            app:layout_constraintBottom_toTopOf="@+id/find_id_account_user_pwd_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/find_id_account_user_email_tv" />
+
+        <TextView
+            android:id="@+id/find_id_account_user_pwd_tv"
+            style="@style/inputTextTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="34.1dp"
+            android:text="@string/find_account_user_phonenum"
+            app:layout_constraintBottom_toTopOf="@+id/find_id_account_user_pwd_et"
+            app:layout_constraintStart_toStartOf="@+id/find_id_account_user_pwd_et"
+            app:layout_constraintTop_toBottomOf="@+id/find_id_account_user_email_et"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/find_id_fin_bt"
+        style="@style/buttonTextTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="2dp"
+        android:background="@drawable/login_background_drawable"
+        android:paddingVertical="14.5dp"
+        android:layout_marginBottom="51.5dp"
+        android:elevation="2dp"
+        android:text="확인"
+        android:textColor="@color/green_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
