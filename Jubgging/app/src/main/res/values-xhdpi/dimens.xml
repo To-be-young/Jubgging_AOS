@@ -33,6 +33,8 @@
     <dimen name="_44_2dp">44.2dp</dimen>
     <dimen name="_46_8dp">46.8dp</dimen>
     <dimen name="_68_5dp">68.5dp</dimen>
+    <dimen name="_2dp">2dp</dimen>
+    <dimen name="_6dp">6dp</dimen>
 
 </resources>
 <!--추후에 계산해서 각 dpi에 맞는 값 넣기-->
