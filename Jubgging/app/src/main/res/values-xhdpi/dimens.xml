@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="logo_top">46dp</dimen>
-    <dimen name="layout_side">35.7dp</dimen>
-    <dimen name="button_margin_bottom">37dp</dimen>
-    <dimen name="layout_input_margin_space">28dp</dimen>
-    <dimen name="input_layout_padding_horizontal">37.2dp</dimen>
-    <dimen name="input_layout_margin_top">36.7dp</dimen>
-    <dimen name="input_layout_padding_vertical">37.2dp</dimen>
+
+    <dimen name="_35dp">35dp</dimen>
+    <dimen name="_25dp">25dp</dimen>
+    <dimen name="_15dp">15dp</dimen>
+    <dimen name="_21dp">21dp</dimen>
+    <dimen name="_3dp">3dp</dimen>
+    <dimen name="_11dp">11dp</dimen>
+    <dimen name="_109dp">109dp</dimen>
+    <dimen name="_23dp">23dp</dimen>
+    <dimen name="_7_5dp">7.5dp</dimen>
+    <dimen name="_40dp">40dp</dimen>
+    <dimen name="_17dp">17dp</dimen>
+    <dimen name="_19dp">19dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_27_8dp">27.8dp</dimen>
+    <dimen name="_36dp">36dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
+    <dimen name="_27dp">27dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_14dp">14dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_7dp">7dp</dimen>
+    <dimen name="_24dp">24dp</dimen>
+    <dimen name="_67dp">67dp</dimen>
+    <dimen name="_95_1dp">95.1dp</dimen>
+    <dimen name="_13dp">13dp</dimen>
+    <dimen name="_10_8dp">10.8dp</dimen>
+    <dimen name="_35_5dp">35.5dp</dimen>
+    <dimen name="_54_1dp">54.1dp</dimen>
+    <dimen name="_46dp">46dp</dimen>
+    <dimen name="_44_2dp">44.2dp</dimen>
+    <dimen name="_46_8dp">46.8dp</dimen>
+    <dimen name="_68_5dp">68.5dp</dimen>
+
 </resources>
+<!--추후에 계산해서 각 dpi에 맞는 값 넣기-->
