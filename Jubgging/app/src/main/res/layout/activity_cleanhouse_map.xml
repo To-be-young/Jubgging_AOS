@@ -212,8 +212,8 @@
 
         <Switch
             android:id="@+id/page_switch_btn_cleanhousemap_switch"
-            android:layout_width="54dp"
-            android:layout_height="31dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:track="@drawable/cleanhouse_switch_track_selector"
             android:thumb="@drawable/cleanhouse_switch_thumb_selector"
             app:layout_constraintTop_toTopOf="@id/page_switch_btn_cleanhousemap"
@@ -257,11 +257,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:elevation="10dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="6dp"
         app:layout_constraintRight_toRightOf="@id/page_map_cleanhousemap"
         app:layout_constraintBottom_toBottomOf="@id/page_map_cleanhousemap">
         <ToggleButton
@@ -269,7 +269,8 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:background="@drawable/ic_cleanhouse_toggle_btn"
-            android:text="ToggleButton" />
+            android:text="ToggleButton"
+            android:textSize="0dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
