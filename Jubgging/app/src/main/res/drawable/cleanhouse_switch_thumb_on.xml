@@ -17,7 +17,7 @@
         </shape>
     </item>
     <item
-        android:drawable="@drawable/ic_cleanhouse_switch_btn"
+        android:drawable="@drawable/icon_recycler_trash_on"
         android:width="14.6dp"
         android:height="15.2dp"
         android:gravity="center"/>

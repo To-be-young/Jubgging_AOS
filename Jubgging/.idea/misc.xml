@@ -21,12 +21,17 @@
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_map.xml" value="0.152" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_switch_background_drawable.xml" value="0.1" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_switch_thumb.xml" value="0.156" />
+        <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_switch_thumb_off.xml" value="0.112" />
+        <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_switch_thumb_selector.xml" value="0.112" />
+        <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_switch_track_off.xml" value="0.1325" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_switch_track_on.xml" value="0.1" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_switch_track_selector.xml" value="0.1" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/cleanhouse_track_off.xml" value="0.1" />
+        <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/clleanhouse_switch_thumb_on.xml" value="0.112" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/ic_back_page.xml" value="0.1" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/ic_banner_background_drawable.xml" value="0.1765" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/ic_checked_rb.xml" value="0.1" />
+        <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/ic_cleanhouse_toggle_btn.xml" value="0.1325" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/ic_unchecked_rb.xml" value="0.1" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/login_background_drawable.xml" value="0.1" />
@@ -38,7 +43,7 @@
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/signup_authenfication_btn_background_drawable.xml" value="0.1" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/drawable/signup_gender_radio_btn.xml" value="0.1" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/font/nanum_gothic.xml" value="0.121875" />
-        <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/layout/activity_cleanhouse_map.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/layout/activity_cleanhouse_map.xml" value="0.22573529411764706" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/layout/activity_main.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/jhy_0/Jupgging_AOS/Jubgging/app/src/main/res/layout/activity_signup_account.xml" value="0.34739583333333335" />
