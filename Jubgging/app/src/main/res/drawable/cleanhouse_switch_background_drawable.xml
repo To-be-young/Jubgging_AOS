@@ -9,7 +9,7 @@
         android:radius="53dp" />
 
     <size
-        android:width="73dp"
-        android:height="41dp" />
+        android:width="@dimen/_73dp"
+        android:height="@dimen/_41dp" />
 
 </shape>

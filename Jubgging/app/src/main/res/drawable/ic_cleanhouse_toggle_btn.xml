@@ -9,8 +9,8 @@
                 android:color="#ffffff" />
 
             <size
-                android:width="45dp"
-                android:height="45dp" />
+                android:width="@dimen/_45dp"
+                android:height="@dimen/_45dp" />
 
             <!--        <stroke-->
             <!--            android:width="5dp"-->
@@ -19,8 +19,8 @@
         </shape>
     </item>
     <item
-        android:width="45dp"
-        android:height="45dp"
+        android:width="@dimen/_45dp"
+        android:height="@dimen/_45dp"
         android:drawable="@drawable/icon_target"
         />
 </layer-list>

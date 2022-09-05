@@ -4,8 +4,8 @@
         <shape>
 
             <size
-                android:width="27dp"
-                android:height="24dp"/>
+                android:width="@dimen/_27dp"
+                android:height="@dimen/_24dp"/>
 
             <corners
                 android:radius="42dp" />
@@ -18,7 +18,7 @@
     </item>
     <item
         android:drawable="@drawable/icon_recycler_trash_off"
-        android:width="14.6dp"
-        android:height="15.2dp"
+        android:width="@dimen/_14_6dp"
+        android:height="@dimen/_15_2dp"
         android:gravity="center"/>
 </layer-list>

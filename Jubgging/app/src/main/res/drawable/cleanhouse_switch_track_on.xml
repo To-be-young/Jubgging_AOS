@@ -3,9 +3,9 @@
     <item>
         <shape android:shape="rectangle" >
             <padding
-                android:bottom="3.5dp"
-                android:left="3dp"
-                android:top="3.5dp" />
+                android:bottom="@dimen/_3_5dp"
+                android:left="@dimen/_3dp"
+                android:top="@dimen/_3_5dp" />
 
             <corners
                 android:radius="53dp" />
@@ -14,8 +14,8 @@
                 android:color="@color/green_blue" />
 
             <size
-                android:width="63dp"
-                android:height="31dp" />
+                android:width="@dimen/_63dp"
+                android:height="@dimen/_31dp" />
 
             <!--        <stroke-->
             <!--            android:width="5dp"-->
