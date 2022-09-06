@@ -27,21 +27,42 @@
     <style name="logoTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_regular</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">2dp</item>
+        <item name="android:autoSizeMaxTextSize">100dp</item>
+        <item name="android:autoSizeStepGranularity">1dp</item>
     </style>
 
     <style name="inputTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_regular</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">16.7sp</item>
+
         <item name="android:textColor">@color/black</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">2dp</item>
+        <item name="android:autoSizeMaxTextSize">100dp</item>
+        <item name="android:autoSizeStepGranularity">1dp</item>
+    </style>
+
+    <style name="inputEditTextTheme" parent="Widget.AppCompat.EditText">
+        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">2dp</item>
+        <item name="android:autoSizeMaxTextSize">100dp</item>
+        <item name="android:autoSizeStepGranularity">1dp</item>
     </style>
 
     <style name="buttonTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_bold</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">19.7sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">2dp</item>
+        <item name="android:autoSizeMaxTextSize">100dp</item>
+        <item name="android:autoSizeStepGranularity">1dp</item>
     </style>
 
     <style name="signUpInputTextTheme" parent="Widget.AppCompat.EditText">
