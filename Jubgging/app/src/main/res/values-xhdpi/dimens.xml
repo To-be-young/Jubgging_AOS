@@ -9,5 +9,7 @@
     <dimen name="input_layout_padding_vertical">37.2dp</dimen>
     <dimen name="_8dp">8dp</dimen>
     <dimen name="_29_5dp">29.5dp</dimen>
+    <dimen name="_96dp">96dp</dimen>
+    <dimen name="_19_5">19.5dp</dimen>
 
 </resources>
