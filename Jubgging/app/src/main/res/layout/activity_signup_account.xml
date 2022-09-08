@@ -26,10 +26,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/icon_app_title_drawable"
+            android:layout_marginTop="@dimen/_30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.056"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.264" />
 
 
@@ -137,6 +138,99 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/signup_user_auth_chk_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/signup_user_pwd_cl"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.268"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signup_user_id_cl">
+
+
+                    <TextView
+                        android:id="@+id/signup_user_auth_chk_tv"
+                        style="@style/inputTextTheme"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/signup_second_authenfication_tx"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_user_auth_chk_et"
+                        app:layout_constraintEnd_toEndOf="@+id/signup_user_auth_chk_et"
+                        app:layout_constraintHeight_percent="0.299"
+                        app:layout_constraintStart_toStartOf="@+id/signup_user_auth_chk_et"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="spread_inside"
+                        app:layout_constraintWidth_percent="0.789" />
+
+                    <!--code sent 여부에 따라 editTextEnable 처리-->
+                    <EditText
+                        android:id="@+id/signup_user_auth_chk_et"
+                        style="@style/signUpInputTextTheme"
+                        setSentCodeFlag="@{signUpVm.codeSentFlag}"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:hint=""
+                        android:inputType="number"
+                        android:maxLength="6"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/signup_user_pnum_auth_btn"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_user_auth_chk_tv"
+                        app:layout_constraintWidth_percent="0.787" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/signup_user_pnum_auth_btn"
+                        setSentCodeFlag="@{signUpVm.codeSentFlag}"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:autoSizeMaxTextSize="@dimen/_35dp"
+                        android:autoSizeMinTextSize="@dimen/_3dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:background="@drawable/round_btn_enable_selector"
+                        android:enabled="false"
+                        android:fontFamily="@font/nanumgothic_bold"
+                        android:minWidth="20dp"
+                        android:minHeight="10dp"
+                        android:paddingHorizontal="@dimen/_19_5dp"
+                        android:paddingVertical="@dimen/_8dp"
+                        android:text="확인"
+                        android:textColor="@color/brownish_grey"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.573"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/signup_user_auth_chk_et"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_user_auth_chk_tv"
+                        app:layout_constraintWidth_percent="0.211" />
+
+                    <TextView
+                        android:id="@+id/signup_user_second_count_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginVertical="@dimen/_3_4dp"
+
+                        android:autoSizeMaxTextSize="@dimen/_40dp"
+                        android:autoSizeMinTextSize="@dimen/_3dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center_horizontal"
+
+                        android:text="@{signUpVm.timeoutText}"
+                        android:textColor="@color/red"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_user_pnum_auth_btn"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/signup_user_pnum_auth_btn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.049" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/signup_user_pwd_cl"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -145,7 +239,7 @@
                     app:layout_constraintHeight_percent="0.268"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signup_user_id_cl">
+                    app:layout_constraintTop_toBottomOf="@+id/signup_user_auth_chk_cl">
 
 
                     <TextView
@@ -255,34 +349,13 @@
             android:paddingVertical="@dimen/_12dp"
             android:text="@string/signup_first_fin_btn"
             android:textColor="@color/brownish_grey"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/signup_user_input_cl"
             app:layout_constraintHeight_percent="0.061"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/signup_user_input_cl"
             app:layout_constraintTop_toBottomOf="@+id/signup_user_input_cl" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.047"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.953"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
