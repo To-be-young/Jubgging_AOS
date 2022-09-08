@@ -1,47 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <dimen name="_35dp">38.5dp</dimen>-->
-<!--    <dimen name="_25dp">27.5dp</dimen>-->
-<!--    <dimen name="_95dp">104.5dp</dimen>-->
-<!--    <dimen name="_36dp">39.6dp</dimen>-->
-<!--    <dimen name="_20dp">22dp</dimen>-->
-<!--    <dimen name="_24dp">26.4dp</dimen>-->
-<!--    <dimen name="_13dp">14.3dp</dimen>-->
-<!--    <dimen name="_11dp">12.1dp</dimen>-->
-<!--    <dimen name="_6dp">6.6dp</dimen>-->
-<!--    <dimen name="_58dp">63.8dp</dimen>-->
-<!--    <dimen name="_12dp">13.2dp</dimen>-->
-<!--    <dimen name="_16dp">17.6dp</dimen>-->
-<!--    <dimen name="_31_5dp">34.65dp</dimen>-->
-<!--    <dimen name="_15dp">16.5dp</dimen>-->
-<!--    <dimen name="_21dp">23.1dp</dimen>-->
-<!--    <dimen name="_3dp">3.3dp</dimen>-->
-<!--    <dimen name="_109dp">119.9dp</dimen>-->
-<!--    <dimen name="_23dp">25.3dp</dimen>-->
-<!--    <dimen name="_7_5dp">8.25dp</dimen>-->
-<!--    <dimen name="_40dp">44dp</dimen>-->
-<!--    <dimen name="_17dp">18.7dp</dimen>-->
-<!--    <dimen name="_19dp">20.9dp</dimen>-->
-<!--    <dimen name="_30dp">33dp</dimen>-->
-<!--    <dimen name="_27_8dp">30.58dp</dimen>-->
-<!--    <dimen name="_50dp">55dp</dimen>-->
-<!--    <dimen name="_27dp">29.7dp</dimen>-->
-<!--    <dimen name="_14dp">15.4dp</dimen>-->
-<!--    <dimen name="_10dp">11dp</dimen>-->
-<!--    <dimen name="_7dp">7.7dp</dimen>-->
-<!--    <dimen name="_67dp">73.7dp</dimen>-->
-<!--    <dimen name="_95_1dp">104.61dp</dimen>-->
-<!--    <dimen name="_10_8dp">11.88dp</dimen>-->
-<!--    <dimen name="_35_5dp">39.05dp</dimen>-->
-<!--    <dimen name="_54_1dp">59.51dp</dimen>-->
-<!--    <dimen name="_46dp">50.6dp</dimen>-->
-<!--    <dimen name="_44_2dp">48.62dp</dimen>-->
-<!--    <dimen name="_46_8dp">51.48dp</dimen>-->
-<!--    <dimen name="_68_5dp">75.35dp</dimen>-->
-<!--    <dimen name="_2_2dp">2.42dp</dimen>-->
-<!--    <dimen name="_18dp">19.8dp</dimen>-->
-<!--    <dimen name="_34_1dp">37.51dp</dimen>-->
-
     <dimen name="_35dp">35dp</dimen>
     <dimen name="_25dp">25dp</dimen>
     <dimen name="_95dp">95dp</dimen>
@@ -63,7 +21,7 @@
     <dimen name="_7_5dp">7.5dp</dimen>
     <dimen name="_40dp">40dp</dimen>
     <dimen name="_17dp">17dp</dimen>
-    <dimen name="_19dp">19dp</dimen>
+    <dimen name="_19dp">29dp</dimen>
     <dimen name="_30dp">30dp</dimen>
     <dimen name="_27_8dp">27.8dp</dimen>
     <dimen name="_50dp">50dp</dimen>
@@ -88,6 +46,8 @@
     <dimen name="_96dp">96dp</dimen>
     <dimen name="_19_5dp">19.5dp</dimen>
     <dimen name="_3_4dp">3.4dp</dimen>
-
+    <dimen name="_80dp">80dp</dimen>
+    <dimen name="_45dp">45dp</dimen>
+    <dimen name="_72dp">72dp</dimen>
 
 </resources>

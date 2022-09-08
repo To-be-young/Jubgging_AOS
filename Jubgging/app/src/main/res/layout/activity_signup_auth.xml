@@ -23,12 +23,11 @@
             android:id="@+id/signup_app_title_iv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_30dp"
             android:src="@drawable/icon_app_title_drawable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.056"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
             app:layout_constraintWidth_percent="0.264" />
 
 
@@ -37,26 +36,28 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/_20dp"
-            android:layout_marginTop="@dimen/_30dp"
             android:background="@drawable/login_background_drawable"
             android:elevation="2dp"
+            android:layout_marginTop="@dimen/_30dp"
             android:paddingHorizontal="@dimen/_20dp"
             android:paddingVertical="@dimen/_24dp"
-            app:layout_constraintBottom_toTopOf="@+id/signup_fin_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.35"
+            app:layout_constraintHeight_percent="0.4"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/signup_app_title_iv"
-            app:layout_constraintVertical_chainStyle="spread_inside">
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:layout_constraintWidth_percent="0.861">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.821"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.87">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -105,26 +106,25 @@
 
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="@dimen/_20dp"
+                        android:autoSizeMaxTextSize="@dimen/_35dp"
                         android:autoSizeMinTextSize="@dimen/_3dp"
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
-                        android:background="@drawable/button_enable_selector"
+                        android:background="@drawable/round_btn_enable_selector"
                         android:enabled="false"
                         android:fontFamily="@font/nanumgothic_bold"
                         android:minWidth="20dp"
                         android:minHeight="10dp"
                         android:paddingHorizontal="@dimen/_19_5dp"
                         android:paddingVertical="@dimen/_8dp"
+                        app:layout_constraintHeight_percent="0.573"
+                        app:layout_constraintWidth_percent="0.211"
                         android:stateListAnimator="@null"
                         android:text="인증"
                         android:textColor="@color/brownish_grey"
-                        android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHeight_percent="0.573"
                         app:layout_constraintStart_toEndOf="@+id/signup_user_nickname_et"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_user_nickname_tv"
-                        app:layout_constraintWidth_percent="0.211" />
+                    app:layout_constraintTop_toBottomOf="@+id/signup_user_nickname_tv"  />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -176,13 +176,13 @@
                         setInputPhoneNumber="@{signupPhoneNumberEt.text.toString()}"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:fontFamily="@font/nanumgothic_bold"
-                        android:autoSizeMaxTextSize="@dimen/_20dp"
+                        android:autoSizeMaxTextSize="@dimen/_35dp"
                         android:autoSizeMinTextSize="@dimen/_3dp"
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
-                        android:background="@drawable/button_enable_selector"
+                        android:background="@drawable/round_btn_enable_selector"
                         android:enabled="false"
+                        android:fontFamily="@font/nanumgothic_bold"
                         android:minWidth="20dp"
                         android:minHeight="10dp"
                         android:paddingHorizontal="@dimen/_19_5dp"
@@ -248,11 +248,11 @@
                         setSentCodeFlag="@{signUpVm.codeSentFlag}"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="@dimen/_20dp"
+                        android:autoSizeMaxTextSize="@dimen/_35dp"
                         android:autoSizeMinTextSize="@dimen/_3dp"
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
-                        android:background="@drawable/button_enable_selector"
+                        android:background="@drawable/round_btn_enable_selector"
                         android:enabled="false"
                         android:fontFamily="@font/nanumgothic_bold"
                         android:minWidth="20dp"
@@ -273,21 +273,21 @@
                         android:id="@+id/signup_second_count_tv"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:gravity="center_horizontal"
-
                         android:layout_marginVertical="@dimen/_3_4dp"
-                        android:autoSizeMaxTextSize="@dimen/_20dp"
+
+                        android:autoSizeMaxTextSize="@dimen/_40dp"
                         android:autoSizeMinTextSize="@dimen/_3dp"
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
+                        android:gravity="center_horizontal"
 
                         android:text="@{signUpVm.timeoutText}"
                         android:textColor="@color/red"
-                        app:layout_constraintWidth_percent="0.049"
                         app:layout_constraintBottom_toTopOf="@+id/signup_pnum_auth_btn"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/signup_pnum_auth_btn"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.049" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -299,28 +299,44 @@
             android:id="@+id/signup_fin_btn"
             setOverlapFlag="@{signUpVm.nicknameOverlapFlag}"
             setPassAuthFlag="@{signUpVm.passAuthFlag}"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:fontFamily="@font/nanumgothic_bold"
-            android:layout_marginHorizontal="@dimen/_25dp"
-            android:layout_marginBottom="@dimen/_30dp"
-            android:autoSizeMaxTextSize="@dimen/_20dp"
+            android:autoSizeMaxTextSize="@dimen/_72dp"
             android:autoSizeMinTextSize="@dimen/_3dp"
-            android:autoSizeStepGranularity="1dp"
+            android:autoSizeStepGranularity="5dp"
             android:autoSizeTextType="uniform"
-            android:background="@drawable/button_enable_selector"
+            android:background="@drawable/square_btn_enable_selector"
             android:elevation="2dp"
             android:enabled="false"
+            android:fontFamily="@font/nanumgothic_bold"
+            android:paddingHorizontal="@dimen/_96dp"
+
+            android:paddingVertical="@dimen/_12dp"
             android:text="@string/signup_finish_btn"
             android:textColor="@color/brownish_grey"
-            android:paddingHorizontal="@dimen/_96dp"
-            android:paddingVertical="@dimen/_12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toEndOf="@+id/signup_user_input_cl"
             app:layout_constraintHeight_percent="0.061"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_user_input_cl" />
+            app:layout_constraintStart_toStartOf="@+id/signup_user_input_cl"
+           />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.047" />
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.953" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
