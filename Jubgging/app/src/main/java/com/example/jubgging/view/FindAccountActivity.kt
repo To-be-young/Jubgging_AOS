@@ -1,16 +1,17 @@
 package com.example.jubgging.view
 
-import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.jubgging.FindIdFragment
 import com.example.jubgging.FindPwFragment
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityFindAccountBinding
 import com.google.android.material.tabs.TabLayout
+
 
 class FindAccountActivity : AppCompatActivity() {
 

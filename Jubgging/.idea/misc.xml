@@ -18,7 +18,9 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/button_enable_selector.xml" value="0.1285" />
         <entry key="app/src/main/res/drawable/grey_dim_button_background.xml" value="0.1285" />
+        <entry key="app/src/main/res/drawable/ic_app_title.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_checked_rb.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/ic_jupgging_logo_img.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_back_main_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_marker.xml" value="0.2175" />
@@ -26,7 +28,11 @@
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_on_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_clh.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_unchecked_rb.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/icon_app_title_drawable.xml" value="0.182" />
+        <entry key="app/src/main/res/drawable/icon_good_drawable.xml" value="0.182" />
+        <entry key="app/src/main/res/drawable/imsi.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/imsi_imsi.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/jupgging_logo_drawable.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/login_background_drawable.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/login_btn_background_drawable.xml" value="0.1285" />
         <entry key="app/src/main/res/drawable/login_kakao_btn_background_drawable.xml" value="0.5805" />
@@ -43,11 +49,12 @@
         <entry key="app/src/main/res/drawable/plogging_store_btn_background_drawable.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/signup_authenfication_btn_background_drawable.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/signup_gender_radio_btn.xml" value="0.42080535888671877" />
+        <entry key="app/src/main/res/drawable/user_profile_outline_drawable.xml" value="0.182" />
         <entry key="app/src/main/res/layout/activity_easy_signup_first.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_easy_signup_second.xml" value="0.5120468139648438" />
         <entry key="app/src/main/res/layout/activity_find_account.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20166473388671877" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3531228549238564" />
         <entry key="app/src/main/res/layout/activity_plogging.xml" value="0.3808876811594203" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
         <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.23800354003906252" />
@@ -58,9 +65,11 @@
         <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.1699909218663386" />
         <entry key="app/src/main/res/layout/ballon_layout.xml" value="0.3808876811594203" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.29393115942028986" />
-        <entry key="app/src/main/res/layout/fragment_find_id.xml" value="0.2459389506906703" />
-        <entry key="app/src/main/res/layout/fragment_find_pw.xml" value="0.3808876811594203" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1889564336372847" />
+        <entry key="app/src/main/res/layout/fragment_find_id.xml" value="0.41925743213598277" />
+        <entry key="app/src/main/res/layout/fragment_find_id_fin.xml" value="0.3189397178281317" />
+        <entry key="app/src/main/res/layout/fragment_find_pw.xml" value="0.21725395313207652" />
+        <entry key="app/src/main/res/layout/fragment_find_pw_fin.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37904510498046873" />
         <entry key="app/src/main/res/layout/fragment_my.xml" value="0.29393115942028986" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.3885416666666667" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.1274062816616008" />

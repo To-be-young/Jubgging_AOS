@@ -7,4 +7,9 @@
     <dimen name="input_layout_padding_horizontal">37.2dp</dimen>
     <dimen name="input_layout_margin_top">36.7dp</dimen>
     <dimen name="input_layout_padding_vertical">37.2dp</dimen>
+    <dimen name="_22dp">22dp</dimen>
+    <dimen name="_22_5dp">22.5dp</dimen>
+    <dimen name="_12dp">12dp</dimen>
+    <dimen name="_32dp">32dp</dimen>
+    <dimen name="_143dp">143dp</dimen>
 </resources>

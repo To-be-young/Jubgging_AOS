@@ -26,14 +26,21 @@
     <style name="inputTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_regular</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">16.7sp</item>
         <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <style name="inputEditTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+
     </style>
 
     <style name="buttonTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_bold</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">19.7sp</item>
+
     </style>
     <style name="signUpInputTextTheme" parent="Widget.AppCompat.EditText">
         <item name="fontFamily">@font/nanumgothic_bold</item>
@@ -43,11 +50,11 @@
 
     <style name="tablayout" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_regular</item>
-        <item name="android:textSize">19.3sp</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">2dp</item>
+        <item name="autoSizeMaxTextSize">13dp</item>
+        <item name="autoSizeStepGranularity">1dp</item>
+        <item name="android:textSize">@dimen/_13dp</item>
     </style>
 
-    <style name="tablayout1" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/nanumgothic_bold</item>
-        <item name="android:textColor">@color/black</item>
-    </style>
 </resources>

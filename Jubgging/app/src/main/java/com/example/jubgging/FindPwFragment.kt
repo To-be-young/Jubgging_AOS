@@ -18,10 +18,11 @@ class FindPwFragment : Fragment() {
     ): View? {
 
         binding = FragmentFindPwBinding.inflate(inflater, container, false)
+
         val activity : FindAccountActivity = getActivity() as FindAccountActivity
 
         binding.findPwFinBt.setOnClickListener {
-            activity.replaceView(FindIdFragment())
+            activity.replaceView(FindPwFinFragment())
         }
         return binding.root
     }
