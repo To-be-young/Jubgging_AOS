@@ -37,5 +37,6 @@
     <dimen name="_12dp">12dp</dimen>
     <dimen name="_32dp">32dp</dimen>
     <dimen name="_143dp">143dp</dimen>
+    <dimen name="_17_6dp">17.6dp</dimen>
 
 </resources>
