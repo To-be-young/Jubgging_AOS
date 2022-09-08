@@ -18,4 +18,9 @@ interface ApiInterface {
 
     @POST("api/sign/login")
     fun login(@Body loginRequest: LoginRequest):Single<BaseResponse<LoginResponse>>
+
+    @POST("api/user/user-emails/exists")
+    fun checkEmailOverlap(@Query("email") email:String) :Single<BaseResponse<Boolean>>
+
+
 }

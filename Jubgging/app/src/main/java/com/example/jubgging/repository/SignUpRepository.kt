@@ -14,6 +14,7 @@ interface SignUpRepository {
     fun signUp(signUpRequest: SignUpRequest): Single<BaseResponse<String>>
     fun checkNicknameOverlap(nickname: String): Single<BaseResponse<Boolean>>
     fun login(loginRequest: LoginRequest):Single<BaseResponse<LoginResponse>>
+    fun checkEmailOverlap(email:String):Single<BaseResponse<Boolean>>
 }
 
 class SignUpRepositoryImpl : SignUpRepository {
@@ -29,6 +30,10 @@ class SignUpRepositoryImpl : SignUpRepository {
 
     override fun login(loginRequest: LoginRequest): Single<BaseResponse<LoginResponse>> {
         return ApiClient.api.login(loginRequest).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).map { it }
+    }
+
+    override fun checkEmailOverlap(email: String): Single<BaseResponse<Boolean>> {
+        return  ApiClient.api.checkEmailOverlap(email).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).map { it }
     }
 
 }

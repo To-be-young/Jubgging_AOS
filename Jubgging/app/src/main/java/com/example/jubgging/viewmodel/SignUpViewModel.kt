@@ -103,14 +103,14 @@ class SignUpViewModel : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun checkNickNameOverlap(nickname: String,showToast: (tag: Int) -> Unit) {
+    fun checkNickNameOverlap(nickname: String, showToast: (tag: Int) -> Unit) {
         signUpRepository.checkNicknameOverlap(nickname).subscribeBy(
             onSuccess = {
                 _nicknameOverlapFlag.value = it.data!!
-                if(it.data){
+                if (it.data) {
                     //중복 O
                     showToast(6)
-                }else{
+                } else {
                     //중복 X
                     showToast(7)
                 }
@@ -183,8 +183,8 @@ class SignUpViewModel : ViewModel() {
                     moveToLogin().apply {
                         showToast(5)
                     }
-                }else{
-                   //회원가입 실패 시 예외처리 필요
+                } else {
+                    //회원가입 실패 시 예외처리 필요
                     Log.d("TAG", "signUp: ${signUpRequest.userId}")
                     Log.d("TAG", "signUp:${it.message} ")
                 }
@@ -202,11 +202,23 @@ class SignUpViewModel : ViewModel() {
                 moveToMain().apply {
                     showToast(0)
                 }
-            }else{
+            } else {
                 showToast(1)
             }
         }, onError = {
             it.printStackTrace()
         })
+    }
+
+    @SuppressLint("CheckResult")
+    fun checkEmailOverlap(email: String) {
+        signUpRepository.checkEmailOverlap(email).subscribeBy(
+            onSuccess = {
+                if(it.code == 0){
+                    Log.d("TAG", "checkEmailOverlap: ${it.data}")
+                }
+            }, onError = {
+                it.printStackTrace()
+            })
     }
 }

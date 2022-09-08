@@ -31,6 +31,29 @@ class SignUpAccountActivity:AppCompatActivity() {
         var userId: String = ""
         var userPwd: String = ""
 
+
+        //이메일 인증 및 중복 구현
+        //1. 이메일 중복
+        //1-1. null check O
+        //1-2. regex check O
+        //1-3. duplicate check
+        //1-4-pass. btn text가 인증으로 change
+        //2. 이메일 인증
+        //2-1.email send & Toast message
+        //2-2. response 확인 및 통과 여부에 따라 1로 다시 돌아가기
+
+
+
+
+
+
+
+
+
+
+
+
+
         binding.signupEmailAuthBtn.setOnClickListener {
             //이메일 인증 함수
             viewModel.updateEmailAuthFlag(true)

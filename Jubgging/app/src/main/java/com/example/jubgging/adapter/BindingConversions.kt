@@ -1,7 +1,9 @@
 package com.example.jubgging.adapter
 
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import com.example.jubgging.R
 
@@ -9,6 +11,25 @@ object BindingConversions {
 
     //editText들 이전 값과 새로 입력한 값이 다를 때 처리 필요함, 회원가입 시!!
     //이메일 인증 및 중복 검사 구현 필요
+
+    @JvmStatic
+    @BindingAdapter("setEmailText")
+    fun checkEmailNullRegex(button: Button,userIdText: String){
+        if(userIdText.isNotEmpty()){
+            if(matchEmailRegex(userIdText)){
+                button.isEnabled = true
+                button.setTextColor(button.context.getColor(R.color.green_blue))
+            }else{
+                button.isEnabled  = false
+                button.setTextColor(button.context.getColor(R.color.brownish_grey))
+            }
+        }else{
+            button.isEnabled = false
+            button.setTextColor(button.context.getColor(R.color.brownish_grey))
+        }
+    }
+
+
 
     @JvmStatic
     @BindingAdapter("setEmailText", "setPwdText", "setPwdChkText", "setEmailAuthFlag")
@@ -116,6 +137,11 @@ object BindingConversions {
     private fun matchPhoneNumberRegex(phoneNumber: String): Boolean {
         val regex = "^\\d{3}-\\d{4}-\\d{4}\$"
         return phoneNumber.matches(regex.toRegex())
+    }
+
+    private fun matchEmailRegex(email:String):Boolean{
+        val patterns = Patterns.EMAIL_ADDRESS
+        return email.matches(patterns.toRegex())
     }
 }
 
