@@ -36,7 +36,7 @@
 
     <style name="inputTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_regular</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:textAlignment">viewStart</item>
 
         <item name="android:textColor">@color/black</item>
         <item name="android:autoSizeTextType">uniform</item>

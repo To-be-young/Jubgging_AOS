@@ -44,6 +44,7 @@
     <dimen name="_8dp">5.33dp</dimen>
     <dimen name="_29_5dp">19.67dp</dimen>
     <dimen name="_96dp">64.00dp</dimen>
-    <dimen name="_19_5">13.00dp</dimen>
+    <dimen name="_19_5dp">13.00dp</dimen>
+    <dimen name="_3_4dp">2.27dp</dimen>
 
 </resources>
