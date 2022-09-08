@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/icon_app_title_drawable"
-            android:layout_marginTop="@dimen/_30dp"
+            android:layout_marginTop=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.056"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +134,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/signup_user_id_et"
                         app:layout_constraintTop_toBottomOf="@+id/signup_user_id_tv"
-                     />
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

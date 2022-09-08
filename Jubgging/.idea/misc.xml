@@ -15,20 +15,11 @@
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_main.xml" value="0.29393115942028986" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_register1.xml" value="0.21024280492810232" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_register2.xml" value="0.20655017797497735" />
-        <entry key="app/src/main/res/drawable/blue_button_drawable.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/button_enable_selector.xml" value="0.1285" />
         <entry key="app/src/main/res/drawable/grey_dim_button_background.xml" value="0.1285" />
-        <entry key="app/src/main/res/drawable/grey_square_btn_drawable.xml" value="0.2095" />
         <entry key="app/src/main/res/drawable/ic_app_logo.xml" value="0.1345" />
-        <entry key="app/src/main/res/drawable/ic_app_title.xml" value="0.202" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/icon_app_logo_drawable.xml" value="0.1345" />
-        <entry key="app/src/main/res/drawable/icon_app_title_drawable.xml" value="0.165" />
-        <entry key="app/src/main/res/drawable/icon_good_drawable.xml" value="0.207" />
-        <entry key="app/src/main/res/drawable/icon_plogging_drawable.xml" value="0.2435" />
-        <entry key="app/src/main/res/drawable/icon_recommend_route_drawable.xml" value="0.2435" />
-        <entry key="app/src/main/res/drawable/icon_recycler_trash_drawable.xml" value="0.2435" />
-        <entry key="app/src/main/res/drawable/icon_time_fast_drawable.xml" value="0.207" />
         <entry key="app/src/main/res/drawable/login_background_drawable.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/login_btn_background_drawable.xml" value="0.1285" />
         <entry key="app/src/main/res/drawable/login_kakao_btn_background_drawable.xml" value="0.5805" />
@@ -38,23 +29,19 @@
         <entry key="app/src/main/res/drawable/signup_authenfication_btn_background_drawable.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/signup_gender_radio_btn.xml" value="0.42080535888671877" />
         <entry key="app/src/main/res/drawable/splash.xml" value="0.1345" />
-        <entry key="app/src/main/res/drawable/square_btn_enable_selector.xml" value="0.2095" />
-        <entry key="app/src/main/res/drawable/temp_img.xml" value="0.131" />
-        <entry key="app/src/main/res/drawable/user_profile_outline_drawable.xml" value="0.131" />
-        <entry key="app/src/main/res/drawable/white_round_btn_drawable.xml" value="0.2095" />
         <entry key="app/src/main/res/layout/activity_easy_signup_first.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_easy_signup_second.xml" value="0.5120468139648438" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.48039093017578127" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20166473388671877" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
-        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.176879374186198" />
-        <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.2969777425130208" />
+        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.23800354003906252" />
+        <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.19829101562499996" />
         <entry key="app/src/main/res/layout/activity_signup_first.xml" value="0.44374718008951247" />
         <entry key="app/src/main/res/layout/activity_signup_second.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_third.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.1699909218663386" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.29393115942028986" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.41317365269461076" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1889564336372847" />
         <entry key="app/src/main/res/layout/fragment_my.xml" value="0.29393115942028986" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.3885416666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1345" />

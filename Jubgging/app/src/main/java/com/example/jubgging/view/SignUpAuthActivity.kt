@@ -69,7 +69,6 @@ class SignUpAuthActivity : AppCompatActivity() {
                 binding.signupUserNicknameEt.text.toString(),
                 binding.signupPhoneNumberEt.text.toString()),::moveToLogin,::showToast)
 
-
         }
 
         //전화번호 인증 check
