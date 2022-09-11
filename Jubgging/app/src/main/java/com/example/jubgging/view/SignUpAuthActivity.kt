@@ -1,8 +1,14 @@
 package com.example.jubgging.view
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.view.Window
+import android.view.WindowManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +24,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 class SignUpAuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupAuthBinding
     private val viewModel: SignUpViewModel by viewModels()
+    private lateinit var dialog:Dialog
     var verificationId = ""
 
 
@@ -33,7 +40,7 @@ class SignUpAuthActivity : AppCompatActivity() {
         override fun onCodeSent(verificationId: String, p1: PhoneAuthProvider.ForceResendingToken) {
             this@SignUpAuthActivity.verificationId = verificationId
             viewModel.updateCodeSentFlag(true)
-            showToast(0)
+            showSendSMSCodeToast()
             setEnableSendCodeBtn(true)
             // 유효시간 내 입력 및 버튼 누른 후 인증 , 유효시간 지나면 안내 O
             viewModel.timerStart(::setPhoneCodeNotice)
@@ -52,20 +59,32 @@ class SignUpAuthActivity : AppCompatActivity() {
         //flag 초기화
         viewModel.updateCodeSentFlag(false)
 
-        var userId = intent.getStringExtra("userId")
-        var userPwd = intent.getStringExtra("userPwd")
+        val userId = intent.getStringExtra("userId")
+        val userPwd = intent.getStringExtra("userPwd")
         var phoneNumber: String = ""
 
 
         binding.signupPhoneNumberEt.addTextChangedListener(PhoneNumberFormattingTextWatcher())
 
+        dialog = Dialog(this).apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            setContentView(R.layout.dialog_finish_signup)
+            window?.setLayout(WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            setCanceledOnTouchOutside(false)
+            setCancelable(false)
+        }
+
+
         binding.signupFinBtn.setOnClickListener {
             viewModel.signUp(signUpRequest = SignUpRequest(userId!!,
                 userPwd!!,
                 binding.signupUserNicknameEt.text.toString(),
-                binding.signupPhoneNumberEt.text.toString()), ::moveToLogin, ::showToast)
+                binding.signupPhoneNumberEt.text.toString()), ::showDialog)
 
         }
+
 
         //전화번호 인증 check
         // 전화번호 입력 -> 인증 버튼 활성화 O
@@ -137,16 +156,17 @@ class SignUpAuthActivity : AppCompatActivity() {
         }
     }
 
-    private fun showToast(tag: Int) {
-        when (tag) {
-            0 -> Toast.makeText(this, "인증코드가 발송되었습니다. 60초 내에 입력해주세요.", Toast.LENGTH_LONG).show()
-
-            5 -> Toast.makeText(this, "회원가입에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-        }
+    private fun showSendSMSCodeToast() {
+        Toast.makeText(this, "인증코드가 발송되었습니다. 60초 내에 입력해주세요.", Toast.LENGTH_LONG).show()
     }
 
     private fun setPhoneNumber(input: String): String {
         return "+82${input.substring(0, 3)}${input.substring(4, 8)}${input.substring(9, 13)}"
     }
-
+    private fun showDialog(){
+        dialog.show()
+        dialog.findViewById<Button>(R.id.ds_move_login_btn).setOnClickListener {
+            moveToLogin()
+        }
+    }
 }

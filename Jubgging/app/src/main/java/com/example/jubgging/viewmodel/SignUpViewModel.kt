@@ -181,15 +181,12 @@ class SignUpViewModel : ViewModel() {
     @SuppressLint("CheckResult")
     fun signUp(
         signUpRequest: SignUpRequest,
-        moveToLogin: () -> Unit,
-        showToast: (tag: Int) -> Unit,
+        showDialog:() -> Unit
     ) {
         signUpRepository.signUp(signUpRequest).subscribeBy(
             onSuccess = {
                 if (it.success) {
-                    moveToLogin().apply {
-                        showToast(5)
-                    }
+                    showDialog()
                 } else {
                     //회원가입 실패 시 예외처리 필요
                     Log.d("TAG", "signUp: ${signUpRequest.userId}")
