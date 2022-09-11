@@ -26,16 +26,18 @@
         <entry key="app/src/main/res/drawable/login_layount_shape.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/login_login_btn_shape.xml" value="0.5805" />
         <entry key="app/src/main/res/drawable/login_naver_btn_background_drawable.xml" value="0.5805" />
+        <entry key="app/src/main/res/drawable/round_btn_enable_selector.xml" value="0.223" />
         <entry key="app/src/main/res/drawable/signup_authenfication_btn_background_drawable.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/signup_gender_radio_btn.xml" value="0.42080535888671877" />
         <entry key="app/src/main/res/drawable/splash.xml" value="0.1345" />
+        <entry key="app/src/main/res/drawable/white_round_btn_drawable.xml" value="0.223" />
         <entry key="app/src/main/res/layout/activity_easy_signup_first.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_easy_signup_second.xml" value="0.5120468139648438" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.20166473388671877" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
-        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.33848328949302753" />
-        <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.8203266787658802" />
+        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.32732894699294846" />
+        <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.2817098808689559" />
         <entry key="app/src/main/res/layout/activity_signup_first.xml" value="0.44374718008951247" />
         <entry key="app/src/main/res/layout/activity_signup_second.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_third.xml" value="0.3211050724637681" />

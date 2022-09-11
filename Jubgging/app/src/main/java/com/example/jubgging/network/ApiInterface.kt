@@ -1,13 +1,13 @@
 package com.example.jubgging.network
 
+import com.example.jubgging.network.data.request.EmailCodeAuthRequest
+import com.example.jubgging.network.data.request.EmailRequest
 import com.example.jubgging.network.data.request.LoginRequest
 import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.network.data.response.BaseResponse
 import com.example.jubgging.network.data.response.LoginResponse
 import io.reactivex.Single
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiInterface {
     @POST("api/sign/signup")
@@ -22,5 +22,10 @@ interface ApiInterface {
     @POST("api/user/user-emails/exists")
     fun checkEmailOverlap(@Query("email") email:String) :Single<BaseResponse<Boolean>>
 
+    @POST("api/sign/email")
+    fun sendEmailCode(@Body emailRequest:EmailRequest):Single<BaseResponse<Boolean>>
+
+    @POST("api/sign/verifyCode")
+    fun verifyEmailCode(@Body emailCodeAuthRequest:EmailCodeAuthRequest):Single<BaseResponse<Boolean>>
 
 }

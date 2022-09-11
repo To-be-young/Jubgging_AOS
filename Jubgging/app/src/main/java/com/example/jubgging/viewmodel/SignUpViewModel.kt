@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.jubgging.network.data.request.EmailCodeAuthRequest
+import com.example.jubgging.network.data.request.EmailRequest
 import com.example.jubgging.network.data.request.LoginRequest
 import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.repository.SignUpRepositoryImpl
@@ -24,16 +26,19 @@ class SignUpViewModel : ViewModel() {
     private val signUpRepository = SignUpRepositoryImpl()
     private lateinit var auth: FirebaseAuth
     private val _emailAuthFlag = MutableLiveData<Boolean>()
+
+    private val _emailOverlapFlag = MutableLiveData<Int>()
+
     private val _codeSentFlag = MutableLiveData<Boolean>()
     private val _passAuthFlag = MutableLiveData<Boolean>()
     private val _timeoutCount = MutableLiveData<Int>()
     private val _timeoutText = MutableLiveData<String>()
 
-    private val _userInfo = MutableLiveData<SignUpRequest>()
-
     private val _nicknameOverlapFlag = MutableLiveData<Boolean>()
 
+
     private lateinit var timerJob: Job
+
 
     val emailAuthFlag: LiveData<Boolean>
         get() = _emailAuthFlag
@@ -47,8 +52,9 @@ class SignUpViewModel : ViewModel() {
     val timeoutText: LiveData<String>
         get() = _timeoutText
 
-    val userInfo: LiveData<SignUpRequest>
-        get() = _userInfo
+    // 기본값 -1, 중복이면 1, 중복아니면 0
+    val emailOverlapFlag: LiveData<Int>
+        get() = _emailOverlapFlag
 
     // 중복이면 true, 중복아니면 false
     val nicknameOverlapFlag: LiveData<Boolean>
@@ -59,8 +65,10 @@ class SignUpViewModel : ViewModel() {
         _codeSentFlag.value = false
         _passAuthFlag.value = false
         _nicknameOverlapFlag.value = false
+        _nicknameOverlapFlag.value = true
         _timeoutCount.value = 60
         _timeoutText.value = "1:00"
+        _emailOverlapFlag.value = -1
     }
 
     fun timerStart(showToast: (tag: Int) -> Unit) {
@@ -186,7 +194,7 @@ class SignUpViewModel : ViewModel() {
                 } else {
                     //회원가입 실패 시 예외처리 필요
                     Log.d("TAG", "signUp: ${signUpRequest.userId}")
-                    Log.d("TAG", "signUp:${it.message} ")
+                    Log.d("TAG", "signUp:${it.msg} ")
                 }
             },
             onError = {
@@ -211,11 +219,46 @@ class SignUpViewModel : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun checkEmailOverlap(email: String) {
+    fun checkEmailOverlap(email: String, setEmailOverlapNotice: (flag:Int) -> Unit) {
         signUpRepository.checkEmailOverlap(email).subscribeBy(
             onSuccess = {
-                if(it.code == 0){
-                    Log.d("TAG", "checkEmailOverlap: ${it.data}")
+                if (it.code == 0) {
+                    if (it.data) {
+                        //중복일 떄
+                        _emailOverlapFlag.value = 1
+                        setEmailOverlapNotice(1)
+                    } else {
+                        //중복이 아닐 때
+                        _emailOverlapFlag.value = 0
+                        setEmailOverlapNotice(0)
+                    }
+                }
+            }, onError = {
+                it.printStackTrace()
+            })
+    }
+
+    @SuppressLint("CheckResult")
+    fun sendEmailCode(emailRequest:EmailRequest, showToast: (message:String) -> Unit) {
+        signUpRepository.sendEmailCode(emailRequest).subscribeBy(
+            onSuccess = {
+                if (it.code == 0) {
+                    showToast("입력하신 이메일로 인증번호가 발송되었습니다.")
+                }
+            }, onError = {
+                it.printStackTrace()
+            })
+    }
+    @SuppressLint("CheckResult")
+    fun verifyEmailCode(emailCodeAuthRequest: EmailCodeAuthRequest,setVerifyNotice:(msg:String,flag:Boolean)-> Unit,setUIEnable:(flag:Boolean)->Unit) {
+        signUpRepository.verifyEmailCode(emailCodeAuthRequest).subscribeBy(
+            onSuccess = {
+                if (it.code == 0) {
+                    setVerifyNotice("인증에 성공하였습니다.",true)
+                    setUIEnable(false)
+                    updateEmailAuthFlag(true)
+                }else{
+                    setVerifyNotice(it.errorMessage().toString(),false)
                 }
             }, onError = {
                 it.printStackTrace()
