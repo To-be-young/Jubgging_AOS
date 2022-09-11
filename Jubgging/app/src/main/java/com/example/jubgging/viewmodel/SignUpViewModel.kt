@@ -71,7 +71,7 @@ class SignUpViewModel : ViewModel() {
         _emailOverlapFlag.value = -1
     }
 
-    fun timerStart(showToast: (tag: Int) -> Unit) {
+    fun timerStart(setPhoneCodeNotice: (message:String,flag:Boolean) -> Unit) {
         if (::timerJob.isInitialized) timerJob.cancel()
         _timeoutCount.value = 60
         _timeoutText.value = "1:00"
@@ -87,7 +87,7 @@ class SignUpViewModel : ViewModel() {
                 if (_timeoutCount.value!! == 0) {
                     updateCodeSentFlag(false)
                     _timeoutText.value = "0:00"
-                    showToast(4)
+                    setPhoneCodeNotice("입력시간이 초과되었습니다. 인증 요청을 재시도 해주세요.",false)
                 }
             }
         }
@@ -111,16 +111,16 @@ class SignUpViewModel : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun checkNickNameOverlap(nickname: String, showToast: (tag: Int) -> Unit) {
+    fun checkNickNameOverlap(nickname: String, setNicknameNotice: (message: String,flag:Boolean) -> Unit) {
         signUpRepository.checkNicknameOverlap(nickname).subscribeBy(
             onSuccess = {
                 _nicknameOverlapFlag.value = it.data!!
                 if (it.data) {
                     //중복 O
-                    showToast(6)
+                    setNicknameNotice("이미 사용중인 닉네임입니다.",false)
                 } else {
                     //중복 X
-                    showToast(7)
+                    setNicknameNotice("사용가능한 닉네임입니다.",true)
                 }
             },
             onError = { it.printStackTrace() }
@@ -131,7 +131,7 @@ class SignUpViewModel : ViewModel() {
     fun sendSMSCode(
         phoneNumber: String,
         activity: SignUpAuthActivity,
-        callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks,
+        callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     ) {
         auth = Firebase.auth
         //setPhoneProviderOption
@@ -144,14 +144,13 @@ class SignUpViewModel : ViewModel() {
         auth.setLanguageCode("kr")
         //실제 발송 코드
         PhoneAuthProvider.verifyPhoneNumber(options)
-
     }
 
     //options
     fun verifySMSCode(
         credential: PhoneAuthCredential,
         activity: SignUpAuthActivity,
-        showToast: (tag: Int) -> Unit,
+        setPhoneCodeNotice:(message: String,flag:Boolean)-> Unit,
     ) {
         auth = Firebase.auth
 
@@ -160,7 +159,7 @@ class SignUpViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     //인증성공
                     updatePassAuthFlag(true)
-                    showToast(1)
+                    setPhoneCodeNotice("인증에 성공하였습니다.",true)
                     timerStop()
                 } else {
                     //인증실패
@@ -168,12 +167,12 @@ class SignUpViewModel : ViewModel() {
                         //인증실패 - 잘못된 인증번호 입력
                         updatePassAuthFlag(false)
                         timerStop()
-                        showToast(2)
+                        setPhoneCodeNotice("인증번호가 틀렸습니다. 다시 입력해주세요",false)
                     } else if (task.exception is FirebaseTooManyRequestsException) {
                         //인증실패 - 너무 많은 수신 요청
                         updatePassAuthFlag(false)
                         timerStop()
-                        showToast(3)
+                        setPhoneCodeNotice("동일한 기기에서 너무 많은 요청이 수신되었습니다. 나중에 다시 시도하세요.",false)
                     }
                 }
             }

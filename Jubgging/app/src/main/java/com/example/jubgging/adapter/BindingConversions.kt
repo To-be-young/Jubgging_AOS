@@ -110,14 +110,19 @@ object BindingConversions {
     //ii) passed regex
     //iii) btn 활성화
     @JvmStatic
-    @BindingAdapter("setInputPhoneNumber")
-    fun setEnableSendSmsBtn(sendCodeBtn: Button, inputPhoneNum: String) {
+    @BindingAdapter("setPhoneNumberNoticeTv","setInputPhoneNumber")
+    fun setEnableSendSmsBtn(sendCodeBtn: Button, noticeTv: TextView,inputPhoneNum: String) {
         if (inputPhoneNum.isNotBlank() && matchPhoneNumberRegex(inputPhoneNum)) {
             sendCodeBtn.isEnabled = true
             sendCodeBtn.setTextColor(sendCodeBtn.context.getColor(R.color.green_blue))
+            noticeTv.text = ""
+            noticeTv.setTextColor(noticeTv.context.getColor(R.color.green_blue))
         } else {
             sendCodeBtn.isEnabled = false
             sendCodeBtn.setTextColor(sendCodeBtn.context.getColor(R.color.brownish_grey))
+            noticeTv.text = "전화번호 형식에 맞지 않습니다. 정확한 번호를 입력해주세요."
+            noticeTv.setTextColor(noticeTv.context.getColor(R.color.red))
+
         }
     }
 

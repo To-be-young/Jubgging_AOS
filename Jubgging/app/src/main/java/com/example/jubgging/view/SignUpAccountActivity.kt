@@ -27,6 +27,7 @@ class SignUpAccountActivity : AppCompatActivity() {
 
         var userId: String = ""
         var userPwd: String = ""
+
         binding.signupUserAuthCl.visibility = View.GONE
         binding.signupEmailCheckBtn.setOnClickListener {
             if (viewModel.emailOverlapFlag.value == 0) {
