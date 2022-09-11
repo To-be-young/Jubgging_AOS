@@ -10,35 +10,109 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/find_id_account_user_input_cl"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="2dp"
         android:background="@drawable/login_background_drawable"
         android:elevation="2dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="22.5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/find_id_user_email_info_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.594"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.565">
+
+            <TextView
+                android:id="@+id/user_id_is1_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="1dp"
+                android:autoSizeMaxTextSize="16dp"
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/nanumgothic_regular"
+                android:lineSpacingExtra="7dp"
+                android:text="@string/find_id_fin_fix_tx1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/find_fin_id_user_email_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.207"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.714" />
+
+            <TextView
+                android:id="@+id/find_fin_id_user_email_tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_17dp"
+                android:autoSizeMaxTextSize="16dp"
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/nanumgothic_bold"
+                android:lineSpacingExtra="6dp"
+                android:text="as*****@naver.com"
+                android:textAlignment="center"
+                android:textColor="@color/lightish_blue"
+                app:layout_constraintBottom_toTopOf="@+id/user_id_is2_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.218"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_id_is1_tv" />
+
+            <TextView
+                android:id="@+id/user_id_is2_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_17dp"
+                android:autoSizeMaxTextSize="16dp"
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/nanumgothic_regular"
+                android:lineSpacingExtra="9dp"
+                android:text="@string/find_id_fin_fix_tx2"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.207"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/find_fin_id_user_email_tv"
+                app:layout_constraintWidth_percent="0.597" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/user_input_context_cl"
-            android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.87"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.7"
-            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/user_input_info_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_input_nickname_cl"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintHeight_percent="0.419"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/user_input_phone_num_cl"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.419"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -46,17 +120,17 @@
                     android:id="@+id/find_id_account_user_email_tv"
                     style="@style/inputTextTheme"
                     android:layout_width="match_parent"
-                    android:textAlignment="textStart"
                     android:layout_height="match_parent"
-                    app:layout_constraintHeight_percent="0.286"
                     android:layout_marginStart="3dp"
                     android:autoSizeMaxTextSize="11dp"
                     android:autoSizeMinTextSize="2dp"
                     android:autoSizeStepGranularity="1dp"
                     android:autoSizeTextType="uniform"
                     android:text="@string/find_account_user_nickname"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textAlignment="textStart"
                     app:layout_constraintBottom_toTopOf="@+id/find_id_account_user_pwd_et"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.286"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,10 +139,11 @@
                     style="@style/inputEditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:hint=""
                     android:textAlignment="textStart"
-                    android:textSize="11dp"
+                    android:textSize="12dp"
+                    android:lineSpacingExtra="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -80,12 +155,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_input_phone_num_cl"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintHeight_percent="0.419"
-                android:layout_marginTop="@dimen/_17_6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_22_5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.419"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/user_input_nickname_cl">
 
@@ -94,15 +169,15 @@
                     style="@style/inputTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_constraintHeight_percent="0.286"
-                    android:textAlignment="textStart"
                     android:layout_marginStart="@dimen/_3dp"
                     android:autoSizeMaxTextSize="11dp"
                     android:autoSizeMinTextSize="1dp"
                     android:autoSizeStepGranularity="1dp"
                     android:autoSizeTextType="uniform"
                     android:text="@string/find_account_user_phonenum"
+                    android:textAlignment="textStart"
                     app:layout_constraintBottom_toTopOf="@+id/find_id_account_user_email_et"
+                    app:layout_constraintHeight_percent="0.286"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintWidth_percent="0.152" />
@@ -112,22 +187,44 @@
                     style="@style/inputEditTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:minHeight="13dp"
-                    android:textSize="11dp"
+                    android:layout_marginTop="15dp"
                     android:hint=""
+                    android:minHeight="13dp"
                     android:textAlignment="textStart"
+                    android:textSize="12dp"
+                    android:lineSpacingExtra="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/find_id_account_user_pwd_tv" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/find_fin_id_fin_bt"
+        style="@style/buttonTextTheme"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="2dp"
+        android:layout_marginBottom="@dimen/_30dp"
+        android:autoSizeMaxTextSize="13dp"
+        android:autoSizeMinTextSize="2dp"
+        android:autoSizeStepGranularity="1dp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/login_background_drawable"
+        android:elevation="2dp"
+        android:paddingVertical="@dimen/_12dp"
+        android:text="@string/find_fin_id_fin_btn"
+        android:textColor="@color/green_blue"
+        android:visibility="invisible"
+        android:paddingHorizontal="@dimen/_109dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.077"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <androidx.appcompat.widget.AppCompatButton

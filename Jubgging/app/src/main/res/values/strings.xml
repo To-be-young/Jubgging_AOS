@@ -27,7 +27,7 @@
     <string name="find_account_user_phonenum">전화번호</string>
     <string name="find_id_fin_fix_tx1">회원님의 아이디는</string>
     <string name="find_id_fin_fix_tx2">입니다.</string>
-    <string name="find_pw_user_email_tx"></string>
+    <string name="find_pw_user_email_tx">이메일</string>
     <string name="find_id_pw_fin_btn">확인</string>
     <string name="find_fin_id_fin_btn">로그인 하러 가기</string>
     <string name="find_fin_pw_tx">입력하신 이메일로 \n임시 비밀번호가 발급되었습니다.\n로그인 후 비밀번호를 변경하세요.</string>

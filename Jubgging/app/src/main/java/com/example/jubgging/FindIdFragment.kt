@@ -18,12 +18,12 @@ class FindIdFragment : Fragment() {
     ): View? {
         binding = FragmentFindIdBinding.inflate(inflater, container, false)
 
-        val activity : FindAccountActivity = getActivity() as FindAccountActivity
-
         binding.findIdFinBt.setOnClickListener {
-            activity.replaceView(FindIdFinFragment())
+            binding.userInputInfoCl.visibility = View.INVISIBLE
+            binding.findIdUserEmailInfoCl.visibility = View.VISIBLE
+            binding.findFinIdFinBt.visibility = View.VISIBLE
+            binding.findIdFinBt.visibility = View.INVISIBLE
         }
-
         return binding.root
     }
 }
