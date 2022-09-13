@@ -89,7 +89,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         mapViewContainer?.addView(mapView)
 
         //툴바
-        val toolbar : androidx.appcompat.widget.Toolbar = binding.ploggingToolbar
+        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_plogging_back_main_bt)

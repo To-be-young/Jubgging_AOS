@@ -30,4 +30,6 @@
     <string name="plogging_stop_tx">종료</string>
     <string name="plogging_pause_tx">플로깅 일시정지</string>
     <string name="plogging_store_tx">저장</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
 </resources>
