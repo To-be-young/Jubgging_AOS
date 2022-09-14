@@ -4,7 +4,7 @@
     <dimen name="_35dp">35dp</dimen>
     <dimen name="_25dp">25dp</dimen>
     <dimen name="_15dp">15dp</dimen>
-    <dimen name="_21dp">21dp</dimen>
+    <dimen name="_21dp">7.00dp</dimen>
     <dimen name="_3dp">3dp</dimen>
     <dimen name="_11dp">11dp</dimen>
     <dimen name="_109dp">109dp</dimen>
@@ -35,5 +35,6 @@
     <dimen name="_68_5dp">68.5dp</dimen>
     <dimen name="_2dp">2dp</dimen>
     <dimen name="_6dp">6dp</dimen>
+    <dimen name="_12_5dp">4.17dp</dimen>
 
 </resources>

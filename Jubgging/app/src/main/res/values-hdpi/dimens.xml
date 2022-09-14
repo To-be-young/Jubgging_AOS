@@ -35,4 +35,5 @@
     <dimen name="_68_5dp">45.67dp</dimen>
     <dimen name="_2dp">1.33dp</dimen>
     <dimen name="_6dp">4.00dp</dimen>
+    <dimen name="_12_5dp">8.33dp</dimen>
 </resources>
