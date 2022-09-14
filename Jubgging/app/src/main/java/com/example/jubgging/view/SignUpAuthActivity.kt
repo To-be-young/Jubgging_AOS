@@ -9,6 +9,7 @@ import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -82,7 +83,6 @@ class SignUpAuthActivity : AppCompatActivity() {
                 userPwd!!,
                 binding.signupUserNicknameEt.text.toString(),
                 binding.signupPhoneNumberEt.text.toString()), ::showDialog)
-
         }
 
 
@@ -164,6 +164,8 @@ class SignUpAuthActivity : AppCompatActivity() {
         return "+82${input.substring(0, 3)}${input.substring(4, 8)}${input.substring(9, 13)}"
     }
     private fun showDialog(){
+        val nicknameTv = dialog.findViewById<TextView>(R.id.ds_nickname_tv)
+        nicknameTv.text = binding.signupUserNicknameEt.text.toString()
         dialog.show()
         dialog.findViewById<Button>(R.id.ds_move_login_btn).setOnClickListener {
             moveToLogin()

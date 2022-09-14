@@ -68,8 +68,11 @@ class SignUpAccountActivity : AppCompatActivity() {
         if (flag == 0) {
             binding.signupEmailAuthBtn.text = "인증"
             binding.signupUseridNtTv.text = "사용가능한 이메일입니다. 인증 과정을 완료해주세요."
+            binding.signupUseridNtTv.setTextColor(this.getColor(R.color.green_blue))
+
         } else {
             binding.signupUseridNtTv.text = "이미 사용중인 이메일입니다."
+            binding.signupUseridNtTv.setTextColor(this.getColor(R.color.red))
         }
 
     }
