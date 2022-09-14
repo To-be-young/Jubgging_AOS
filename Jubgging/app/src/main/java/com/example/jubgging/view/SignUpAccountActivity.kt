@@ -28,13 +28,13 @@ class SignUpAccountActivity : AppCompatActivity() {
         var userId: String = ""
         var userPwd: String = ""
 
-        binding.signupUserAuthCl.visibility = View.GONE
-        binding.signupEmailCheckBtn.setOnClickListener {
+        binding.signupUserAuthChkCl.visibility = View.GONE
+        binding.signupEmailAuthBtn.setOnClickListener {
             if (viewModel.emailOverlapFlag.value == 0) {
                 viewModel.sendEmailCode(EmailRequest(binding.signupUserIdEt.text.toString()),
                     ::showToast).apply {
                     binding.signupUserIdEt.isEnabled = false
-                    binding.signupUserAuthCl.visibility = View.VISIBLE
+                    binding.signupUserAuthChkCl.visibility = View.VISIBLE
                 }
             } else {
                 viewModel.checkEmailOverlap(binding.signupUserIdEt.text.toString(),
@@ -42,9 +42,9 @@ class SignUpAccountActivity : AppCompatActivity() {
             }
         }
 
-        binding.signupUserIdCodeAuthBtn.setOnClickListener {
+        binding.signupUserAuthCodeBtn.setOnClickListener {
             viewModel.verifyEmailCode(EmailCodeAuthRequest(binding.signupUserIdEt.text.toString(),
-                binding.signupUserAuthEt.text.toString()), ::setVerifyNotice, ::setUIEnable)
+                binding.signupUserAuthChkEt.text.toString()), ::setVerifyNotice, ::setUIEnable)
         }
 
         // 이메일 인증 완료 시 && 비밀번호와 비밀번호 확인이 같을 때 버튼 활성화
@@ -66,41 +66,41 @@ class SignUpAccountActivity : AppCompatActivity() {
 
     private fun setEmailOverlapNotice(flag: Int) {
         if (flag == 0) {
-            binding.signupEmailCheckBtn.text = "인증"
-            binding.signupUserIdNoticeTv.text = "사용가능한 이메일입니다. 인증 과정을 완료해주세요."
+            binding.signupEmailAuthBtn.text = "인증"
+            binding.signupUseridNtTv.text = "사용가능한 이메일입니다. 인증 과정을 완료해주세요."
         } else {
-            binding.signupUserIdNoticeTv.text = "이미 사용중인 이메일입니다."
+            binding.signupUseridNtTv.text = "이미 사용중인 이메일입니다."
         }
 
     }
 
     private fun setVerifyNotice(msg: String,flag: Boolean) {
-        binding.signupUserIdAuthNoticeTv.text = msg
+        binding.signupUserAuthCodeNtTv.text = msg
         if(flag){
-            binding.signupUserIdAuthNoticeTv.setTextColor(this.getColor(R.color.green_blue))
+            binding.signupUserAuthCodeNtTv.setTextColor(this.getColor(R.color.green_blue))
         }else{
-            binding.signupUserIdAuthNoticeTv.setTextColor(this.getColor(R.color.brownish_grey))
+            binding.signupUserAuthCodeNtTv.setTextColor(this.getColor(R.color.brownish_grey))
         }
     }
 
     private fun setUIEnable(flag: Boolean) {
         if(flag){
-            binding.signupUserIdCodeAuthBtn.isEnabled = true
-            binding.signupUserIdCodeAuthBtn.setTextColor(this.getColor(R.color.green_blue))
+            binding.signupUserAuthCodeNtTv.isEnabled = true
+            binding.signupUserAuthCodeNtTv.setTextColor(this.getColor(R.color.green_blue))
 
-            binding.signupEmailCheckBtn.isEnabled = true
-            binding.signupEmailCheckBtn.setTextColor(this.getColor(R.color.green_blue))
+            binding.signupEmailAuthBtn.isEnabled = true
+            binding.signupEmailAuthBtn.setTextColor(this.getColor(R.color.green_blue))
 
-            binding.signupUserAuthEt.isEnabled = true
+            binding.signupUserAuthChkEt.isEnabled = true
         }else{
 
-            binding.signupUserIdCodeAuthBtn.isEnabled = false
-            binding.signupUserIdCodeAuthBtn.setTextColor(this.getColor(R.color.brownish_grey))
+            binding.signupUserAuthCodeBtn.isEnabled = false
+            binding.signupUserAuthCodeBtn.setTextColor(this.getColor(R.color.brownish_grey))
 
-            binding.signupEmailCheckBtn.isEnabled = false
-            binding.signupEmailCheckBtn.setTextColor(this.getColor(R.color.brownish_grey))
+            binding.signupEmailAuthBtn.isEnabled = false
+            binding.signupEmailAuthBtn.setTextColor(this.getColor(R.color.brownish_grey))
 
-            binding.signupUserAuthEt.isEnabled = false
+            binding.signupUserAuthChkEt.isEnabled = false
         }
 
     }

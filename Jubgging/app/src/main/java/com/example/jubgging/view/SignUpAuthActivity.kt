@@ -125,15 +125,15 @@ class SignUpAuthActivity : AppCompatActivity() {
     }
 
     private fun setNicknameNotice(message: String, flag: Boolean) {
-        binding.signupUserNicknameNoticeTv.text = message
+        binding.signupUserNicknameNtTv.text = message
         if (flag) {
-            binding.signupUserNicknameNoticeTv.setTextColor(this.getColor(R.color.green_blue))
+            binding.signupUserNicknameNtTv.setTextColor(this.getColor(R.color.green_blue))
             binding.signupUserNicknameEt.isEnabled = false
             binding.signupOverlapChkBtn.isEnabled = false
             binding.signupOverlapChkBtn.setTextColor(this.getColor(R.color.brownish_grey))
 
         } else {
-            binding.signupUserNicknameNoticeTv.setTextColor(this.getColor(R.color.red))
+            binding.signupUserNicknameNtTv.setTextColor(this.getColor(R.color.red))
         }
     }
 
@@ -146,13 +146,13 @@ class SignUpAuthActivity : AppCompatActivity() {
     }
 
     private fun setPhoneCodeNotice(message: String, flag: Boolean) {
-        binding.signupPnumCodeNoticeTv.text = message
+        binding.signupPnumAuthCodeNtTv.text = message
         if (flag) {
-            binding.signupPnumCodeNoticeTv.setTextColor(this.getColor(R.color.green_blue))
+            binding.signupPnumAuthCodeNtTv.setTextColor(this.getColor(R.color.green_blue))
             binding.signupPnumAuthBtn.isEnabled = false
             binding.signupPnumAuthBtn.setTextColor(this.getColor(R.color.brownish_grey))
         } else {
-            binding.signupPnumCodeNoticeTv.setTextColor(this.getColor(R.color.red))
+            binding.signupPnumAuthCodeNtTv.setTextColor(this.getColor(R.color.red))
         }
     }
 

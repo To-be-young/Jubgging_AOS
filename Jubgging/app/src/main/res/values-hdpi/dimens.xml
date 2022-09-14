@@ -46,8 +46,16 @@
     <dimen name="_96dp">64.00dp</dimen>
     <dimen name="_19_5dp">13.00dp</dimen>
     <dimen name="_3_4dp">2.27dp</dimen>
-    <dimen name="_80dp">80dp</dimen>
-    <dimen name="_45dp">45dp</dimen>
+    <dimen name="_80dp">53.33dp</dimen>
+    <dimen name="_45dp">30.00dp</dimen>
     <dimen name="_72dp">48.00dp</dimen>
+    <dimen name="_22_5dp">15.00dp</dimen>
+    <dimen name="_2_5dp">2.5dp</dimen>
+    <dimen name="_12_5dp">8.33dp</dimen>
+    <dimen name="_124dp">82.67dp</dimen>
+    <dimen name="_105dp">70.00dp</dimen>
+    <dimen name="_84dp">56.00dp</dimen>
+    <dimen name="_42dp">28.00dp</dimen>
+    <dimen name="_53dp">35.33dp</dimen>
 
 </resources>
