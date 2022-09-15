@@ -31,11 +31,15 @@ class SignUpViewModel : ViewModel() {
 
     private val _codeSentFlag = MutableLiveData<Boolean>()
     private val _passAuthFlag = MutableLiveData<Boolean>()
-    private val _timeoutCount = MutableLiveData<Int>()
-    private val _timeoutText = MutableLiveData<String>()
+    private val _pTimeoutCount = MutableLiveData<Int>()
+    private val _eTimeoutCount = MutableLiveData<Int>()
+
+    private val _pTimeoutText = MutableLiveData<String>()
+    private val _eTimeoutText = MutableLiveData<String>()
 
     private val _nicknameOverlapFlag = MutableLiveData<Boolean>()
 
+    private var emailCodeReSent:Boolean = false
 
     private lateinit var timerJob: Job
 
@@ -49,8 +53,10 @@ class SignUpViewModel : ViewModel() {
     val passAuthFlag: LiveData<Boolean>
         get() = _passAuthFlag
 
-    val timeoutText: LiveData<String>
-        get() = _timeoutText
+    val pTimeoutText: LiveData<String>
+        get() = _pTimeoutText
+    val eTimeoutText: LiveData<String>
+        get() = _eTimeoutText
 
     // 기본값 -1, 중복이면 1, 중복아니면 0
     val emailOverlapFlag: LiveData<Int>
@@ -66,38 +72,75 @@ class SignUpViewModel : ViewModel() {
         _passAuthFlag.value = false
         _nicknameOverlapFlag.value = false
         _nicknameOverlapFlag.value = true
-        _timeoutCount.value = 60
-        _timeoutText.value = "1:00"
+        _pTimeoutCount.value = 60
+        _eTimeoutCount.value = 180
+
+        _pTimeoutText.value = "1:00"
+        _eTimeoutText.value ="3:00"
         _emailOverlapFlag.value = -1
     }
 
-    fun timerStart(setPhoneCodeNotice: (message:String,flag:Boolean) -> Unit) {
+
+    fun phoneCodeTimerStart(setPhoneCodeNotice: (message:String, flag:Boolean) -> Unit) {
         if (::timerJob.isInitialized) timerJob.cancel()
-        _timeoutCount.value = 60
-        _timeoutText.value = "1:00"
+        _pTimeoutCount.value = 60
+        _pTimeoutText.value = "1:00"
         timerJob = viewModelScope.launch {
-            while (_timeoutCount.value!! > 0) {
-                _timeoutCount.value = _timeoutCount.value!!.minus(1)
-                _timeoutText.value = "${_timeoutCount.value!! / 100}:${_timeoutCount.value!! % 100}"
-                if (_timeoutCount.value!! < 10) {
-                    _timeoutText.value =
-                        "${_timeoutCount.value!! / 100}:0${_timeoutCount.value!! % 100}"
+            while (_pTimeoutCount.value!! > 0) {
+                _pTimeoutCount.value = _pTimeoutCount.value!!.minus(1)
+                _pTimeoutText.value = "${_pTimeoutCount.value!! / 100}:${_pTimeoutCount.value!! % 100}"
+                if (_pTimeoutCount.value!! < 10) {
+                    _pTimeoutText.value =
+                        "${_pTimeoutCount.value!! / 100}:0${_pTimeoutCount.value!! % 100}"
                 }
                 delay(1000L)
-                if (_timeoutCount.value!! == 0) {
+                if (_pTimeoutCount.value!! == 0) {
                     updateCodeSentFlag(false)
-                    _timeoutText.value = "0:00"
+                    _pTimeoutText.value = "0:00"
                     setPhoneCodeNotice("입력시간이 초과되었습니다. 인증 요청을 재시도 해주세요.",false)
                 }
             }
         }
     }
-
-    private fun timerStop() {
+    private fun emailCodeTimerStart(setEmailCodeNotice: (message:String, flag:Boolean) -> Unit){
         if (::timerJob.isInitialized) timerJob.cancel()
-        _timeoutText.value = "0:00"
+        _eTimeoutCount.value = 180
+        _eTimeoutText.value = "3:00"
+        timerJob = viewModelScope.launch {
+            while (_eTimeoutCount.value!! > 0) {
+                _eTimeoutCount.value = _eTimeoutCount.value!!.minus(1)
+                _eTimeoutText.value = "${_eTimeoutCount.value!! / 60}:${_eTimeoutCount.value!! % 60}"
+                if(_eTimeoutCount.value!! in 120..130){
+                    _eTimeoutText.value =
+                        "${_eTimeoutCount.value!! / 60}:0${_eTimeoutCount.value!! % 60}"
+                }
+                if(_eTimeoutCount.value!! in 60..70){
+                    _eTimeoutText.value =
+                        "${_eTimeoutCount.value!! / 60}:0${_eTimeoutCount.value!! % 60}"
+                }
+                if (_eTimeoutCount.value!! < 10) {
+                    _eTimeoutText.value =
+                        "${_eTimeoutCount.value!! / 60}:0${_eTimeoutCount.value!! % 60}"
+                }
+                delay(1000L)
+                if (_eTimeoutCount.value!! == 0) {
+
+                    updateCodeSentFlag(false)
+                    _eTimeoutText.value = "0:00"
+                    setEmailCodeNotice("입력시간이 초과되었습니다. 인증 요청을 재시도 해주세요.",false)
+                }
+            }
+        }
+    }
+    private fun pTimerStop() {
+        if (::timerJob.isInitialized) timerJob.cancel()
+        _pTimeoutText.value = "0:00"
     }
 
+    private fun eTimerStop() {
+        if (::timerJob.isInitialized) timerJob.cancel()
+        _eTimeoutText.value = "0:00"
+    }
     fun updateEmailAuthFlag(flag: Boolean) {
         _emailAuthFlag.value = flag
     }
@@ -160,18 +203,18 @@ class SignUpViewModel : ViewModel() {
                     //인증성공
                     updatePassAuthFlag(true)
                     setPhoneCodeNotice("인증에 성공하였습니다.",true)
-                    timerStop()
+                    pTimerStop()
                 } else {
                     //인증실패
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         //인증실패 - 잘못된 인증번호 입력
                         updatePassAuthFlag(false)
-                        timerStop()
+                        pTimerStop()
                         setPhoneCodeNotice("인증번호가 틀렸습니다. 다시 입력해주세요",false)
                     } else if (task.exception is FirebaseTooManyRequestsException) {
                         //인증실패 - 너무 많은 수신 요청
                         updatePassAuthFlag(false)
-                        timerStop()
+                        pTimerStop()
                         setPhoneCodeNotice("동일한 기기에서 너무 많은 요청이 수신되었습니다. 나중에 다시 시도하세요.",false)
                     }
                 }
@@ -235,15 +278,33 @@ class SignUpViewModel : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun sendEmailCode(emailRequest:EmailRequest, showToast: (message:String) -> Unit) {
-        signUpRepository.sendEmailCode(emailRequest).subscribeBy(
-            onSuccess = {
-                if (it.code == 0) {
-                    showToast("입력하신 이메일로 인증번호가 발송되었습니다.")
-                }
-            }, onError = {
-                it.printStackTrace()
-            })
+    fun sendEmailCode(emailRequest:EmailRequest, showToast: (message:String) -> Unit,setEmailCodeNotice: (message: String, flag: Boolean) -> Unit,setReSentEtEnable:() -> Unit) {
+        if(!emailCodeReSent){
+            signUpRepository.sendEmailCode(emailRequest).subscribeBy(
+                onSuccess = {
+                    if (it.code == 0) {
+                        emailCodeReSent = true
+                        updateCodeSentFlag(true)
+                        emailCodeTimerStart(setEmailCodeNotice)
+                        showToast("입력하신 이메일로 인증번호가 발송되었습니다.")
+                    }
+                }, onError = {
+                    it.printStackTrace()
+                })
+        }else{
+            //resentApi
+            signUpRepository.reSendEmailCode(emailRequest).subscribeBy(
+                onSuccess = {
+                    if (it.code == 0) {
+                        updateCodeSentFlag(true)
+                        setReSentEtEnable()
+                        emailCodeTimerStart(setEmailCodeNotice)
+                        showToast("입력하신 이메일로 인증번호가 발송되었습니다.")
+                    }
+                }, onError = {
+                    it.printStackTrace()
+                })
+        }
     }
     @SuppressLint("CheckResult")
     fun verifyEmailCode(emailCodeAuthRequest: EmailCodeAuthRequest,setVerifyNotice:(msg:String,flag:Boolean)-> Unit,setUIEnable:(flag:Boolean)->Unit) {
@@ -252,9 +313,13 @@ class SignUpViewModel : ViewModel() {
                 if (it.code == 0) {
                     setVerifyNotice("인증에 성공하였습니다.",true)
                     setUIEnable(false)
+                    eTimerStop()
                     updateEmailAuthFlag(true)
                 }else{
                     setVerifyNotice(it.errorMessage().toString(),false)
+                    setUIEnable(true)
+                    updateEmailAuthFlag(false)
+
                 }
             }, onError = {
                 it.printStackTrace()

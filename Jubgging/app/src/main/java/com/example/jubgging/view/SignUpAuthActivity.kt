@@ -44,7 +44,7 @@ class SignUpAuthActivity : AppCompatActivity() {
             showSendSMSCodeToast()
             setEnableSendCodeBtn(true)
             // 유효시간 내 입력 및 버튼 누른 후 인증 , 유효시간 지나면 안내 O
-            viewModel.timerStart(::setPhoneCodeNotice)
+            viewModel.phoneCodeTimerStart(::setPhoneCodeNotice)
 
             binding.signupPnumAuthBtn.isEnabled = true
         }
@@ -147,18 +147,24 @@ class SignUpAuthActivity : AppCompatActivity() {
 
     private fun setPhoneCodeNotice(message: String, flag: Boolean) {
         binding.signupPnumAuthCodeNtTv.text = message
+        //인증 성공시 true
+        //실패 시 false
         if (flag) {
             binding.signupPnumAuthCodeNtTv.setTextColor(this.getColor(R.color.green_blue))
             binding.signupPnumAuthBtn.isEnabled = false
             binding.signupPnumAuthBtn.setTextColor(this.getColor(R.color.brownish_grey))
         } else {
             binding.signupPnumAuthCodeNtTv.setTextColor(this.getColor(R.color.red))
+            binding.signupPhoneNumberEt.isEnabled = true
+            binding.signupSendSmsBtn.isEnabled = true
+            binding.signupSendSmsBtn.setTextColor(this.getColor(R.color.green_blue))
         }
     }
 
     private fun showSendSMSCodeToast() {
         Toast.makeText(this, "인증코드가 발송되었습니다. 60초 내에 입력해주세요.", Toast.LENGTH_LONG).show()
     }
+
 
     private fun setPhoneNumber(input: String): String {
         return "+82${input.substring(0, 3)}${input.substring(4, 8)}${input.substring(9, 13)}"

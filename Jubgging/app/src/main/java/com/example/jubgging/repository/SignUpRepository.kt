@@ -17,6 +17,7 @@ interface SignUpRepository {
     fun login(loginRequest: LoginRequest):Single<BaseResponse<LoginResponse>>
     fun checkEmailOverlap(email:String):Single<BaseResponse<Boolean>>
     fun sendEmailCode(emailRequest: EmailRequest):Single<BaseResponse<Boolean>>
+    fun reSendEmailCode(emailRequest: EmailRequest):Single<BaseResponse<Boolean>>
     fun verifyEmailCode(emailCodeAuthRequest: EmailCodeAuthRequest):Single<BaseResponse<Boolean>>
 }
 
@@ -41,6 +42,10 @@ class SignUpRepositoryImpl : SignUpRepository {
 
     override fun sendEmailCode(emailRequest: EmailRequest): Single<BaseResponse<Boolean>> {
         return  ApiClient.api.sendEmailCode(emailRequest).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).map { it }
+    }
+
+    override fun reSendEmailCode(emailRequest: EmailRequest): Single<BaseResponse<Boolean>> {
+        return  ApiClient.api.reSendEmailCode(emailRequest).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).map { it }
     }
 
     override fun verifyEmailCode(emailCodeAuthRequest: EmailCodeAuthRequest): Single<BaseResponse<Boolean>> {

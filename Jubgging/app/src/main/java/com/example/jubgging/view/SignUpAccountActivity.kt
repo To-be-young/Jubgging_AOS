@@ -25,6 +25,7 @@ class SignUpAccountActivity : AppCompatActivity() {
 
         viewModel.updateEmailAuthFlag(false)
 
+
         var userId: String = ""
         var userPwd: String = ""
 
@@ -32,7 +33,7 @@ class SignUpAccountActivity : AppCompatActivity() {
         binding.signupEmailAuthBtn.setOnClickListener {
             if (viewModel.emailOverlapFlag.value == 0) {
                 viewModel.sendEmailCode(EmailRequest(binding.signupUserIdEt.text.toString()),
-                    ::showToast).apply {
+                    ::showToast, ::setTimeoutEnable,::setReSentEtEnable).apply {
                     binding.signupUserIdEt.isEnabled = false
                     binding.signupUserAuthChkCl.visibility = View.VISIBLE
                 }
@@ -44,7 +45,9 @@ class SignUpAccountActivity : AppCompatActivity() {
 
         binding.signupUserAuthCodeBtn.setOnClickListener {
             viewModel.verifyEmailCode(EmailCodeAuthRequest(binding.signupUserIdEt.text.toString(),
-                binding.signupUserAuthChkEt.text.toString()), ::setVerifyNotice, ::setUIEnable)
+                binding.signupUserAuthChkEt.text.toString()),
+                ::setVerifyNotice,
+                ::setEmailAuthUIEnable)
         }
 
         // 이메일 인증 완료 시 && 비밀번호와 비밀번호 확인이 같을 때 버튼 활성화
@@ -74,29 +77,47 @@ class SignUpAccountActivity : AppCompatActivity() {
             binding.signupUseridNtTv.text = "이미 사용중인 이메일입니다."
             binding.signupUseridNtTv.setTextColor(this.getColor(R.color.red))
         }
-
     }
 
-    private fun setVerifyNotice(msg: String,flag: Boolean) {
+    private fun setReSentEtEnable(){
+        binding.signupUserAuthChkEt.isEnabled = true
+    }
+    //메일 보내면 sendBtn enable -> false
+//Timeout 되면 sendBtn 다시 true && email Et는 enable false,
+    private fun setTimeoutEnable(msg: String, flag: Boolean) {
         binding.signupUserAuthCodeNtTv.text = msg
-        if(flag){
+        binding.signupUserIdEt.isEnabled = false
+        binding.signupEmailAuthBtn.isEnabled = true
+        binding.signupUserAuthChkEt.isEnabled = true
+        binding.signupEmailAuthBtn.setTextColor(this.getColor(R.color.green_blue))
+        binding.signupUserAuthCodeNtTv.setTextColor(this.getColor(R.color.red))
+        binding.signupUserAuthChkEt.isEnabled = false
+    }
+
+    private fun setVerifyNotice(msg: String, flag: Boolean) {
+        binding.signupUserAuthCodeNtTv.text = msg
+        if (flag) {
+            //성공 시
             binding.signupUserAuthCodeNtTv.setTextColor(this.getColor(R.color.green_blue))
-        }else{
-            binding.signupUserAuthCodeNtTv.setTextColor(this.getColor(R.color.brownish_grey))
+        } else {
+            //실패 시
+            binding.signupUserAuthCodeNtTv.setTextColor(this.getColor(R.color.red))
         }
     }
 
-    private fun setUIEnable(flag: Boolean) {
-        if(flag){
-            binding.signupUserAuthCodeNtTv.isEnabled = true
+    // 이메일 인증 성공 실패 관련 UI set
+    private fun setEmailAuthUIEnable(flag: Boolean) {
+        if (flag) {
+            // 이메일 인증 실패시
+            binding.signupUserAuthCodeBtn.isEnabled = true
             binding.signupUserAuthCodeNtTv.setTextColor(this.getColor(R.color.green_blue))
 
             binding.signupEmailAuthBtn.isEnabled = true
             binding.signupEmailAuthBtn.setTextColor(this.getColor(R.color.green_blue))
 
             binding.signupUserAuthChkEt.isEnabled = true
-        }else{
-
+        } else {
+            //이메일 인증 성공시
             binding.signupUserAuthCodeBtn.isEnabled = false
             binding.signupUserAuthCodeBtn.setTextColor(this.getColor(R.color.brownish_grey))
 

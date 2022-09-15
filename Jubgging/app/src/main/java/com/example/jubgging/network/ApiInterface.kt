@@ -25,7 +25,12 @@ interface ApiInterface {
     @POST("api/sign/email")
     fun sendEmailCode(@Body emailRequest:EmailRequest):Single<BaseResponse<Boolean>>
 
+    @POST("/api/sign/refreshCode")
+    fun reSendEmailCode(@Body emailRequest:EmailRequest):Single<BaseResponse<Boolean>>
+
+
     @POST("api/sign/verifyCode")
     fun verifyEmailCode(@Body emailCodeAuthRequest:EmailCodeAuthRequest):Single<BaseResponse<Boolean>>
+
 
 }
