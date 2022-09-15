@@ -203,7 +203,7 @@
 
                                 <ImageView
                                     android:id="@+id/home_user_distance_tt_iv"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/icon_thumb_up_drawable"
@@ -218,13 +218,14 @@
                                     android:id="@+id/home_user_distance_tt_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginStart="@dimen/_3dp"
                                     android:autoSizeMaxTextSize="20dp"
                                     android:autoSizeMinTextSize="1dp"
                                     android:autoSizeStepGranularity="1dp"
                                     android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="활동 거리"
+                                    android:gravity="center"
+                                    app:layout_constraintWidth_percent="0.78"
                                     android:theme="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -256,6 +257,7 @@
                                     android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="200"
+                                    android:gravity="end|center"
                                     android:theme="@style/boldBlueTextTheme"
 
                                     app:layout_constraintBottom_toBottomOf="@+id/home_user_distance_unit_tv"
@@ -275,7 +277,10 @@
                                     android:autoSizeStepGranularity="1dp"
                                     android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
-                                    android:text="/Km"
+                                    android:text="/km"
+                                    android:gravity="center"
+                                    app:layout_constraintDimensionRatio="1:0.56"
+
                                     android:theme="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -314,7 +319,7 @@
 
                                 <ImageView
                                     android:id="@+id/home_user_time_tt_iv"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/icon_more_time_drawable"
@@ -329,11 +334,11 @@
                                     android:id="@+id/home_user_time_tt_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginStart="@dimen/_3dp"
                                     android:autoSizeMaxTextSize="20dp"
                                     android:autoSizeMinTextSize="1dp"
                                     android:autoSizeStepGranularity="1dp"
                                     android:autoSizeTextType="uniform"
+                                    android:gravity="center"
                                     android:includeFontPadding="false"
                                     android:text="활동 시간"
                                     android:theme="@style/regularBlackTextTheme"
@@ -341,7 +346,8 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintStart_toEndOf="@+id/home_user_time_tt_iv"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintWidth_percent="0.78" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -366,6 +372,8 @@
                                     android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="120"
+                                    android:gravity="end|center_vertical"
+                                    app:layout_constraintDimensionRatio="1:0.64"
                                     android:theme="@style/boldBlueTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/home_user_time_unit_tv"
@@ -373,7 +381,7 @@
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintWidth_percent="0.65" />
+                                   />
 
                                 <TextView
                                     android:id="@+id/home_user_time_unit_tv"
@@ -384,11 +392,13 @@
                                     android:autoSizeStepGranularity="1dp"
                                     android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
-                                    android:text="/분"
+                                    app:layout_constraintHeight_percent="0.5"
+                                    android:text="/min"
+                                    android:gravity="center"
+
                                     android:theme="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHeight_percent="0.5"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintStart_toEndOf="@+id/home_user_time_tv" />
 
