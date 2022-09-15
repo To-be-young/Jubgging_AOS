@@ -89,11 +89,11 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         mapViewContainer?.addView(mapView)
 
         //툴바
-        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_plogging_back_main_bt)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+//        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
+//        setSupportActionBar(toolbar)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_plogging_back_main_bt)
+//        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // 위치추적 버튼
         if (checkLocationService()) {
@@ -108,7 +108,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
 
         //현재위치 버튼 눌렀을 때 트래킹모드 재시작
-        binding.ploggingCurrentLocationBt.setOnClickListener {
+        binding.chmMyLocationBtn.setOnClickListener {
             mapView?.currentLocationTrackingMode =
                 MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
         }
@@ -151,6 +151,16 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         binding.ploggingStoreBt.setOnClickListener {
             binding.ploggingStartBt.visibility = View.VISIBLE
             binding.ploggingStoreBt.visibility = View.INVISIBLE
+
+            binding.ploggingDistanceContextTv.text = "0Km"
+            binding.ploggingPaceContextTv.text = "00`00"
+
+            totalDistance = 0.0
+            speed = "00`00"
+            binding.ploggingDistanceContextTv.text = "${totalDistance.toInt()}"
+            binding.ploggingPaceContextTv.text = speed
+
+
             resetTimer()
         }
 
@@ -166,7 +176,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         }
 
 
-        binding.ploggingCleanhouseTb.setOnCheckedChangeListener { compoundButton, ischecked ->
+        binding.chmSwitchBtn.setOnCheckedChangeListener { compoundButton, ischecked ->
             if (ischecked) {
                 val thread = NetworkThread()
                 thread.start()

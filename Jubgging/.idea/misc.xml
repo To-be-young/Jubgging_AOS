@@ -30,20 +30,29 @@
         <entry key="app/src/main/res/drawable/ic_app_title.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_checked_rb.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_cleanhouse_toggle_btn.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_good.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_jupgging_logo_img.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_my_location_48px.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_plogging.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_plogging_back_main_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_marker.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_off_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_on_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_clh.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/ic_plogging_distance.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_recommend_route.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_recycler_trash.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_recycling_48px_green_blue.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_recycling_48px_grey.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_time_fast.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_unchecked_rb.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/icon_app_title_drawable.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/icon_good_drawable.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/icon_my_location_drawable.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/icon_plogging_distance_drawable.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/icon_plogging_pace_drawable.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/icon_plogging_time_drawable.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/icon_recycling_green_blue_drawable.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/icon_recycling_grey_drawable.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/imsi.xml" value="0.2085" />
@@ -72,7 +81,7 @@
         <entry key="app/src/main/res/layout/activity_find_account.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3531228549238564" />
-        <entry key="app/src/main/res/layout/activity_plogging.xml" value="0.3808876811594203" />
+        <entry key="app/src/main/res/layout/activity_plogging.xml" value="0.42778320312499996" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
         <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.23800354003906252" />
         <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.25433502197265623" />
@@ -98,5 +107,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3808876811594203" />
+      </ProjectState>
+    </option>
   </component>
 </project>
