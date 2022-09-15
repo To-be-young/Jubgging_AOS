@@ -21,12 +21,16 @@
         <entry key="app/src/main/res/drawable/ic_app_logo.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/ic_app_title.xml" value="0.202" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1345" />
+        <entry key="app/src/main/res/drawable/ic_more_time_48px.xml" value="0.243" />
+        <entry key="app/src/main/res/drawable/ic_thumb_up_48px.xml" value="0.243" />
         <entry key="app/src/main/res/drawable/icon_app_logo_drawable.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/icon_app_title_drawable.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/icon_good_drawable.xml" value="0.207" />
+        <entry key="app/src/main/res/drawable/icon_more_time_drawable.xml" value="0.243" />
         <entry key="app/src/main/res/drawable/icon_plogging_drawable.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/icon_recommend_route_drawable.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/icon_recycler_trash_drawable.xml" value="0.2435" />
+        <entry key="app/src/main/res/drawable/icon_thumb_up_drawable.xml" value="0.243" />
         <entry key="app/src/main/res/drawable/icon_time_fast_drawable.xml" value="0.207" />
         <entry key="app/src/main/res/drawable/login_background_drawable.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/login_btn_background_drawable.xml" value="0.1285" />
@@ -51,7 +55,7 @@
         <entry key="app/src/main/res/layout/activity_signup_third.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.1699909218663386" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.29393115942028986" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.8292655716399233" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.6645384355024859" />
         <entry key="app/src/main/res/layout/fragment_my.xml" value="0.29393115942028986" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.3885416666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1345" />

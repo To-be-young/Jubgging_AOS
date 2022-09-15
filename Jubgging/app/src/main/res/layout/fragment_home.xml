@@ -70,16 +70,15 @@
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginHorizontal="@dimen/_21dp"
-                            app:layout_constraintWidth_percent="0.708"
-                            app:layout_constraintDimensionRatio="1:1"
                             android:background="@drawable/user_profile_outline_drawable"
                             app:layout_constraintBottom_toTopOf="@+id/home_user_name_cl"
+                            app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_chainStyle="packed"
-                            >
+                            app:layout_constraintWidth_percent="0.708">
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/home_user_profile_iv"
@@ -182,20 +181,21 @@
                             android:id="@+id/home_user_distance_total_cl"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/_19dp"
-                            android:layout_marginEnd="@dimen/_36dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/home_user_time_total_cl"
                             app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="spread"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.35">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/home_user_distance_tt_cl"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 app:layout_constraintBottom_toTopOf="@+id/home_user_distance_cl"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.25"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -204,8 +204,9 @@
                                 <ImageView
                                     android:id="@+id/home_user_distance_tt_iv"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/icon_good_drawable"
+                                    android:layout_height="0dp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/icon_thumb_up_drawable"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/home_user_distance_tt_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
@@ -215,12 +216,15 @@
 
                                 <TextView
                                     android:id="@+id/home_user_distance_tt_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
                                     android:layout_marginStart="@dimen/_3dp"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="활동 거리"
-                                    android:textSize="@dimen/_10dp"
                                     android:theme="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -232,41 +236,50 @@
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/home_user_distance_cl"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_marginTop="@dimen/_13dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.5"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="@+id/home_user_distance_tt_cl"
                                 app:layout_constraintTop_toBottomOf="@+id/home_user_distance_tt_cl">
 
                                 <TextView
                                     android:id="@+id/home_user_distance_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="30dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="200"
-
-                                    android:textSize="@dimen/_20dp"
                                     android:theme="@style/boldBlueTextTheme"
+
                                     app:layout_constraintBottom_toBottomOf="@+id/home_user_distance_unit_tv"
                                     app:layout_constraintEnd_toStartOf="@+id/home_user_distance_unit_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintWidth_percent="0.65" />
 
                                 <TextView
                                     android:id="@+id/home_user_distance_unit_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="/Km"
-
-                                    android:textSize="@dimen/_7dp"
                                     android:theme="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHeight_percent="0.5"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintStart_toEndOf="@+id/home_user_distance_tv" />
 
@@ -280,19 +293,20 @@
                             android:id="@+id/home_user_time_total_cl"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_marginEnd="@dimen/_21dp"
                             app:layout_constraintBottom_toBottomOf="@+id/home_user_distance_total_cl"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toEndOf="@+id/home_user_distance_total_cl"
-                            app:layout_constraintTop_toTopOf="@+id/home_user_distance_total_cl">
+                            app:layout_constraintTop_toTopOf="@+id/home_user_distance_total_cl"
+                            app:layout_constraintWidth_percent="0.35">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/home_user_time_tt_cl"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 app:layout_constraintBottom_toTopOf="@+id/home_user_time_cl"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.25"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -301,8 +315,9 @@
                                 <ImageView
                                     android:id="@+id/home_user_time_tt_iv"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/icon_time_fast_drawable"
+                                    android:layout_height="match_parent"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/icon_more_time_drawable"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/home_user_time_tt_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
@@ -312,12 +327,15 @@
 
                                 <TextView
                                     android:id="@+id/home_user_time_tt_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
                                     android:layout_marginStart="@dimen/_3dp"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="활동 시간"
-                                    android:textSize="@dimen/_10dp"
                                     android:theme="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -328,39 +346,49 @@
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/home_user_time_cl"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_marginTop="@dimen/_13dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="@+id/home_user_time_tt_cl"
+                                app:layout_constraintHeight_percent="0.5"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="@+id/home_user_time_tt_cl"
                                 app:layout_constraintTop_toBottomOf="@+id/home_user_time_tt_cl">
 
                                 <TextView
                                     android:id="@+id/home_user_time_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="30dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="120"
-                                    android:textSize="@dimen/_20dp"
                                     android:theme="@style/boldBlueTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/home_user_time_unit_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintWidth_percent="0.65" />
 
                                 <TextView
                                     android:id="@+id/home_user_time_unit_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
                                     android:text="/분"
-                                    android:textSize="7dp"
                                     android:theme="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHeight_percent="0.5"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintStart_toEndOf="@+id/home_user_time_tv" />
 
@@ -388,7 +416,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/home_rm_route_cl"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginHorizontal="25dp"
                         android:layout_marginTop="20dp"
@@ -396,8 +424,8 @@
                         android:elevation="2dp"
                         android:paddingHorizontal="@dimen/_15dp"
                         android:paddingVertical="15dp"
+                        app:layout_constraintDimensionRatio="1:0.29"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHeight_percent="0.141"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/home_user_profile_cl">
@@ -405,8 +433,8 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/home_rm_route_tv"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:autoSizeMaxTextSize="19dp"
+                            android:layout_height="0dp"
+                            android:autoSizeMaxTextSize="23dp"
                             android:autoSizeMinTextSize="1dp"
                             android:autoSizeStepGranularity="2dp"
                             android:autoSizeTextType="uniform"
@@ -418,12 +446,12 @@
                             android:theme="@style/boldBlackTextTheme"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/home_rm_route_iv"
-                            app:layout_constraintHeight_percent="0.54"
+                            app:layout_constraintHeight_percent="0.8"
                             app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintHorizontal_chainStyle="spread_inside"
+                            app:layout_constraintHorizontal_chainStyle="packed"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            />
+                            app:layout_constraintWidth_percent="0.75" />
 
                         <ImageView
                             android:id="@+id/home_rm_route_iv"
@@ -436,7 +464,7 @@
                             app:layout_constraintHorizontal_bias="0.5"
 
                             app:layout_constraintStart_toEndOf="@+id/home_rm_route_tv"
-                            app:layout_constraintWidth_percent="0.175" />
+                            app:layout_constraintWidth_percent="0.2" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -479,8 +507,7 @@
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_chainStyle="spread_inside"
-                            />
+                            app:layout_constraintVertical_chainStyle="spread_inside" />
 
                         <ImageView
                             android:id="@+id/home_ch_map_iv"
