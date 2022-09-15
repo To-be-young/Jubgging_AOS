@@ -33,7 +33,6 @@
     <style name="buttonTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_bold</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">19.7sp</item>
     </style>
     <style name="signUpInputTextTheme" parent="Widget.AppCompat.EditText">
         <item name="fontFamily">@font/nanumgothic_bold</item>
@@ -44,14 +43,12 @@
     <style name="ploggingFixTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_regular</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="ploggingContextTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/nanumgothic_bold</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">38.3sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 </resources>
