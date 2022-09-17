@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivitySignupAuthBinding
 import com.example.jubgging.network.data.request.SignUpRequest
@@ -25,7 +26,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 class SignUpAuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupAuthBinding
     private val viewModel: SignUpViewModel by viewModels()
-    private lateinit var dialog:Dialog
+    private lateinit var dialog: Dialog
     var verificationId = ""
 
 
@@ -41,12 +42,8 @@ class SignUpAuthActivity : AppCompatActivity() {
         override fun onCodeSent(verificationId: String, p1: PhoneAuthProvider.ForceResendingToken) {
             this@SignUpAuthActivity.verificationId = verificationId
             viewModel.updateCodeSentFlag(true)
-            showSendSMSCodeToast()
-            setEnableSendCodeBtn(true)
             // 유효시간 내 입력 및 버튼 누른 후 인증 , 유효시간 지나면 안내 O
-            viewModel.phoneCodeTimerStart(::setPhoneCodeNotice)
-
-            binding.signupPnumAuthBtn.isEnabled = true
+            viewModel.phoneCodeTimerStart()
         }
     }
 
@@ -57,15 +54,18 @@ class SignUpAuthActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.signUpVm = viewModel
 
-        //flag 초기화
-        viewModel.updateCodeSentFlag(false)
+        viewModel.codeSentFlag.observe(this, Observer {
+            if (it == true) {
+                showToast("입력하신 전화번호로 인증번호가 발송되었습니다.")
+            }
+        })
 
         val userId = intent.getStringExtra("userId")
         val userPwd = intent.getStringExtra("userPwd")
         var phoneNumber: String = ""
 
 
-        binding.signupPhoneNumberEt.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+        binding.signupPnumEt.addTextChangedListener(PhoneNumberFormattingTextWatcher())
 
         dialog = Dialog(this).apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -81,36 +81,30 @@ class SignUpAuthActivity : AppCompatActivity() {
         binding.signupFinBtn.setOnClickListener {
             viewModel.signUp(signUpRequest = SignUpRequest(userId!!,
                 userPwd!!,
-                binding.signupUserNicknameEt.text.toString(),
-                binding.signupPhoneNumberEt.text.toString()), ::showDialog)
+                binding.signupNicknameEt.text.toString(),
+                binding.signupPnumEt.text.toString()), ::showDialog)
         }
 
-
-        //전화번호 인증 check
-        // 전화번호 입력 -> 인증 버튼 활성화 O
-        // regex O
-        // 국제 전화번호 적용 O
-        // 인증번호 발송버튼 누른 후 -> Timer 시작 O, timer 규격 수정 필요 O
-
-        // 인증 완료시 다음단계 버튼 활성화 O
-
         binding.signupOverlapChkBtn.setOnClickListener {
-            viewModel.checkNickNameOverlap(binding.signupUserNicknameEt.text.toString(),
-                ::setNicknameNotice)
+            viewModel.checkNickNameOverlap(binding.signupNicknameEt.text.toString())
         }
 
         //발송 버튼
-        binding.signupSendSmsBtn.setOnClickListener {
+        binding.signupPnumCodeSendBtn.setOnClickListener {
             //전화번호 formatting
-            phoneNumber = setPhoneNumber(binding.signupPhoneNumberEt.text.toString())
+            phoneNumber = setPhoneNumber(binding.signupPnumEt.text.toString())
             //문자 전송
             viewModel.sendSMSCode(phoneNumber, this, callbacks)
+            //버튼 막기
+            it.isEnabled = false
+            binding.signupPnumCodeSendBtn.setTextColor(this.getColor(R.color.brownish_grey))
+
         }
         //인증확인 버튼
         binding.signupPnumAuthBtn.setOnClickListener {
             val credential = PhoneAuthProvider.getCredential(verificationId,
-                binding.signupAuthCodeEt.text.toString())
-            viewModel.verifySMSCode(credential, this, ::setPhoneCodeNotice)
+                binding.signupPnumAuthEt.text.toString())
+            viewModel.verifySMSCode(credential, this)
         }
 
 
@@ -124,54 +118,18 @@ class SignUpAuthActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun setNicknameNotice(message: String, flag: Boolean) {
-        binding.signupUserNicknameNtTv.text = message
-        if (flag) {
-            binding.signupUserNicknameNtTv.setTextColor(this.getColor(R.color.green_blue))
-            binding.signupUserNicknameEt.isEnabled = false
-            binding.signupOverlapChkBtn.isEnabled = false
-            binding.signupOverlapChkBtn.setTextColor(this.getColor(R.color.brownish_grey))
-
-        } else {
-            binding.signupUserNicknameNtTv.setTextColor(this.getColor(R.color.red))
-        }
-    }
-
-    private fun setEnableSendCodeBtn(flag: Boolean) {
-        if (flag) {
-            binding.signupSendSmsBtn.isEnabled = false
-            binding.signupSendSmsBtn.setTextColor(this.getColor(R.color.brownish_grey))
-            binding.signupPhoneNumberEt.isEnabled = false
-        }
-    }
-
-    private fun setPhoneCodeNotice(message: String, flag: Boolean) {
-        binding.signupPnumAuthCodeNtTv.text = message
-        //인증 성공시 true
-        //실패 시 false
-        if (flag) {
-            binding.signupPnumAuthCodeNtTv.setTextColor(this.getColor(R.color.green_blue))
-            binding.signupPnumAuthBtn.isEnabled = false
-            binding.signupPnumAuthBtn.setTextColor(this.getColor(R.color.brownish_grey))
-        } else {
-            binding.signupPnumAuthCodeNtTv.setTextColor(this.getColor(R.color.red))
-            binding.signupPhoneNumberEt.isEnabled = true
-            binding.signupSendSmsBtn.isEnabled = true
-            binding.signupSendSmsBtn.setTextColor(this.getColor(R.color.green_blue))
-        }
-    }
-
-    private fun showSendSMSCodeToast() {
-        Toast.makeText(this, "인증코드가 발송되었습니다. 60초 내에 입력해주세요.", Toast.LENGTH_LONG).show()
+    private fun showToast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
 
     private fun setPhoneNumber(input: String): String {
         return "+82${input.substring(0, 3)}${input.substring(4, 8)}${input.substring(9, 13)}"
     }
-    private fun showDialog(){
+
+    private fun showDialog() {
         val nicknameTv = dialog.findViewById<TextView>(R.id.ds_nickname_tv)
-        nicknameTv.text = binding.signupUserNicknameEt.text.toString()
+        nicknameTv.text = binding.signupNicknameEt.text.toString()
         dialog.show()
         dialog.findViewById<Button>(R.id.ds_move_login_btn).setOnClickListener {
             moveToLogin()

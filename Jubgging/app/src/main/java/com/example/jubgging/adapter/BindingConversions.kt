@@ -5,145 +5,155 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import com.example.jubgging.R
 
 object BindingConversions {
 
-    //editText들 이전 값과 새로 입력한 값이 다를 때 처리 필요함, 회원가입 시!!
-    //이메일 인증 및 중복 검사 구현 필요
-
+    // SignupAccount 관련
+    //email null, regex 확인 -> email 중복 버튼 enable, notice
     @JvmStatic
-    @BindingAdapter("setNoticeTextView", "setEmailText")
-    fun checkEmailNullRegex(button: Button, textView: TextView, userIdText: String) {
-        if (userIdText.isNotEmpty()) {
-            if (matchEmailRegex(userIdText)) {
-                button.isEnabled = true
-                button.setTextColor(button.context.getColor(R.color.green_blue))
-                textView.text = "이메일 중복 버튼을 눌러 검사를 시행해주세요."
-                textView.setTextColor(textView.context.getColor(R.color.green_blue))
-
+    @BindingAdapter("setEmailNtTv", "setEmailText")
+    fun checkEmailNullRegex(emailCheckBtn: Button, emailNoticeTv: TextView, userEmail: String) {
+        if (userEmail.isNotEmpty()) {
+            //email is not null
+            if (matchEmailRegex(userEmail)) {
+                //email matches regex
+                emailCheckBtn.isEnabled = true
+                emailCheckBtn.setTextColor(emailCheckBtn.context.getColor(R.color.green_blue))
+                emailNoticeTv.text = "이메일 중복 버튼을 눌러 검사를 시행해주세요."
+                emailNoticeTv.setTextColor(emailNoticeTv.context.getColor(R.color.green_blue))
             } else {
-                button.isEnabled = false
-                button.setTextColor(button.context.getColor(R.color.brownish_grey))
-                textView.text = "올바른 이메일 형식이 아닙니다. 다시 입력해주세요."
-                textView.setTextColor(textView.context.getColor(R.color.red))
+                //email is not match regex
+                emailCheckBtn.isEnabled = false
+                emailCheckBtn.setTextColor(emailCheckBtn.context.getColor(R.color.brownish_grey))
+                emailNoticeTv.text = "올바른 이메일 형식이 아닙니다. 다시 입력해주세요."
+                emailNoticeTv.setTextColor(emailNoticeTv.context.getColor(R.color.red))
             }
         } else {
-            button.isEnabled = false
-            button.setTextColor(button.context.getColor(R.color.brownish_grey))
+            //email is null
+            emailCheckBtn.isEnabled = false
+            emailCheckBtn.setTextColor(emailCheckBtn.context.getColor(R.color.brownish_grey))
         }
     }
 
-    @JvmStatic
-    @BindingAdapter("setEmailCodeText")
-    fun checkEmailAuthCodeNull(button: Button, emailCodeText: String) {
-        if (emailCodeText.isNotEmpty()) {
-            button.isEnabled = true
-            button.setTextColor(button.context.getColor(R.color.green_blue))
-        } else {
-            button.isEnabled = false
-            button.setTextColor(button.context.getColor(R.color.brownish_grey))
-        }
-    }
 
+
+    //pwd null, regex 확인 -> noticeTv에 상태 출력
     @JvmStatic
     @BindingAdapter("setPwdRegex")
-    fun setPwdNullRegex(noticeTv: TextView, pwd: String) {
+    fun setPwdNullRegex(pwdNoticeTv: TextView, pwd: String) {
+        //pwd is not null
         if (pwd.isNotEmpty()) {
             if (matchPwdRegex(pwd)) {
-                noticeTv.text = "사용가능한 비밀번호입니다."
-                noticeTv.setTextColor(noticeTv.context.getColor(R.color.green_blue))
+                //pwd matches regex
+                pwdNoticeTv.text = "사용가능한 비밀번호입니다."
+                pwdNoticeTv.setTextColor(pwdNoticeTv.context.getColor(R.color.green_blue))
             } else {
-                noticeTv.text = "영문자, 특수문자, 숫자를 포함해 8자리 이상 20자리 미만"
-                noticeTv.setTextColor(noticeTv.context.getColor(R.color.red))
+                //pwd is not match regex
+                pwdNoticeTv.text = "영문자, 특수문자, 숫자를 포함해 8자리 이상 20자리 미만"
+                pwdNoticeTv.setTextColor(pwdNoticeTv.context.getColor(R.color.red))
             }
         }
     }
 
+    //pwd == pwdChk match 확인
     @JvmStatic
     @BindingAdapter("setPwdText", "setPwdChkText")
-    fun setPwdMatches(noticeTv: TextView, pwd: String, pwdChk: String) {
+    fun setPwdMatches(pwdChkNoticeTv: TextView, pwd: String, pwdChk: String) {
+        //pwdChk is not null
         if (pwdChk.isNotEmpty()) {
             if (pwd == pwdChk) {
-                noticeTv.text = "통과하였습니다."
-                noticeTv.setTextColor(noticeTv.context.getColor(R.color.green_blue))
+                //pwd matches pwdChk
+                pwdChkNoticeTv.text = "통과하였습니다."
+                pwdChkNoticeTv.setTextColor(pwdChkNoticeTv.context.getColor(R.color.green_blue))
 
             } else {
-                noticeTv.text = "비밀번호와 일치하지 않습니다."
-                noticeTv.setTextColor(noticeTv.context.getColor(R.color.red))
+                //pwd is not match pwdChk
+                pwdChkNoticeTv.text = "비밀번호와 일치하지 않습니다."
+                pwdChkNoticeTv.setTextColor(pwdChkNoticeTv.context.getColor(R.color.red))
             }
         }
     }
 
     @JvmStatic
     @BindingAdapter("setPwdText", "setPwdChkText", "setEmailAuthFlag")
-    fun setAccountBtnEnable(
-        button: Button,
-        userPwdText: String,
-        userPwdChkText: String,
-        flag: Boolean,
+    fun setAccountFinBtnEnable(
+        accountFinBtn: Button,
+        userPwd: String,
+        userPwdChk: String,
+        emailAuthFlag: Int,
     ) {
-        //추후 다시 수정 예정
-        if (flag) {
-            if (userPwdText.isNotEmpty() && userPwdChkText.isNotEmpty()) {
-                if (userPwdText == userPwdChkText && matchPwdRegex(userPwdText)) {
-                    button.isEnabled = true
-                    button.setTextColor(button.context.getColor(R.color.green_blue))
+        //emailAuthFlag => email 인증이 성공했는지 여부
+        if (emailAuthFlag == 0) {
+            //email 인증 성공
+            if (userPwd.isNotEmpty() && userPwdChk.isNotEmpty()) {
+                //pwd, pwdChk is not null, match Regex
+                if (userPwd == userPwdChk && matchPwdRegex(userPwd)) {
+                    accountFinBtn.isEnabled = true
+                    accountFinBtn.setTextColor(accountFinBtn.context.getColor(R.color.green_blue))
                 } else {
-                    button.isEnabled = false
-                    button.setTextColor(button.context.getColor(R.color.brownish_grey))
+                    accountFinBtn.isEnabled = false
+                    accountFinBtn.setTextColor(accountFinBtn.context.getColor(R.color.brownish_grey))
                 }
             } else {
-                button.isEnabled = false
-                button.setTextColor(button.context.getColor(R.color.brownish_grey))
+                accountFinBtn.isEnabled = false
+                accountFinBtn.setTextColor(accountFinBtn.context.getColor(R.color.brownish_grey))
             }
-        } else {
-            button.isEnabled = false
-            button.setTextColor(button.context.getColor(R.color.brownish_grey))
+        } else if(emailAuthFlag == 1) {
+            //email 인증 실패
+            accountFinBtn.isEnabled = false
+            accountFinBtn.setTextColor(accountFinBtn.context.getColor(R.color.brownish_grey))
         }
     }
 
-    //인증번호 발송 버튼 활성화 (O)
-    //i) not Blank
-    //ii) passed regex
-    //iii) btn 활성화
+
+    //SignupAuth 관련
+    //send
     @JvmStatic
-    @BindingAdapter("setPhoneNumberNoticeTv","setInputPhoneNumber")
-    fun setEnableSendSmsBtn(sendCodeBtn: Button, noticeTv: TextView,inputPhoneNum: String) {
-        if (inputPhoneNum.isNotBlank() && matchPhoneNumberRegex(inputPhoneNum)) {
-            sendCodeBtn.isEnabled = true
-            sendCodeBtn.setTextColor(sendCodeBtn.context.getColor(R.color.green_blue))
-            noticeTv.text = ""
-            noticeTv.setTextColor(noticeTv.context.getColor(R.color.green_blue))
-        } else {
-            sendCodeBtn.isEnabled = false
-            sendCodeBtn.setTextColor(sendCodeBtn.context.getColor(R.color.brownish_grey))
-            noticeTv.text = "전화번호 형식에 맞지 않습니다. 정확한 번호를 입력해주세요."
-            noticeTv.setTextColor(noticeTv.context.getColor(R.color.red))
+    @BindingAdapter("setPhoneNumberNoticeTv", "setInputPhoneNumber")
+    fun setEnablePnumCodeSendBtn(
+        pnumSendCodeBtn: Button,
+        pnumNoticeTv: TextView,
+        phoneNumber: String,
+    ) {
+        if (phoneNumber.isNotBlank()) {
+            //phoneNumber is Not null
+            if (matchPhoneNumberRegex(phoneNumber)) {
+                //phoneNumber matches Regex
+                pnumSendCodeBtn.isEnabled = true
+                pnumSendCodeBtn.setTextColor(pnumSendCodeBtn.context.getColor(R.color.green_blue))
 
+                pnumNoticeTv.text = "인증 버튼을 눌러 인증 과정을 완료하세요."
+                pnumNoticeTv.setTextColor(pnumNoticeTv.context.getColor(R.color.green_blue))
+            } else {
+                //phoneNumber is not match Regex
+                pnumSendCodeBtn.isEnabled = false
+                pnumSendCodeBtn.setTextColor(pnumSendCodeBtn.context.getColor(R.color.brownish_grey))
+
+                pnumNoticeTv.text = "전화번호 형식에 맞지 않습니다. 정확한 번호를 입력해주세요."
+                pnumNoticeTv.setTextColor(pnumNoticeTv.context.getColor(R.color.red))
+            }
         }
     }
 
-    //인증확인 editText & btn 활성화
-    //i) smsCode sent -> editText 활성화
-    //ii) 6자리 regex pass -> btn 활성화
 
-
-    // 결과 성공에 따라 다음단계 성공 btn 활성화
-    @JvmStatic
-    @BindingAdapter("setSentCodeFlag", "setInputCode")
-    fun setEnableAuthBtn(authBtn: Button, sentCodeFlag: Boolean, text: String) {
-        if (text.isNotBlank() && text.length == 6 && sentCodeFlag) {
-            authBtn.isEnabled = true
-            authBtn.setTextColor(authBtn.context.getColor(R.color.green_blue))
+    //pnumAuthCode 전송 여부, userInput null 여부에 따른 pnumAuthBtn enable 관리
+/*    @JvmStatic
+    @BindingAdapter("setSentCodeFlag", "setPnumAuthCode")
+    fun setEnablePnumAuthBtn(pnumAuthBtn: Button, sentCodeFlag: Boolean, pnumAuthCode: String) {
+        // pnum-auth code is not null, matches Regex and pnumAuthCode was sent
+        if (pnumAuthCode.isNotBlank() && pnumAuthCode.length == 6 && sentCodeFlag) {
+            pnumAuthBtn.isEnabled = true
+            pnumAuthBtn.setTextColor(pnumAuthBtn.context.getColor(R.color.green_blue))
         } else {
-            authBtn.isEnabled = false
-            authBtn.setTextColor(authBtn.context.getColor(R.color.brownish_grey))
+            // pnum-auth code is null, is not match Regex, pnumAuthCode was not sent
+            pnumAuthBtn.isEnabled = false
+            pnumAuthBtn.setTextColor(pnumAuthBtn.context.getColor(R.color.brownish_grey))
         }
-    }
+    }*/
 
+    //userInput null 여부에 따른 nickname 중복 검사 btn enable 관리
     @JvmStatic
     @BindingAdapter("setInputNickname")
     fun setEnableOverlapBtn(overlapBtn: Button, nickname: String) {
@@ -156,11 +166,11 @@ object BindingConversions {
         }
     }
 
-
+    //닉네임 중복 여부, pnum auth 과정 완료 여부에 따른 signupFinBtn enable 관리
     @JvmStatic
     @BindingAdapter("setPassAuthFlag", "setOverlapFlag")
-    fun setEnableSignUpFinBtn(finBtn: Button, passAuthFlag: Boolean, overlapFlag: Boolean) {
-        if (passAuthFlag && !overlapFlag) {
+    fun setEnableSignUpFinBtn(finBtn: Button, passAuthFlag: Int, overlapFlag: Int) {
+        if (passAuthFlag==0 && overlapFlag==0) {
             finBtn.isEnabled = true
             finBtn.setTextColor(finBtn.context.getColor(R.color.green_blue))
         } else {
@@ -169,17 +179,149 @@ object BindingConversions {
         }
     }
 
+    //email, pnum Auth 공통
+    //codeSent여부에 따른 Editext 및 button enable 관리
+    @JvmStatic()
+    @BindingAdapter("setCodeSentFlag", "setUserInputEt", "setCodeEt")
+    fun setEnableCodeSent(
+        codeSendBtn: Button,
+        codeSentFlag: Boolean,
+        userInput: EditText,
+        codeEt: EditText,
+    ) {
+        if (codeSentFlag) {
+            codeSendBtn.isEnabled = false
+            codeSendBtn.setTextColor(codeSendBtn.context.getColor(R.color.brownish_grey))
+            userInput.isEnabled = false
+            codeEt.isEnabled = true
+        } else {
+            codeSendBtn.isEnabled = true
+            codeSendBtn.setTextColor(codeSendBtn.context.getColor(R.color.green_blue))
+            userInput.isEnabled = true
+            codeEt.isEnabled = false
+        }
+    }
 
+    //code 발송 후 Timeout 시 UI enable 관리
+    @JvmStatic
+    @BindingAdapter("setCodeSentBtn",
+        "setCodeEt",
+        "setAuthNtTv",
+        "setTimeoutFlag",
+        "setCodeSentFlag")
+    fun setEnableTimeout(
+        authBtn: Button,
+        codeSendBtn: Button,
+        codeEt: EditText,
+        authNtTv: TextView,
+        timeoutFlag: Boolean,
+        codeSentFlag: Boolean,
+    ) {
+        if (timeoutFlag && codeSentFlag) {
+            codeSendBtn.isEnabled = true
+            codeSendBtn.setTextColor(codeSendBtn.context.getColor(R.color.green_blue))
+            authBtn.isEnabled = false
+            authBtn.setTextColor(authBtn.context.getColor(R.color.brownish_grey))
+
+            codeEt.isEnabled = false
+            authNtTv.text = "입력시간이 초과되었습니다. 인증요청을 재시도 해주세요."
+            authNtTv.setTextColor(authNtTv.context.getColor(R.color.red))
+
+        } else if (!timeoutFlag && codeSentFlag) {
+            codeSendBtn.isEnabled = false
+            codeSendBtn.setTextColor(codeSendBtn.context.getColor(R.color.brownish_grey))
+            authBtn.isEnabled = true
+            authBtn.setTextColor(authBtn.context.getColor(R.color.green_blue))
+            codeEt.isEnabled = true
+            authNtTv.text = ""
+            authNtTv.setTextColor(authNtTv.context.getColor(R.color.green_blue))
+        }
+
+    }
+    //인증 성공 여부 enable 관리
+    @JvmStatic
+    @BindingAdapter("setCodeAuthBtn","setCodeNtTv","setPassAuthFlag")
+    fun setEnablePassAuth(codeEt: EditText,codeAuthBtn: Button,codeNtTv:TextView,passAuthFlag: Int){
+        if(codeEt.text.isNotEmpty()){
+            when (passAuthFlag) {
+                0 -> {
+                    //인증 성공 시
+                    codeNtTv.text = "인증에 성공하였습니다."
+                    codeNtTv.setTextColor(codeNtTv.context.getColor(R.color.green_blue))
+                    codeAuthBtn.isEnabled = false
+                    codeAuthBtn.setTextColor(codeAuthBtn.context.getColor(R.color.brownish_grey))
+                    codeEt.isEnabled = false
+                }
+                1 -> {
+                    //인증 실패 시
+                    codeNtTv.text = "인증번호가 틀렸습니다. 다시 입력해주세요."
+                    codeNtTv.setTextColor(codeNtTv.context.getColor(R.color.red))
+                    codeAuthBtn.isEnabled = true
+                    codeAuthBtn.setTextColor(codeAuthBtn.context.getColor(R.color.green_blue))
+                    codeEt.isEnabled = true
+                }
+                2 -> {
+                    codeNtTv.text = "동일한 기기에서 너무 많은 요청이 수신되었습니다. 나중에 다시 시도하세요."
+                    codeNtTv.setTextColor(codeNtTv.context.getColor(R.color.red))
+                    codeAuthBtn.isEnabled = true
+                    codeAuthBtn.setTextColor(codeAuthBtn.context.getColor(R.color.green_blue))
+                    codeEt.isEnabled = true
+                }
+                else -> {
+                    codeNtTv.text = ""
+                }
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("setOverlapBtn","setUserInputEt","setOverlapType","setOverlapFlag")
+    fun setEnableOverlap(overlapNtTv:TextView,overlapBtn:Button,userInputEt:EditText,type:String,overlapFlag:Int){
+        if(type == "email"){
+            if(overlapFlag == 0){
+                //통과
+                overlapBtn.text = "인증"
+                overlapNtTv.text = "사용가능한 이메일입니다. 인증 과정을 완료해주세요."
+                userInputEt.isEnabled = false
+                overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.green_blue))
+            }else if(overlapFlag == 1){
+                overlapBtn.isEnabled = true
+                overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.green_blue))
+                overlapBtn.text = "중복"
+                overlapNtTv.text = "이미 사용중인 이메일입니다."
+                overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.red))
+                userInputEt.isEnabled = true
+            }
+        }else if(type == "nickname"){
+            if(overlapFlag == 0){
+                overlapNtTv.text = "사용가능한 닉네임입니다."
+                overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.green_blue))
+                userInputEt.isEnabled = false
+                overlapBtn.isEnabled = false
+                overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.brownish_grey))
+            }else if(overlapFlag == 1){
+                overlapBtn.isEnabled = true
+                overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.green_blue))
+                overlapNtTv.text = "이미 사용중인 닉네임입니다."
+                overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.red))
+                userInputEt.isEnabled = true
+            }
+        }
+    }
+
+    //phone Number Regex
     private fun matchPhoneNumberRegex(phoneNumber: String): Boolean {
         val regex = "^\\d{3}-\\d{4}-\\d{4}\$"
         return phoneNumber.matches(regex.toRegex())
     }
 
+    //email Regex
     private fun matchEmailRegex(email: String): Boolean {
         val patterns = Patterns.EMAIL_ADDRESS
         return email.matches(patterns.toRegex())
     }
 
+    //pwd Regex -> 영문자, 특수문자, 숫자를 포함해 8자리 이상 20자리 미만"
     private fun matchPwdRegex(pwd: String): Boolean {
         val regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[\$@\$!%*#?&])[A-Za-z\\d\$@\$!%*#?&]{8,20}"
         return pwd.matches(regex.toRegex())

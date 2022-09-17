@@ -60,10 +60,10 @@
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/signup_user_nickname_cl"
+                    android:id="@+id/signup_nickname_cl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@+id/signup_phone_number_cl"
+                    app:layout_constraintBottom_toTopOf="@+id/signup_pnum_cl"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.268"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -73,7 +73,7 @@
 
 
                     <TextView
-                        android:id="@+id/signup_user_nickname_tv"
+                        android:id="@+id/signup_nickname_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
@@ -82,35 +82,33 @@
                         android:minWidth="@dimen/_3dp"
                         android:text="@string/signup_user_nickname"
 
-                        app:layout_constraintBottom_toTopOf="@+id/signup_user_nickname_et"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_nickname_et"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.299"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="@+id/signup_user_nickname_et"
+                        app:layout_constraintStart_toStartOf="@+id/signup_nickname_et"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <EditText
-                        android:id="@+id/signup_user_nickname_et"
+                        android:id="@+id/signup_nickname_et"
                         style="@style/inputEditTextTheme"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        app:layout_constraintBottom_toTopOf="@+id/signup_user_nickname_nt_tv"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_nickname_nt_tv"
                         app:layout_constraintEnd_toStartOf="@+id/signup_overlap_chk_btn"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_user_nickname_tv"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_nickname_tv"
                         app:layout_constraintWidth_percent="0.81" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/signup_overlap_chk_btn"
-                        setInputNickname="@{signupUserNicknameEt.text.toString()}"
-
 
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-
+                        setInputNickname ="@{signupNicknameEt.text.toString()}"
                         android:autoSizeMaxTextSize="13dp"
                         android:autoSizeMinTextSize="@dimen/_3dp"
 
@@ -130,43 +128,47 @@
                         android:text="중복"
 
                         android:textColor="@color/brownish_grey"
-                        app:layout_constraintBottom_toBottomOf="@+id/signup_user_nickname_et"
+                        app:layout_constraintBottom_toBottomOf="@+id/signup_nickname_et"
                         app:layout_constraintDimensionRatio="1:0.473"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.573"
-                        app:layout_constraintStart_toEndOf="@+id/signup_user_nickname_et"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_user_nickname_tv"
+                        app:layout_constraintStart_toEndOf="@+id/signup_nickname_et"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_nickname_tv"
                         app:layout_constraintWidth_percent="0.211" />
 
                     <TextView
-                        android:id="@+id/signup_user_nickname_nt_tv"
+                        android:id="@+id/signup_nickname_nt_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="11dp"
+                        setOverlapBtn="@{signupOverlapChkBtn}"
+                        setUserInputEt="@{signupNicknameEt}"
+                        setOverlapType="@{signUpVm.overlapType.second}"
+                        setOverlapFlag="@{signUpVm.overlapFlag}"
                         android:layout_marginStart="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_user_nickname_et" />
+                        app:layout_constraintTop_toBottomOf="@+id/signup_nickname_et" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/signup_phone_number_cl"
+                    android:id="@+id/signup_pnum_cl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8dp"
-                    app:layout_constraintBottom_toTopOf="@+id/signup_auth_num_cl"
+                    app:layout_constraintBottom_toTopOf="@+id/signup_pnum_auth_cl"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signup_user_nickname_cl">
+                    app:layout_constraintTop_toBottomOf="@+id/signup_nickname_cl">
 
 
                     <TextView
-                        android:id="@+id/signup_phone_number_tv"
+                        android:id="@+id/signup_pnum_tv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
@@ -174,16 +176,16 @@
                         android:fontFamily="@font/nanumgothic_regular"
                         android:minWidth="@dimen/_3dp"
                         android:text="@string/signup_second_phonenum_tx"
-                        app:layout_constraintBottom_toTopOf="@+id/signup_phone_number_et"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_pnum_et"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.299"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="@+id/signup_phone_number_et"
+                        app:layout_constraintStart_toStartOf="@+id/signup_pnum_et"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <EditText
-                        android:id="@+id/signup_phone_number_et"
+                        android:id="@+id/signup_pnum_et"
                         style="@style/inputEditTextTheme"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -192,10 +194,10 @@
 
                         android:textSize="16dp"
                         app:layout_constraintBottom_toTopOf="@+id/signup_pnum_nt_tv"
-                        app:layout_constraintEnd_toStartOf="@+id/signup_send_sms_btn"
+                        app:layout_constraintEnd_toStartOf="@+id/signup_pnum_code_send_btn"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_phone_number_tv"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_pnum_tv"
                         app:layout_constraintWidth_percent="0.81" />
 
                     <TextView
@@ -209,12 +211,17 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_phone_number_et" />
+                        app:layout_constraintTop_toBottomOf="@+id/signup_pnum_et" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/signup_send_sms_btn"
+                        android:id="@+id/signup_pnum_code_send_btn"
                         setPhoneNumberNoticeTv="@{signupPnumNtTv}"
-                        setInputPhoneNumber="@{signupPhoneNumberEt.text.toString()}"
+                        setInputPhoneNumber="@{signupPnumEt.text.toString()}"
+
+                        setCodeSentFlag="@{signUpVm.codeSentFlag}"
+                        setUserInputEt="@{signupPnumEt}"
+                        setCodeEt="@{signupPnumAuthEt}"
+
                         android:layout_width="0dp"
                         android:layout_height="0dp"
 
@@ -237,16 +244,16 @@
                         android:text="인증"
 
                         android:textColor="@color/brownish_grey"
-                        app:layout_constraintBottom_toBottomOf="@+id/signup_phone_number_et"
+                        app:layout_constraintBottom_toBottomOf="@+id/signup_pnum_et"
                         app:layout_constraintDimensionRatio="1:0.473"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/signup_phone_number_et"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_phone_number_tv" />
+                        app:layout_constraintStart_toEndOf="@+id/signup_pnum_et"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_pnum_tv" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/signup_auth_num_cl"
+                    android:id="@+id/signup_pnum_auth_cl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8dp"
@@ -256,11 +263,11 @@
                     app:layout_constraintHeight_percent="0.268"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signup_phone_number_cl">
+                    app:layout_constraintTop_toBottomOf="@+id/signup_pnum_cl">
 
 
                     <TextView
-                        android:id="@+id/signup_auth_num_tv"
+                        android:id="@+id/signup_pnum_auth_tv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
@@ -268,7 +275,7 @@
                         android:fontFamily="@font/nanumgothic_regular"
                         android:minWidth="@dimen/_3dp"
                         android:text="@string/signup_second_authenfication_tx"
-                        app:layout_constraintBottom_toTopOf="@+id/signup_auth_code_et"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_pnum_auth_et"
                         app:layout_constraintHeight_percent="0.299"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -277,7 +284,7 @@
 
                     <!--code sent 여부에 따라 editTextEnable 처리-->
                     <EditText
-                        android:id="@+id/signup_auth_code_et"
+                        android:id="@+id/signup_pnum_auth_et"
                         style="@style/inputEditTextTheme"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -285,15 +292,25 @@
                         android:inputType="number"
                         android:maxLength="6"
                         android:textSize="16dp"
-                        app:layout_constraintBottom_toTopOf="@+id/signup_pnum_auth_code_nt_tv"
+                        setCodeAuthBtn="@{signupPnumAuthBtn}"
+                        setCodeNtTv="@{signupPnumAuthNtTv}"
+                        setPassAuthFlag="@{signUpVm.passAuthFlag}"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_pnum_auth_nt_tv"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_auth_num_tv"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_pnum_auth_tv"
                         app:layout_constraintWidth_percent="0.81" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/signup_pnum_auth_btn"
-                        setInputCode="@{signupAuthCodeEt.text.toString()}"
-                        setSentCodeFlag="@{signUpVm.codeSentFlag}"
+
+                        setCodeEt="@{signupPnumAuthEt}"
+
+                        setCodeSentFlag="@{signUpVm.codeSentFlag}"
+                        setCodeSentBtn="@{signupPnumCodeSendBtn}"
+                        setAuthNtTv="@{signupPnumAuthNtTv}"
+                        setTimeoutFlag="@{signUpVm.timeoutFlag}"
+
+
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:autoSizeMaxTextSize="13dp"
@@ -310,15 +327,15 @@
                         android:text="확인"
 
                         android:textColor="@color/brownish_grey"
-                        app:layout_constraintBottom_toBottomOf="@+id/signup_auth_code_et"
+                        app:layout_constraintBottom_toBottomOf="@+id/signup_pnum_auth_et"
                         app:layout_constraintDimensionRatio="1:0.473"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/signup_auth_code_et"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_auth_num_tv" />
+                        app:layout_constraintStart_toEndOf="@+id/signup_pnum_auth_et"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_pnum_auth_tv" />
 
                     <TextView
-                        android:id="@+id/signup_pnum_auth_code_nt_tv"
+                        android:id="@+id/signup_pnum_auth_nt_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="11dp"
@@ -327,10 +344,10 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signup_auth_code_et" />
+                        app:layout_constraintTop_toBottomOf="@+id/signup_pnum_auth_et" />
 
                     <TextView
-                        android:id="@+id/signup_second_count_tv"
+                        android:id="@+id/signup_pnum_auth_timer_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/_3_4dp"
@@ -346,7 +363,7 @@
                         app:layout_constraintBottom_toTopOf="@+id/signup_pnum_auth_btn"
                         app:layout_constraintEnd_toEndOf="@+id/signup_pnum_auth_btn"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/signup_auth_code_et"
+                        app:layout_constraintStart_toEndOf="@+id/signup_pnum_auth_et"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="spread_inside"
                         app:layout_constraintWidth_percent="0.049" />
@@ -359,8 +376,6 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signup_fin_btn"
-            setOverlapFlag="@{signUpVm.nicknameOverlapFlag}"
-            setPassAuthFlag="@{signUpVm.passAuthFlag}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/_40dp"
@@ -369,6 +384,8 @@
             android:enabled="false"
             android:fontFamily="@font/nanumgothic_bold"
             android:textSize="16dp"
+            setPassAuthFlag="@{signUpVm.passAuthFlag}"
+            setOverlapFlag="@{signUpVm.overlapFlag}"
             android:paddingHorizontal="@dimen/_96dp"
             android:paddingVertical="@dimen/_12dp"
             android:text="@string/signup_finish_btn"

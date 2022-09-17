@@ -58,13 +58,14 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3531228549238564" />
         <entry key="app/src/main/res/layout/activity_plogging.xml" value="0.3808876811594203" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
-        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.6372989501953127" />
-        <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.6587924466274753" />
+        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.3392282958199357" />
+        <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.2947860717773438" />
         <entry key="app/src/main/res/layout/activity_signup_first.xml" value="0.44374718008951247" />
         <entry key="app/src/main/res/layout/activity_signup_second.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_third.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.1699909218663386" />
         <entry key="app/src/main/res/layout/ballon_layout.xml" value="0.3808876811594203" />
+        <entry key="app/src/main/res/layout/dialog_finish_signup.xml" value="0.2114914425427873" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.29393115942028986" />
         <entry key="app/src/main/res/layout/fragment_find_id.xml" value="0.31457145801488906" />
         <entry key="app/src/main/res/layout/fragment_find_id_fin.xml" value="0.3189397178281317" />
