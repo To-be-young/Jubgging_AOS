@@ -80,8 +80,9 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     var time_hashMap = HashMap<Int, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         binding = ActivityPloggingBinding.inflate(layoutInflater)
+
+        super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         mapView = MapView(this)
@@ -166,6 +167,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
         //플로깅 일시정지
         binding.ploggingPauseBt.setOnClickListener {
+            plogging_start = false
             binding.ploggingStartBt.visibility = View.VISIBLE
             binding.ploggingStopBt.visibility = View.INVISIBLE
             binding.ploggingPauseBt.visibility = View.INVISIBLE
@@ -409,17 +411,23 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             }
         }
 
+        var passing_time = (recentTime - startTime) / 1000
         //속력을 00 : 00으로 포맷
-        speed = String.format("%.1f", totalDistance / ((recentTime - startTime) / 1000))
-
-        //처음 속력이 NaN로 떠서 강제로 0.0으로 만듬
-        if (speed == "NaN") {
-            speed = "0.0"
+        if(passing_time == 0){
+            passing_time = 1
         }
+        speed = String.format("%05.2f", totalDistance / passing_time)
+
+
+        //속도 관련 변수 log
+        Log.d("ex", "totalDistance : ${totalDistance}, passing_time : ${(passing_time / 1000)}, speed : ${speed}")
 
         binding.ploggingDistanceContextTv.text = "${totalDistance.toInt()}"
-        binding.ploggingPaceContextTv.text = speed
 
+        //speed를 .대신 `로 표시
+        speed = speed.replace(".", "`")
+
+        binding.ploggingPaceContextTv.text = speed
         beforeLat = mCurrentLat
         beforeLng = mCurrentLng
 
