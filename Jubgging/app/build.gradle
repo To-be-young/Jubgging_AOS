@@ -4,6 +4,10 @@ plugins {
 }
 apply plugin: 'kotlin-kapt'
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def kakaomapkey = properties.getProperty('kakao.api.key')
+
 android {
     compileSdk 31
 
@@ -13,6 +17,11 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "api_key", properties['cleanhouse_api']
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [kakaoSdkAppkey:kakaomapkey]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -49,6 +58,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
+    //kakao map
+    implementation files('libs/libDaumMapAndroid.jar')
     // Gson
     implementation 'com.google.code.gson:gson:2.8.6'
     // Retrofit2
