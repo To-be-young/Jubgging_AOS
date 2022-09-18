@@ -15,28 +15,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityCleanhouseMapBinding
+import com.example.jubgging.viewmodel.CleanhouseViewModel
 import net.daum.mf.map.api.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
-import java.util.*
 import kotlin.collections.HashMap
-import kotlin.concurrent.timer
 
-class CleanHouseMapActivity:AppCompatActivity(), MapView.CurrentLocationEventListener,
+class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
     MapView.MapViewEventListener,
-    MapView.POIItemEventListener{
+    MapView.POIItemEventListener {
 
     private lateinit var binding: ActivityCleanhouseMapBinding
+    private val viewModel: CleanhouseViewModel by viewModels()
 
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
     private var mapView: MapView? = null  //카카오맵뷰
@@ -77,11 +78,15 @@ class CleanHouseMapActivity:AppCompatActivity(), MapView.CurrentLocationEventLis
     var address_hashMap = HashMap<Int, String>()
     var time_hashMap = HashMap<Int, String>()
 
+    //ViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCleanhouseMapBinding.inflate(layoutInflater)
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        //ViewModel
+        binding.cleanhouseVm = viewModel
 
         mapView = MapView(this)
         mapViewContainer = binding.chmMapviewCl
@@ -140,9 +145,8 @@ class CleanHouseMapActivity:AppCompatActivity(), MapView.CurrentLocationEventLis
             cleanhouse_distance = 30000
         }
 
-        //클린하우스 마커 눌렀을 때
-        binding.chmSwitchBtn.setOnCheckedChangeListener { compoundButton, ischecked ->
-            if (ischecked) {
+        viewModel.liveFlag.observe(this, Observer {
+            if (it) {
                 Log.d("lhj123", "OO")
                 val thread = NetworkThread()
                 thread.start()
@@ -182,7 +186,8 @@ class CleanHouseMapActivity:AppCompatActivity(), MapView.CurrentLocationEventLis
                         marker!![i]!!.itemName = location
                         marker!![i]!!.mapPoint = tempmapPoint
                         marker!![i]!!.markerType = MapPOIItem.MarkerType.CustomImage
-                        marker!![i]!!.customImageResourceId = R.drawable.plogging_cleanhouse_marker_imsi_img
+                        marker!![i]!!.customImageResourceId =
+                            R.drawable.plogging_cleanhouse_marker_imsi_img
 //                        marker!![i]!!.isCustomImageAutoscale = false
 //                        marker!![i]!!.setCustomImageAnchor(0.5f, 1.0f)
                         //해시맵에 태그, 값으로 매핑
@@ -191,17 +196,23 @@ class CleanHouseMapActivity:AppCompatActivity(), MapView.CurrentLocationEventLis
                         mapView!!.addPOIItem(marker!![i])
                     }
                 }
-
             } else {
                 mapView!!.removeAllPOIItems()
             }
+        })
+
+
+        //클린하우스 마커 눌렀을 때 ( 클린하우스 마커 switch 이벤트 처리 )
+        binding.chmSwitchBtn.setOnClickListener {
+            viewModel.updateLiveFlag()
         }
     }
 
     inner class NetworkThread : Thread() {
         override fun run() {
             // API 정보를 가지고 있는 주소
-            val site = "https://gist.githubusercontent.com/Yummy-sk/162dd1e4349ebf821f43db6c3c67f744/raw/ed25686c4f36e2b1474a8eeab2fa52837bdb5d93/jeju_clean_house"
+            val site =
+                "https://gist.githubusercontent.com/Yummy-sk/162dd1e4349ebf821f43db6c3c67f744/raw/ed25686c4f36e2b1474a8eeab2fa52837bdb5d93/jeju_clean_house"
 
             val url = URL(site)
             val conn = url.openConnection()
@@ -253,7 +264,7 @@ class CleanHouseMapActivity:AppCompatActivity(), MapView.CurrentLocationEventLis
         val mCalloutBalloon: View = inflater.inflate(R.layout.ballon_layout, null)
         val name: TextView = mCalloutBalloon.findViewById(R.id.ball_tv_name)
         val address: TextView = mCalloutBalloon.findViewById(R.id.ball_tv_address)
-        val time : TextView = mCalloutBalloon.findViewById(R.id.ball_tv_time)
+        val time: TextView = mCalloutBalloon.findViewById(R.id.ball_tv_time)
 
         override fun getCalloutBalloon(poiItem: MapPOIItem?): View {
             // 마커 클릭 시 나오는 말풍선
@@ -378,14 +389,17 @@ class CleanHouseMapActivity:AppCompatActivity(), MapView.CurrentLocationEventLis
 
         var passing_time = (recentTime - startTime) / 1000
         //속력을 00 : 00으로 포맷
-        if(passing_time == 0){
+        if (passing_time == 0) {
             passing_time = 1
         }
         speed = String.format("%05.2f", totalDistance / passing_time)
 
 
         //속도 관련 변수 log
-        Log.d("ex", "totalDistance : ${totalDistance}, passing_time : ${(passing_time / 1000)}, speed : ${speed}")
+        Log.d(
+            "ex",
+            "totalDistance : ${totalDistance}, passing_time : ${(passing_time / 1000)}, speed : ${speed}"
+        )
 
 
         //speed를 .대신 `로 표시

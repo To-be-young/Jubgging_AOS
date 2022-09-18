@@ -5,9 +5,13 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.jubgging.R
+import com.example.jubgging.viewmodel.CleanhouseViewModel
 
 object BindingConversions {
+
+
     @JvmStatic
     @BindingAdapter("setOnTextView", "setOffTextView")
     fun setSwitchText(
@@ -23,6 +27,7 @@ object BindingConversions {
                 onTextView.visibility = View.VISIBLE
                 offTextView.visibility = View.GONE
             } else {
+
                 offTextView.setText(R.string.on)
                 offTextView.visibility = View.VISIBLE
                 onTextView.visibility = View.GONE

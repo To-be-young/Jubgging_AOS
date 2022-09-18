@@ -6,6 +6,9 @@
         <variable
             name="cleanhouse_map"
             type="com.example.jubgging.view.CleanHouseMapActivity" />
+        <variable
+            name="cleanhouseVm"
+            type="com.example.jubgging.viewmodel.CleanhouseViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
