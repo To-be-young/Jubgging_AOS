@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,16 +11,174 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/light_grey">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/app_title_iv"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Community"
-            android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/_30dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/icon_app_title_drawable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.264" />
+
+        <TextView
+            android:id="@+id/community_group_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:autoSizeMaxTextSize="19dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="1dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/pretendard_semibold"
+            android:gravity="start|center_vertical"
+            android:includeFontPadding="false"
+            android:text="모두와 함께 지구를 지키자!"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/community_group_more_cl"
+            app:layout_constraintHeight_percent="0.027"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
+            app:layout_constraintWidth_percent="0.697" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/community_group_more_cl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/community_group_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/community_group_tv"
+            app:layout_constraintTop_toTopOf="@+id/community_group_tv"
+            app:layout_constraintWidth_percent="0.164">
+
+            <TextView
+                android:id="@+id/community_group_more_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:autoSizeMaxTextSize="19dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="end|center_vertical"
+                android:includeFontPadding="false"
+                android:text="더 보기"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/community_group_more_iv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <ImageView
+                android:id="@+id/community_group_more_iv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_round_navigate_drawable"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/community_group_more_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/community_group_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.34"
+            app:layout_constraintStart_toStartOf="@+id/community_group_tv"
+            app:layout_constraintTop_toBottomOf="@id/community_group_tv" />
+
+        <TextView
+            android:id="@+id/community_event_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:autoSizeMaxTextSize="19dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="1dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/pretendard_semibold"
+            android:includeFontPadding="false"
+            android:text="플로깅 행사 모음 Zip"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/community_event_cl"
+            app:layout_constraintHeight_percent="0.027"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/community_group_rv"
+            app:layout_constraintWidth_percent="0.697" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/community_event_cl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/community_event_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/community_event_tv"
+            app:layout_constraintTop_toTopOf="@id/community_event_tv"
+            app:layout_constraintWidth_percent="0.164">
+
+            <TextView
+                android:id="@+id/community_event_more_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:autoSizeMaxTextSize="19dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="end|center_vertical"
+                android:includeFontPadding="false"
+                android:text="더 보기"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/community_event_more_iv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <ImageView
+                android:id="@+id/community_event_more_iv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_round_navigate_drawable"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/community_event_more_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/community_event_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="@+id/community_event_tv"
+            app:layout_constraintTop_toBottomOf="@id/community_event_tv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
