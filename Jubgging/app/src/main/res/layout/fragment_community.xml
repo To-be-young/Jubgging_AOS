@@ -100,15 +100,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/light_grey"
-            tools:listitem="@layout/item_community_group"
-
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
-            tools:itemCount="3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.34"
-            app:layout_constraintStart_toStartOf="@+id/community_group_tv"
-            app:layout_constraintTop_toBottomOf="@id/community_group_tv" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/community_group_tv"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_community_group" />
 
         <TextView
             android:id="@+id/community_event_tv"
@@ -120,10 +121,10 @@
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/pretendard_semibold"
+            android:gravity="start|center_vertical"
             android:includeFontPadding="false"
             android:text="플로깅 행사 모음 Zip"
             android:textColor="@color/black"
-            android:gravity="start|center_vertical"
             app:layout_constraintEnd_toStartOf="@+id/community_event_cl"
             app:layout_constraintHeight_percent="0.027"
             app:layout_constraintHorizontal_bias="0.5"
@@ -183,11 +184,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
-            tools:itemCount="3"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_community_event"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/community_event_tv"
-            app:layout_constraintTop_toBottomOf="@id/community_event_tv" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/community_event_tv"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_community_event" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
