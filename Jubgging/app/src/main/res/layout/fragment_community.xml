@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -31,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
-            android:autoSizeMaxTextSize="19dp"
+            android:autoSizeMaxTextSize="20dp"
             android:autoSizeMinTextSize="10dp"
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
@@ -71,7 +72,7 @@
                 android:gravity="end|center_vertical"
                 android:includeFontPadding="false"
                 android:text="더 보기"
-                android:textColor="@color/black"
+                android:textColor="@color/brownish_grey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/community_group_more_iv"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -96,9 +97,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/community_group_rv"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/light_grey"
+            tools:listitem="@layout/item_community_group"
+
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
+            tools:itemCount="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.34"
             app:layout_constraintStart_toStartOf="@+id/community_group_tv"
@@ -108,8 +114,8 @@
             android:id="@+id/community_event_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="15dp"
-            android:autoSizeMaxTextSize="19dp"
+            android:layout_marginTop="20dp"
+            android:autoSizeMaxTextSize="20dp"
             android:autoSizeMinTextSize="10dp"
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
@@ -117,6 +123,7 @@
             android:includeFontPadding="false"
             android:text="플로깅 행사 모음 Zip"
             android:textColor="@color/black"
+            android:gravity="start|center_vertical"
             app:layout_constraintEnd_toStartOf="@+id/community_event_cl"
             app:layout_constraintHeight_percent="0.027"
             app:layout_constraintHorizontal_bias="0.5"
@@ -148,7 +155,7 @@
                 android:gravity="end|center_vertical"
                 android:includeFontPadding="false"
                 android:text="더 보기"
-                android:textColor="@color/black"
+                android:textColor="@color/brownish_grey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/community_event_more_iv"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -173,11 +180,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/community_event_rv"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
+            tools:itemCount="3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_community_event"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.25"
             app:layout_constraintStart_toStartOf="@+id/community_event_tv"
             app:layout_constraintTop_toBottomOf="@id/community_event_tv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
