@@ -58,10 +58,11 @@
         <entry key="app/src/main/res/drawable/square_btn_enable_selector.xml" value="0.243" />
         <entry key="app/src/main/res/drawable/user_profile_outline_drawable.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/white_square_btn_drawable.xml" value="0.3485" />
+        <entry key="app/src/main/res/layout/activity_community_group_list.xml" value="0.3676843433333493" />
         <entry key="app/src/main/res/layout/activity_easy_signup_first.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_easy_signup_second.xml" value="0.5120468139648438" />
         <entry key="app/src/main/res/layout/activity_find_account.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.7578582763671876" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.34309623430962344" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3531228549238564" />
         <entry key="app/src/main/res/layout/activity_plogging.xml" value="0.3808876811594203" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
@@ -73,7 +74,7 @@
         <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.1699909218663386" />
         <entry key="app/src/main/res/layout/ballon_layout.xml" value="0.3808876811594203" />
         <entry key="app/src/main/res/layout/dialog_finish_signup.xml" value="0.2114914425427873" />
-        <entry key="app/src/main/res/layout/fragment_community.xml" value="0.283892822265625" />
+        <entry key="app/src/main/res/layout/fragment_community.xml" value="0.6077865600585938" />
         <entry key="app/src/main/res/layout/fragment_find_id.xml" value="0.31457145801488906" />
         <entry key="app/src/main/res/layout/fragment_find_id_fin.xml" value="0.3189397178281317" />
         <entry key="app/src/main/res/layout/fragment_find_pw.xml" value="0.21725395313207652" />
@@ -81,7 +82,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37904510498046873" />
         <entry key="app/src/main/res/layout/fragment_my.xml" value="0.29393115942028986" />
         <entry key="app/src/main/res/layout/item_community_event.xml" value="0.2695419311523438" />
-        <entry key="app/src/main/res/layout/item_community_group.xml" value="0.39455413818359353" />
+        <entry key="app/src/main/res/layout/item_community_group.xml" value="0.41014709472656236" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.3885416666666667" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.1274062816616008" />
       </map>
