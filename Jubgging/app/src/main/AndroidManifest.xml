@@ -35,6 +35,10 @@
             android:name=".view.SignUpAuthActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".view.CommunityListActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
 
     </application>
 </manifest>

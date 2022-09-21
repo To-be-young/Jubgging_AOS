@@ -132,7 +132,7 @@
             android:includeFontPadding="false"
             android:text="플로깅 행사 모음 Zip"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/community_event_cl"
+            app:layout_constraintEnd_toStartOf="@+id/community_event_more_cl"
             app:layout_constraintHeight_percent="0.027"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -141,7 +141,7 @@
             app:layout_constraintWidth_percent="0.697" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/community_event_cl"
+            android:id="@+id/community_event_more_cl"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@id/community_event_tv"

@@ -25,4 +25,6 @@
     <string name="my_title">마이</string>
     <string name="home_title">홈</string>
     <string name="community_title">커뮤니티</string>
+    <string name="community_group_ing"><![CDATA[ 모집중인 커뮤니티]]></string>
+    <string name="community_group_all"><![CDATA[ 모두보기]]></string>
 </resources>

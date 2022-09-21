@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/login_background_drawable"
     android:elevation="2dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="12dp"
     app:cardUseCompatPadding="true">
 
