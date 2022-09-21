@@ -39,7 +39,10 @@
             android:name=".view.CommunityListActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"/>
-
+        <activity
+            android:name=".view.CommunityCreateActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 </manifest>
 

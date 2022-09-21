@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
-
         <variable
             name="communityGroup"
             type="com.example.jubgging.view.CommunityListActivity" />
@@ -12,9 +12,7 @@
             type="com.example.jubgging.viewmodel.CommunityViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_grey">
@@ -22,10 +20,10 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/cgl_tool_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.13"            android:background="@color/white"
             android:elevation="5dp"
-            android:theme="@style/logoTextTheme"
+            app:titleTextAppearance="@style/toolbarTextTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,103 +40,17 @@
                 android:src="@drawable/ic_baseline_add_24" />
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cgl_search_cl"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintDimensionRatio="1:0.09"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cgl_tool_bar"
-            app:layout_constraintWidth_percent="0.861">
-
-            <EditText
-                android:id="@+id/cgl_search_et"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.81" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/cgl_search_btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:autoSizeMaxTextSize="18dp"
-                android:autoSizeMinTextSize="10dp"
-                android:autoSizeStepGranularity="1dp"
-                android:autoSizeTextType="uniform"
-                android:background="@drawable/login_btn_background_drawable"
-                android:backgroundTint="@color/lightish_blue"
-                android:fontFamily="@font/pretendard_semibold"
-                android:paddingHorizontal="@dimen/_15dp"
-                android:text="검색"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.158" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cgl_radio_cl"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/cgl_search_cl"
-            app:layout_constraintStart_toStartOf="@id/cgl_search_cl"
-            app:layout_constraintTop_toBottomOf="@id/cgl_search_cl">
-
-            <RadioGroup
-                android:id="@+id/cgl_radio_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end|center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/cgl_all_r_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autoSizeTextType="uniform"
-                    android:button="@drawable/community_radio_btn_selector"
-                    android:checked="true"
-                    android:fontFamily="@font/pretendard_regular"
-                    android:maxLines="1"
-                    android:text="@string/community_group_all"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    app:useMaterialThemeColors="false" />
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/cgl_ing_r_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:button="@drawable/community_radio_btn_selector"
-                    android:maxLines="1"
-                    android:text="@string/community_group_ing"
-                    android:textSize="15dp"
-                    app:useMaterialThemeColors="false" />
-            </RadioGroup>
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="15dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cgl_radio_cl"
+            app:layout_constraintTop_toBottomOf="@+id/cgl_tool_bar"
             app:layout_constraintWidth_percent="0.861"
             tools:itemCount="3"
             tools:listitem="@layout/item_community_group_list" />
