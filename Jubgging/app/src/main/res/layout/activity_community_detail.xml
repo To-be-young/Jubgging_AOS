@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="communityDetail"
+            type="com.example.jubgging.view.CommunityDetailActivity" />
+
+        <variable
+            name="communityVm"
+            type="com.example.jubgging.viewmodel.CommunityViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            android:paddingBottom="40dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/cgd_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:elevation="5dp"
+                app:layout_constraintDimensionRatio="1:0.13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="커뮤니티 이름"
+                app:titleTextAppearance="@style/toolbarTextTheme" />
+
+            <ImageView
+                android:id="@+id/cgd_iv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/black"
+                app:layout_constraintDimensionRatio="1:0.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cgd_tool_bar" />
+
+            <TextView
+                android:id="@+id/cgd_desc_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:layout_marginTop="15dp"
+                android:text="커뮤니티 한 줄 소개"
+                android:textColor="@color/black"
+                app:layout_constraintDimensionRatio="1:0.05"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cgd_iv"
+                app:layout_constraintWidth_percent="0.861" />
+
+            <TextView
+                android:id="@+id/cgd_desc_cnt_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="디프다 제주의 해양쓰레기 수거 캠페인"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:elevation="2dp"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.113"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgd_desc_tv"
+                app:layout_constraintWidth_percent="0.861" />
+
+            <TextView
+                android:id="@+id/cgd_notice_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="활동 조건 및 안내사항 (최대 5개)"
+                android:textColor="@color/black"
+                app:layout_constraintDimensionRatio="1:0.05"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgd_desc_cnt_tv"
+                app:layout_constraintWidth_percent="0.861" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cgd_notice_rv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_cgd_notice"
+                android:layout_marginTop="7dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgd_notice_tv"
+                app:layout_constraintWidth_percent="0.861" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cgd_time_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintDimensionRatio="1:0.05"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgd_notice_rv"
+                app:layout_constraintWidth_percent="0.861">
+
+                <ImageView
+                    android:id="@+id/cgd_time_icon_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_baseline_access_time_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/cgd_time_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.05" />
+
+                <TextView
+                    android:id="@+id/cgd_time_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="집결 시간"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cgd_time_icon_iv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/cgd_date_cnt_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:elevation="2dp"
+                android:text="2022.10.11"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.221"
+                app:layout_constraintEnd_toStartOf="@+id/cgd_time_time_cnt_tv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="@+id/cgd_time_cl"
+                app:layout_constraintTop_toBottomOf="@id/cgd_time_cl"
+                app:layout_constraintWidth_percent="0.439" />
+
+            <TextView
+                android:id="@+id/cgd_time_time_cnt_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:elevation="2dp"
+                android:text="10:00 ~ 11:00"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.259"
+                app:layout_constraintEnd_toEndOf="@+id/cgd_time_cl"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cgd_date_cnt_tv"
+                app:layout_constraintTop_toBottomOf="@id/cgd_time_cl"
+                app:layout_constraintWidth_percent="0.375" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cgd_place_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintDimensionRatio="1:0.05"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgd_date_cnt_tv"
+                app:layout_constraintWidth_percent="0.861">
+
+                <ImageView
+                    android:id="@+id/cgd_place_icon_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_outline_flag_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/cgd_place_tv"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.05" />
+
+                <TextView
+                    android:id="@+id/cgd_place_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="집결 장소"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cgd_place_icon_iv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/cgd_place_cnt_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:autoSizeMaxTextSize="12dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:elevation="2dp"
+                android:text="제주대학로 102 공과대학 4호관 4층 412호"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical|start"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.113"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgd_place_cl"
+                app:layout_constraintWidth_percent="0.861" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cgd_people_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintDimensionRatio="1:0.103"
+                app:layout_constraintWidth_percent="0.402"
+                app:layout_constraintStart_toStartOf="@+id/cgd_place_cnt_tv"
+                app:layout_constraintTop_toBottomOf="@id/cgd_place_cnt_tv"
+                >
+
+                <ImageView
+                    android:id="@+id/cgd_people_icon_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_baseline_person_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/cgd_people_tv"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.103" />
+
+                <TextView
+                    android:id="@+id/cgd_people_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="모집 인원 (명)"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cgd_people_icon_iv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cgd_people_joined_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintDimensionRatio="1:0.103"
+                app:layout_constraintWidth_percent="0.402"
+                app:layout_constraintEnd_toEndOf="@+id/cgd_place_cnt_tv"
+                app:layout_constraintTop_toBottomOf="@id/cgd_place_cnt_tv"
+                >
+
+                <ImageView
+                    android:id="@+id/cgd_people_joined_icon_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_baseline_group_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/cgd_people_joined_tv"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.103" />
+
+                <TextView
+                    android:id="@+id/cgd_people_joined_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:autoSizeMaxTextSize="30dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="참여 인원 (명)"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cgd_people_joined_icon_iv"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/cgd_people_cnt_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:elevation="2dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:autoSizeMaxTextSize="23dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:text="40"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.259"
+                app:layout_constraintEnd_toEndOf="@+id/cgd_people_cl"
+                app:layout_constraintStart_toStartOf="@id/cgd_people_cl"
+                app:layout_constraintTop_toBottomOf="@id/cgd_people_cl"
+                 />
+
+
+            <TextView
+                android:id="@+id/cgd_people_joined_cnt_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:elevation="2dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:autoSizeMaxTextSize="23dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:text="30"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintStart_toStartOf="@id/cgd_people_joined_cl"
+                app:layout_constraintDimensionRatio="1:0.259"
+                app:layout_constraintTop_toBottomOf="@id/cgd_people_joined_cl"
+                app:layout_constraintEnd_toEndOf="@id/cgd_people_joined_cl"/>
+
+            <TextView
+                android:id="@+id/cgd_creator_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="5dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="운영자 정보"
+                android:textColor="@color/black"
+                app:layout_constraintDimensionRatio="1:0.103"
+                app:layout_constraintWidth_percent="0.402"
+                app:layout_constraintTop_toBottomOf="@id/cgd_people_cnt_tv"
+                app:layout_constraintStart_toStartOf="@id/cgd_people_cnt_tv"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+              android:id="@+id/cgd_creator_cnt_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:elevation="2dp"
+                android:background="@drawable/white_square_et_drawable"
+                app:layout_constraintTop_toBottomOf="@id/cgd_creator_tv"
+                app:layout_constraintStart_toStartOf="@id/cgd_creator_tv"
+                app:layout_constraintEnd_toEndOf="@id/cgd_creator_tv"
+                app:layout_constraintDimensionRatio="1:0.259">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            <TextView
+                android:id="@+id/cgd_etc_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="기타"
+                android:textColor="@color/black"
+                app:layout_constraintDimensionRatio="1:0.05"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgd_creator_cnt_cl"
+                app:layout_constraintWidth_percent="0.861" />
+
+            <TextView
+                android:id="@+id/cgd_etc_cnt_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:cursorVisible="false"
+                android:elevation="2dp"
+                android:ellipsize="end"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.113"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgd_etc_tv"
+                app:layout_constraintWidth_percent="0.861" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cgd_create_btn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:autoSizeMaxTextSize="20dp"
+                android:autoSizeMinTextSize="10dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/greenblue_square_btn_selector"
+                android:fontFamily="@font/pretendard_semibold"
+                android:paddingVertical="5dp"
+                android:text="참여하기"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:0.13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cgd_etc_cnt_tv"
+                app:layout_constraintWidth_percent="0.861" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
