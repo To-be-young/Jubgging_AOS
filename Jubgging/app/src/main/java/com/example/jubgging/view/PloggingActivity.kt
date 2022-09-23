@@ -10,32 +10,50 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.RelativeSizeSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.example.jubgging.BuildConfig
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityPloggingBinding
+import com.example.jubgging.network.PloggingSend
+import com.example.jubgging.network.data.request.PloggingRequest
+import com.example.jubgging.viewmodel.CleanhouseViewModel
 import net.daum.mf.map.api.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.concurrent.timer
 
 class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
     MapView.MapViewEventListener,
     MapView.POIItemEventListener {
+
+    //뷰 바인딩
     private lateinit var binding: ActivityPloggingBinding
+
+    //뷰 모델
+    private val viewModel: CleanhouseViewModel by viewModels()
+
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
     private var mapView: MapView? = null  //카카오맵뷰
     private var mapViewContainer: ViewGroup? = null
@@ -79,15 +97,24 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     var address_hashMap = HashMap<Int, String>()
     var time_hashMap = HashMap<Int, String>()
 
+    //plogging_post 데이터
+    var ploggingList : ArrayList<PloggingSend> = ArrayList<PloggingSend>()
+    val userid = "grand2181@gmail.com"
+    var userActivityTime : String = ""
+    var index : Int = 0
+    var formattedTotalDistance : String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityPloggingBinding.inflate(layoutInflater)
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        //맵뷰 등록
         mapView = MapView(this)
         mapViewContainer = binding.ploggingKakaoMapView
         mapViewContainer?.addView(mapView)
+
 
         //툴바
 //        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
@@ -153,16 +180,21 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             binding.ploggingStartBt.visibility = View.VISIBLE
             binding.ploggingStoreBt.visibility = View.INVISIBLE
 
+            viewModel.plogging(com.example.jubgging.network.data.request.PloggingRequest(
+                userid,
+                formattedTotalDistance.toDouble(),
+                userActivityTime,
+                pathway = ploggingList), ::showToast)
+
             binding.ploggingDistanceContextTv.text = "0Km"
             binding.ploggingPaceContextTv.text = "00`00"
 
             totalDistance = 0.0
             speed = "00`00"
-            binding.ploggingDistanceContextTv.text = "${totalDistance.toInt()}"
-            binding.ploggingPaceContextTv.text = speed
 
 
             resetTimer()
+
         }
 
         //플로깅 일시정지
@@ -177,9 +209,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             Log.d("lhj10", "PAUSE")
         }
 
-
-        binding.chmSwitchBtn.setOnCheckedChangeListener { compoundButton, ischecked ->
-            if (ischecked) {
+        viewModel.liveFlag.observe(this, Observer {
+            if(it){
                 val thread = NetworkThread()
                 thread.start()
                 thread.join()
@@ -226,12 +257,18 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                         mapView!!.addPOIItem(marker!![i])
                     }
                 }
-
-            } else {
+            }else{
                 mapView!!.removeAllPOIItems()
             }
+        })
+
+        binding.chmSwitchBtn.setOnClickListener {
+            viewModel.updateLiveFlag()
         }
+
+
     }
+
 
     inner class NetworkThread : Thread() {
         override fun run() {
@@ -300,8 +337,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         }
 
         override fun getPressedCalloutBalloon(poiItem: MapPOIItem?): View {
-            // 말풍선 클릭 시
-            address.text = "getPressedCalloutBalloon"
+
             return mCalloutBalloon
         }
     }
@@ -408,7 +444,18 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             if (mCurrentLat != 0.0 && mCurrentLng != 0.0) {
                 recentTime = System.currentTimeMillis().toInt()
                 totalDistance += distance(mCurrentLat, mCurrentLng, beforeLat, beforeLng, "meter")
+
+                val current = LocalDateTime.now()
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss")
+                val formatted = current.format(formatter)
+
+                ploggingList.add(index, PloggingSend(mCurrentLat, mCurrentLng, formatted))
+
+                index++
+
             }
+
+
         }
 
         var passing_time = (recentTime - startTime) / 1000
@@ -422,7 +469,12 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         //속도 관련 변수 log
         Log.d("ex", "totalDistance : ${totalDistance}, passing_time : ${(passing_time / 1000)}, speed : ${speed}")
 
-        binding.ploggingDistanceContextTv.text = "${totalDistance.toInt()}"
+        var totalDistanceKm = totalDistance / 1000
+        formattedTotalDistance = String.format("%02.1f", totalDistanceKm)
+
+
+        binding.ploggingDistanceContextTv.text = "${formattedTotalDistance}km"
+
 
         //speed를 .대신 `로 표시
         speed = speed.replace(".", "`")
@@ -553,7 +605,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                 minute = sec / 60
             }
             runOnUiThread {
-                binding.ploggingTimeContextTv.text = String.format("%02d:%02d", minute, second)
+                userActivityTime = String.format("%02d:%02d", minute, second)
+                binding.ploggingTimeContextTv.text = userActivityTime
             }
         }
     }
@@ -569,5 +622,9 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
         time = 0
         binding.ploggingTimeContextTv.text = "00:00"
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }
