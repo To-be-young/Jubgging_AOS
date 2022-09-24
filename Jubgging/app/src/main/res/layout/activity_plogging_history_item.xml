@@ -22,7 +22,7 @@
             android:id="@+id/history_date_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="@dimen/_10dp"
+            android:layout_marginLeft="@dimen/_17dp"
             android:layout_marginTop="@dimen/_8dp"
             android:autoSizeMaxTextSize="12dp"
             android:autoSizeMinTextSize="1dp"

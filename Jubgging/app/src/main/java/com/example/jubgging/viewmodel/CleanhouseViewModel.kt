@@ -57,7 +57,6 @@ class CleanhouseViewModel : ViewModel(){
                     Log.d("plogging_res", "${it.data.get(0)}")
                     PloggingData.value = it
                     Log.d("PloggingData", "${PloggingData.value!!.data}")
-
                 } else {
                     showToast("실패 : ${it}")
                 }

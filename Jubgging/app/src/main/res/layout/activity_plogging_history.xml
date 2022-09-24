@@ -26,7 +26,18 @@
             android:title="플로깅"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/imsi_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="Get"
+                android:background="@drawable/login_btn_background_drawable"
+                android:fontFamily="@font/pretendard_bold"/>
+
+        </Toolbar>
 
         <ScrollView
             android:layout_width="match_parent"
