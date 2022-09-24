@@ -2,8 +2,8 @@ package com.example.jubgging.repository
 
 import com.example.jubgging.network.ApiClient
 import com.example.jubgging.network.data.request.PloggingRequest
-import com.example.retrofit2_pr.network.data.response.BaseResponse
-import com.example.retrofit2_pr.network.data.response.PloggingResponse
+import com.example.jubgging.network.data.response.BaseResponse
+import com.example.jubgging.network.data.response.PloggingResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

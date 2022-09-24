@@ -1,4 +1,4 @@
-package com.example.retrofit2_pr.network.data.response
+package com.example.jubgging.network.data.response
 
 import com.google.gson.annotations.SerializedName
 
