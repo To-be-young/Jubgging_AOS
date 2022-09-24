@@ -186,7 +186,7 @@ class SignUpViewModel : ViewModel() {
                 }else{
                    //회원가입 실패 시 예외처리 필요
                     Log.d("TAG", "signUp: ${signUpRequest.userId}")
-                    Log.d("TAG", "signUp:${it.message} ")
+                    Log.d("TAG", "signUp:${it.msg} ")
                 }
             },
             onError = {
