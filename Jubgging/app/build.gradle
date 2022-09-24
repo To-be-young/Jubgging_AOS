@@ -5,6 +5,10 @@ plugins {
 }
 apply plugin: 'kotlin-kapt'
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def kakaomapkey = properties.getProperty('kakao.api.key')
+
 android {
     compileSdk 31
 
@@ -15,6 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        manifestPlaceholders = [kakaoSdkAppkey:kakaomapkey]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -78,6 +83,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+
+    //kakao map
+    implementation files('libs/libDaumMapAndroid.jar')
 
     //coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
