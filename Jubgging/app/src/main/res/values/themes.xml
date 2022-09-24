@@ -59,4 +59,16 @@
         <item name="android:textAppearance">@color/black</item>
     </style>
 
+    <style name="ploggingTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/pretendard_regular</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ploggingContextTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
