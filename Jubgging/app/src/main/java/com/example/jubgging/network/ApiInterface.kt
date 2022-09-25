@@ -5,12 +5,10 @@ import com.example.jubgging.network.data.request.PloggingRequest
 import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.network.data.response.BaseResponse
 import com.example.jubgging.network.data.response.LoginResponse
+import com.example.jubgging.network.data.response.PathwayResponse
 import com.example.jubgging.network.data.response.PloggingResponse
 import io.reactivex.Single
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiInterface {
     @POST("api/sign/signup")
@@ -26,5 +24,8 @@ interface ApiInterface {
     fun plogging_req(@Body ploggingRequest : PloggingRequest) : Single<BaseResponse<PloggingResponse>>
 
     @GET("api/plogging/log_list")
-    fun plogging_res(@Query ("userId") useremail : String) : Single<BaseResponse<List<PloggingResponse>>>
+    fun plogging_res() : Single<BaseResponse<List<PloggingResponse>>>
+
+    @GET("api/plogging/log_pathway")
+    fun pathway(@Query ("recordId") recordId : Int) : Single<BaseResponse<List<PathwayResponse>>>
 }

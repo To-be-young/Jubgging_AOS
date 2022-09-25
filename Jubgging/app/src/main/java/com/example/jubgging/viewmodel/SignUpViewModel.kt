@@ -22,6 +22,11 @@ import java.util.concurrent.TimeUnit
 
 class SignUpViewModel : ViewModel() {
     private val signUpRepository = SignUpRepositoryImpl()
+
+    companion object {
+        var token: String = ""
+    }
+
     private lateinit var auth: FirebaseAuth
     private val _emailAuthFlag = MutableLiveData<Boolean>()
     private val _codeSentFlag = MutableLiveData<Boolean>()
@@ -195,18 +200,26 @@ class SignUpViewModel : ViewModel() {
         )
     }
 
+    //login Api
     @SuppressLint("CheckResult")
     fun login(loginRequest: LoginRequest, moveToMain: () -> Unit, showToast: (tag: Int) -> Unit) {
         signUpRepository.login(loginRequest).subscribeBy(onSuccess = {
             if (it.code == 0) {
+                updateToken(it.data.accessToken)
+
                 moveToMain().apply {
                     showToast(0)
                 }
-            }else{
+
+            } else {
                 showToast(1)
             }
         }, onError = {
             it.printStackTrace()
         })
+    }
+
+    fun updateToken(inputToken: String) {
+        token = inputToken
     }
 }

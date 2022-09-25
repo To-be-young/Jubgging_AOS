@@ -1,7 +1,9 @@
 package com.example.jubgging.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,48 +17,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityPloggingHistoryBinding
 import com.example.jubgging.databinding.ActivityPloggingHistoryItemBinding
+import com.example.jubgging.network.data.request.LoginRequest
 import com.example.jubgging.network.data.response.BaseResponse
 import com.example.jubgging.network.data.response.PloggingResponse
 import com.example.jubgging.viewmodel.CleanhouseViewModel
+import com.example.jubgging.viewmodel.SignUpViewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-
-//class MyAdapter(private val datas : MutableLiveData<BaseResponse<List<PloggingResponse>>>) : RecyclerView.Adapter<MyAdapter.CustomViewHolder>(){
-//
-//    private var datas_list : MutableLiveData<BaseResponse<List<PloggingResponse>>> = MutableLiveData<BaseResponse<List<PloggingResponse>>>()
-//
-//    init{
-//        datas_list = datas
-//    }
-//    override fun getItemCount(): Int {
-//        return datas.value!!.data.size
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.CustomViewHolder{
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_plogging_history_item, parent, false)
-////        return CustomViewHolder(view).apply{
-////            val curPos : Int = adapterPosition
-////            val record : PloggingResponse = datas_list.value!!.data[curPos]
-////        }
-//
-//        return CustomViewHolder(view)
-//    }
-//
-//    override fun onBindViewHolder(holder: MyAdapter.CustomViewHolder, position: Int) {
-//        val memo = datas_list.value!!.data[position]
-//        h
-//    }
-//
-//    inner class CustomViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-//
-//    }
-//}
 
 class HistoryAdapter(private val datas : MutableLiveData<BaseResponse<List<PloggingResponse>>>) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>(){
     private var datas_list : MutableLiveData<BaseResponse<List<PloggingResponse>>> = MutableLiveData<BaseResponse<List<PloggingResponse>>>()
 
     init{
         datas_list = datas
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(v: View, data: PloggingResponse, pos: Int)
+    }
+    private var listener : OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener : OnItemClickListener){
+        this.listener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryAdapter.ViewHolder {
@@ -85,6 +67,13 @@ class HistoryAdapter(private val datas : MutableLiveData<BaseResponse<List<Plogg
             historyTime.text = item.activityTime
             historyDistance.text = item.distance.toString()
             historyPace.text = "00`00"
+
+            val pos = adapterPosition
+            if(pos!=RecyclerView.NO_POSITION){
+                itemView.setOnClickListener {
+                    listener?.onItemClick(itemView, item, pos)
+                }
+            }
         }
     }
 }
@@ -93,7 +82,6 @@ class PloggingHistoryActivity : AppCompatActivity() {
 
     private val viewModel : CleanhouseViewModel by viewModels()
     private lateinit var binding : ActivityPloggingHistoryBinding
-    private val userId : String = "grand2181@gmail.com"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityPloggingHistoryBinding.inflate(layoutInflater)
@@ -102,18 +90,37 @@ class PloggingHistoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.imsiBt.setOnClickListener {
-            viewModel.plogging_res(userId, ::showToast)
+            viewModel.plogging_res(::showToast)
         }
 
 
+
         viewModel.PloggingData.observe(this, Observer {
-            binding.ploggingHistotyRv.adapter = HistoryAdapter(viewModel.PloggingData)
+            var adapter : HistoryAdapter = HistoryAdapter(viewModel.PloggingData)
+            binding.ploggingHistotyRv.adapter = adapter
+
+            adapter.setOnItemClickListener(object:HistoryAdapter.OnItemClickListener{
+                override fun onItemClick(
+                    v: View,
+                    data: PloggingResponse,
+                    pos: Int
+                ) {
+                    val intent = Intent(this@PloggingHistoryActivity, PloggingDetailActivity::class.java)
+                    intent.putExtra("date",data.date)
+                    intent.putExtra("activityTime",data.activityTime)
+                    intent.putExtra("distance",data.distance.toString())
+                    intent.putExtra("recordId", data.recordId.toString())
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
+            })
         })
+
     }
 
 
     private fun showToast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }
 

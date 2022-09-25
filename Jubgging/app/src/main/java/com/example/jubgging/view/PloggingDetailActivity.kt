@@ -1,22 +1,35 @@
 package com.example.jubgging.view
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
-import com.example.jubgging.R
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import com.example.jubgging.databinding.ActivityPloggingDetailBinding
-import net.daum.mf.map.api.MapPOIItem
-import net.daum.mf.map.api.MapPoint
-import net.daum.mf.map.api.MapPolyline
-import net.daum.mf.map.api.MapView
+import com.example.jubgging.viewmodel.CleanhouseViewModel
+import com.example.jubgging.viewmodel.PathwayViewModel
+import net.daum.mf.map.api.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
     MapView.MapViewEventListener,
     MapView.POIItemEventListener {
 
+    //viewBinding
     private lateinit var binding: ActivityPloggingDetailBinding
+
     private var mapView: MapView? = null  //카카오맵뷰
     private var mapViewContainer: ViewGroup? = null
+
+    //ViewModel
+    private val pathwayViewMoodel: PathwayViewModel by viewModels()
+
+    //폴리라인 관련 변수
+    private lateinit var polyline: MapPolyline
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityPloggingDetailBinding.inflate(layoutInflater)
@@ -24,12 +37,22 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        //현재위치 버튼 눌렀을 때 트래킹모드 재시작
-        binding.chmMyLocationBtn.setOnClickListener {
-            mapView?.currentLocationTrackingMode =
-                MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+        val IntentDate = intent.getStringExtra("date")
+        val IntenTime = intent.getStringExtra("activityTime")
+        val IntentDistance = intent.getStringExtra("distance")
+        val IntentRecordId = intent.getStringExtra("recordId")
 
-        }
+        var data_str = LocalDateTime.parse(IntentDate)
+        val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
+        val formatted = data_str.format(formatter)
+
+        binding.historyDateTv.text = formatted
+        binding.historyTimeTv.text = IntenTime
+        binding.historyDistanceTv.text = IntentDistance
+
+        pathwayViewMoodel.pathway(IntentRecordId!!.toInt(), ::showToast)
+        Log.d("success_pathway", "${IntentRecordId!!.toInt()}")
+
 
     }
 
@@ -41,34 +64,34 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         mapViewContainer = binding.ploggingKakaoMapView
         mapViewContainer?.addView(mapView)
 
-        // 중심점 변경
-        mapView!!.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.53737528, 127.00557633), true);
-
-        // 줌 레벨 변경
-        mapView!!.setZoomLevel(7, true);
-
-        // 중심점 변경 + 줌 레벨 변경
-        mapView!!.setMapCenterPointAndZoomLevel(
-            MapPoint.mapPointWithGeoCoord(33.4111, 126.52),
-            2,
-            true
-        );
-
-        // 줌 인
-        mapView!!.zoomIn(true);
-
-        // 줌 아웃
-        mapView!!.zoomOut(true);
 
         //mapView에 이벤트 등록
         mapView?.setMapViewEventListener(this)
         mapView?.setPOIItemEventListener(this)
         mapView?.setCurrentLocationEventListener(this)
+
+        //polyline 등록
+        polyline = MapPolyline()
+        polyline.tag = 1000
+        polyline.lineColor = Color.argb(128, 255, 51, 0)
+
+        pathwayViewMoodel.PathwayData.observe(this, Observer {
+
+            //받아온 liveData를 Polyline객체에 넣어서 선 그려주기
+            for(i in 0 until pathwayViewMoodel.PathwayData.value!!.data.size){
+                polyline.addPoint(MapPoint.mapPointWithGeoCoord(pathwayViewMoodel.PathwayData.value!!.data[i].latitude, pathwayViewMoodel.PathwayData.value!!.data[i].longitude))
+            }
+
+            mapView!!.addPolyline(polyline)
+
+            var mapPointBounds: MapPointBounds = MapPointBounds(polyline.mapPoints)
+            val padding: Int = 100
+
+            mapView!!.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, padding))
+        })
+
     }
 
-
-    //폴리라인 관련 변수
-    private var polyline: MapPolyline? = null
 
     override fun onPause() {
         super.onPause()
@@ -149,4 +172,7 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
 
     }
 
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
 }

@@ -3,14 +3,16 @@ package com.example.jubgging.repository
 import com.example.jubgging.network.ApiClient
 import com.example.jubgging.network.data.request.PloggingRequest
 import com.example.jubgging.network.data.response.BaseResponse
+import com.example.jubgging.network.data.response.PathwayResponse
 import com.example.jubgging.network.data.response.PloggingResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import retrofit2.http.Query
 
 interface PloggingRepository {
     fun plogging_req(PloggingRequest : PloggingRequest) : Single<BaseResponse<PloggingResponse>>
-    fun plogging_res(userId : String) : Single<BaseResponse<List<PloggingResponse>>>
+    fun plogging_res() : Single<BaseResponse<List<PloggingResponse>>>
 }
 
 class PloggingRepositoryImpl : PloggingRepository {
@@ -20,8 +22,8 @@ class PloggingRepositoryImpl : PloggingRepository {
             AndroidSchedulers.mainThread()).map { it }
     }
 
-    override fun plogging_res(useremail : String) : Single<BaseResponse<List<PloggingResponse>>> {
-        return ApiClient.api.plogging_res(useremail).subscribeOn(Schedulers.computation()).observeOn(
+    override fun plogging_res() : Single<BaseResponse<List<PloggingResponse>>> {
+        return ApiClient.api.plogging_res().subscribeOn(Schedulers.computation()).observeOn(
             AndroidSchedulers.mainThread()).map { it }
     }
 

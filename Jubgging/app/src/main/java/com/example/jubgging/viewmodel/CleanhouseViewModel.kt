@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.jubgging.network.data.request.PloggingRequest
 import com.example.jubgging.network.data.response.BaseResponse
+import com.example.jubgging.network.data.response.PathwayResponse
 import com.example.jubgging.network.data.response.PloggingResponse
 import com.example.jubgging.repository.PloggingRepositoryImpl
 import io.reactivex.rxkotlin.subscribeBy
@@ -49,8 +50,8 @@ class CleanhouseViewModel : ViewModel(){
     }
 
     @SuppressLint("CheckResult")
-    fun plogging_res(useremail : String, showToast: (msg:String) -> Unit) {
-        ploggingRepository.plogging_res(useremail).subscribeBy(
+    fun plogging_res(showToast: (msg:String) -> Unit) {
+        ploggingRepository.plogging_res().subscribeBy(
             onSuccess = {
                 if (it.success) {
                     showToast("성공했습니다.")
@@ -67,4 +68,6 @@ class CleanhouseViewModel : ViewModel(){
 
         )
     }
+
+
 }
