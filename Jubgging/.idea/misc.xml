@@ -74,9 +74,11 @@
         <entry key="app/src/main/res/drawable/white_round_btn_drawable.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/white_square_btn_drawable.xml" value="0.3485" />
         <entry key="app/src/main/res/drawable/white_square_et_drawable.xml" value="0.321" />
-        <entry key="app/src/main/res/layout/activity_community_create.xml" value="2.1591034546756274" />
-        <entry key="app/src/main/res/layout/activity_community_detail.xml" value="0.7543275632490013" />
+        <entry key="app/src/main/res/layout/activity_community_create.xml" value="0.8625214234256273" />
+        <entry key="app/src/main/res/layout/activity_community_detail.xml" value="0.29205017089843754" />
+        <entry key="app/src/main/res/layout/activity_community_group_join.xml" value="0.7410440122824974" />
         <entry key="app/src/main/res/layout/activity_community_group_list.xml" value="0.3742416846038548" />
+        <entry key="app/src/main/res/layout/activity_community_join.xml" value="0.8769281484883088" />
         <entry key="app/src/main/res/layout/activity_easy_signup_first.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_easy_signup_second.xml" value="0.5120468139648438" />
         <entry key="app/src/main/res/layout/activity_find_account.xml" value="0.22" />
@@ -100,7 +102,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37904510498046873" />
         <entry key="app/src/main/res/layout/fragment_my.xml" value="0.29393115942028986" />
         <entry key="app/src/main/res/layout/item_cgc_notice.xml" value="2.743240473820613" />
-        <entry key="app/src/main/res/layout/item_cgd_notice.xml" value="0.4367816091954023" />
+        <entry key="app/src/main/res/layout/item_cgd_notice.xml" value="0.2521502615391523" />
         <entry key="app/src/main/res/layout/item_community_event.xml" value="0.2695419311523438" />
         <entry key="app/src/main/res/layout/item_community_group.xml" value="0.41014709472656236" />
         <entry key="app/src/main/res/layout/item_community_group_list.xml" value="0.5926660327864743" />

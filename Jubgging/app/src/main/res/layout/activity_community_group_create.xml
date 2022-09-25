@@ -208,7 +208,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
-                android:id="@+id/cgc_date_et"
+                android:id="@+id/cgc_date_tv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
@@ -220,15 +220,15 @@
                 android:maxLines="1"
                 android:paddingHorizontal="10dp"
                 app:layout_constraintDimensionRatio="1:0.221"
-                app:layout_constraintEnd_toStartOf="@+id/cgc_time_time_et"
+                app:layout_constraintEnd_toStartOf="@+id/cgc_time_time_tv"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="@+id/cgc_time_cl"
                 app:layout_constraintTop_toBottomOf="@id/cgc_time_cl"
                 app:layout_constraintWidth_percent="0.439" />
 
-            <EditText
-                android:id="@+id/cgc_time_time_et"
+            <TextView
+                android:id="@+id/cgc_time_time_tv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
@@ -242,7 +242,7 @@
                 app:layout_constraintDimensionRatio="1:0.259"
                 app:layout_constraintEnd_toEndOf="@+id/cgc_time_cl"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cgc_date_et"
+                app:layout_constraintStart_toEndOf="@+id/cgc_date_tv"
                 app:layout_constraintTop_toBottomOf="@id/cgc_time_cl"
                 app:layout_constraintWidth_percent="0.375" />
 
@@ -254,7 +254,7 @@
                 app:layout_constraintDimensionRatio="1:0.05"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cgc_date_et"
+                app:layout_constraintTop_toBottomOf="@id/cgc_date_tv"
                 app:layout_constraintWidth_percent="0.861">
 
                 <ImageView

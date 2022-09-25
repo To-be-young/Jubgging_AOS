@@ -13,7 +13,7 @@ class CommunityCreateActivity : AppCompatActivity() {
     private val viewModel: CommunityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_community_create)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_community_group_create)
         binding.lifecycleOwner = this
         binding.communityVm = viewModel
     }

@@ -14,7 +14,7 @@ class CommunityDetailActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_community_detail)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_community_group_detail)
         binding.lifecycleOwner = this
         binding.communityVm = viewModel
 
