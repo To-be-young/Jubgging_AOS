@@ -26,6 +26,13 @@ class SignUpViewModel : ViewModel() {
     private val signUpRepository = SignUpRepositoryImpl()
     private lateinit var auth: FirebaseAuth
     val overlapType:Pair<String,String> = Pair("email","nickname")
+
+    companion object {
+        var token: String = ""
+    }
+
+
+
     // 중복이면 1, 통과하면 0, default -1
     private val _overlapFlag = MutableLiveData<Int>()
     val overlapFlag:LiveData<Int>
@@ -323,6 +330,7 @@ class SignUpViewModel : ViewModel() {
             if (it.code == 0) {
                 moveToMain().apply {
                     showToast(0)
+                    updateJwtToken(it.data.accessToken)
                 }
             } else {
                 showToast(1)
@@ -330,5 +338,13 @@ class SignUpViewModel : ViewModel() {
         }, onError = {
             it.printStackTrace()
         })
+    }
+    fun updateJwtToken(inputToken: String?) {
+        if (inputToken != null) {
+            token = inputToken
+        } else {
+            token = ""
+        }
+
     }
 }
