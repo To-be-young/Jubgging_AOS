@@ -512,7 +512,7 @@
 
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/cgd_create_btn"
+                        android:id="@+id/cgd_join_btn"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginTop="20dp"
