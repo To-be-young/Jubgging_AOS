@@ -133,6 +133,7 @@ class SignUpAuthActivity : AppCompatActivity() {
         dialog.show()
         dialog.findViewById<Button>(R.id.ds_move_login_btn).setOnClickListener {
             moveToLogin()
+            dialog.dismiss()
         }
     }
 }
