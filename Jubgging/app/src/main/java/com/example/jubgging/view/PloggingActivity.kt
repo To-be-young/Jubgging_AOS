@@ -54,9 +54,10 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     //뷰 모델
     private val viewModel: CleanhouseViewModel by viewModels()
 
+
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
-    private var mapView: MapView? = null  //카카오맵뷰
-    private var mapViewContainer: ViewGroup? = null
+    private lateinit var mapView : MapView  //카카오맵뷰
+    private lateinit var mapViewContainer: ViewGroup
 
     //onCurrentLocationUpdate()를 통해 받아온 위도, 경도 변수
     private var mCurrentLat: Double = 0.0
@@ -99,54 +100,34 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
     //plogging_post 데이터
     var ploggingList : ArrayList<PloggingSend> = ArrayList<PloggingSend>()
-    val userid = "grand2181@gmail.com"
     var userActivityTime : String = ""
     var index : Int = 0
     var formattedTotalDistance : String = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityPloggingBinding.inflate(layoutInflater)
 
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+    override fun onResume() {
+        super.onResume()
 
         //맵뷰 등록
         mapView = MapView(this)
         mapViewContainer = binding.ploggingKakaoMapView
-        mapViewContainer?.addView(mapView)
+        mapViewContainer.addView(mapView)
 
-
-        //툴바
-//        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
-//        setSupportActionBar(toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_plogging_back_main_bt)
-//        supportActionBar?.setDisplayShowTitleEnabled(false)
-
-        // 위치추적 버튼
-        if (checkLocationService()) {
-            // GPS가 켜져있을 경우
-            permissionCheck()
-        } else {
-            // GPS가 꺼져있을 경우
-            Toast.makeText(this, "GPS를 켜주세요", Toast.LENGTH_SHORT).show()
-        }
         //트래킹 모드 시작
-        mapView?.currentLocationTrackingMode =
+        mapView.currentLocationTrackingMode =
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
 
         //현재위치 버튼 눌렀을 때 트래킹모드 재시작
         binding.chmMyLocationBtn.setOnClickListener {
-            mapView?.currentLocationTrackingMode =
+            mapView.currentLocationTrackingMode =
                 MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
         }
 
         //mapView에 이벤트 등록
-        mapView?.setMapViewEventListener(this)
-        mapView?.setPOIItemEventListener(this)
-        mapView?.setCurrentLocationEventListener(this)
-        mapView?.setCalloutBalloonAdapter(CustomBalloonAdapter(layoutInflater))
-
+        mapView.setMapViewEventListener(this)
+        mapView.setPOIItemEventListener(this)
+        mapView.setCurrentLocationEventListener(this)
+        mapView.setCalloutBalloonAdapter(CustomBalloonAdapter(layoutInflater))
 
         //Polyline 등록
         polyline = MapPolyline()
@@ -180,11 +161,14 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             binding.ploggingStartBt.visibility = View.VISIBLE
             binding.ploggingStoreBt.visibility = View.INVISIBLE
 
-            viewModel.plogging(com.example.jubgging.network.data.request.PloggingRequest(
-                userid,
-                formattedTotalDistance.toDouble(),
-                userActivityTime,
-                pathway = ploggingList), ::showToast)
+            Log.d("formattedTotalDistance", "${formattedTotalDistance}")
+
+            viewModel.plogging_req(
+                PloggingRequest(
+                    "",
+                    formattedTotalDistance.toDouble(),
+                    userActivityTime,
+                    pathway = ploggingList), ::showToast)
 
             binding.ploggingDistanceContextTv.text = "0Km"
             binding.ploggingPaceContextTv.text = "00`00"
@@ -254,11 +238,11 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                         //해시맵에 태그, 값으로 매핑
                         address_hashMap.put(i, cleanhouse_address)
                         time_hashMap.put(i, cleanhouse_time)
-                        mapView!!.addPOIItem(marker!![i])
+                        mapView.addPOIItem(marker!![i])
                     }
                 }
             }else{
-                mapView!!.removeAllPOIItems()
+                mapView.removeAllPOIItems()
             }
         })
 
@@ -266,6 +250,35 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             viewModel.updateLiveFlag()
         }
 
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        mapViewContainer.removeAllViews()
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityPloggingBinding.inflate(layoutInflater)
+
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+        //툴바
+//        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
+//        setSupportActionBar(toolbar)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_plogging_back_main_bt)
+//        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        // 위치추적 버튼
+        if (checkLocationService()) {
+            // GPS가 켜져있을 경우
+            permissionCheck()
+        } else {
+            // GPS가 꺼져있을 경우
+            Toast.makeText(this, "GPS를 켜주세요", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -446,7 +459,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                 totalDistance += distance(mCurrentLat, mCurrentLng, beforeLat, beforeLng, "meter")
 
                 val current = LocalDateTime.now()
-                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss")
+                val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
                 val formatted = current.format(formatter)
 
                 ploggingList.add(index, PloggingSend(mCurrentLat, mCurrentLng, formatted))
@@ -469,7 +482,11 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         //속도 관련 변수 log
         Log.d("ex", "totalDistance : ${totalDistance}, passing_time : ${(passing_time / 1000)}, speed : ${speed}")
 
+        Log.d("totalDistanceKm", "${totalDistance}")
+
         var totalDistanceKm = totalDistance / 1000
+
+        Log.d("totalDistanceKm", "${totalDistanceKm}")
         formattedTotalDistance = String.format("%02.1f", totalDistanceKm)
 
 
