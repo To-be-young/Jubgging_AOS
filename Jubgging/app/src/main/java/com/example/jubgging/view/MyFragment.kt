@@ -1,5 +1,6 @@
 package com.example.jubgging.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,5 +21,14 @@ class MyFragment: Fragment() {
         binding.lifecycleOwner = this
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.myInfoBtn.setOnClickListener {
+            val intent = Intent(requireContext(),UserProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

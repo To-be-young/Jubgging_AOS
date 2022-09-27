@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="userProfile"
+            type="com.example.jubgging.view.UserProfileActivity" />
+        <variable
+            name="userInfoVm"
+            type="com.example.jubgging.viewmodel.UserInfoViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey">
+    
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/user_info_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:elevation="5dp"
+        app:layout_constraintDimensionRatio="1:0.13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="내 정보" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_info_profile_cl"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_background_drawable"
+        android:elevation="2dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/user_info_email_tt_tv"
+        app:layout_constraintTop_toBottomOf="@id/user_info_tool_bar"
+        app:layout_constraintWidth_percent="0.314">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+           android:id="@+id/user_info_profile_olcl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/user_profile_outline_drawable"
+            app:layout_constraintWidth_percent="0.74"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/profile_temp_img"
+                app:layout_constraintWidth_percent="0.9"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/user_info_email_tt_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:autoSizeMaxTextSize="30dp"
+        android:autoSizeMinTextSize="10dp"
+        android:autoSizeStepGranularity="1dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/pretendard_regular"
+        android:includeFontPadding="false"
+        android:text="이메일"
+        android:textColor="@color/black"
+        app:layout_constraintDimensionRatio="1:0.05"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_info_profile_cl"
+        app:layout_constraintWidth_percent="0.861" />
+
+    <TextView
+        android:id="@+id/user_info_email_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_background_drawable"
+        android:elevation="2dp"
+        android:text="qwery@qweryu"
+        android:paddingHorizontal="17dp"
+        android:paddingVertical="7.5dp"
+        android:autoSizeMaxTextSize="18dp"
+        android:autoSizeMinTextSize="10dp"
+        android:autoSizeStepGranularity="1dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/pretendard_regular"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+
+        app:layout_constraintDimensionRatio="1:0.113"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_info_email_tt_tv"
+        app:layout_constraintWidth_percent="0.861" />
+
+    <TextView
+        android:id="@+id/user_info_nickname_tt_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:autoSizeMaxTextSize="30dp"
+        android:autoSizeMinTextSize="10dp"
+        android:autoSizeStepGranularity="1dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/pretendard_regular"
+        android:includeFontPadding="false"
+        android:text="닉네임"
+        android:textColor="@color/black"
+        app:layout_constraintDimensionRatio="1:0.05"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_info_email_tv"
+        app:layout_constraintWidth_percent="0.861" />
+
+    <TextView
+        android:id="@+id/user_info_nickname_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_background_drawable"
+        android:elevation="2dp"
+        android:text="가나다"
+        android:paddingHorizontal="17dp"
+        android:paddingVertical="7.5dp"
+        android:autoSizeMaxTextSize="18dp"
+        android:autoSizeMinTextSize="10dp"
+        android:autoSizeStepGranularity="1dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/pretendard_regular"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+
+        app:layout_constraintDimensionRatio="1:0.113"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_info_nickname_tt_tv"
+        app:layout_constraintWidth_percent="0.861" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
