@@ -1,6 +1,7 @@
 package com.example.jubgging.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -15,10 +16,8 @@ class UserProfileActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_info)
         binding.userInfoVm = viewModel
-
+        binding.lifecycleOwner = this
         viewModel.getUserInfo()
-
-
-
     }
+
 }

@@ -31,4 +31,5 @@ class MyFragment: Fragment() {
             startActivity(intent)
         }
     }
+
 }
