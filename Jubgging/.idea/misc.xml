@@ -60,6 +60,8 @@
         <entry key="app/src/main/res/drawable/signup_authenfication_btn_background_drawable.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/signup_gender_radio_btn.xml" value="0.42080535888671877" />
         <entry key="app/src/main/res/drawable/user_profile_outline_drawable.xml" value="0.3685" />
+        <entry key="app/src/main/res/drawable/userinfo_tv_drawable.xml" value="0.3685" />
+        <entry key="app/src/main/res/drawable/userinfo_update_btn_drawable.xml" value="0.3685" />
         <entry key="app/src/main/res/layout/activity_easy_signup_first.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_easy_signup_second.xml" value="0.5120468139648438" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.20166473388671877" />
@@ -72,7 +74,7 @@
         <entry key="app/src/main/res/layout/activity_signup_second.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_third.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.6027175903320312" />
-        <entry key="app/src/main/res/layout/activity_user_info.xml" value="1.0609860805397102" />
+        <entry key="app/src/main/res/layout/activity_user_info.xml" value="1.0448727992897102" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.3584656084656085" />
         <entry key="app/src/main/res/layout/fragment_my.xml" value="0.3171921099304522" />
       </map>
