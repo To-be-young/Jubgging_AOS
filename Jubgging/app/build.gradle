@@ -13,12 +13,10 @@ android {
 
     defaultConfig {
         applicationId "com.example.jubgging"
-        minSdk 29
+        minSdk 28
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
-        buildConfigField "String", "api_key", properties['cleanhouse_api']
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [kakaoSdkAppkey:kakaomapkey]
