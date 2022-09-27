@@ -8,4 +8,5 @@
     <dimen name="input_layout_margin_top">36.7dp</dimen>
     <dimen name="input_layout_padding_vertical">37.2dp</dimen>
     <dimen name="_20dp">20dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
 </resources>
