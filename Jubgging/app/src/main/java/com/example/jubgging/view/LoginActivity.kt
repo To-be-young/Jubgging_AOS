@@ -26,8 +26,8 @@ class LoginActivity : AppCompatActivity() {
             if (binding.loginUserEmailEt.text.toString()
                     .isNotEmpty() && binding.loginUserPwdEt.text.toString().isNotEmpty()
             ) {
-                viewModel.login(LoginRequest(binding.loginUserEmailEt.text.toString(),
-                    binding.loginUserPwdEt.text.toString()), ::moveToMain, ::showToast)
+                viewModel.login(LoginRequest(binding.loginUserEmailEt.text.toString().trim(),
+                    binding.loginUserPwdEt.text.toString().trim()), ::moveToMain, ::showToast)
             } else {
                 showToast(2)
             }

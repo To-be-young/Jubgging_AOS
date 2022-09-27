@@ -81,18 +81,18 @@ class SignUpAuthActivity : AppCompatActivity() {
         binding.signupFinBtn.setOnClickListener {
             viewModel.signUp(signUpRequest = SignUpRequest(userId!!,
                 userPwd!!,
-                binding.signupNicknameEt.text.toString(),
-                binding.signupPnumEt.text.toString()), ::showDialog)
+                binding.signupNicknameEt.text.toString().trim(),
+                binding.signupPnumEt.text.toString().trim()), ::showDialog)
         }
 
         binding.signupOverlapChkBtn.setOnClickListener {
-            viewModel.checkNickNameOverlap(binding.signupNicknameEt.text.toString())
+            viewModel.checkNickNameOverlap(binding.signupNicknameEt.text.toString().trim())
         }
 
         //발송 버튼
         binding.signupPnumCodeSendBtn.setOnClickListener {
             //전화번호 formatting
-            phoneNumber = setPhoneNumber(binding.signupPnumEt.text.toString())
+            phoneNumber = setPhoneNumber(binding.signupPnumEt.text.toString().trim())
             //문자 전송
             viewModel.sendSMSCode(phoneNumber, this, callbacks)
             //버튼 막기
@@ -103,7 +103,7 @@ class SignUpAuthActivity : AppCompatActivity() {
         //인증확인 버튼
         binding.signupPnumAuthBtn.setOnClickListener {
             val credential = PhoneAuthProvider.getCredential(verificationId,
-                binding.signupPnumAuthEt.text.toString())
+                binding.signupPnumAuthEt.text.toString().trim())
             viewModel.verifySMSCode(credential, this)
         }
 

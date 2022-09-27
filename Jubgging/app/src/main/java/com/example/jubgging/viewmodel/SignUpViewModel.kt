@@ -339,7 +339,7 @@ class SignUpViewModel : ViewModel() {
             it.printStackTrace()
         })
     }
-    fun updateJwtToken(inputToken: String?) {
+    private fun updateJwtToken(inputToken: String?) {
         if (inputToken != null) {
             token = inputToken
         } else {

@@ -37,23 +37,23 @@ class SignUpAccountActivity : AppCompatActivity() {
         binding.signupEmailCheckBtn.setOnClickListener {
             if (viewModel.overlapFlag.value == 0) {
                 //email overlap 검사 통과 후 인증 과정
-                viewModel.sendEmailCode(EmailRequest(binding.signupEmailEt.text.toString()))
+                viewModel.sendEmailCode(EmailRequest(binding.signupEmailEt.text.toString().trim()))
             } else {
                 //email overlap 검사 통과 X
-                viewModel.checkEmailOverlap(binding.signupEmailEt.text.toString())
+                viewModel.checkEmailOverlap(binding.signupEmailEt.text.toString().trim())
             }
         }
 
         binding.signupEmailAuthBtn.setOnClickListener {
             if(binding.signupEmailAuthEt.text.isNotEmpty()){
-                viewModel.verifyEmailCode(EmailCodeAuthRequest(binding.signupEmailEt.text.toString(), binding.signupEmailAuthEt.text.toString()))
+                viewModel.verifyEmailCode(EmailCodeAuthRequest(binding.signupEmailEt.text.toString().trim(), binding.signupEmailAuthEt.text.toString().trim()))
             }
         }
 
         // 이메일 인증 완료 시 && 비밀번호와 비밀번호 확인이 같을 때 버튼 활성화
         binding.signupAccountFinBtn.setOnClickListener {
-            userEmail = binding.signupEmailEt.text.toString()
-            userPwd = binding.signupPwdEt.text.toString()
+            userEmail = binding.signupEmailEt.text.toString().trim()
+            userPwd = binding.signupPwdEt.text.toString().trim()
 
             val intent = Intent(this, SignUpAuthActivity::class.java)
             intent.putExtra("userId", userEmail)
