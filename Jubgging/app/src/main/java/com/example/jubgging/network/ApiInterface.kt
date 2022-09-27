@@ -1,5 +1,6 @@
 package com.example.jubgging.network
 
+import com.example.jubgging.model.UserInfo
 import com.example.jubgging.network.data.request.EmailCodeAuthRequest
 import com.example.jubgging.network.data.request.EmailRequest
 import com.example.jubgging.network.data.request.LoginRequest
@@ -28,9 +29,10 @@ interface ApiInterface {
     @POST("/api/sign/refreshCode")
     fun reSendEmailCode(@Body emailRequest:EmailRequest):Single<BaseResponse<Boolean>>
 
-
     @POST("api/sign/verifyCode")
     fun verifyEmailCode(@Body emailCodeAuthRequest:EmailCodeAuthRequest):Single<BaseResponse<Boolean>>
 
+    @GET("api/user/get-user-info")
+    fun getUserInfo():Single<BaseResponse<UserInfo>>
 
 }
