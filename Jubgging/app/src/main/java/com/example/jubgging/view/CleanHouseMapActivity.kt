@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -30,6 +31,7 @@ import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
+import java.util.*
 import kotlin.collections.HashMap
 
 class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
@@ -40,8 +42,11 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
     private val viewModel: CleanhouseViewModel by viewModels()
 
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
-    private var mapView: MapView? = null  //카카오맵뷰
-    private var mapViewContainer: ViewGroup? = null
+    private lateinit var mapView: MapView  //카카오맵뷰
+    private lateinit var mapViewContainer: ViewGroup
+
+    //폴리라인 관련 변수
+    private lateinit var polyline: MapPolyline
 
     //onCurrentLocationUpdate()를 통해 받아온 위도, 경도 변수
     private var mCurrentLat: Double = 0.0
@@ -50,9 +55,6 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
     //1초전의 사용자의 위치 변수
     private var beforeLat: Double = 0.0
     private var beforeLng: Double = 0.0
-
-    //폴리라인 관련 변수
-    private var polyline: MapPolyline? = null
 
     //플로깅을 시작했는지 안했는지 관련 변수
     private var plogging_start: Boolean = false
@@ -68,17 +70,132 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
     var speed: String = ""
 
     //클린하우스 범위 관련 변수
-    var cleanhouse_distance = 2
+    var cleanhouse_distance: Double = 2.0
+    var showchm: Boolean = false
 
     //클린하우스 관련 변수
-    var jsonArray: JSONArray? = null
-    var marker: Array<MapPOIItem?>? = null
+    private lateinit var jsonArray: JSONArray
+    private lateinit var marker: Array<MapPOIItem?>
 
     //마커 관련 변수
     var address_hashMap = HashMap<Int, String>()
     var time_hashMap = HashMap<Int, String>()
 
-    //ViewModel
+
+    override fun onResume() {
+        super.onResume()
+
+        //맵 초기화
+        mapView = MapView(this)
+        mapViewContainer = binding.chmMapviewCl
+        mapViewContainer.addView(mapView)
+
+        //트래킹 모드 시작
+        mapView.currentLocationTrackingMode =
+            MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+
+        //현재위치 버튼 눌렀을 때 트래킹모드 재시작
+        binding.chmMyLocationBtn.setOnClickListener {
+            mapView.currentLocationTrackingMode =
+                MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+        }
+
+        //mapView에 이벤트 등록
+        mapView.setMapViewEventListener(this)
+        mapView.setPOIItemEventListener(this)
+        mapView.setCurrentLocationEventListener(this)
+        mapView.setCalloutBalloonAdapter(CustomBalloonAdapter(layoutInflater))
+
+
+        //Polyline 등록
+        polyline = MapPolyline()
+        polyline.tag = 1000
+
+        viewModel.liveFlag.observe(this, Observer {
+            showchm = it
+        })
+
+
+//        binding.chmRadius500mBtn.setOnClickListener {
+//            mapView.removeAllPOIItems()
+//        }
+//
+//        binding.chmRadius1kmBtn.setOnClickListener {
+//            mapView.removeAllPOIItems()
+//        }
+//
+//        binding.chmRadius2kmBtn.setOnClickListener {
+//            mapView.removeAllPOIItems()
+//        }
+//
+//        binding.chmRadius3kmBtn.setOnClickListener {
+//            mapView.removeAllPOIItems()
+//        }
+//
+//        val timer = Timer()
+//
+//        val TT: TimerTask = object : TimerTask() {
+//            override fun run() {
+//                if (showchm && binding.chmRadius500mBtn.isChecked) {
+//                    cleanhouse_distance = 0.5
+//                    chm_start(cleanhouse_distance)
+//                }else if(showchm && binding.chmRadius1kmBtn.isChecked){
+//                    cleanhouse_distance = 1.0
+//                    chm_start(cleanhouse_distance)
+//                }else if(showchm && binding.chmRadius2kmBtn.isChecked){
+//                    cleanhouse_distance = 2.0
+//                    chm_start(cleanhouse_distance)
+//                }
+//                else if(showchm && binding.chmRadius3kmBtn.isChecked){
+//                    cleanhouse_distance = 3.0
+//                    chm_start(cleanhouse_distance)
+//                }
+//                else{
+//                    mapView.removeAllPOIItems()
+//                }
+//            }
+//        }
+//
+//
+//        timer.schedule(TT, 0, 10) //Timer 실행
+
+        //타이머 종료
+//        timer.cancel()
+
+        binding.chmRadiusRg.setOnCheckedChangeListener{RadioButton, isCheck ->
+            when(isCheck){
+                R.id.chm_radius_500m_btn -> cleanhouse_distance = 0.5
+                R.id.chm_radius_1km_btn -> cleanhouse_distance = 1.0
+                R.id.chm_radius_2km_btn -> cleanhouse_distance = 2.0
+                R.id.chm_radius_3km_btn -> cleanhouse_distance = 3.0
+            }
+        }
+
+        viewModel.liveFlag.observe(this, Observer {
+            if(it) {
+                chm_start(cleanhouse_distance)
+            }else{
+                mapView.removeAllPOIItems()
+            }
+        })
+
+
+
+        //클린하우스 마커 눌렀을 때 ( 클린하우스 마커 switch 이벤트 처리 )
+        binding.chmSwitchBtn.setOnClickListener {
+            viewModel.updateLiveFlag()
+        }
+
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        mapViewContainer.removeAllViews()
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCleanhouseMapBinding.inflate(layoutInflater)
 
@@ -88,9 +205,6 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
         //ViewModel
         binding.cleanhouseVm = viewModel
 
-        mapView = MapView(this)
-        mapViewContainer = binding.chmMapviewCl
-        mapViewContainer?.addView(mapView)
 
         //툴바
 //        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
@@ -107,105 +221,7 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
             // GPS가 꺼져있을 경우
             Toast.makeText(this, "GPS를 켜주세요", Toast.LENGTH_SHORT).show()
         }
-        //트래킹 모드 시작
-        mapView?.currentLocationTrackingMode =
-            MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
 
-        //현재위치 버튼 눌렀을 때 트래킹모드 재시작
-        binding.chmMyLocationBtn.setOnClickListener {
-            mapView?.currentLocationTrackingMode =
-                MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
-        }
-
-        //mapView에 이벤트 등록
-        mapView?.setMapViewEventListener(this)
-        mapView?.setPOIItemEventListener(this)
-        mapView?.setCurrentLocationEventListener(this)
-        mapView?.setCalloutBalloonAdapter(CustomBalloonAdapter(layoutInflater))
-
-
-        //Polyline 등록
-        polyline = MapPolyline()
-        polyline!!.tag = 1000
-
-        //반경 설정 버튼 관련
-        binding.chmRadius500mBtn.setOnClickListener {
-            cleanhouse_distance = 500
-        }
-
-        binding.chmRadius1kmBtn.setOnClickListener {
-            cleanhouse_distance = 1000
-        }
-
-        binding.chmRadius2kmBtn.setOnClickListener {
-            cleanhouse_distance = 2000
-        }
-
-        binding.chmRadius3kmBtn.setOnClickListener {
-            cleanhouse_distance = 30000
-        }
-
-        viewModel.liveFlag.observe(this, Observer {
-            if (it) {
-                Log.d("lhj123", "OO")
-                val thread = NetworkThread()
-                thread.start()
-                thread.join()
-
-                //클린하우스 마커 사라지면서 해시맵 초기화
-                address_hashMap.clear()
-                time_hashMap.clear()
-
-                for (i in 0 until jsonArray!!.length()) {
-                    val obj = jsonArray!!.getJSONObject(i)
-
-
-                    //클린하우스 이름 추출
-                    val location = obj.getString("location")
-                    val marker_Lat = obj.getString("latitude").toDouble()
-                    val marker_Lon = obj.getString("longitude").toDouble()
-                    val cleanhouse_address = obj.getString("address")
-                    val cleanhouse_time = obj.getString("time")
-
-                    val tempmapPoint = MapPoint.mapPointWithGeoCoord(marker_Lat, marker_Lon)
-
-                    Log.d("lhj123", "${location}")
-
-                    val distanceKiloMeter: Double = distance(
-                        marker_Lat,
-                        marker_Lon,
-                        mCurrentLat,
-                        mCurrentLng,
-                        "kilometer"
-                    )
-
-                    if (distanceKiloMeter < 2) {
-                        marker!![i] = MapPOIItem()
-
-                        marker!![i]!!.tag = i
-                        marker!![i]!!.itemName = location
-                        marker!![i]!!.mapPoint = tempmapPoint
-                        marker!![i]!!.markerType = MapPOIItem.MarkerType.CustomImage
-                        marker!![i]!!.customImageResourceId =
-                            R.drawable.plogging_cleanhouse_marker_imsi_img
-//                        marker!![i]!!.isCustomImageAutoscale = false
-//                        marker!![i]!!.setCustomImageAnchor(0.5f, 1.0f)
-                        //해시맵에 태그, 값으로 매핑
-                        address_hashMap.put(i, cleanhouse_address)
-                        time_hashMap.put(i, cleanhouse_time)
-                        mapView!!.addPOIItem(marker!![i])
-                    }
-                }
-            } else {
-                mapView!!.removeAllPOIItems()
-            }
-        })
-
-
-        //클린하우스 마커 눌렀을 때 ( 클린하우스 마커 switch 이벤트 처리 )
-        binding.chmSwitchBtn.setOnClickListener {
-            viewModel.updateLiveFlag()
-        }
     }
 
     inner class NetworkThread : Thread() {
@@ -241,7 +257,7 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
 
             //                System.out.println(data);
             jsonArray = JSONArray(data)
-            marker = arrayOfNulls(jsonArray!!.length())
+            marker = arrayOfNulls(jsonArray.length())
 
         }
 
@@ -514,5 +530,54 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
             dist = dist * 1609.344
         }
         return dist
+    }
+
+    private fun chm_start(chmDistance: Double) {
+        val thread = NetworkThread()
+        thread.start()
+        thread.join()
+
+        //클린하우스 마커 사라지면서 해시맵 초기화
+        address_hashMap.clear()
+        time_hashMap.clear()
+
+        for (i in 0 until jsonArray.length()) {
+            val obj = jsonArray.getJSONObject(i)
+
+
+            //클린하우스 이름 추출
+            val location = obj.getString("location")
+            val marker_Lat = obj.getString("latitude").toDouble()
+            val marker_Lon = obj.getString("longitude").toDouble()
+            val cleanhouse_address = obj.getString("address")
+            val cleanhouse_time = obj.getString("time")
+
+            val tempmapPoint = MapPoint.mapPointWithGeoCoord(marker_Lat, marker_Lon)
+
+            val distanceKiloMeter: Double = distance(
+                marker_Lat,
+                marker_Lon,
+                mCurrentLat,
+                mCurrentLng,
+                "kilometer"
+            )
+
+            if (distanceKiloMeter < chmDistance) {
+                marker[i] = MapPOIItem()
+
+                marker[i]!!.tag = i
+                marker[i]!!.itemName = location
+                marker[i]!!.mapPoint = tempmapPoint
+                marker[i]!!.markerType = MapPOIItem.MarkerType.CustomImage
+                marker[i]!!.customImageResourceId =
+                    R.drawable.plogging_cleanhouse_marker_imsi_img
+                //해시맵에 태그, 값으로 매핑
+                address_hashMap.put(i, cleanhouse_address)
+                time_hashMap.put(i, cleanhouse_time)
+                mapView.addPOIItem(marker[i])
+            }
+        }
+
+
     }
 }
