@@ -24,7 +24,7 @@ interface ApiInterface {
     fun plogging_req(@Body ploggingRequest : PloggingRequest) : Single<BaseResponse<PloggingResponse>>
 
     @GET("api/plogging/log_list")
-    fun plogging_res() : Single<BaseResponse<List<PloggingResponse>>>
+    fun plogging_res(@Query("page") page : Int) : Single<BaseResponse<PloggingResponse>>
 
     @GET("api/plogging/log_pathway")
     fun pathway(@Query ("recordId") recordId : Int) : Single<BaseResponse<List<PathwayResponse>>>

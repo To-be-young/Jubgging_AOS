@@ -1,11 +1,11 @@
 package com.example.jubgging.network.data.response
 
-import com.google.gson.annotations.SerializedName
+import com.example.jubgging.network.PloggingReceive
 
 data class PloggingResponse(
-    val recordId: Int,
-    val userId: String,
-    val date: String,
-    val distance: Double,
-    val activityTime: String
+    val totalPage : Int,
+    val totalElments : Int,
+    val pageSize : Int,
+    val page : Int,
+    val content : List<PloggingReceive>
 )
