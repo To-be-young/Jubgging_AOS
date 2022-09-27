@@ -6,5 +6,6 @@ data class PloggingRequest(
     val userId: String,
     val distance: Double,
     val activity_time: String,
+    val pace : String,
     val pathway: List<PloggingSend>
 )

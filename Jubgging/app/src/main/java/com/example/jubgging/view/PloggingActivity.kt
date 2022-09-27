@@ -168,6 +168,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                     "",
                     formattedTotalDistance.toDouble(),
                     userActivityTime,
+                    speed,
                     pathway = ploggingList), ::showToast)
 
             binding.ploggingDistanceContextTv.text = "0Km"
@@ -177,6 +178,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             speed = "00`00"
 
 
+            plogging_start = false
             resetTimer()
 
         }
