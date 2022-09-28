@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="220dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/login_background_drawable"
+    android:elevation="2dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="13dp">
+
+
+        <ImageView
+            android:id="@+id/item_event_iv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.87" />
+
+        <TextView
+            android:id="@+id/item_event_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.115"
+            android:layout_marginTop="15dp"
+            android:text="벚꽃엔딩 들으며 벚꽃 플로깅"
+            android:autoSizeMaxTextSize="25dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="1dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/pretendard_bold"
+            android:gravity="center_vertical|start"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/item_event_iv"
+            app:layout_constraintStart_toStartOf="@id/item_event_iv"
+            app:layout_constraintTop_toBottomOf="@id/item_event_iv"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
