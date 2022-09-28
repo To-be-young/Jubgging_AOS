@@ -1,10 +1,12 @@
 package com.example.jubgging.network
 
+import com.example.jubgging.model.CommunityGroup
 import com.example.jubgging.network.data.request.EmailCodeAuthRequest
 import com.example.jubgging.network.data.request.EmailRequest
 import com.example.jubgging.network.data.request.LoginRequest
 import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.network.data.response.BaseResponse
+import com.example.jubgging.network.data.response.CommunityListResponse
 import com.example.jubgging.network.data.response.LoginResponse
 import io.reactivex.Single
 import retrofit2.http.*
@@ -32,5 +34,7 @@ interface ApiInterface {
     @POST("api/sign/verifyCode")
     fun verifyEmailCode(@Body emailCodeAuthRequest:EmailCodeAuthRequest):Single<BaseResponse<Boolean>>
 
+    @GET("api/community/get-postList")
+    fun getCommunityList(@Query("page") page:Int):Single<BaseResponse<CommunityListResponse<List<CommunityGroup>>>>
 
 }

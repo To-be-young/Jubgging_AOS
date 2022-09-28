@@ -36,7 +36,7 @@ class CommunityGroupRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.View
 
     class CommunityGroupViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(communityGroup: CommunityGroup ) {
-            communityGroup.communityName = "제주대학교"
+            //communityGroup. = "제주대학교"
         }
     }
 }

@@ -19,10 +19,16 @@ class CommunityListActivity:AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.communityVm = viewModel
 
+        viewModel.getCommunityGroupList()
+
+
         binding.cglCreateCommunityBtn.setOnClickListener {
             //이동
             val intent = Intent(this, CommunityCreateActivity::class.java)
             startActivity(intent)
         }
+
+
+
     }
 }
