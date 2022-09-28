@@ -41,18 +41,19 @@
         </androidx.appcompat.widget.Toolbar>
 
 
-
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/community_group_list_rv"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="0dp"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cgl_tool_bar"
             app:layout_constraintWidth_percent="0.861"
-            tools:itemCount="3"
             tools:listitem="@layout/item_community_group_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

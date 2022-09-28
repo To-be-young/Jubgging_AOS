@@ -1,23 +1,23 @@
 package com.example.jubgging.viewmodel
 
-import android.annotation.SuppressLint
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.jubgging.repository.CommunityRepositoryImpl
-import io.reactivex.rxkotlin.subscribeBy
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.example.jubgging.model.CommunityGroup
+import com.example.jubgging.network.ApiClient
+import com.example.jubgging.network.ApiInterface
+import com.example.jubgging.paging.PagingRepository
 
-class CommunityViewModel : ViewModel() {
-    private val communityRepository = CommunityRepositoryImpl()
+class CommunityViewModel() : ViewModel() {
 
-    @SuppressLint("CheckResult")
-    fun getCommunityGroupList() {
-        communityRepository.getCommunityGroupList(0).subscribeBy(
-            onSuccess = {
-                Log.d("TAG", "getCommunityGroupList: ${it.data.totalElements}")
-            },
-            onError = {
-                it.printStackTrace()
-            }
-        )
+    private var currentResultLiveData: LiveData<PagingData<CommunityGroup>>? = null
+
+    fun getList(): LiveData<PagingData<CommunityGroup>> {
+        val newResultLiveData: LiveData<PagingData<CommunityGroup>> =
+            PagingRepository(ApiClient.api).getCommunities().cachedIn(viewModelScope)
+        currentResultLiveData = newResultLiveData
+        return newResultLiveData
     }
 }
