@@ -30,7 +30,6 @@ import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityInstagramShareBinding
 import com.example.jubgging.databinding.ActivityMainBinding
 import com.example.jubgging.viewmodel.InstagramShareViewModel
-import kotlinx.android.synthetic.main.activity_instagram_share.*
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -47,22 +46,21 @@ private val viewModel: InstagramShareViewModel by viewModels()
         super.onCreate(savedInstanceState)
 
         binding = ActivityInstagramShareBinding.inflate(layoutInflater)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_instagram_share)
 
 
         binding.lifecycleOwner = this
-        binding.viewModel = ViewModelProvider(this).get(InstagramShareViewModel::class.java)
+        binding.viewModel = viewModel
+        //binding.viewModel = ViewModelProvider(this).get(InstagramShareViewModel::class.java)
 
-        //setContentView(binding.root)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_instagram_share)
+        //binding = DataBindingUtil.setContentView(this, R.layout.activity_instagram_share)
 
-        //val view = binding.root
-        //initViewModel()
-        //setUpLifeCycleOwner()
+        val view = binding.root
 
         binding.openGalleryButton.setOnClickListener{ openGallery() }
 
-        //openGallery().setOnClickListener { openGallery() }
-        //openGallery_button은 쓰지 않는다. -> ignore된 것.
+        binding.saveImgBtn.setOnClickListener { imgSaveOnClick()  }
+
     }
 
     /**
@@ -126,16 +124,16 @@ private val viewModel: InstagramShareViewModel by viewModels()
 
                     var currentImageUrl: Uri? = result.data?.data
 
-                    if (Build.VERSION.SDK_INT < 28) {
+                    if (Build.VERSION.SDK_INT <= 28) {
                         val bitmap = MediaStore.Images.Media
                             .getBitmap(contentResolver, currentImageUrl)  //Deprecated
-                        iv.setImageBitmap(bitmap)
+                            binding.iv.setImageBitmap(bitmap)
+
                     }
                     else{
-                        val decode = ImageDecoder.createSource(this.contentResolver,
-                            currentImageUrl)
+                        val decode = ImageDecoder.createSource(this.contentResolver, currentImageUrl!!)
                         val bitmap = ImageDecoder.decodeBitmap(decode)
-                        iv.setImageBitmap(bitmap)
+                            binding.iv.setImageBitmap(bitmap)
                     }
 //                    try {
 //                        val bitmap =
@@ -150,7 +148,7 @@ private val viewModel: InstagramShareViewModel by viewModels()
                 Log.d("ActivityResult", "something wrong")
             }
             }
-        }
+
 
     /**
      * 뷰모델 (비트맵 -> uri)
@@ -169,8 +167,7 @@ private val viewModel: InstagramShareViewModel by viewModels()
 //        * */
 //    }
 
-    fun imgSaveOnClick(view: View) {
-
+    fun imgSaveOnClick() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val bgBitmap = drawBackgroundBitmap()
             val bgUri = saveImageAtCacheDir(bgBitmap)
@@ -191,7 +188,10 @@ private val viewModel: InstagramShareViewModel by viewModels()
             instaShare(bgUri,viewUri)
 
         }
-    }
+
+
+        }
+
 
     /**
      * 인스타 피드 공유 try
