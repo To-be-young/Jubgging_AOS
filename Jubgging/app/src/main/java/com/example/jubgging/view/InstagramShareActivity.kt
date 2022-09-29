@@ -6,6 +6,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.ImageDecoder
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
@@ -15,11 +16,18 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.jubgging.R
+import com.example.jubgging.databinding.ActivityInstagramShareBinding
 import com.example.jubgging.databinding.ActivityMainBinding
 import com.example.jubgging.viewmodel.InstagramShareViewModel
 import kotlinx.android.synthetic.main.activity_instagram_share.*
@@ -32,19 +40,29 @@ import java.lang.Exception
 
 class InstagramShareActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+private lateinit var binding: ActivityInstagramShareBinding
+private val viewModel: InstagramShareViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityInstagramShareBinding.inflate(layoutInflater)
 
-        initViewModel()
-        setUpLifeCycleOwner()
 
-        setContentView(binding.root)
+        binding.lifecycleOwner = this
+        binding.viewModel = ViewModelProvider(this).get(InstagramShareViewModel::class.java)
 
-        openGallery_button.setOnClickListener { openGallery() }
+        //setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_instagram_share)
+
+        //val view = binding.root
+        //initViewModel()
+        //setUpLifeCycleOwner()
+
+        binding.openGalleryButton.setOnClickListener{ openGallery() }
+
+        //openGallery().setOnClickListener { openGallery() }
+        //openGallery_button은 쓰지 않는다. -> ignore된 것.
     }
 
     /**
@@ -56,46 +74,100 @@ class InstagramShareActivity : AppCompatActivity() {
 
         val intent: Intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.setType("image/*")
-        startActivityForResult(intent, OPEN_GAlLERY)
+        //setResult(Activity.RESULT_OK, intent)
+        //intent.setAction(Intent.ACTION_GET_CONTENT)
+        activityLauncher.launch(intent)
+        //setResult(RESULT_OK, intent)
+        //finish()
+
+        //startActivity(intent)
+        //startActivityForResult(intent, OPEN_GAlLERY)
+        //다른 방식으로 사용하기
+        //val intent = Intent(this, )
+//        val activityLauncher: ActivityResultLauncher<String> =
+//            registerForActivityResult(ActivityResultLauncher)
     }
 
-    @Override
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    //@Override
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if(resultCode == Activity.RESULT_OK){
+//            if(requestCode == OPEN_GAlLERY){
+//
+//                var currentImageUrl : Uri? = data?.data
+//
+//                try{
+//                    val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
+//                    //setImageBitmap(bitmap)
+//                }catch (e: Exception){
+//                    e.printStackTrace()
+//                }
+//            }
+//        } else {
+//            Log.d("ActivityResult", "something wrong")
+//        }
+//    }
+    ///////////////
+//    var activityLauncher: ActivityResultLauncher<Intent?>? = registerForActivityResult(
+//        ActivityResultContracts.StartActivityForResult(),
+//        ActivityResultCallback<Any> { result ->
+//            if (result.resultCode() === RESULT_OK) {
+//                val intent: Intent = result.getData()
+//                val uri = intent.data
+//
+//            }
+//////////////////////////////////////////////////////
+    private val activityLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    //if (it.requestCode == OPEN_GAlLERY) {
 
-        if(resultCode == Activity.RESULT_OK){
-            if(requestCode == OPEN_GAlLERY){
+                    var currentImageUrl: Uri? = result.data?.data
 
-                var currentImageUrl : Uri? = data?.data
-
-                try{
-                    val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
-                    iv.setImageBitmap(bitmap)
-                }catch (e: Exception){
-                    e.printStackTrace()
-                }
+                    if (Build.VERSION.SDK_INT < 28) {
+                        val bitmap = MediaStore.Images.Media
+                            .getBitmap(contentResolver, currentImageUrl)  //Deprecated
+                        iv.setImageBitmap(bitmap)
+                    }
+                    else{
+                        val decode = ImageDecoder.createSource(this.contentResolver,
+                            currentImageUrl)
+                        val bitmap = ImageDecoder.decodeBitmap(decode)
+                        iv.setImageBitmap(bitmap)
+                    }
+//                    try {
+//                        val bitmap =
+//                            MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
+//                        //iv.setImageBitmap(bitmap)
+//                    } catch (e: Exception) {
+//                        e.printStackTrace()
+//                    }
+                //}
             }
-        } else {
-            Log.d("ActivityResult", "something wrong")
+            else {
+                Log.d("ActivityResult", "something wrong")
+            }
+            }
         }
-    }
 
     /**
      * 뷰모델 (비트맵 -> uri)
      */
-    private fun initViewModel() {
-        // 뷰모델 초기화 메서드
-        binding.viewModel = ViewModelProvider(this).get(InstagramShareViewModel::class.java)
-    }
-
-    private fun setUpLifeCycleOwner() {
-        binding.lifecycleOwner = this
-        /*
-        * LiveData에서는 LifeCycleOwner만 지정해주면
-        * invalidateAll() 메서드를호출하지 않아도
-        * DataBinding에서 ViewModel의 값 변동을 감지하고 View Update를 해준다.
-        * */
-    }
+//    private fun initViewModel() {
+//        // 뷰모델 초기화 메서드
+//        binding.viewModel = ViewModelProvider(this).get(InstagramShareViewModel::class.java)
+//    }
+//
+//    private fun setUpLifeCycleOwner() {
+//        binding.lifecycleOwner = this
+//        /*
+//        * LiveData에서는 LifeCycleOwner만 지정해주면
+//        * invalidateAll() 메서드를호출하지 않아도
+//        * DataBinding에서 ViewModel의 값 변동을 감지하고 View Update를 해준다.
+//        * */
+//    }
 
     fun imgSaveOnClick(view: View) {
 
@@ -118,27 +190,6 @@ class InstagramShareActivity : AppCompatActivity() {
             //instaShare(bgUri, viewUri)
             instaShare(bgUri,viewUri)
 
-            // Q 버전 이하일 경우. 저장소 권한을 얻어온다.
-//            val writePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//
-//            if(writePermission == PackageManager.PERMISSION_GRANTED) {
-//                val bgBitmap = drawBackgroundBitmap()
-//                val bgUri = saveImageAtCacheDir(bgBitmap)
-//
-//                val viewBitmap = drawViewBitmap()
-//                val viewUri = saveImageAtCacheDir(viewBitmap)
-//
-//                instaShare(bgUri, viewUri)
-//            } else {
-//                val requestExternalStorageCode = 1
-//
-//                val permissionStorage = arrayOf(
-//                    Manifest.permission.READ_EXTERNAL_STORAGE,
-//                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                )
-//
-//                ActivityCompat.requestPermissions(this, permissionStorage, requestExternalStorageCode)
-//            }
         }
     }
 
@@ -203,14 +254,6 @@ class InstagramShareActivity : AppCompatActivity() {
         } catch (e : ActivityNotFoundException) {
             Toast.makeText(applicationContext, "인스타그램 앱이 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
         }
-//        try{
-//            //저장해놓고 삭제한다.
-//            Thread.sleep(1000)
-//            viewUri?.let { uri -> contentResolver.delete(uri, null, null) }
-//            bgUri?.let { uri -> contentResolver.delete(uri, null, null) }
-//        } catch (e: InterruptedException) {
-//            e.printStackTrace()
-//        }
     }
 
     // 화면에 나타난 View를 Bitmap에 그릴 용도.
