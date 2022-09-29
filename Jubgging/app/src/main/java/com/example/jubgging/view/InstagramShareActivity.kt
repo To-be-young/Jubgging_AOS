@@ -48,14 +48,8 @@ private val viewModel: InstagramShareViewModel by viewModels()
         binding = ActivityInstagramShareBinding.inflate(layoutInflater)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_instagram_share)
 
-
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        //binding.viewModel = ViewModelProvider(this).get(InstagramShareViewModel::class.java)
-
-        //binding = DataBindingUtil.setContentView(this, R.layout.activity_instagram_share)
-
-        val view = binding.root
 
         binding.openGalleryButton.setOnClickListener{ openGallery() }
 
@@ -72,61 +66,19 @@ private val viewModel: InstagramShareViewModel by viewModels()
 
         val intent: Intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.setType("image/*")
-        //setResult(Activity.RESULT_OK, intent)
-        //intent.setAction(Intent.ACTION_GET_CONTENT)
         activityLauncher.launch(intent)
-        //setResult(RESULT_OK, intent)
-        //finish()
-
-        //startActivity(intent)
-        //startActivityForResult(intent, OPEN_GAlLERY)
-        //다른 방식으로 사용하기
-        //val intent = Intent(this, )
-//        val activityLauncher: ActivityResultLauncher<String> =
-//            registerForActivityResult(ActivityResultLauncher)
     }
 
-    //@Override
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if(resultCode == Activity.RESULT_OK){
-//            if(requestCode == OPEN_GAlLERY){
-//
-//                var currentImageUrl : Uri? = data?.data
-//
-//                try{
-//                    val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
-//                    //setImageBitmap(bitmap)
-//                }catch (e: Exception){
-//                    e.printStackTrace()
-//                }
-//            }
-//        } else {
-//            Log.d("ActivityResult", "something wrong")
-//        }
-//    }
-    ///////////////
-//    var activityLauncher: ActivityResultLauncher<Intent?>? = registerForActivityResult(
-//        ActivityResultContracts.StartActivityForResult(),
-//        ActivityResultCallback<Any> { result ->
-//            if (result.resultCode() === RESULT_OK) {
-//                val intent: Intent = result.getData()
-//                val uri = intent.data
-//
-//            }
-//////////////////////////////////////////////////////
     private val activityLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result ->
                 if (result.resultCode == Activity.RESULT_OK) {
-                    //if (it.requestCode == OPEN_GAlLERY) {
 
                     var currentImageUrl: Uri? = result.data?.data
 
                     if (Build.VERSION.SDK_INT <= 28) {
                         val bitmap = MediaStore.Images.Media
-                            .getBitmap(contentResolver, currentImageUrl)  //Deprecated
+                            .getBitmap(contentResolver, currentImageUrl)  //29버전 이상에서 Deprecated
                             binding.iv.setImageBitmap(bitmap)
 
                     }
@@ -135,37 +87,12 @@ private val viewModel: InstagramShareViewModel by viewModels()
                         val bitmap = ImageDecoder.decodeBitmap(decode)
                             binding.iv.setImageBitmap(bitmap)
                     }
-//                    try {
-//                        val bitmap =
-//                            MediaStore.Images.Media.getBitmap(contentResolver, currentImageUrl)
-//                        //iv.setImageBitmap(bitmap)
-//                    } catch (e: Exception) {
-//                        e.printStackTrace()
-//                    }
-                //}
             }
             else {
                 Log.d("ActivityResult", "something wrong")
             }
-            }
+        }
 
-
-    /**
-     * 뷰모델 (비트맵 -> uri)
-     */
-//    private fun initViewModel() {
-//        // 뷰모델 초기화 메서드
-//        binding.viewModel = ViewModelProvider(this).get(InstagramShareViewModel::class.java)
-//    }
-//
-//    private fun setUpLifeCycleOwner() {
-//        binding.lifecycleOwner = this
-//        /*
-//        * LiveData에서는 LifeCycleOwner만 지정해주면
-//        * invalidateAll() 메서드를호출하지 않아도
-//        * DataBinding에서 ViewModel의 값 변동을 감지하고 View Update를 해준다.
-//        * */
-//    }
 
     fun imgSaveOnClick() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -192,36 +119,6 @@ private val viewModel: InstagramShareViewModel by viewModels()
 
         }
 
-
-    /**
-     * 인스타 피드 공유 try
-     */
-//    fun instafeed(bgUri: Uri?, viewUri: Uri?) {
-//        var type = "image/*"
-//        var filename = "/myPhoto.jpg"
-//        var mediaPath = Environment.getExternalStorageDirectory().toString() + filename
-//
-//            //createInstagramIntent(type, mediaPath);
-//        //private fun createInstagramIntent(type: String, mediaPath: String) {
-//            fun createInstagramIntent(type: String, mediaPath: String) {
-//
-//            // Create the new Intent using the 'Send' action.
-//            val share = Intent(Intent.ACTION_SEND)
-//
-//            // Set the MIME type
-//            share.type = type
-//
-//            // Create the URI from the media
-//            val media = File(mediaPath)
-//            val uri = Uri.fromFile(media)
-//
-//            // Add the URI to the Intent.
-//            share.putExtra(Intent.EXTRA_STREAM, uri)
-//
-//        // Broadcast the Intent.
-//        startActivity(Intent.createChooser(share, "Share to"))
-//        }
-//    }
 
     /**
      * 인스타 스토리 공유
