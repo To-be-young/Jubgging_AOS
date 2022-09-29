@@ -10,12 +10,12 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 def kakaomapkey = properties.getProperty('kakao.api.key')
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.jubgging"
         minSdk 28
-        targetSdk 31
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -93,4 +93,7 @@ dependencies {
     //Jetpack Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
+
+    //paging
+    implementation "androidx.paging:paging-runtime:3.1.1"
 }

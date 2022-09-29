@@ -1,5 +1,6 @@
 package com.example.jubgging.network
 
+import com.example.jubgging.model.Histories
 import com.example.jubgging.network.data.request.LoginRequest
 import com.example.jubgging.network.data.request.PloggingRequest
 import com.example.jubgging.network.data.request.SignUpRequest
@@ -8,6 +9,7 @@ import com.example.jubgging.network.data.response.LoginResponse
 import com.example.jubgging.network.data.response.PathwayResponse
 import com.example.jubgging.network.data.response.PloggingResponse
 import io.reactivex.Single
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiInterface {
@@ -24,7 +26,7 @@ interface ApiInterface {
     fun plogging_req(@Body ploggingRequest : PloggingRequest) : Single<BaseResponse<PloggingResponse>>
 
     @GET("api/plogging/log_list")
-    fun plogging_res(@Query("page") page : Int) : Single<BaseResponse<PloggingResponse>>
+    suspend fun plogging_res(@Query("page") page : Int) : Response<BaseResponse<Histories>>
 
     @GET("api/plogging/log_pathway")
     fun pathway(@Query ("recordId") recordId : Int) : Single<BaseResponse<List<PathwayResponse>>>

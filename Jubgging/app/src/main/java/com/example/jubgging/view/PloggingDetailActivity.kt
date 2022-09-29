@@ -73,10 +73,11 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         //polyline 등록
         polyline = MapPolyline()
         polyline.tag = 1000
-        polyline.lineColor = Color.argb(128, 255, 51, 0)
+        polyline.lineColor = Color.argb(255, 0, 183, 134)
 
         pathwayViewMoodel.PathwayData.observe(this, Observer {
 
+            Log.d("data_size", "${pathwayViewMoodel.PathwayData.value!!.data.size}")
             //받아온 liveData를 Polyline객체에 넣어서 선 그려주기
             for(i in 0 until pathwayViewMoodel.PathwayData.value!!.data.size){
                 polyline.addPoint(MapPoint.mapPointWithGeoCoord(pathwayViewMoodel.PathwayData.value!!.data[i].latitude, pathwayViewMoodel.PathwayData.value!!.data[i].longitude))
