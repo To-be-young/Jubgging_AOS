@@ -19,7 +19,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingVertical="20dp">
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
 
             <ImageView
@@ -42,7 +43,7 @@
                 android:gravity="start|center_vertical"
                 android:text="2022.10.01"
                 android:textColor="@color/brownish_grey"
-                android:textSize="15dp"
+                android:textSize="18dp"
 
                 app:layout_constraintEnd_toStartOf="@+id/item_group_place_tv"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -59,7 +60,7 @@
                 android:gravity="center_vertical|end"
                 android:text="사계 해변"
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="@+id/item_group_iv"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/item_group_date_tv"
@@ -77,18 +78,15 @@
 
             <TextView
                 android:id="@+id/item_group_name_tv"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:autoSizeMaxTextSize="30dp"
-                android:autoSizeMinTextSize="10dp"
-                android:autoSizeStepGranularity="1dp"
-                android:autoSizeTextType="uniform"
                 android:fontFamily="@font/pretendard_bold"
                 android:gravity="center_vertical|start"
                 android:includeFontPadding="false"
                 android:text="다함께 봉그깅"
                 android:textColor="@color/black"
+                android:textSize="26dp"
                 app:layout_constraintHeight_percent="0.11"
                 app:layout_constraintStart_toStartOf="@id/item_group_date_tv"
                 app:layout_constraintTop_toBottomOf="@id/item_group_border_v"
@@ -96,11 +94,10 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/item_group_owner_cl"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
-                app:layout_constraintEnd_toEndOf="@+id/item_group_name_tv"
-                app:layout_constraintHeight_percent="0.06"
+                app:layout_constraintHeight_percent="0.07"
                 app:layout_constraintStart_toStartOf="@id/item_group_name_tv"
                 app:layout_constraintTop_toBottomOf="@id/item_group_name_tv">
 
@@ -134,24 +131,21 @@
 
                 <TextView
                     android:id="@+id/item_group_owner_name_tv"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
-                    android:autoSizeMaxTextSize="22dp"
-                    android:autoSizeMinTextSize="10dp"
-                    android:autoSizeStepGranularity="1dp"
-                    android:autoSizeTextType="uniform"
                     android:fontFamily="@font/pretendard_regular"
                     android:gravity="center_vertical|start"
                     android:includeFontPadding="false"
                     android:text="디프다 제주"
                     android:textColor="@color/black"
+                    android:textSize="18dp"
                     app:layout_constraintBottom_toBottomOf="@+id/item_group_profile_ol_cl"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/item_group_profile_ol_cl"
-                    app:layout_constraintTop_toTopOf="@+id/item_group_profile_ol_cl"
 
+                    app:layout_constraintTop_toTopOf="@+id/item_group_profile_ol_cl"
                     app:layout_goneMarginStart="5dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -168,7 +162,7 @@
                 <ImageView
                     android:id="@+id/item_group_people_iv"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_baseline_person_24"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -177,23 +171,20 @@
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.22" />
+                    app:layout_constraintWidth_percent="0.24" />
 
                 <TextView
                     android:id="@+id/item_group_people_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:autoSizeMaxTextSize="25dp"
-                    android:autoSizeMinTextSize="1dp"
-                    android:autoSizeStepGranularity="1dp"
-                    android:autoSizeTextType="uniform"
                     android:fontFamily="@font/pretendard_regular"
                     android:gravity="center_vertical|center_horizontal"
                     android:includeFontPadding="false"
                     android:text="20"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/item_group_people_iv"
                     app:layout_constraintEnd_toStartOf="@+id/item_group_people_slash_tv"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/item_group_people_iv"
@@ -202,41 +193,37 @@
 
                 <TextView
                     android:id="@+id/item_group_people_slash_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:autoSizeMaxTextSize="23dp"
-                    android:autoSizeMinTextSize="1dp"
-                    android:autoSizeStepGranularity="1dp"
-                    android:autoSizeTextType="uniform"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+
                     android:fontFamily="@font/pretendard_regular"
                     android:gravity="center_vertical|center_horizontal"
                     android:includeFontPadding="false"
                     android:text="/"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/item_group_people_tv"
                     app:layout_constraintEnd_toStartOf="@+id/item_group_people_tt_tv"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/item_group_people_tv"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/item_group_people_tv"
                     app:layout_constraintWidth_percent="0.04" />
 
                 <TextView
                     android:id="@+id/item_group_people_tt_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:autoSizeMaxTextSize="24dp"
-                    android:autoSizeMinTextSize="1dp"
-                    android:autoSizeStepGranularity="1dp"
-                    android:autoSizeTextType="uniform"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendard_regular"
                     android:gravity="center_vertical"
                     android:includeFontPadding="false"
                     android:text="30"
+                    android:layout_marginStart="2dp"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/item_group_people_slash_tv"
                     app:layout_constraintStart_toEndOf="@+id/item_group_people_slash_tv"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/item_group_people_slash_tv"
                     app:layout_constraintWidth_percent="0.2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -246,17 +233,14 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="20dp"
-                android:autoSizeMaxTextSize="30dp"
-                android:autoSizeMinTextSize="1dp"
-                android:autoSizeStepGranularity="1dp"
-                android:autoSizeTextType="uniform"
-                android:background="@drawable/login_btn_background_drawable"
+
+                android:background="@drawable/greenblue_square_btn_selector"
                 android:fontFamily="@font/pretendard_semibold"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="1.5dp"
+
                 android:stateListAnimator="@null"
                 android:text="참여하기"
                 android:textColor="@color/white"
+                android:textSize="17dp"
                 app:layout_constraintDimensionRatio="1:0.4"
                 app:layout_constraintEnd_toEndOf="@id/item_group_iv"
                 app:layout_constraintTop_toBottomOf="@id/item_group_owner_cl"

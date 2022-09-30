@@ -2,6 +2,7 @@ package com.example.jubgging.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import com.example.jubgging.R
 import com.example.jubgging.adapter.CommunityEventRecyclerViewAdapter
 import com.example.jubgging.adapter.CommunityGroupRecyclerViewAdapter
 import com.example.jubgging.databinding.FragmentCommunityBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CommunityFragment : Fragment() {
     private lateinit var binding: FragmentCommunityBinding
@@ -37,7 +40,6 @@ class CommunityFragment : Fragment() {
             val intent = Intent(requireContext(),CommunityListActivity::class.java)
             startActivity(intent)
         }
-
-
     }
+
 }
