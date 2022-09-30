@@ -1,8 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    //id 'kotlin-android-extensions'
     id 'kotlin-android'
+    //plugin 추가
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 apply plugin: 'kotlin-kapt'
 
@@ -74,7 +75,6 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
-//    implementation 'androidx.activity:activity-ktx:1.2.0-alpha08'
-//    implementation 'androidx.appcompat:appcompat:1.3.0-alpha07'
-//    implementation 'androidx.frgment:fragment-ktx:1.3.0-alpha07'
+    // library 추가
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 }
