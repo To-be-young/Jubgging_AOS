@@ -2,10 +2,7 @@ package com.example.jubgging.network
 
 import com.example.jubgging.model.Communities
 import com.example.jubgging.model.CommunityGroup
-import com.example.jubgging.network.data.request.EmailCodeAuthRequest
-import com.example.jubgging.network.data.request.EmailRequest
-import com.example.jubgging.network.data.request.LoginRequest
-import com.example.jubgging.network.data.request.SignUpRequest
+import com.example.jubgging.network.data.request.*
 import com.example.jubgging.network.data.response.BaseResponse
 import com.example.jubgging.network.data.response.CommunityListResponse
 import com.example.jubgging.network.data.response.LoginResponse
@@ -42,4 +39,6 @@ interface ApiInterface {
     @GET("api/community/get-postList")
     suspend fun getCommunityList(@Query("page") page:Int):Response<BaseResponse<Communities>>
 
+    @POST("api/community/posting")
+    fun postCommunity(@Body postCommunityRequest: PostCommunityRequest):Single<BaseResponse<CommunityGroup>>
 }

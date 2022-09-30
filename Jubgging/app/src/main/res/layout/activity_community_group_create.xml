@@ -137,7 +137,7 @@
                 android:fontFamily="@font/pretendard_semibold"
                 android:gravity="center_vertical"
                 android:includeFontPadding="false"
-                android:text="활동 조건 및 안내사항 (최대 5개)"
+                android:text="활동 조건 및 안내사항"
                 android:textColor="@color/black"
                 app:layout_constraintDimensionRatio="1:0.05"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -146,18 +146,61 @@
                 app:layout_constraintWidth_percent="0.861" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/cgc_notice_rv"
+            <EditText
+                android:id="@+id/cgc_notice_first_et"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:listitem="@layout/item_cgc_notice"
-                tools:itemCount="4"
-                android:layout_marginTop="7dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:cursorVisible="false"
+                android:elevation="2dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/pretendard_regular"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.113"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cgc_notice_tv"
+                app:layout_constraintWidth_percent="0.861" />
+
+            <EditText
+                android:id="@+id/cgc_notice_second_et"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:cursorVisible="false"
+                android:elevation="2dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/pretendard_regular"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.113"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgc_notice_first_et"
+                app:layout_constraintWidth_percent="0.861" />
+
+            <EditText
+                android:id="@+id/cgc_notice_third_et"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:cursorVisible="false"
+                android:elevation="2dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/pretendard_regular"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintDimensionRatio="1:0.113"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgc_notice_second_et"
                 app:layout_constraintWidth_percent="0.861" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -168,7 +211,7 @@
                 app:layout_constraintDimensionRatio="1:0.05"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cgc_notice_rv"
+                app:layout_constraintTop_toBottomOf="@id/cgc_notice_third_et"
                 app:layout_constraintWidth_percent="0.861">
 
                 <ImageView
@@ -197,7 +240,7 @@
                     android:fontFamily="@font/pretendard_semibold"
                     android:gravity="center_vertical"
                     android:includeFontPadding="false"
-                    android:text="집결 시간"
+                    android:text="집결 시간 (날짜, 시작 시간, 종료 시간)"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -207,44 +250,64 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <EditText
+            <TextView
                 android:id="@+id/cgc_date_tv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/white_square_et_drawable"
-                android:cursorVisible="false"
                 android:elevation="2dp"
-                android:ellipsize="end"
-                android:inputType="date"
-                android:maxLines="1"
-                android:paddingHorizontal="10dp"
-                app:layout_constraintDimensionRatio="1:0.221"
-                app:layout_constraintEnd_toStartOf="@+id/cgc_time_time_tv"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center"
+                android:text="@{communityVm.date}"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintDimensionRatio="1:0.304"
+                app:layout_constraintEnd_toStartOf="@+id/cgc_start_time_tv"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="@+id/cgc_time_cl"
                 app:layout_constraintTop_toBottomOf="@id/cgc_time_cl"
-                app:layout_constraintWidth_percent="0.439" />
+                app:layout_constraintWidth_percent="0.319" />
 
             <TextView
-                android:id="@+id/cgc_time_time_tv"
+                android:id="@+id/cgc_start_time_tv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/white_square_et_drawable"
-                android:cursorVisible="false"
                 android:elevation="2dp"
-                android:ellipsize="end"
-                android:inputType="time"
+                android:gravity="center"
                 android:maxLines="1"
+                android:text="@{communityVm.sTime}"
                 android:paddingHorizontal="10dp"
-                app:layout_constraintDimensionRatio="1:0.259"
-                app:layout_constraintEnd_toEndOf="@+id/cgc_time_cl"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cgc_date_tv"
+                app:layout_constraintEnd_toStartOf="@+id/cgc_end_time_tv"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/cgc_date_tv"
                 app:layout_constraintTop_toBottomOf="@id/cgc_time_cl"
-                app:layout_constraintWidth_percent="0.375" />
+                app:layout_constraintWidth_percent="0.214" />
+
+            <TextView
+                android:id="@+id/cgc_end_time_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:elevation="2dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:text="@{communityVm.eTime}"
+                app:layout_constraintBottom_toBottomOf="@+id/cgc_start_time_tv"
+                app:layout_constraintEnd_toEndOf="@+id/cgc_time_cl"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cgc_start_time_tv"
+                app:layout_constraintTop_toTopOf="@+id/cgc_start_time_tv"
+                app:layout_constraintWidth_percent="0.214" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cgc_place_cl"
@@ -469,12 +532,12 @@
                 android:paddingVertical="5dp"
                 android:text="생성하기"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/cgc_etc_nt_tv"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:0.13"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.507"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cgc_etc_nt_tv"
                 app:layout_constraintWidth_percent="0.861" />
 
 
