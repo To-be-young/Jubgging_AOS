@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="@dimen/_68_5dp"
+        android:height="@dimen/_46_8dp"
+        android:drawable="@drawable/ic_plogging"/>
+</layer-list>

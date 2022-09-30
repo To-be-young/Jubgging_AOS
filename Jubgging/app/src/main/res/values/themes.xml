@@ -25,18 +25,18 @@
     </style>
 
     <style name="logoTextTheme" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/nanumgothic_regular</item>
+        <item name="fontFamily">@font/pretendard_regular</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="inputTextTheme" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/nanumgothic_regular</item>
+        <item name="fontFamily">@font/pretendard_regular</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="inputEditTextTheme" parent="Widget.AppCompat.EditText">
-        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:textAlignment">textStart</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:includeFontPadding">true</item>
@@ -44,24 +44,42 @@
     </style>
 
     <style name="buttonTextTheme" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="signUpInputTextTheme" parent="Widget.AppCompat.EditText">
-        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:textSize">18sp</item>
     </style>
 
     <style name="navigationInActiveTextTheme" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="fontFamily">@font/nanumgothic_regular</item>
+        <item name="fontFamily">@font/pretendard_regular</item>
         <item name="android:textColor">@color/greyish_brown</item>
     </style>
 
     <style name="navigationActiveTextTheme" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="fontFamily">@font/nanumgothic_bold</item>
+        <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:textAppearance">@color/black</item>
+    </style>
+
+    <style name="boldBlackTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="regularBlackTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/pretendard_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="boldBlueTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textColor">@color/lightish_blue</item>
+    </style>
+    <style name="boldWhiteTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>
