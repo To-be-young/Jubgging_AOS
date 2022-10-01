@@ -3,7 +3,7 @@ package com.example.jubgging.model
 data class CommunityGroup(
     val postId: Int,
     val title: String,
-    val userId: Int,
+    val userId: String,
     val creationDate: String,
     val content: String,
     val qualification: String,

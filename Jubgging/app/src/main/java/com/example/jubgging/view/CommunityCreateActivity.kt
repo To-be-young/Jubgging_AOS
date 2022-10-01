@@ -38,11 +38,11 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
 
          binding.cgcCreateBtn.setOnClickListener {
              val title = binding.cgcNameEt.text.toString()
-             val userId = ""
+             val userId = "kangmina0204@naver.com"
              val content = binding.cgcDescEt.text.toString()
              val qualification = binding.cgcNoticeFirstEt.text.toString()
-             val gatheringTime :String = "${viewModel.date.value.toString()} ${viewModel.sTime.value.toString()}"
-             val endingTime:String = "${viewModel.date.value.toString()} ${viewModel.eTime.value.toString()}"
+             val gatheringTime :String = "${viewModel.date.value.toString()} ${viewModel.sTime.value.toString()}:00"
+             val endingTime:String = "${viewModel.date.value.toString()} ${viewModel.eTime.value.toString()}:00"
              val gatheringPlace = binding.cgcPlaceEt.text.toString()
              val capacity = binding.cgcPeopleEt.text.toString()
              var capacityInt:Int = 0
