@@ -1,6 +1,6 @@
-package com.example.jubgging.network
+package com.example.jubgging.model
 
-data class PloggingSend (
+data class PloggingRequest (
     var latitude:Double = 0.0,
     var longitude:Double =0.0,
     var time:String = ""

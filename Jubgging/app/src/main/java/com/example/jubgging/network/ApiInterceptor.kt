@@ -11,8 +11,6 @@ class ApiInterceptor:Interceptor {
 
         Log.d("X-AUTH-TOKEN",token)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY2NDI2NjIxNSwiZXhwIjo0ODE3ODY2MjE1fQ.WgDkmQqNxGR0sBkS1EqbiaZNoPWGlRZ1Se9eH2XrMTg"
-
         if(token.isNotEmpty()){
             builder.addHeader(  "X-AUTH-TOKEN", token)
         }else{
