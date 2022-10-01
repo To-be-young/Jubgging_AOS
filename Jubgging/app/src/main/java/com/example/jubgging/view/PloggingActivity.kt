@@ -10,10 +10,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.style.RelativeSizeSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -25,10 +21,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import com.example.jubgging.BuildConfig
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityPloggingBinding
-import com.example.jubgging.network.PloggingSend
+import com.example.jubgging.model.PloggingModel
 import com.example.jubgging.network.data.request.PloggingRequest
 import com.example.jubgging.viewmodel.CleanhouseViewModel
 import net.daum.mf.map.api.*
@@ -99,7 +94,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     var time_hashMap = HashMap<Int, String>()
 
     //plogging_post 데이터
-    var ploggingList : ArrayList<PloggingSend> = ArrayList<PloggingSend>()
+    var ploggingList : ArrayList<PloggingModel> = ArrayList<PloggingModel>()
     var userActivityTime : String = ""
     var index : Int = 0
     var formattedTotalDistance : String = ""
@@ -464,7 +459,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                 val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
                 val formatted = current.format(formatter)
 
-                ploggingList.add(index, PloggingSend(mCurrentLat, mCurrentLng, formatted))
+                ploggingList.add(index, PloggingModel(mCurrentLat, mCurrentLng, formatted))
 
                 index++
 
