@@ -60,7 +60,7 @@ class CommunitiesPagingAdapter :
     }
 
     fun compareDate(gatheringDate:String):Boolean{
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-ddHH:mm:ss", Locale.KOREA)
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.KOREA)
         val gatheringD:Date = simpleDateFormat.parse(gatheringDate) as Date
         val now = System.currentTimeMillis()
         val date = Date(now)

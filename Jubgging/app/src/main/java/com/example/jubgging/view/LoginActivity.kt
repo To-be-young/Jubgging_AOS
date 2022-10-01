@@ -22,6 +22,8 @@ class LoginActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.signUpVm = viewModel
 
+
+
         binding.loginFinBtn.setOnClickListener {
             if (binding.loginUserEmailEt.text.toString()
                     .isNotEmpty() && binding.loginUserPwdEt.text.toString().isNotEmpty()

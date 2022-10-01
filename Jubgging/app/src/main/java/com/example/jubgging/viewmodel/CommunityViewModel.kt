@@ -32,11 +32,15 @@ class CommunityViewModel() : ViewModel() {
     val eTime:LiveData<String>
         get() = _eTime
 
+    private var _postingSuccess = MutableLiveData<Boolean>()
+    val postingSuccess:LiveData<Boolean>
+        get() = _postingSuccess
 
     init {
         _date.value = ""
         _sTime.value = ""
         _eTime.value = ""
+        _postingSuccess.value = false
     }
     fun updateSTime(selectedSTime:String){
         _sTime.value = selectedSTime
@@ -61,10 +65,9 @@ class CommunityViewModel() : ViewModel() {
     fun postingCommunity(postCommunityRequest: PostCommunityRequest) {
         communityRepository.postCommunity(postCommunityRequest).subscribeBy(
             onSuccess = {
-                //Toast
-
-                //moveToList
-
+                _postingSuccess.value = it.success
+                Log.d("TAG", "postingCommunity: ${it.success} ")
+                Log.d("TAG", "postingCommunity: ${it.msg}")
             },
             onError = {
                 it.printStackTrace()

@@ -3,11 +3,13 @@ package com.example.jubgging.view
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -27,27 +29,67 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
         binding.lifecycleOwner = this
         binding.communityVm = viewModel
 
-        val title = binding.cgcNameTv.text.toString()
-        val userId = "asd"
-        val content = binding.cgcDescEt.toString()
-        val qualification = binding.cgcNoticeFirstEt.text.toString()
-        val gatheringTime :String = "${viewModel.date.value.toString()}+${viewModel}"
-        val endingTime:String
-        val gatheringPlace = binding.cgcPlaceEt.text.toString()
-        val capacity = binding.cgcPeopleEt.toString()
-        val etc  = binding.cgcEtcEt.text.toString()
-        val postImage = null
 
         binding.cgcDateTv.setOnClickListener (this)
         binding.cgcStartTimeTv.setOnClickListener (this)
         binding.cgcEndTimeTv.setOnClickListener (this)
 
 
-        binding.cgcCreateBtn.setOnClickListener {
-//            viewModel.postingCommunity(postCommunityRequest = PostCommunityRequest())
+
+         binding.cgcCreateBtn.setOnClickListener {
+             val title = binding.cgcNameEt.text.toString()
+             val userId = ""
+             val content = binding.cgcDescEt.text.toString()
+             val qualification = binding.cgcNoticeFirstEt.text.toString()
+             val gatheringTime :String = "${viewModel.date.value.toString()} ${viewModel.sTime.value.toString()}"
+             val endingTime:String = "${viewModel.date.value.toString()} ${viewModel.eTime.value.toString()}"
+             val gatheringPlace = binding.cgcPlaceEt.text.toString()
+             val capacity = binding.cgcPeopleEt.text.toString()
+             var capacityInt:Int = 0
+             capacityInt = try {
+                 capacity.toInt()
+             }catch (e:java.lang.NumberFormatException){
+                 Log.d("TAG", "onCreate: $capacity is Not Int")
+                 40
+             }
+             val etc  = binding.cgcEtcEt.text.toString()
+             val postImage = "null"
+
+             if(title.isNotEmpty()&&userId.isNotEmpty()&&content.isNotEmpty()&&qualification.isNotEmpty()&&binding.cgcStartTimeTv.text.isNotEmpty()&&binding.cgcStartTimeTv.text.isNotEmpty()&&gatheringPlace.isNotEmpty()&&capacity.isNotEmpty()&&etc.isNotEmpty()&&postImage.isNotEmpty()){
+                viewModel.postingCommunity(postCommunityRequest = PostCommunityRequest(title, userId,content,qualification,gatheringTime,endingTime,gatheringPlace,capacityInt,etc,postImage))
+            }else{
+                showToast("모든 칸을 채워주세요!")
+            }
         }
 
+        viewModel.postingSuccess.observe(this) {
+            if (it) {
+                showToast("성공하였습니다.")
+                moveToCommunityList()
+            }
+        }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.postingSuccess.removeObservers(this)
+    }
+
+
+    override fun onClick(p0: View?) {
+        when(p0){
+            binding.cgcDateTv ->{
+                showCalendar(this)
+            }
+            binding.cgcStartTimeTv ->{
+                showStartTimePicker(this)
+            }
+            binding.cgcEndTimeTv->{
+                showEndTimePicker(this)
+            }
+        }
+    }
+
 
     private fun showCalendar(context:Context){
         val calendar = Calendar.getInstance()
@@ -58,14 +100,14 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
         var selectedDate:String =""
         val listener =
             DatePickerDialog.OnDateSetListener { view: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
-                if(month>10 && dayOfMonth>10){
-                    selectedDate = "$year-$month-$dayOfMonth"
-                }else if(month<10 && dayOfMonth >10){
-                    selectedDate =  "$year-0$month-$dayOfMonth"
-                }else if(month>10 && dayOfMonth <10){
-                    selectedDate =  "$year-$month-0$dayOfMonth"
+                if((month + 1)>=10 && dayOfMonth>=10){
+                    selectedDate = "$year-${month + 1}-$dayOfMonth"
+                }else if((month + 1)<10 && dayOfMonth >=10){
+                    selectedDate =  "$year-0${month + 1}-$dayOfMonth"
+                }else if((month + 1)>=10 && dayOfMonth <10){
+                    selectedDate =  "$year-${month + 1}-0$dayOfMonth"
                 }else{
-                    selectedDate =  "$year-0$month-0$dayOfMonth"
+                    selectedDate =  "$year-0${month + 1}-0$dayOfMonth"
                 }
 
                 viewModel.updateDate(selectedDate)
@@ -99,6 +141,7 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
         picker.setTitle("시작 시간")
         picker.show()
     }
+
     private fun showEndTimePicker(context: Context){
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -121,18 +164,12 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
         picker.setTitle("종료 시간")
         picker.show()
     }
-
-    override fun onClick(p0: View?) {
-       when(p0){
-           binding.cgcDateTv ->{
-               showCalendar(this)
-           }
-           binding.cgcStartTimeTv ->{
-                showStartTimePicker(this)
-           }
-           binding.cgcEndTimeTv->{
-               showEndTimePicker(this)
-           }
-       }
+    private fun moveToCommunityList(){
+        val intent = Intent(this,CommunityListActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        startActivity(intent)
+    }
+    private fun showToast(msg:String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }

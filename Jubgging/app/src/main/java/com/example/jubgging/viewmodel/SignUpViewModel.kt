@@ -25,6 +25,11 @@ import java.util.concurrent.TimeUnit
 class SignUpViewModel : ViewModel() {
     private val signUpRepository = SignUpRepositoryImpl()
     private lateinit var auth: FirebaseAuth
+
+    companion object{
+        var accessToken:String = ""
+    }
+
     val overlapType:Pair<String,String> = Pair("email","nickname")
     // 중복이면 1, 통과하면 0, default -1
     private val _overlapFlag = MutableLiveData<Int>()
@@ -40,7 +45,6 @@ class SignUpViewModel : ViewModel() {
     private val _timeoutFlag = MutableLiveData<Boolean>()
     val timeoutFlag: LiveData<Boolean>
         get() = _timeoutFlag
-
 
     //인증 성공 여부 Flag
     // 실패하면 1, 통과하면 0, default -1
@@ -69,11 +73,18 @@ class SignUpViewModel : ViewModel() {
         _overlapFlag.value = -1
         _pTimeoutCount.value = 60
         _eTimeoutCount.value = 180
-
         _pTimeoutText.value = "1:00"
         _eTimeoutText.value = "3:00"
     }
 
+    private fun updateJwtToken(inputToken: String?) {
+        if (inputToken != null) {
+            accessToken = inputToken
+        } else {
+            accessToken = ""
+        }
+
+    }
 
     private fun pTimerStop() {
         if (::timerJob.isInitialized) timerJob.cancel()
@@ -321,6 +332,8 @@ class SignUpViewModel : ViewModel() {
     fun login(loginRequest: LoginRequest, moveToMain: () -> Unit, showToast: (tag: Int) -> Unit) {
         signUpRepository.login(loginRequest).subscribeBy(onSuccess = {
             if (it.code == 0) {
+                updateJwtToken(it.data.accessToken)
+
                 moveToMain().apply {
                     showToast(0)
                 }
