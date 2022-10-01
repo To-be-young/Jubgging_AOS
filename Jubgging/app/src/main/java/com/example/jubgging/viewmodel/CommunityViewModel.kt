@@ -21,20 +21,48 @@ class CommunityViewModel() : ViewModel() {
     private var currentResultLiveData: LiveData<PagingData<CommunityGroup>>? = null
 
     private var _date = MutableLiveData<String>()
-    val date:LiveData<String>
-    get() = _date
+    val date: LiveData<String>
+        get() = _date
 
     private var _sTime = MutableLiveData<String>()
-    val sTime:LiveData<String>
+    val sTime: LiveData<String>
         get() = _sTime
 
     private var _eTime = MutableLiveData<String>()
-    val eTime:LiveData<String>
+    val eTime: LiveData<String>
         get() = _eTime
 
     private var _postingSuccess = MutableLiveData<Boolean>()
-    val postingSuccess:LiveData<Boolean>
+    val postingSuccess: LiveData<Boolean>
         get() = _postingSuccess
+
+    private var _communityTitle = MutableLiveData<String>()
+    val communityTitle: LiveData<String>
+        get() = _communityTitle
+
+    private var _communityDesc = MutableLiveData<String>()
+    val communityDesc: LiveData<String>
+        get() = _communityDesc
+
+    private var _communityNotice = MutableLiveData<String>()
+    val communityNotice: LiveData<String>
+        get() = _communityNotice
+
+    private var _communityPlace = MutableLiveData<String>()
+    val communityPlace: LiveData<String>
+        get() = _communityPlace
+
+    private var _communityCapacity = MutableLiveData<Int>()
+    val communityCapacity: LiveData<Int>
+        get() = _communityCapacity
+
+    private var _communityParticipant = MutableLiveData<Int>()
+    val communityParticipant: LiveData<Int>
+        get() = _communityParticipant
+
+    private var _communityEtc = MutableLiveData<String>()
+    val communityEtc: LiveData<String>
+        get() = _communityEtc
 
     init {
         _date.value = ""
@@ -42,14 +70,16 @@ class CommunityViewModel() : ViewModel() {
         _eTime.value = ""
         _postingSuccess.value = false
     }
-    fun updateSTime(selectedSTime:String){
+
+    fun updateSTime(selectedSTime: String) {
         _sTime.value = selectedSTime
     }
-    fun updateETime(selectedETime:String){
+
+    fun updateETime(selectedETime: String) {
         _eTime.value = selectedETime
     }
 
-    fun updateDate(selectedDate:String){
+    fun updateDate(selectedDate: String) {
         _date.value = selectedDate
         Log.d("TAG", "updateDate: ${_date.value} ")
     }
@@ -74,4 +104,33 @@ class CommunityViewModel() : ViewModel() {
             }
         )
     }
+
+    @SuppressLint("CheckResult")
+    fun getCommunityDetail(postId: Int) {
+        communityRepository.getCommunityDetail(postId)
+            .subscribeBy(
+                onSuccess = {
+                  if(it.success){
+                      _communityTitle.value = it.data.title
+                      Log.d("TAG", "getCommunityDetail: ${it.data.title}")
+                      _communityDesc.value = it.data.content
+                      _communityNotice.value = it.data.qualification
+                      _communityCapacity.value = it.data.capacity
+                      _communityParticipant.value = it.data.participant
+                      _communityPlace.value = it.data.gatheringPlace
+                      _communityEtc.value = it.data.etc
+
+
+
+
+                  }else{
+                      Log.d("TAG", "getCommunityDetail: ${it.msg}")
+                  }
+            },
+                onError = {
+                it.printStackTrace()
+            })
+    }
+
+
 }

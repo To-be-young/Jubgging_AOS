@@ -9,9 +9,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 
 interface CommunityRepository {
     fun  postCommunity(postCommunityRequest: PostCommunityRequest):Single<BaseResponse<CommunityGroup>>
+    fun getCommunityDetail(postId:Int):Single<BaseResponse<CommunityGroup>>
+
 }
 class CommunityRepositoryImpl:CommunityRepository{
     override fun postCommunity(postCommunityRequest: PostCommunityRequest): Single<BaseResponse<CommunityGroup>> {
         return ApiClient.api.postCommunity(postCommunityRequest).subscribeOn(io.reactivex.schedulers.Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).map { it }
+    }
+
+    override fun getCommunityDetail(postId: Int): Single<BaseResponse<CommunityGroup>> {
+        return ApiClient.api.getCommunityDetail(postId).subscribeOn(io.reactivex.schedulers.Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).map { it }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.jubgging.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -8,14 +9,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ItemCommunityGroupListBinding
 import com.example.jubgging.model.CommunityGroup
+import com.example.jubgging.view.CommunityDetailActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
 class CommunitiesPagingAdapter :
     PagingDataAdapter<CommunityGroup, CommunitiesPagingAdapter.CommunitiesViewHolder>(
         CommunitiesDiffCallback()) {
+
     override fun onBindViewHolder(holder: CommunitiesViewHolder, position: Int) {
         val data = getItem(position)
+        holder.binding.itemGroupJoinBtn.setOnClickListener { v ->
+            val intent = Intent(v.context,CommunityDetailActivity::class.java)
+            intent.putExtra("postId",data?.postId)
+            v.context?.startActivity(intent)
+        }
+
         holder.bind(data)
     }
 
@@ -25,7 +34,7 @@ class CommunitiesPagingAdapter :
     }
 
     inner class CommunitiesViewHolder(
-        private val binding: ItemCommunityGroupListBinding,
+        val binding: ItemCommunityGroupListBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: CommunityGroup?) {
             binding.itemGroupDateTv.text = setDateText(data?.gatheringTime.toString())
@@ -46,6 +55,7 @@ class CommunitiesPagingAdapter :
                 binding.itemGroupJoinBtn.text = "모집 중"
             }
         }
+
     }
 
     private class CommunitiesDiffCallback : DiffUtil.ItemCallback<CommunityGroup>() {

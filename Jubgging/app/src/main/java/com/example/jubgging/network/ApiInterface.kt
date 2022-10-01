@@ -41,4 +41,7 @@ interface ApiInterface {
 
     @POST("api/community/posting")
     fun postCommunity(@Body postCommunityRequest: PostCommunityRequest):Single<BaseResponse<CommunityGroup>>
+
+    @GET("api/community/get-post")
+    fun getCommunityDetail(@Query("postId") postId:Int):Single<BaseResponse<CommunityGroup>>
 }

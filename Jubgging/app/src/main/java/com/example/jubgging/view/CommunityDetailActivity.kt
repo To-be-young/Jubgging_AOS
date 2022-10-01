@@ -19,6 +19,10 @@ class CommunityDetailActivity:AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.communityVm = viewModel
 
+        val postId = intent.getIntExtra("postId",0)
+        viewModel.getCommunityDetail(postId)
+        //시간 자르기
+
         binding.cgdJoinBtn.setOnClickListener {
             val intent = Intent(this,CommunityJoinActivity::class.java)
             startActivity(intent)
