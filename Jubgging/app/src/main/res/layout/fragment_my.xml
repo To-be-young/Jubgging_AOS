@@ -49,7 +49,7 @@
                         app:layout_constraintWidth_percent="0.26" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/home_user_profile_cl"
+                        android:id="@+id/my_user_profile_cl"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="25dp"
@@ -57,7 +57,7 @@
                         android:background="@drawable/login_background_drawable"
                         android:elevation="2dp"
                         app:layout_constraintDimensionRatio="1:1.271"
-                        app:layout_constraintEnd_toStartOf="@+id/home_user_do_history_cl"
+                        app:layout_constraintEnd_toStartOf="@+id/my_user_do_history_cl"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
                         app:layout_constraintStart_toStartOf="parent"
@@ -65,12 +65,12 @@
                         app:layout_constraintWidth_percent="0.287">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/home_user_profile_ol_cl"
+                            android:id="@+id/my_user_profile_ol_cl"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginHorizontal="@dimen/_21dp"
                             android:background="@drawable/user_profile_outline_drawable"
-                            app:layout_constraintBottom_toTopOf="@+id/home_user_name_cl"
+                            app:layout_constraintBottom_toTopOf="@+id/my_user_name_cl"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
@@ -80,7 +80,7 @@
                             app:layout_constraintWidth_percent="0.708">
 
                             <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/home_user_profile_iv"
+                                android:id="@+id/my_user_profile_iv"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="@dimen/_3dp"
@@ -95,7 +95,7 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/home_user_name_cl"
+                            android:id="@+id/my_user_name_cl"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginHorizontal="@dimen/_17dp"
@@ -105,11 +105,11 @@
                             app:layout_constraintHeight_percent="0.129"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/home_user_profile_ol_cl"
+                            app:layout_constraintTop_toBottomOf="@+id/my_user_profile_ol_cl"
                             app:layout_constraintWidth_percent="0.379">
 
                             <TextView
-                                android:id="@+id/home_user_name_tv"
+                                android:id="@+id/my_user_name_tv"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:autoSizeMaxTextSize="100dp"
@@ -123,14 +123,14 @@
                                 android:textColor="@color/black"
                                 app:layout_constraintBottom_toBottomOf="parent"
 
-                                app:layout_constraintEnd_toStartOf="@+id/home_user_name_tt_tv"
+                                app:layout_constraintEnd_toStartOf="@+id/my_user_name_tt_tv"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintWidth_percent="0.718" />
 
                             <TextView
-                                android:id="@+id/home_user_name_tt_tv"
+                                android:id="@+id/my_user_name_tt_tv"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_marginStart="@dimen/_2dp"
@@ -145,11 +145,11 @@
                                 android:minHeight="@dimen/_3dp"
                                 android:text="님"
                                 android:textColor="@color/black"
-                                app:layout_constraintBottom_toBottomOf="@+id/home_user_name_tv"
+                                app:layout_constraintBottom_toBottomOf="@+id/my_user_name_tv"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHeight_percent="0.647"
                                 app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toEndOf="@+id/home_user_name_tv"
+                                app:layout_constraintStart_toEndOf="@+id/my_user_name_tv"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintWidth_percent="0.231" />
 
@@ -160,7 +160,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/home_user_do_history_cl"
+                        android:id="@+id/my_user_do_history_cl"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginTop="@dimen/_30dp"
@@ -172,7 +172,7 @@
                         app:layout_constraintDimensionRatio="1:0.704"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/home_user_profile_cl"
+                        app:layout_constraintStart_toEndOf="@+id/my_user_profile_cl"
                         app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
                         app:layout_constraintWidth_percent="0.517">
 
@@ -190,11 +190,11 @@
                             app:layout_constraintTop_toTopOf="parent"/>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/home_user_distance_total_cl"
+                            android:id="@+id/my_user_distance_total_cl"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/home_user_time_total_cl"
+                            app:layout_constraintEnd_toStartOf="@+id/my_user_time_total_cl"
                             app:layout_constraintHeight_percent="0.5"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintHorizontal_chainStyle="spread"
@@ -202,10 +202,10 @@
                             app:layout_constraintWidth_percent="0.306">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/home_user_distance_tt_cl"
+                                android:id="@+id/my_user_distance_tt_cl"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                app:layout_constraintBottom_toTopOf="@+id/home_user_distance_cl"
+                                app:layout_constraintBottom_toTopOf="@+id/my_user_distance_cl"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHeight_percent="0.25"
                                 app:layout_constraintHorizontal_bias="0.5"
@@ -214,20 +214,20 @@
                                 app:layout_constraintVertical_chainStyle="spread_inside">
 
                                 <ImageView
-                                    android:id="@+id/home_user_distance_tt_iv"
+                                    android:id="@+id/my_user_distance_tt_iv"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/icon_thumb_up_drawable"
                                     app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toStartOf="@+id/home_user_distance_tt_tv"
+                                    app:layout_constraintEnd_toStartOf="@+id/my_user_distance_tt_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/home_user_distance_tt_tv"
+                                    android:id="@+id/my_user_distance_tt_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:autoSizeMaxTextSize="20dp"
@@ -242,13 +242,13 @@
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.5"
-                                    app:layout_constraintStart_toEndOf="@+id/home_user_distance_tt_iv"
+                                    app:layout_constraintStart_toEndOf="@+id/my_user_distance_tt_iv"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintVertical_bias="0.0" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/home_user_distance_cl"
+                                android:id="@+id/my_user_distance_cl"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginTop="@dimen/_13dp"
@@ -256,11 +256,11 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHeight_percent="0.5"
                                 app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="@+id/home_user_distance_tt_cl"
-                                app:layout_constraintTop_toBottomOf="@+id/home_user_distance_tt_cl">
+                                app:layout_constraintStart_toStartOf="@+id/my_user_distance_tt_cl"
+                                app:layout_constraintTop_toBottomOf="@+id/my_user_distance_tt_cl">
 
                                 <TextView
-                                    android:id="@+id/home_user_distance_tv"
+                                    android:id="@+id/my_user_distance_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:autoSizeMaxTextSize="30dp"
@@ -272,8 +272,8 @@
                                     android:gravity="end|center"
                                     android:theme="@style/boldBlueTextTheme"
 
-                                    app:layout_constraintBottom_toBottomOf="@+id/home_user_distance_unit_tv"
-                                    app:layout_constraintEnd_toStartOf="@+id/home_user_distance_unit_tv"
+                                    app:layout_constraintBottom_toBottomOf="@+id/my_user_distance_unit_tv"
+                                    app:layout_constraintEnd_toStartOf="@+id/my_user_distance_unit_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -281,7 +281,7 @@
                                     app:layout_constraintWidth_percent="0.65" />
 
                                 <TextView
-                                    android:id="@+id/home_user_distance_unit_tv"
+                                    android:id="@+id/my_user_distance_unit_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:autoSizeMaxTextSize="20dp"
@@ -298,7 +298,7 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHeight_percent="0.5"
                                     app:layout_constraintHorizontal_bias="0.5"
-                                    app:layout_constraintStart_toEndOf="@+id/home_user_distance_tv" />
+                                    app:layout_constraintStart_toEndOf="@+id/my_user_distance_tv" />
 
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -307,21 +307,21 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/home_user_time_total_cl"
+                            android:id="@+id/my_user_time_total_cl"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/home_user_distance_total_cl"
+                            app:layout_constraintStart_toEndOf="@+id/my_user_distance_total_cl"
                             app:layout_constraintHeight_percent="0.5"
                             app:layout_constraintHorizontal_chainStyle="spread"
                             app:layout_constraintWidth_percent="0.306">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/home_user_time_tt_cl"
+                                android:id="@+id/my_user_time_tt_cl"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                app:layout_constraintBottom_toTopOf="@+id/home_user_time_cl"
+                                app:layout_constraintBottom_toTopOf="@+id/my_user_time_cl"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHeight_percent="0.25"
                                 app:layout_constraintHorizontal_bias="0.5"
@@ -330,20 +330,20 @@
                                 app:layout_constraintVertical_chainStyle="spread_inside">
 
                                 <ImageView
-                                    android:id="@+id/home_user_time_tt_iv"
+                                    android:id="@+id/my_user_time_tt_iv"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/icon_more_time_drawable"
                                     app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toStartOf="@+id/home_user_time_tt_tv"
+                                    app:layout_constraintEnd_toStartOf="@+id/my_user_time_tt_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/home_user_time_tt_tv"
+                                    android:id="@+id/my_user_time_tt_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:autoSizeMaxTextSize="20dp"
@@ -357,25 +357,25 @@
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.5"
-                                    app:layout_constraintStart_toEndOf="@+id/home_user_time_tt_iv"
+                                    app:layout_constraintStart_toEndOf="@+id/my_user_time_tt_iv"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintWidth_percent="0.78" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/home_user_time_cl"
+                                android:id="@+id/my_user_time_cl"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginTop="@dimen/_13dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="@+id/home_user_time_tt_cl"
+                                app:layout_constraintEnd_toEndOf="@+id/my_user_time_tt_cl"
                                 app:layout_constraintHeight_percent="0.5"
                                 app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="@+id/home_user_time_tt_cl"
-                                app:layout_constraintTop_toBottomOf="@+id/home_user_time_tt_cl">
+                                app:layout_constraintStart_toStartOf="@+id/my_user_time_tt_cl"
+                                app:layout_constraintTop_toBottomOf="@+id/my_user_time_tt_cl">
 
                                 <TextView
-                                    android:id="@+id/home_user_time_tv"
+                                    android:id="@+id/my_user_time_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:autoSizeMaxTextSize="30dp"
@@ -388,14 +388,14 @@
                                     android:theme="@style/boldBlueTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintDimensionRatio="1:0.64"
-                                    app:layout_constraintEnd_toStartOf="@+id/home_user_time_unit_tv"
+                                    app:layout_constraintEnd_toStartOf="@+id/my_user_time_unit_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/home_user_time_unit_tv"
+                                    android:id="@+id/my_user_time_unit_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:autoSizeMaxTextSize="20dp"
@@ -411,7 +411,7 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHeight_percent="0.5"
                                     app:layout_constraintHorizontal_bias="0.5"
-                                    app:layout_constraintStart_toEndOf="@+id/home_user_time_tv" />
+                                    app:layout_constraintStart_toEndOf="@+id/my_user_time_tv" />
 
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -427,8 +427,8 @@
                         android:background="@drawable/login_btn_background_drawable"
                         android:elevation="2dp"
                         app:layout_constraintHeight_percent="0.19"
-                        app:layout_constraintStart_toStartOf="@+id/home_user_profile_cl"
-                        app:layout_constraintTop_toBottomOf="@+id/home_user_profile_cl"
+                        app:layout_constraintStart_toStartOf="@+id/my_user_profile_cl"
+                        app:layout_constraintTop_toBottomOf="@+id/my_user_profile_cl"
                         app:layout_constraintWidth_percent="0.412">
 
                         <TextView
@@ -472,7 +472,7 @@
                         android:layout_height="0dp"
                         android:background="@drawable/login_background_drawable"
                         android:elevation="2dp"
-                        app:layout_constraintEnd_toEndOf="@+id/home_user_do_history_cl"
+                        app:layout_constraintEnd_toEndOf="@+id/my_user_do_history_cl"
                         app:layout_constraintHeight_percent="0.067"
                         app:layout_constraintTop_toTopOf="@+id/my_plogging_list_cl"
                         app:layout_constraintWidth_percent="0.412">

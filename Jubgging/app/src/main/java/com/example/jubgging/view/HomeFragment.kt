@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.jubgging.R
 import com.example.jubgging.databinding.FragmentHomeBinding
-import com.example.jubgging.viewmodel.SignUpViewModel.Companion.token
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -26,6 +25,5 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("TAG", "onCreate: $token")
     }
 }

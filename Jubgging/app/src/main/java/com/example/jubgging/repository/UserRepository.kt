@@ -2,6 +2,7 @@ package com.example.jubgging.repository
 
 import com.example.jubgging.model.UserInfo
 import com.example.jubgging.network.ApiClient
+import com.example.jubgging.network.data.response.BaseResponse
 import com.example.jubgging.network.data.response.UserNicknameEmailResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers

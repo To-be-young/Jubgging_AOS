@@ -26,10 +26,10 @@ class MyFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.myInfoBtn.setOnClickListener {
-//            val intent = Intent(requireContext(),UserProfileActivity::class.java)
-//            startActivity(intent)
-//        }
+        binding.myUserProfileCl.setOnClickListener {
+            val intent = Intent(requireContext(),UserProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
