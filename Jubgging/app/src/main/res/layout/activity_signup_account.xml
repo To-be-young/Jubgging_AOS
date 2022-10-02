@@ -15,9 +15,15 @@
             type="com.example.jubgging.viewmodel.SignUpViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/light_grey">
 
 
@@ -76,7 +82,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
-                        android:fontFamily="@font/nanumgothic_regular"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:includeFontPadding="false"
+                        android:textSize="15dp"
                         android:minWidth="@dimen/_3dp"
                         android:text="@string/login_email"
                         android:textColor="@color/black"
@@ -92,7 +100,7 @@
                         style="@style/inputEditTextTheme"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textSize="16dp"
+                        android:includeFontPadding="false"
                         android:inputType="textEmailAddress"
                         app:layout_constraintBottom_toTopOf="@+id/signup_email_nt_tv"
                         app:layout_constraintEnd_toStartOf="@+id/signup_email_check_btn"
@@ -103,14 +111,14 @@
 
                     <TextView
                         android:id="@+id/signup_email_nt_tv"
+                        setEOverlapBtn="@{signupEmailCheckBtn}"
+                        setEOverlapFlag="@{signUpVm.EOverlapFlag}"
+                        setEmailEt="@{signupEmailEt}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:textSize="11dp"
-                        setUserInputEt="@{signupEmailEt}"
-                        setOverlapBtn="@{signupEmailCheckBtn}"
-                        setOverlapType="@{signUpVm.overlapType.first}"
-                        setOverlapFlag="@{signUpVm.overlapFlag}"
+                        android:fontFamily="@font/pretendard_regular"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -119,23 +127,23 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/signup_email_check_btn"
-                        setEmailText="@{signupEmailEt.text.toString()}"
-                        setEmailNtTv="@{signupEmailNtTv}"
-
                         setCodeEt="@{signupEmailAuthEt}"
-                        setUserInputEt="@{signupEmailEt}"
                         setCodeSentFlag="@{signUpVm.codeSentFlag}"
+
+                        setEmailNtTv="@{signupEmailNtTv}"
+                        setEmailText="@{signupEmailEt.text.toString()}"
+                        setUserInputEt="@{signupEmailEt}"
 
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="13dp"
+                        android:autoSizeMaxTextSize="15dp"
                         android:autoSizeMinTextSize="@dimen/_3dp"
 
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
                         android:background="@drawable/round_btn_enable_selector"
                         android:enabled="false"
-                        android:fontFamily="@font/nanumgothic_bold"
+                        android:fontFamily="@font/pretendard_semibold"
 
 
                         android:minWidth="20dp"
@@ -156,10 +164,10 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/signup_email_auth_cl"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8dp"
-                    app:layout_constraintBottom_toTopOf="@+id/signup_pwd_cl"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/signup_nickname_cl"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -171,11 +179,13 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
 
-                        android:fontFamily="@font/nanumgothic_regular"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:includeFontPadding="false"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
                         android:minWidth="@dimen/_3dp"
                         android:text="@string/signup_second_authenfication_tx"
 
-                        android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/signup_email_auth_et"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -186,14 +196,14 @@
                     <EditText
                         android:id="@+id/signup_email_auth_et"
                         style="@style/inputEditTextTheme"
-                        android:layout_width="0dp"
                         setCodeAuthBtn="@{signupEmailAuthBtn}"
-                        setPassAuthFlag="@{signUpVm.passAuthFlag}"
                         setCodeNtTv="@{signupEmailAuthNtTv}"
+                        setPassAuthFlag="@{signUpVm.emailPassFlag}"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
                         android:inputType="number"
                         android:maxLength="6"
-                        android:textSize="16dp"
                         app:layout_constraintBottom_toTopOf="@+id/signup_email_auth_nt_tv"
                         app:layout_constraintEnd_toStartOf="@+id/signup_email_auth_btn"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -207,6 +217,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:textSize="11dp"
+                        android:fontFamily="@font/pretendard_regular"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -214,21 +225,21 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/signup_email_auth_btn"
-                        setCodeSentBtn="@{signupEmailCheckBtn}"
-                        setCodeEt="@{signupEmailAuthEt}"
-                        setCodeSentFlag="@{signUpVm.codeSentFlag}"
                         setAuthNtTv="@{signupEmailAuthNtTv}"
+                        setCodeEt="@{signupEmailAuthEt}"
+                        setCodeSentBtn="@{signupEmailCheckBtn}"
+                        setCodeSentFlag="@{signUpVm.codeSentFlag}"
                         setTimeoutFlag="@{signUpVm.timeoutFlag}"
                         android:layout_width="0dp"
 
                         android:layout_height="0dp"
-                        android:autoSizeMaxTextSize="13dp"
+                        android:autoSizeMaxTextSize="15dp"
                         android:autoSizeMinTextSize="@dimen/_3dp"
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
                         android:background="@drawable/round_btn_enable_selector"
                         android:enabled="false"
-                        android:fontFamily="@font/nanumgothic_bold"
+                        android:fontFamily="@font/pretendard_semibold"
                         android:minWidth="20dp"
                         android:minHeight="10dp"
                         android:paddingHorizontal="@dimen/_16dp"
@@ -268,15 +279,107 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/signup_pwd_cl"
-                    android:layout_width="match_parent"
+                    android:id="@+id/signup_nickname_cl"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/signup_pwd_cl"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signup_email_auth_cl"
+                    app:layout_constraintVertical_chainStyle="spread_inside">
+
+
+                    <TextView
+                        android:id="@+id/signup_nickname_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:minWidth="@dimen/_3dp"
+                        android:text="@string/signup_user_nickname"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:includeFontPadding="false"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_nickname_et"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/signup_nickname_et"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <EditText
+                        android:id="@+id/signup_nickname_et"
+                        style="@style/inputEditTextTheme"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toTopOf="@+id/signup_nickname_nt_tv"
+                        app:layout_constraintEnd_toStartOf="@+id/signup_overlap_chk_btn"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_nickname_tv"
+                        app:layout_constraintWidth_percent="0.81" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/signup_overlap_chk_btn"
+                        setInputNickname="@{signupNicknameEt.text.toString()}"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:autoSizeMaxTextSize="15dp"
+                        android:autoSizeMinTextSize="@dimen/_3dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:background="@drawable/round_btn_enable_selector"
+                        android:enabled="false"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:minWidth="20dp"
+                        android:minHeight="10dp"
+                        android:paddingHorizontal="@dimen/_19_5dp"
+                        android:paddingVertical="@dimen/_8dp"
+                        android:stateListAnimator="@null"
+                        android:text="중복"
+
+                        android:textColor="@color/brownish_grey"
+                        app:layout_constraintBottom_toBottomOf="@+id/signup_nickname_et"
+                        app:layout_constraintDimensionRatio="1:0.473"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.573"
+                        app:layout_constraintStart_toEndOf="@+id/signup_nickname_et"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_nickname_tv"
+                        app:layout_constraintWidth_percent="0.211" />
+
+                    <TextView
+                        android:id="@+id/signup_nickname_nt_tv"
+                        setNOverlapBtn="@{signupOverlapChkBtn}"
+                        setNOverlapFlag="@{signUpVm.NOverlapFlag}"
+                        setNicknameEt="@{signupNicknameEt}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textSize="11dp"
+                        android:fontFamily="@font/pretendard_regular"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/signup_nickname_et" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/signup_pwd_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     app:layout_constraintBottom_toTopOf="@+id/signup_pwd_chk_cl"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signup_email_auth_cl">
+                    app:layout_constraintTop_toBottomOf="@+id/signup_nickname_cl">
 
 
                     <TextView
@@ -285,11 +388,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
 
-                        android:fontFamily="@font/nanumgothic_regular"
-                        android:minWidth="@dimen/_3dp"
-
+                        android:fontFamily="@font/pretendard_regular"
+                        android:includeFontPadding="false"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"                        android:minWidth="@dimen/_3dp"
                         android:text="비밀번호"
-                        android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/signup_pwd_et"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -302,8 +405,8 @@
                         style="@style/inputEditTextTheme"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint=""
-                        android:textSize="16dp"
+                        android:includeFontPadding="false"
+                        android:inputType="textPassword"
 
                         app:layout_constraintBottom_toTopOf="@+id/signup_pwd_nt_tv"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -317,6 +420,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="11dp"
+                        android:fontFamily="@font/pretendard_regular"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -327,7 +431,7 @@
                     android:id="@+id/signup_pwd_chk_cl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8dp"
+                    android:layout_marginTop="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -340,10 +444,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
-                        android:fontFamily="@font/nanumgothic_regular"
-                        android:minWidth="@dimen/_3dp"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:includeFontPadding="false"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"                        android:minWidth="@dimen/_3dp"
                         android:text="@string/signup_pwd_chk"
-                        android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/signup_pwd_chk_et"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -353,11 +458,13 @@
 
                     <EditText
                         android:id="@+id/signup_pwd_chk_et"
+                        style="@style/inputEditTextTheme"
                         tyle="@style/inputEditTextTheme"
+                        android:inputType="textPassword"
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint=""
-                        android:textSize="16dp"
+                        android:includeFontPadding="false"
                         app:layout_constraintBottom_toTopOf="@+id/signup_pwd_chk_nt_tv"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -366,12 +473,13 @@
 
                     <TextView
                         android:id="@+id/signup_pwd_chk_nt_tv"
+                        setPwdChkText="@{signupPwdChkEt.text.toString()}"
+                        setPwdText="@{signupPwdEt.text.toString()}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:textSize="11dp"
-                        setPwdText="@{signupPwdEt.text.toString()}"
-                        setPwdChkText="@{signupPwdChkEt.text.toString()}"
+                        android:fontFamily="@font/pretendard_regular"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -383,31 +491,31 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signup_account_fin_btn"
-            setEmailAuthFlag="@{signUpVm.passAuthFlag}"
+            setEmailAuthFlag="@{signUpVm.emailPassFlag}"
             setPwdChkText="@{signupPwdChkEt.text.toString()}"
             setPwdText="@{signupPwdEt.text.toString()}"
+            setNicknameFlag="@{signUpVm.NOverlapFlag}"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/_40dp"
             android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginBottom="@dimen/_40dp"
             android:background="@drawable/square_btn_enable_selector"
             android:elevation="2dp"
+            android:gravity="center"
             android:enabled="false"
-
-            android:fontFamily="@font/nanumgothic_bold"
-
+            android:fontFamily="@font/pretendard_semibold"
             android:paddingVertical="@dimen/_12dp"
-            android:text="@string/signup_first_fin_btn"
+            android:text="@string/signup_finish_btn"
             android:textColor="@color/brownish_grey"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:0.126"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signup_user_input_cl"
             app:layout_constraintWidth_percent="0.861" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

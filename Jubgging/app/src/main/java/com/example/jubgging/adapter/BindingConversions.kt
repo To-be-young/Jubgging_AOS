@@ -38,7 +38,6 @@ object BindingConversions {
     }
 
 
-
     //pwd null, regex 확인 -> noticeTv에 상태 출력
     @JvmStatic
     @BindingAdapter("setPwdRegex")
@@ -77,15 +76,16 @@ object BindingConversions {
     }
 
     @JvmStatic
-    @BindingAdapter("setPwdText", "setPwdChkText", "setEmailAuthFlag")
+    @BindingAdapter("setPwdText", "setPwdChkText","setEmailAuthFlag","setNicknameFlag")
     fun setAccountFinBtnEnable(
         accountFinBtn: Button,
         userPwd: String,
         userPwdChk: String,
         emailAuthFlag: Int,
+        nicknameFlag:Int
     ) {
         //emailAuthFlag => email 인증이 성공했는지 여부
-        if (emailAuthFlag == 0) {
+        if (emailAuthFlag == 0 &&nicknameFlag == 0) {
             //email 인증 성공
             if (userPwd.isNotEmpty() && userPwdChk.isNotEmpty()) {
                 //pwd, pwdChk is not null, match Regex
@@ -100,13 +100,14 @@ object BindingConversions {
                 accountFinBtn.isEnabled = false
                 accountFinBtn.setTextColor(accountFinBtn.context.getColor(R.color.brownish_grey))
             }
-        } else if(emailAuthFlag == 1) {
+        } else if (emailAuthFlag == 1 && nicknameFlag == 1) {
             //email 인증 실패
             accountFinBtn.isEnabled = false
             accountFinBtn.setTextColor(accountFinBtn.context.getColor(R.color.brownish_grey))
         }
     }
 
+/*
 
     //SignupAuth 관련
     //send
@@ -136,6 +137,7 @@ object BindingConversions {
             }
         }
     }
+*/
 
 
     //pnumAuthCode 전송 여부, userInput null 여부에 따른 pnumAuthBtn enable 관리
@@ -170,7 +172,7 @@ object BindingConversions {
     @JvmStatic
     @BindingAdapter("setPassAuthFlag", "setOverlapFlag")
     fun setEnableSignUpFinBtn(finBtn: Button, passAuthFlag: Int, overlapFlag: Int) {
-        if (passAuthFlag==0 && overlapFlag==0) {
+        if (passAuthFlag == 0 && overlapFlag == 0) {
             finBtn.isEnabled = true
             finBtn.setTextColor(finBtn.context.getColor(R.color.green_blue))
         } else {
@@ -238,11 +240,17 @@ object BindingConversions {
         }
 
     }
+
     //인증 성공 여부 enable 관리
     @JvmStatic
-    @BindingAdapter("setCodeAuthBtn","setCodeNtTv","setPassAuthFlag")
-    fun setEnablePassAuth(codeEt: EditText,codeAuthBtn: Button,codeNtTv:TextView,passAuthFlag: Int){
-        if(codeEt.text.isNotEmpty()){
+    @BindingAdapter("setCodeAuthBtn", "setCodeNtTv", "setPassAuthFlag")
+    fun setEnablePassAuth(
+        codeEt: EditText,
+        codeAuthBtn: Button,
+        codeNtTv: TextView,
+        passAuthFlag: Int,
+    ) {
+        if (codeEt.text.isNotEmpty()) {
             when (passAuthFlag) {
                 0 -> {
                     //인증 성공 시
@@ -275,39 +283,53 @@ object BindingConversions {
     }
 
     @JvmStatic
-    @BindingAdapter("setOverlapBtn","setUserInputEt","setOverlapType","setOverlapFlag")
-    fun setEnableOverlap(overlapNtTv:TextView,overlapBtn:Button,userInputEt:EditText,type:String,overlapFlag:Int){
-        if(type == "email"){
-            if(overlapFlag == 0){
-                //통과
-                overlapBtn.text = "인증"
-                overlapNtTv.text = "사용가능한 이메일입니다. 인증 과정을 완료해주세요."
-                userInputEt.isEnabled = false
-                overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.green_blue))
-            }else if(overlapFlag == 1){
-                overlapBtn.isEnabled = true
-                overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.green_blue))
-                overlapBtn.text = "중복"
-                overlapNtTv.text = "이미 사용중인 이메일입니다."
-                overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.red))
-                userInputEt.isEnabled = true
-            }
-        }else if(type == "nickname"){
-            if(overlapFlag == 0){
-                overlapNtTv.text = "사용가능한 닉네임입니다."
-                overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.green_blue))
-                userInputEt.isEnabled = false
-                overlapBtn.isEnabled = false
-                overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.brownish_grey))
-            }else if(overlapFlag == 1){
-                overlapBtn.isEnabled = true
-                overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.green_blue))
-                overlapNtTv.text = "이미 사용중인 닉네임입니다."
-                overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.red))
-                userInputEt.isEnabled = true
-            }
+    @BindingAdapter("setEOverlapBtn", "setEmailEt", "setEOverlapFlag")
+    fun setEnableEOverlap(
+        overlapNtTv: TextView,
+        overlapBtn: Button,
+        userInputEt: EditText,
+        overlapFlag: Int,
+    ) {
+        if (overlapFlag == 0) {
+            //통과
+            overlapBtn.text = "인증"
+            overlapNtTv.text = "사용가능한 이메일입니다. 인증 과정을 완료해주세요."
+            userInputEt.isEnabled = false
+            overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.green_blue))
+        } else if (overlapFlag == 1) {
+            overlapBtn.isEnabled = true
+            overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.green_blue))
+            overlapBtn.text = "중복"
+            overlapNtTv.text = "이미 사용중인 이메일입니다."
+            overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.red))
+            userInputEt.isEnabled = true
         }
     }
+
+    @JvmStatic
+    @BindingAdapter("setNOverlapBtn", "setNicknameEt", "setNOverlapFlag")
+    fun setEnableNOverlap(
+        overlapNtTv: TextView,
+        overlapBtn: Button,
+        userInputEt: EditText,
+        overlapFlag: Int,
+    ) {
+        if (overlapFlag == 0) {
+            overlapNtTv.text = "사용가능한 닉네임입니다."
+            overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.green_blue))
+            userInputEt.isEnabled = false
+            overlapBtn.isEnabled = false
+            overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.brownish_grey))
+        } else if (overlapFlag == 1) {
+            overlapBtn.isEnabled = true
+            overlapBtn.setTextColor(overlapBtn.context.getColor(R.color.green_blue))
+            overlapNtTv.text = "이미 사용중인 닉네임입니다."
+            overlapNtTv.setTextColor(overlapNtTv.context.getColor(R.color.red))
+            userInputEt.isEnabled = true
+        }
+
+    }
+
 
     //phone Number Regex
     private fun matchPhoneNumberRegex(phoneNumber: String): Boolean {

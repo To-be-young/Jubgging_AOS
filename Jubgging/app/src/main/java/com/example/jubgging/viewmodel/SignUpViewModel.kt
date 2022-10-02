@@ -11,20 +11,13 @@ import com.example.jubgging.network.data.request.EmailRequest
 import com.example.jubgging.network.data.request.LoginRequest
 import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.repository.SignUpRepositoryImpl
-import com.example.jubgging.view.SignUpAuthActivity
-import com.google.firebase.FirebaseTooManyRequestsException
-import com.google.firebase.auth.*
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 
 class SignUpViewModel : ViewModel() {
     private val signUpRepository = SignUpRepositoryImpl()
-    private lateinit var auth: FirebaseAuth
     val overlapType:Pair<String,String> = Pair("email","nickname")
 
     companion object {
@@ -34,9 +27,13 @@ class SignUpViewModel : ViewModel() {
 
 
     // 중복이면 1, 통과하면 0, default -1
-    private val _overlapFlag = MutableLiveData<Int>()
-    val overlapFlag:LiveData<Int>
-        get() = _overlapFlag
+    private val _eOverlapFlag = MutableLiveData<Int>()
+    val eOverlapFlag:LiveData<Int>
+        get() = _eOverlapFlag
+
+    private val _nOverlapFlag = MutableLiveData<Int>()
+    val nOverlapFlag:LiveData<Int>
+        get() = _nOverlapFlag
 
     //인증코드 발송 여부 flag
     private val _codeSentFlag = MutableLiveData<Boolean>()
@@ -51,17 +48,12 @@ class SignUpViewModel : ViewModel() {
 
     //인증 성공 여부 Flag
     // 실패하면 1, 통과하면 0, default -1
-    private val _passAuthFlag = MutableLiveData<Int>()
-    val passAuthFlag: LiveData<Int>
-        get() = _passAuthFlag
+    private val _emailPassFlag = MutableLiveData<Int>()
+    val emailPassFlag: LiveData<Int>
+        get() = _emailPassFlag
 
-    private val _pTimeoutCount = MutableLiveData<Int>()
 
     private val _eTimeoutCount = MutableLiveData<Int>()
-
-    private val _pTimeoutText = MutableLiveData<String>()
-    val pTimeoutText: LiveData<String>
-        get() = _pTimeoutText
 
     private val _eTimeoutText = MutableLiveData<String>()
     val eTimeoutText: LiveData<String>
@@ -72,27 +64,20 @@ class SignUpViewModel : ViewModel() {
     init {
         _codeSentFlag.value = false
         _timeoutFlag.value = false
-        _passAuthFlag.value = -1
-        _overlapFlag.value = -1
-        _pTimeoutCount.value = 60
+        _emailPassFlag.value = -1
+        _eOverlapFlag.value = -1
+        _nOverlapFlag.value = -1
         _eTimeoutCount.value = 180
-
-        _pTimeoutText.value = "1:00"
         _eTimeoutText.value = "3:00"
     }
 
-
-    private fun pTimerStop() {
-        if (::timerJob.isInitialized) timerJob.cancel()
-        _pTimeoutText.value = "0:00"
-    }
 
     private fun eTimerStop() {
         if (::timerJob.isInitialized) timerJob.cancel()
         _eTimeoutText.value = "0:00"
     }
 
-    fun updateCodeSentFlag(flag: Boolean) {
+    private fun updateCodeSentFlag(flag: Boolean) {
         _codeSentFlag.value = flag
     }
 
@@ -100,13 +85,15 @@ class SignUpViewModel : ViewModel() {
         _timeoutFlag.value = flag
     }
 
-    private fun updatePassAuthFlag(flag: Int) {
-        _passAuthFlag.value = flag
+    private fun updateEmailPassFlag(flag: Int) {
+        _emailPassFlag.value = flag
     }
-    private fun updateOverlapFlag(flag: Int){
-        _overlapFlag.value = flag
+    private fun updateEOverlapFlag(flag: Int){
+        _eOverlapFlag.value = flag
     }
-
+    private fun updateNOverlapFlag(flag: Int){
+        _nOverlapFlag.value = flag
+    }
 
     //email overlap check Api
     @SuppressLint("CheckResult")
@@ -116,10 +103,10 @@ class SignUpViewModel : ViewModel() {
                 if (it.code == 0) {
                     if (it.data) {
                         //중복일 떄
-                        updateOverlapFlag(1)
+                        updateEOverlapFlag(1)
                     } else {
                         //중복이 아닐 때
-                        updateOverlapFlag(0)
+                        updateEOverlapFlag(0)
                     }
                 }
             }, onError = {
@@ -175,9 +162,9 @@ class SignUpViewModel : ViewModel() {
             onSuccess = {
                 if (it.code == 0) {
                     eTimerStop()
-                    updatePassAuthFlag(0)
+                    updateEmailPassFlag(0)
                 } else {
-                    updatePassAuthFlag(1)
+                    updateEmailPassFlag(1)
                 }
             }, onError = {
                 it.printStackTrace()
@@ -217,28 +204,6 @@ class SignUpViewModel : ViewModel() {
         }
     }
 
-    fun phoneCodeTimerStart() {
-        if (::timerJob.isInitialized) timerJob.cancel()
-        _pTimeoutCount.value = 60
-        _pTimeoutText.value = "1:00"
-        timerJob = viewModelScope.launch {
-            while (_pTimeoutCount.value!! > 0) {
-                _pTimeoutCount.value = _pTimeoutCount.value!!.minus(1)
-                _pTimeoutText.value =
-                    "${_pTimeoutCount.value!! / 100}:${_pTimeoutCount.value!! % 100}"
-                if (_pTimeoutCount.value!! < 10) {
-                    _pTimeoutText.value =
-                        "${_pTimeoutCount.value!! / 100}:0${_pTimeoutCount.value!! % 100}"
-                }
-                delay(1000L)
-                if (_pTimeoutCount.value!! == 0) {
-                    updateTimeoutFlag(true)
-                    _pTimeoutText.value = "0:00"
-                }
-            }
-        }
-    }
-
     //nickName overlap check Api
     @SuppressLint("CheckResult")
     fun checkNickNameOverlap(nickname: String) {
@@ -246,59 +211,14 @@ class SignUpViewModel : ViewModel() {
             onSuccess = {
                 if (it.data) {
                     //중복 O
-                    updateOverlapFlag(1)
+                    updateNOverlapFlag(1)
                 } else {
                     //중복 X
-                    updateOverlapFlag(0)
+                    updateNOverlapFlag(0)
                 }
             },
             onError = { it.printStackTrace() }
         )
-    }
-
-    //전화번호 발송 코드
-    fun sendSMSCode(
-        phoneNumber: String,
-        activity: SignUpAuthActivity,
-        callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks,
-    ) {
-        auth = Firebase.auth
-        //setPhoneProviderOption
-        val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(activity)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-            .build()
-        auth.setLanguageCode("kr")
-        //실제 발송 코드
-        PhoneAuthProvider.verifyPhoneNumber(options)
-    }
-
-    //options
-    fun verifySMSCode(
-        credential: PhoneAuthCredential,
-        activity: SignUpAuthActivity,
-    ) {
-        auth = Firebase.auth
-
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(activity) { task ->
-                if (task.isSuccessful) {
-                    //인증성공
-                    updatePassAuthFlag(0)
-                    pTimerStop()
-                } else {
-                    //인증실패
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        //인증실패 - 잘못된 인증번호 입력
-                        updatePassAuthFlag(1)
-                    } else if (task.exception is FirebaseTooManyRequestsException) {
-                        //인증실패 - 너무 많은 수신 요청
-                        updatePassAuthFlag(2)
-                    }
-                }
-            }
     }
 
     @SuppressLint("CheckResult")

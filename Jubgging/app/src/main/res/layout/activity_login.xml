@@ -84,7 +84,7 @@
                         android:id="@+id/login_user_email_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:inputType="textEmailAddress"
                         android:textAlignment="textStart"
                         android:textSize="16dp"
                         android:theme="@style/inputEditTextTheme"
@@ -132,6 +132,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="textStart"
                         android:textSize="16dp"
+                        android:inputType="textPassword"
                         android:theme="@style/inputEditTextTheme"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
