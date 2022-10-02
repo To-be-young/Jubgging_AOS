@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="@dimen/_54_1dp"
+        android:height="@dimen/_35_5dp"
+        android:drawable="@drawable/ic_recommend_route"/>
+</layer-list>

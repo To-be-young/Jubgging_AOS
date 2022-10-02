@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="home"
             type="com.example.jubgging.view.HomeFragment" />
@@ -10,14 +13,586 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        android:textSize="50sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_grey">
+
+                    <ImageView
+                        android:id="@+id/app_title_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/icon_app_title_drawable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.056"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        app:layout_constraintWidth_percent="0.26" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_user_profile_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:layout_marginEnd="21dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        app:layout_constraintDimensionRatio="1:1.271"
+                        app:layout_constraintEnd_toStartOf="@+id/home_user_do_history_cl"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
+                        app:layout_constraintWidth_percent="0.286">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/home_user_profile_ol_cl"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginHorizontal="@dimen/_21dp"
+                            android:background="@drawable/user_profile_outline_drawable"
+                            app:layout_constraintBottom_toTopOf="@+id/home_user_name_cl"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            app:layout_constraintWidth_percent="0.708">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/home_user_profile_iv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="@dimen/_3dp"
+                                android:layout_marginVertical="@dimen/_3dp"
+                                android:adjustViewBounds="true"
+                                android:src="@color/black"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/home_user_name_cl"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginHorizontal="@dimen/_17dp"
+                            android:layout_marginTop="@dimen/_11dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.129"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/home_user_profile_ol_cl"
+                            app:layout_constraintWidth_percent="0.379">
+
+                            <TextView
+                                android:id="@+id/home_user_name_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:autoSizeMaxTextSize="100dp"
+                                android:autoSizeMinTextSize="2dp"
+                                android:autoSizeStepGranularity="2dp"
+                                android:autoSizeTextType="uniform"
+                                android:fontFamily="@font/nanumgothic_bold"
+                                android:gravity="center"
+                                android:includeFontPadding="false"
+                                android:text="짱구"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="parent"
+
+                                app:layout_constraintEnd_toStartOf="@+id/home_user_name_tt_tv"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintWidth_percent="0.718" />
+
+                            <TextView
+                                android:id="@+id/home_user_name_tt_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/_2dp"
+                                android:layout_marginTop="@dimen/_6dp"
+                                android:autoSizeMaxTextSize="100dp"
+                                android:autoSizeMinTextSize="@dimen/_3dp"
+                                android:autoSizeStepGranularity="@dimen/_2dp"
+                                android:autoSizeTextType="uniform"
+                                android:fontFamily="@font/nanumgothic_bold"
+                                android:includeFontPadding="false"
+                                android:minWidth="@dimen/_3dp"
+                                android:minHeight="@dimen/_3dp"
+                                android:text="님"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/home_user_name_tv"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.647"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/home_user_name_tv"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintWidth_percent="0.231" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_user_do_history_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:layout_marginEnd="25dp"
+                        android:layout_marginBottom="11dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        android:paddingTop="@dimen/_20dp"
+                        android:paddingBottom="@dimen/_24dp"
+                        app:layout_constraintBottom_toTopOf="@+id/home_user_do_history_btn"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/home_user_profile_cl"
+                        app:layout_constraintTop_toBottomOf="@+id/app_title_iv">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/home_user_distance_total_cl"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/home_user_time_total_cl"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="spread"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.35">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/home_user_distance_tt_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toTopOf="@+id/home_user_distance_cl"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.25"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_chainStyle="spread_inside">
+
+                                <ImageView
+                                    android:id="@+id/home_user_distance_tt_iv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/icon_thumb_up_drawable"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/home_user_distance_tt_tv"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/home_user_distance_tt_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:includeFontPadding="false"
+                                    android:text="활동 거리"
+                                    android:gravity="center"
+                                    app:layout_constraintWidth_percent="0.78"
+                                    android:theme="@style/regularBlackTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toEndOf="@+id/home_user_distance_tt_iv"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.0" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/home_user_distance_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="@dimen/_13dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.5"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="@+id/home_user_distance_tt_cl"
+                                app:layout_constraintTop_toBottomOf="@+id/home_user_distance_tt_cl">
+
+                                <TextView
+                                    android:id="@+id/home_user_distance_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="30dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:includeFontPadding="false"
+                                    android:text="200"
+                                    android:gravity="end|center"
+                                    android:theme="@style/boldBlueTextTheme"
+
+                                    app:layout_constraintBottom_toBottomOf="@+id/home_user_distance_unit_tv"
+                                    app:layout_constraintEnd_toStartOf="@+id/home_user_distance_unit_tv"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintWidth_percent="0.65" />
+
+                                <TextView
+                                    android:id="@+id/home_user_distance_unit_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:includeFontPadding="false"
+                                    android:text="/km"
+                                    android:gravity="center"
+                                    app:layout_constraintDimensionRatio="1:0.56"
+
+                                    android:theme="@style/regularBlackTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHeight_percent="0.5"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toEndOf="@+id/home_user_distance_tv" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/home_user_time_total_cl"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintBottom_toBottomOf="@+id/home_user_distance_total_cl"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/home_user_distance_total_cl"
+                            app:layout_constraintTop_toTopOf="@+id/home_user_distance_total_cl"
+                            app:layout_constraintWidth_percent="0.35">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/home_user_time_tt_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toTopOf="@+id/home_user_time_cl"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.25"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_chainStyle="spread_inside">
+
+                                <ImageView
+                                    android:id="@+id/home_user_time_tt_iv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/icon_more_time_drawable"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/home_user_time_tt_tv"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/home_user_time_tt_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:text="활동 시간"
+                                    android:theme="@style/regularBlackTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toEndOf="@+id/home_user_time_tt_iv"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintWidth_percent="0.78" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/home_user_time_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="@dimen/_13dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/home_user_time_tt_cl"
+                                app:layout_constraintHeight_percent="0.5"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="@+id/home_user_time_tt_cl"
+                                app:layout_constraintTop_toBottomOf="@+id/home_user_time_tt_cl">
+
+                                <TextView
+                                    android:id="@+id/home_user_time_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="30dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:includeFontPadding="false"
+                                    android:text="120"
+                                    android:gravity="end|center_vertical"
+                                    app:layout_constraintDimensionRatio="1:0.64"
+                                    android:theme="@style/boldBlueTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/home_user_time_unit_tv"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                   />
+
+                                <TextView
+                                    android:id="@+id/home_user_time_unit_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:includeFontPadding="false"
+                                    app:layout_constraintHeight_percent="0.5"
+                                    android:text="/min"
+                                    android:gravity="center"
+
+                                    android:theme="@style/regularBlackTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toEndOf="@+id/home_user_time_tv" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/home_user_do_history_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        android:minHeight="0dp"
+                        android:text="자세히 보기"
+                        android:textSize="13.5dp"
+                        android:theme="@style/regularBlackTextTheme"
+                        app:layout_constraintBottom_toBottomOf="@+id/home_user_profile_cl"
+                        app:layout_constraintDimensionRatio="1:0.14"
+                        app:layout_constraintEnd_toEndOf="@id/home_user_do_history_cl"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/home_user_do_history_cl" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_rm_route_cl"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginHorizontal="25dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        android:paddingHorizontal="@dimen/_15dp"
+                        android:paddingVertical="15dp"
+                        app:layout_constraintDimensionRatio="1:0.29"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/home_user_profile_cl">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/home_rm_route_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:autoSizeMaxTextSize="23dp"
+                            android:autoSizeMinTextSize="1dp"
+                            android:autoSizeStepGranularity="2dp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="start|center_vertical"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="@dimen/_10dp"
+                            android:minHeight="10dp"
+                            android:text="추천 코스따라 \n플로깅 하러가기"
+                            android:theme="@style/boldBlackTextTheme"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/home_rm_route_iv"
+                            app:layout_constraintHeight_percent="0.8"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.75" />
+
+                        <ImageView
+                            android:id="@+id/home_rm_route_iv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/icon_recommend_route_drawable"
+                            app:layout_constraintBottom_toBottomOf="@+id/home_rm_route_tv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+
+                            app:layout_constraintStart_toEndOf="@+id/home_rm_route_tv"
+                            app:layout_constraintWidth_percent="0.2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_ch_map_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="@dimen/_21dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        android:paddingHorizontal="@dimen/_15dp"
+                        android:paddingVertical="@dimen/_19dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/home_plogging_cl"
+                        app:layout_constraintDimensionRatio="1:1.53"
+                        app:layout_constraintEnd_toStartOf="@+id/home_plogging_cl"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/home_rm_route_cl"
+                        app:layout_constraintWidth_percent="0.319">
+
+                        <TextView
+                            android:id="@+id/home_ch_map_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:autoSizeMaxTextSize="100dp"
+                            android:autoSizeMinTextSize="2dp"
+                            android:autoSizeStepGranularity="1dp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="start"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="@dimen/_7dp"
+                            android:text="내 주변\n클린하우스\n보러가기"
+                            android:theme="@style/boldBlackTextTheme"
+                            app:layout_constraintBottom_toTopOf="@+id/home_ch_map_iv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.5"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                        <ImageView
+                            android:id="@+id/home_ch_map_iv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="@dimen/_27_8dp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/icon_recycler_trash_drawable"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1.12"
+                            app:layout_constraintEnd_toEndOf="@+id/home_ch_map_tv"
+                            app:layout_constraintTop_toBottomOf="@+id/home_ch_map_tv"
+                            app:layout_constraintWidth_percent="0.34" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_plogging_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="25dp"
+                        android:background="@drawable/blue_button_drawable"
+                        android:elevation="2dp"
+                        android:paddingVertical="@dimen/_19dp"
+                        app:layout_constraintDimensionRatio="1:1.01"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.277"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/home_ch_map_cl"
+                        app:layout_constraintTop_toBottomOf="@+id/home_rm_route_cl"
+                        app:layout_constraintWidth_percent="0.483">
+
+                        <ImageView
+                            android:id="@+id/home_plogging_iv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/icon_plogging_drawable"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/home_plogging_tv"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="@+id/home_plogging_tv"
+                            app:layout_constraintTop_toBottomOf="@+id/home_plogging_tv"
+                            app:layout_constraintWidth_percent="0.34" />
+
+                        <TextView
+                            android:id="@+id/home_plogging_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="84dp"
+                            android:layout_marginHorizontal="@dimen/_36dp"
+                            android:autoSizeMaxTextSize="100dp"
+                            android:autoSizeMinTextSize="2dp"
+                            android:autoSizeStepGranularity="0.5dp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="@dimen/_10dp"
+                            android:text="플로깅\n하러가기"
+                            android:theme="@style/boldWhiteTextTheme"
+                            app:layout_constraintBottom_toTopOf="@+id/home_plogging_iv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.43"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

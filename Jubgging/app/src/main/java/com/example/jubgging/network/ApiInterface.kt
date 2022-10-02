@@ -7,8 +7,16 @@ import com.example.jubgging.network.data.request.LoginRequest
 import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.network.data.response.BaseResponse
 import com.example.jubgging.network.data.response.LoginResponse
+import com.example.jubgging.network.data.response.UserNicknameEmailResponse
 import io.reactivex.Single
+<<<<<<< HEAD
 import retrofit2.http.*
+=======
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
+>>>>>>> feature/home_ui
 
 interface ApiInterface {
     @POST("api/sign/signup")
@@ -34,5 +42,8 @@ interface ApiInterface {
 
     @GET("api/user/get-user-info")
     fun getUserInfo():Single<BaseResponse<UserInfo>>
+
+    @GET("api/user/get-user-nick")
+    fun getUserNicknameEmail():Single<BaseResponse<UserNicknameEmailResponse>>
 
 }
