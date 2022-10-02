@@ -19,5 +19,8 @@ class CommunityJoinActivity:AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.communityVm = viewModel
 
+        binding.cgjJoinBtn.setOnClickListener {
+            
+        }
     }
 }
