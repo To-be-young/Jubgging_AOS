@@ -24,7 +24,6 @@ class PathwayViewModel : ViewModel(){
         pathwayRepository.pathway(recordId).subscribeBy(
             onSuccess = {
                 if (it.success) {
-                    Log.d("pathway_sucess", "${it.data[0].latitude}")
                     PathwayData.value = it
                     showToast("성공했습니다.")
                 }else {

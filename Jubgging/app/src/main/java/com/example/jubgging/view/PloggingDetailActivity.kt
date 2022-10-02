@@ -22,8 +22,8 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
     //viewBinding
     private lateinit var binding: ActivityPloggingDetailBinding
 
-    private var mapView: MapView? = null  //카카오맵뷰
-    private var mapViewContainer: ViewGroup? = null
+    private lateinit var mapView: MapView //카카오맵뷰
+    private lateinit var mapViewContainer: ViewGroup
 
     //ViewModel
     private val pathwayViewMoodel: PathwayViewModel by viewModels()
@@ -51,7 +51,14 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         binding.historyDistanceTv.text = IntentDistance
 
         pathwayViewMoodel.pathway(IntentRecordId!!.toInt(), ::showToast)
-        Log.d("success_pathway", "${IntentRecordId!!.toInt()}")
+        Log.d("success_pathway", "${IntentRecordId.toInt()}")
+
+        val toolbar = binding.chmTb
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        toolbar.title = "날짜"
 
 
     }
@@ -62,13 +69,13 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         //맵뷰 등록
         mapView = MapView(this)
         mapViewContainer = binding.ploggingKakaoMapView
-        mapViewContainer?.addView(mapView)
+        mapViewContainer.addView(mapView)
 
 
         //mapView에 이벤트 등록
-        mapView?.setMapViewEventListener(this)
-        mapView?.setPOIItemEventListener(this)
-        mapView?.setCurrentLocationEventListener(this)
+        mapView.setMapViewEventListener(this)
+        mapView.setPOIItemEventListener(this)
+        mapView.setCurrentLocationEventListener(this)
 
         //polyline 등록
         polyline = MapPolyline()
@@ -83,12 +90,12 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
                 polyline.addPoint(MapPoint.mapPointWithGeoCoord(pathwayViewMoodel.PathwayData.value!!.data[i].latitude, pathwayViewMoodel.PathwayData.value!!.data[i].longitude))
             }
 
-            mapView!!.addPolyline(polyline)
+            mapView.addPolyline(polyline)
 
             var mapPointBounds: MapPointBounds = MapPointBounds(polyline.mapPoints)
             val padding: Int = 100
 
-            mapView!!.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, padding))
+            mapView.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, padding))
         })
 
     }
@@ -96,7 +103,7 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
 
     override fun onPause() {
         super.onPause()
-        mapViewContainer?.removeAllViews()
+        mapViewContainer.removeAllViews()
     }
 
 
@@ -141,7 +148,7 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
     }
 
     override fun onMapViewDragStarted(p0: MapView?, p1: MapPoint?) {
-        mapView?.currentLocationTrackingMode =
+        mapView.currentLocationTrackingMode =
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeadingWithoutMapMoving
     }
 

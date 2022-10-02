@@ -148,6 +148,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
             stopTimer()
 
+            plogging_start = false
+
             Log.d("lhj10", "STOP")
         }
 
@@ -172,9 +174,12 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             totalDistance = 0.0
             speed = "00`00"
 
-
-            plogging_start = false
             resetTimer()
+
+            val intent = Intent(this, PloggingHistoryActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+            startActivity(intent)
 
         }
 
