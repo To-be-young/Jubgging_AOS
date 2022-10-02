@@ -28,7 +28,7 @@ class SignUpViewModel : ViewModel() {
     val overlapType:Pair<String,String> = Pair("email","nickname")
 
     companion object {
-        var token: String = ""
+        var accessToken: String = ""
     }
 
 
@@ -341,9 +341,9 @@ class SignUpViewModel : ViewModel() {
     }
     private fun updateJwtToken(inputToken: String?) {
         if (inputToken != null) {
-            token = inputToken
+            accessToken = inputToken
         } else {
-            token = ""
+            accessToken = ""
         }
 
     }

@@ -15,7 +15,6 @@
             android:name=".view.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
-
         </activity>
         <activity
             android:name=".view.MainActivity"
