@@ -149,7 +149,7 @@
                         android:minWidth="20dp"
 
                         android:minHeight="10dp"
-                        android:paddingHorizontal="@dimen/_16dp"
+                        android:paddingHorizontal="@dimen/_19_5dp"
                         android:paddingVertical="@dimen/_8dp"
                         android:stateListAnimator="@null"
                         android:text="중복"
@@ -242,7 +242,7 @@
                         android:fontFamily="@font/pretendard_semibold"
                         android:minWidth="20dp"
                         android:minHeight="10dp"
-                        android:paddingHorizontal="@dimen/_16dp"
+                        android:paddingHorizontal="@dimen/_19_5dp"
                         android:paddingVertical="@dimen/_8dp"
                         android:text="확인"
                         android:textColor="@color/brownish_grey"
