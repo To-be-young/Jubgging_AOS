@@ -158,7 +158,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
             Log.d("formattedTotalDistance", "${formattedTotalDistance}")
 
-            viewModel.plogging_req(
+            viewModel.sendPloggingResult(
                 PloggingRequest(
                     "",
                     formattedTotalDistance.toDouble(),

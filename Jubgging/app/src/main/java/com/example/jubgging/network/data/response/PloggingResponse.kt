@@ -1,35 +1,11 @@
 package com.example.jubgging.network.data.response
 
-import com.google.gson.annotations.SerializedName
+import com.example.jubgging.network.PloggingReceive
 
-data class PloggingResponse (
-
-    @SerializedName("success")
-    val success : Boolean,
-
-    @SerializedName("code")
-    val code : Int,
-
-    @SerializedName("msg")
-    val msg : String,
-
-    @SerializedName("data")
-    val data : Data? = null
-){
-    data class Data(
-        @SerializedName("recordId")
-        val recordId : Int,
-
-        @SerializedName("userId")
-        val userId : String,
-
-        @SerializedName("date")
-        val date : String,
-
-        @SerializedName("distance")
-        val distance : Double,
-
-        @SerializedName("activityTime")
-        val activityTime : String
-    )
-}
+data class PloggingResponse(
+    val totalPage : Int,
+    val totalElments : Int,
+    val pageSize : Int,
+    val page : Int,
+    val content : List<PloggingReceive>
+)

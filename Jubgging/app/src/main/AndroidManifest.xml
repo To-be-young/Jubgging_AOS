@@ -18,19 +18,33 @@
         android:theme="@style/Theme.Jubgging">
         <activity
             android:name=".view.PloggingActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.PloggingDetailActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.PloggingHistoryActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.LoginActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".view.LoginActivity"
-            android:exported="true">
+
         </activity>
         <activity
             android:name=".view.MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".view.SignUpAccountActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.SignUpAuthActivity"
             android:exported="true" />
 
         <meta-data

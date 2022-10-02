@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="signUpAccount"
+            type="com.example.jubgging.view.SignUpAccountActivity" />
+        <variable
+            name="signUpVm"
+            type="com.example.jubgging.viewmodel.SignUpViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_grey"
     android:paddingHorizontal="@dimen/layout_side"
-    tools:context=".Signup_first_Activity">
+    >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,7 +74,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/signup_user_email_cl"
+            android:id="@+id/signup_user_id_cl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/signup_user_pwd_cl"
@@ -77,32 +86,32 @@
 
 
             <TextView
-                android:id="@+id/signup_user_email_tv"
+                android:id="@+id/signup_user_id_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:fontFamily="@font/nanumgothic_regular"
                 android:text="@string/login_email"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toTopOf="@+id/signup_user_email_et"
-                app:layout_constraintStart_toStartOf="@+id/signup_user_email_et"
+                app:layout_constraintBottom_toTopOf="@+id/signup_user_id_et"
+                app:layout_constraintStart_toStartOf="@+id/signup_user_id_et"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <EditText
-                android:id="@+id/signup_user_email_et"
+                android:id="@+id/signup_user_id_et"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint=""
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/signup_first_auth_bt"
+                app:layout_constraintEnd_toStartOf="@+id/signup_email_auth_btn"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signup_user_email_tv" />
+                app:layout_constraintTop_toBottomOf="@+id/signup_user_id_tv" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/signup_first_auth_bt"
+                android:id="@+id/signup_email_auth_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="20dp"
@@ -118,7 +127,7 @@
                 android:fontFamily="@font/nanumgothic_bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/signup_user_email_et" />
+                app:layout_constraintStart_toEndOf="@+id/signup_user_id_et" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,7 +139,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_user_email_cl">
+            app:layout_constraintTop_toBottomOf="@+id/signup_user_id_cl">
 
 
             <TextView
@@ -205,15 +214,22 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="2dp"
         android:layout_marginBottom="@dimen/button_margin_bottom"
-        android:background="@drawable/login_background_drawable"
+        android:background="@drawable/button_enable_selector"
         android:elevation="2dp"
         android:text="@string/signup_first_fin_btn"
-        android:textColor="@color/green_blue"
+        android:textColor="@color/brownish_grey"
         android:textSize="20sp"
+        setEmailText="@{signupUserIdEt.text.toString()}"
+        setPwdText="@{signupUserPwdEt.text.toString()}"
+        setPwdChkText="@{signupUserPwdChkEt.text.toString()}"
+        setEmailAuthFlag="@{signUpVm.emailAuthFlag.booleanValue()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_user_input_cl" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_user_input_cl"
+        android:enabled="false"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

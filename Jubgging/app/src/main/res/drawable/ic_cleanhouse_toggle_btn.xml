@@ -23,4 +23,5 @@
         android:height="@dimen/_45dp"
         android:drawable="@drawable/icon_target"
         />
+
 </layer-list>

@@ -24,6 +24,10 @@
         <entry key="app/src/main/res/drawable/ic_app_title.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_baseline_group_24.xml" value="0.3485" />
         <entry key="app/src/main/res/drawable/ic_checked_rb.xml" value="0.2175" />
+<<<<<<< HEAD
+=======
+        <entry key="app/src/main/res/drawable/ic_cleanhouse_toggle_btn.xml" value="0.201" />
+>>>>>>> feature/plogging_history
         <entry key="app/src/main/res/drawable/ic_jupgging_logo_img.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_back_main_bt.xml" value="0.2175" />
@@ -31,10 +35,26 @@
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_off_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_on_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_clh.xml" value="0.2175" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable/ic_round_navigate_next_24.xml" value="0.3485" />
         <entry key="app/src/main/res/drawable/ic_unchecked_rb.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/icon_app_title_drawable.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/icon_good_drawable.xml" value="0.182" />
+=======
+        <entry key="app/src/main/res/drawable/ic_plogging_distance.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_plogging_pace.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_plogging_time.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_round_navigate_next_24.xml" value="0.3485" />
+        <entry key="app/src/main/res/drawable/ic_splash_icon.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_unchecked_rb.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/icon_app_title_drawable.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/icon_good_drawable.xml" value="0.182" />
+        <entry key="app/src/main/res/drawable/icon_my_drawable.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/icon_plogging_distance_drawable.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/icon_plogging_drawable.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/icon_plogging_pace_drawable.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/icon_plogging_time_drawable.xml" value="0.2085" />
+>>>>>>> feature/plogging_history
         <entry key="app/src/main/res/drawable/icon_round_navigate_drawable.xml" value="0.3485" />
         <entry key="app/src/main/res/drawable/imsi.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/imsi_imsi.xml" value="0.2175" />
@@ -65,7 +85,15 @@
         <entry key="app/src/main/res/layout/activity_find_account.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.34309623430962344" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3531228549238564" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_plogging.xml" value="0.9579680163450917" />
+=======
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/activity_plogging.xml" value="0.9579680163450917" />
+        <entry key="app/src/main/res/layout/activity_plogging_detail.xml" value="0.2809890747070314" />
+        <entry key="app/src/main/res/layout/activity_plogging_history.xml" value="0.2507988664033808" />
+        <entry key="app/src/main/res/layout/activity_plogging_history_item.xml" value="0.44982604980468754" />
+>>>>>>> feature/plogging_history
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
         <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.7675226683785294" />
         <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.17143554687500007" />
