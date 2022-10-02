@@ -87,7 +87,7 @@
                                 android:layout_marginHorizontal="@dimen/_3dp"
                                 android:layout_marginVertical="@dimen/_3dp"
                                 android:adjustViewBounds="true"
-                                android:src="@drawable/profile_temp_img"
+                                android:src="@color/black"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
