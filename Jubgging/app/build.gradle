@@ -2,16 +2,19 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+    id 'kotlin-android'
+    //plugin 추가
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.jubgging"
-        minSdk 29
-        targetSdk 31
+        minSdk 28
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -34,6 +37,12 @@ android {
     buildFeatures{
         viewBinding = true
         dataBinding = true
+    }
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -78,11 +87,12 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
-
     //coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
     //Jetpack Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
+    // library 추가
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 }

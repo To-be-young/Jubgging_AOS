@@ -53,8 +53,8 @@
     <dimen name="_2_5dp">2.5dp</dimen>
     <dimen name="_12_5dp">12.5dp</dimen>
     <dimen name="_124dp">124dp</dimen>
-    <dimen name="_105dp">26.25dp</dimen>
-    <dimen name="_84dp">21.00dp</dimen>
+    <dimen name="_105dp">105dp</dimen>
+    <dimen name="_84dp">84dp</dimen>
     <dimen name="_42dp">42dp</dimen>
     <dimen name="_53dp">53dp</dimen>
 
