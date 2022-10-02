@@ -4,14 +4,14 @@ import com.example.jubgging.model.Communities
 import com.example.jubgging.model.CommunityGroup
 import com.example.jubgging.network.data.request.*
 import com.example.jubgging.network.data.response.BaseResponse
-import com.example.jubgging.network.data.response.CommunityListResponse
 import com.example.jubgging.network.data.response.LoginResponse
+import com.example.jubgging.network.data.response.UserNicknameEmailResponse
 import io.reactivex.Single
-import kotlinx.coroutines.flow.Flow
-import org.checkerframework.common.reflection.qual.GetClass
-import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiInterface {
     @POST("api/sign/signup")
@@ -32,6 +32,8 @@ interface ApiInterface {
     @POST("/api/sign/refreshCode")
     fun reSendEmailCode(@Body emailRequest:EmailRequest):Single<BaseResponse<Boolean>>
 
+    @GET("api/user/get-user-nick")
+    fun getUserNicknameEmail():Single<BaseResponse<UserNicknameEmailResponse>>
 
     @POST("api/sign/verifyCode")
     fun verifyEmailCode(@Body emailCodeAuthRequest:EmailCodeAuthRequest):Single<BaseResponse<Boolean>>

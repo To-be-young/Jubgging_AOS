@@ -23,8 +23,19 @@ class CommunityDetailActivity:AppCompatActivity() {
         viewModel.getCommunityDetail(postId)
         //시간 자르기
 
+
         binding.cgdJoinBtn.setOnClickListener {
             val intent = Intent(this,CommunityJoinActivity::class.java)
+            intent.putExtra("title",viewModel.communityTitle.value)
+            intent.putExtra("desc",viewModel.communityDesc.value)
+            intent.putExtra("notice",viewModel.communityNotice.value)
+            intent.putExtra("place",viewModel.communityPlace.value)
+            intent.putExtra("etc",viewModel.communityEtc.value)
+            intent.putExtra("participant",viewModel.communityParticipant.value)
+            intent.putExtra("capacity",viewModel.communityCapacity.value)
+
+            intent.putExtra("postId",postId)
+
             startActivity(intent)
         }
 

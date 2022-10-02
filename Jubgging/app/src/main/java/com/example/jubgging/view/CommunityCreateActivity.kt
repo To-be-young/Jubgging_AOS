@@ -29,35 +29,47 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
         binding.lifecycleOwner = this
         binding.communityVm = viewModel
 
-
-        binding.cgcDateTv.setOnClickListener (this)
-        binding.cgcStartTimeTv.setOnClickListener (this)
-        binding.cgcEndTimeTv.setOnClickListener (this)
+        viewModel.getUserNicknameEmail()
 
 
+        binding.cgcDateTv.setOnClickListener(this)
+        binding.cgcStartTimeTv.setOnClickListener(this)
+        binding.cgcEndTimeTv.setOnClickListener(this)
 
-         binding.cgcCreateBtn.setOnClickListener {
-             val title = binding.cgcNameEt.text.toString()
-             val userId = "kangmina0204@naver.com"
-             val content = binding.cgcDescEt.text.toString()
-             val qualification = binding.cgcNoticeFirstEt.text.toString()
-             val gatheringTime :String = "${viewModel.date.value.toString()} ${viewModel.sTime.value.toString()}:00"
-             val endingTime:String = "${viewModel.date.value.toString()} ${viewModel.eTime.value.toString()}:00"
-             val gatheringPlace = binding.cgcPlaceEt.text.toString()
-             val capacity = binding.cgcPeopleEt.text.toString()
-             var capacityInt:Int = 0
-             capacityInt = try {
-                 capacity.toInt()
-             }catch (e:java.lang.NumberFormatException){
-                 Log.d("TAG", "onCreate: $capacity is Not Int")
-                 40
-             }
-             val etc  = binding.cgcEtcEt.text.toString()
-             val postImage = "null"
 
-             if(title.isNotEmpty()&&userId.isNotEmpty()&&content.isNotEmpty()&&qualification.isNotEmpty()&&binding.cgcStartTimeTv.text.isNotEmpty()&&binding.cgcStartTimeTv.text.isNotEmpty()&&gatheringPlace.isNotEmpty()&&capacity.isNotEmpty()&&etc.isNotEmpty()&&postImage.isNotEmpty()){
-                viewModel.postingCommunity(postCommunityRequest = PostCommunityRequest(title, userId,content,qualification,gatheringTime,endingTime,gatheringPlace,capacityInt,etc,postImage))
-            }else{
+        binding.cgcCreateBtn.setOnClickListener {
+            val title = binding.cgcNameEt.text.toString()
+            val content = binding.cgcDescEt.text.toString()
+            val qualification = binding.cgcNoticeFirstEt.text.toString()
+            val userId = viewModel.email.value.toString()
+            val gatheringTime: String =
+                "${viewModel.date.value.toString()} ${viewModel.sTime.value.toString()}:00"
+            val endingTime: String =
+                "${viewModel.date.value.toString()} ${viewModel.eTime.value.toString()}:00"
+            val gatheringPlace = binding.cgcPlaceEt.text.toString()
+            val capacity = binding.cgcPeopleEt.text.toString()
+            var capacityInt: Int = 0
+            capacityInt = try {
+                capacity.toInt()
+            } catch (e: java.lang.NumberFormatException) {
+                Log.d("TAG", "onCreate: $capacity is Not Int")
+                40
+            }
+            val etc = binding.cgcEtcEt.text.toString()
+            val postImage = "null"
+
+            if (title.isNotEmpty() && userId.isNotEmpty() && content.isNotEmpty() && qualification.isNotEmpty() && binding.cgcStartTimeTv.text.isNotEmpty() && binding.cgcStartTimeTv.text.isNotEmpty() && gatheringPlace.isNotEmpty() && capacity.isNotEmpty() && etc.isNotEmpty() && postImage.isNotEmpty()) {
+                viewModel.postingCommunity(postCommunityRequest = PostCommunityRequest(title,
+                    userId,
+                    content,
+                    qualification,
+                    gatheringTime,
+                    endingTime,
+                    gatheringPlace,
+                    capacityInt,
+                    etc,
+                    postImage))
+            } else {
                 showToast("모든 칸을 채워주세요!")
             }
         }
@@ -70,6 +82,7 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+
     override fun onDestroy() {
         super.onDestroy()
         viewModel.postingSuccess.removeObservers(this)
@@ -77,37 +90,37 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
 
 
     override fun onClick(p0: View?) {
-        when(p0){
-            binding.cgcDateTv ->{
+        when (p0) {
+            binding.cgcDateTv -> {
                 showCalendar(this)
             }
-            binding.cgcStartTimeTv ->{
+            binding.cgcStartTimeTv -> {
                 showStartTimePicker(this)
             }
-            binding.cgcEndTimeTv->{
+            binding.cgcEndTimeTv -> {
                 showEndTimePicker(this)
             }
         }
     }
 
 
-    private fun showCalendar(context:Context){
+    private fun showCalendar(context: Context) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        var selectedDate:String =""
+        var selectedDate: String = ""
         val listener =
             DatePickerDialog.OnDateSetListener { view: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
-                if((month + 1)>=10 && dayOfMonth>=10){
+                if ((month + 1) >= 10 && dayOfMonth >= 10) {
                     selectedDate = "$year-${month + 1}-$dayOfMonth"
-                }else if((month + 1)<10 && dayOfMonth >=10){
-                    selectedDate =  "$year-0${month + 1}-$dayOfMonth"
-                }else if((month + 1)>=10 && dayOfMonth <10){
-                    selectedDate =  "$year-${month + 1}-0$dayOfMonth"
-                }else{
-                    selectedDate =  "$year-0${month + 1}-0$dayOfMonth"
+                } else if ((month + 1) < 10 && dayOfMonth >= 10) {
+                    selectedDate = "$year-0${month + 1}-$dayOfMonth"
+                } else if ((month + 1) >= 10 && dayOfMonth < 10) {
+                    selectedDate = "$year-${month + 1}-0$dayOfMonth"
+                } else {
+                    selectedDate = "$year-0${month + 1}-0$dayOfMonth"
                 }
 
                 viewModel.updateDate(selectedDate)
@@ -118,58 +131,60 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun showStartTimePicker(context: Context){
+    private fun showStartTimePicker(context: Context) {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
 
-        var selectedTime:String = ""
+        var selectedTime: String = ""
         val listener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            if(hour>=10 && minute>=10){
+            if (hour >= 10 && minute >= 10) {
                 selectedTime = "$hour:$minute"
-            }else if(hour<10 && minute >=10){
-                selectedTime =  "0$hour:$minute"
-            }else if(hour>=10 && minute <10){
-                selectedTime =  "$hour:0$minute"
-            }else{
-                selectedTime =  "0$hour:0$minute"
+            } else if (hour < 10 && minute >= 10) {
+                selectedTime = "0$hour:$minute"
+            } else if (hour >= 10 && minute < 10) {
+                selectedTime = "$hour:0$minute"
+            } else {
+                selectedTime = "0$hour:0$minute"
             }
 
             viewModel.updateSTime(selectedTime)
         }
-        val picker = TimePickerDialog(context,listener,hour,minute,true)
+        val picker = TimePickerDialog(context, listener, hour, minute, true)
         picker.setTitle("시작 시간")
         picker.show()
     }
 
-    private fun showEndTimePicker(context: Context){
+    private fun showEndTimePicker(context: Context) {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
 
-        var selectedTime:String = ""
+        var selectedTime: String = ""
         val listener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            if(hour>=10 && minute>=10){
+            if (hour >= 10 && minute >= 10) {
                 selectedTime = "$hour:$minute"
-            }else if(hour<10 && minute >=10){
-                selectedTime =  "0$hour:$minute"
-            }else if(hour>=10 && minute <10){
-                selectedTime =  "$hour:0$minute"
-            }else{
-                selectedTime =  "0$hour:0$minute"
+            } else if (hour < 10 && minute >= 10) {
+                selectedTime = "0$hour:$minute"
+            } else if (hour >= 10 && minute < 10) {
+                selectedTime = "$hour:0$minute"
+            } else {
+                selectedTime = "0$hour:0$minute"
             }
             viewModel.updateETime(selectedTime)
         }
-        val picker = TimePickerDialog(context,listener,hour,minute,true)
+        val picker = TimePickerDialog(context, listener, hour, minute, true)
         picker.setTitle("종료 시간")
         picker.show()
     }
-    private fun moveToCommunityList(){
-        val intent = Intent(this,CommunityListActivity::class.java)
+
+    private fun moveToCommunityList() {
+        val intent = Intent(this, CommunityListActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
         startActivity(intent)
     }
-    private fun showToast(msg:String) {
+
+    private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }

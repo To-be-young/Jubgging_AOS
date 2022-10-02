@@ -10,15 +10,17 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.jubgging.model.CommunityGroup
 import com.example.jubgging.network.ApiClient
-import com.example.jubgging.network.ApiInterface
 import com.example.jubgging.network.data.request.PostCommunityRequest
 import com.example.jubgging.paging.PagingRepository
 import com.example.jubgging.repository.CommunityRepositoryImpl
+import com.example.jubgging.repository.UserRepositoryImpl
 import io.reactivex.rxkotlin.subscribeBy
 
 class CommunityViewModel() : ViewModel() {
     private val communityRepository = CommunityRepositoryImpl()
     private var currentResultLiveData: LiveData<PagingData<CommunityGroup>>? = null
+
+    private val userRepository = UserRepositoryImpl()
 
     private var _date = MutableLiveData<String>()
     val date: LiveData<String>
@@ -64,11 +66,23 @@ class CommunityViewModel() : ViewModel() {
     val communityEtc: LiveData<String>
         get() = _communityEtc
 
+    private val _nickname = MutableLiveData<String>()
+    val nickname: LiveData<String>
+        get() = _nickname
+
+    private val _email = MutableLiveData<String>()
+    val email: LiveData<String>
+        get() = _email
+
+
     init {
         _date.value = ""
         _sTime.value = ""
         _eTime.value = ""
         _postingSuccess.value = false
+        _eTime.value = ""
+        _nickname.value = ""
+        _email.value = ""
     }
 
     fun updateSTime(selectedSTime: String) {
@@ -82,6 +96,21 @@ class CommunityViewModel() : ViewModel() {
     fun updateDate(selectedDate: String) {
         _date.value = selectedDate
         Log.d("TAG", "updateDate: ${_date.value} ")
+    }
+
+    fun updateDetailData(title:String,desc:String,notice:String,place:String,capacity:Int,participant:Int,etc:String){
+        _communityTitle.value = title
+        _communityDesc.value = desc
+        _communityNotice.value = notice
+        _communityPlace.value = place
+        _communityCapacity.value = capacity
+        _communityParticipant.value = participant
+        _communityEtc.value = etc
+    }
+
+    fun updateEmailNickname(email: String, nickname: String) {
+        _email.value = email
+        _nickname.value = nickname
     }
 
     fun getList(): LiveData<PagingData<CommunityGroup>> {
@@ -110,27 +139,38 @@ class CommunityViewModel() : ViewModel() {
         communityRepository.getCommunityDetail(postId)
             .subscribeBy(
                 onSuccess = {
-                  if(it.success){
-                      _communityTitle.value = it.data.title
-                      Log.d("TAG", "getCommunityDetail: ${it.data.title}")
-                      _communityDesc.value = it.data.content
-                      _communityNotice.value = it.data.qualification
-                      _communityCapacity.value = it.data.capacity
-                      _communityParticipant.value = it.data.participant
-                      _communityPlace.value = it.data.gatheringPlace
-                      _communityEtc.value = it.data.etc
+                    if (it.success) {
+                        _communityTitle.value = it.data.title
+                        _communityDesc.value = it.data.content
+                        _communityNotice.value = it.data.qualification
+                        _communityCapacity.value = it.data.capacity
+                        _communityParticipant.value = it.data.participant
+                        _communityPlace.value = it.data.gatheringPlace
+                        _communityEtc.value = it.data.etc
 
 
-
-
-                  }else{
-                      Log.d("TAG", "getCommunityDetail: ${it.msg}")
-                  }
-            },
+                    } else {
+                        Log.d("TAG", "getCommunityDetail: ${it.msg}")
+                    }
+                },
                 onError = {
-                it.printStackTrace()
-            })
+                    it.printStackTrace()
+                })
     }
 
-
+    @SuppressLint("CheckResult")
+    fun getUserNicknameEmail() {
+        userRepository.getUserNicknameEmail().subscribeBy(
+            onSuccess = {
+                if (it.success) {
+                    updateEmailNickname(it.data.userId, it.data.nickname)
+                } else {
+                    Log.d("TAG", "getUserNicknameEmail: failed")
+                }
+            },
+            onError = {
+                it.printStackTrace()
+            }
+        )
+    }
 }

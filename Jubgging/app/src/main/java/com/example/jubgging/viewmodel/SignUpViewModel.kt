@@ -26,14 +26,15 @@ class SignUpViewModel : ViewModel() {
     private val signUpRepository = SignUpRepositoryImpl()
     private lateinit var auth: FirebaseAuth
 
-    companion object{
-        var accessToken:String = ""
+    companion object {
+        var accessToken: String = ""
     }
 
-    val overlapType:Pair<String,String> = Pair("email","nickname")
+    val overlapType: Pair<String, String> = Pair("email", "nickname")
+
     // 중복이면 1, 통과하면 0, default -1
     private val _overlapFlag = MutableLiveData<Int>()
-    val overlapFlag:LiveData<Int>
+    val overlapFlag: LiveData<Int>
         get() = _overlapFlag
 
     //인증코드 발송 여부 flag
@@ -107,7 +108,8 @@ class SignUpViewModel : ViewModel() {
     private fun updatePassAuthFlag(flag: Int) {
         _passAuthFlag.value = flag
     }
-    private fun updateOverlapFlag(flag: Int){
+
+    private fun updateOverlapFlag(flag: Int) {
         _overlapFlag.value = flag
     }
 
@@ -344,4 +346,5 @@ class SignUpViewModel : ViewModel() {
             it.printStackTrace()
         })
     }
+
 }
