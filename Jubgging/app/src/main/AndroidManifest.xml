@@ -41,9 +41,7 @@
             android:exported="true" />
         <activity
             android:name=".view.OssNoticeActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"/>
 
         <activity
             android:name=".view.SignUpAccountActivity"
@@ -55,9 +53,9 @@
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-
             android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
             android:exported="true" />
+
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
             android:exported="true" />

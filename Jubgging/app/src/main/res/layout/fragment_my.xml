@@ -1,38 +1,629 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
             name="my"
             type="com.example.jubgging.view.MyFragment" />
+        <variable
+            name="userVm"
+            type="com.example.jubgging.viewmodel.UserInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="My"
-            android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/my_info_btn"
-            android:layout_width="0dp"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="myinfo"
+            android:fillViewport="true"
+
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:0.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintWidth_percent="0.3" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_grey">
+
+                    <ImageView
+                        android:id="@+id/app_title_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/icon_app_title_drawable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.056"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        app:layout_constraintWidth_percent="0.26" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/my_user_profile_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        app:layout_constraintDimensionRatio="1:1.271"
+                        app:layout_constraintEnd_toStartOf="@+id/my_user_do_history_cl"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
+                        app:layout_constraintWidth_percent="0.287">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/my_user_profile_ol_cl"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginHorizontal="@dimen/_21dp"
+                            android:background="@drawable/user_profile_outline_drawable"
+                            app:layout_constraintBottom_toTopOf="@+id/my_user_name_cl"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            app:layout_constraintWidth_percent="0.708">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/my_user_profile_iv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="@dimen/_3dp"
+                                android:layout_marginVertical="@dimen/_3dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/profile_temp_img"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/my_user_name_cl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_17dp"
+                            android:layout_marginTop="@dimen/_11dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.129"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/my_user_profile_ol_cl"
+                            >
+
+                            <TextView
+                                android:id="@+id/my_user_name_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:textSize="17dp"
+                                android:includeFontPadding="false"
+                                android:text="@{userVm.nickname}"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="parent"
+
+                                app:layout_constraintEnd_toStartOf="@+id/my_user_name_tt_tv"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                />
+
+                            <TextView
+                                android:id="@+id/my_user_name_tt_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2dp"
+                                android:layout_marginTop="@dimen/_6dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:includeFontPadding="false"
+                                android:minWidth="@dimen/_3dp"
+                                android:minHeight="@dimen/_3dp"
+                                android:textSize="12dp"
+                                android:text="님"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/my_user_name_tv"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.647"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/my_user_name_tv"
+                                app:layout_constraintTop_toTopOf="parent"
+                              />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/my_user_do_history_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:layout_marginEnd="25dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        android:paddingTop="@dimen/_20dp"
+                        android:paddingBottom="@dimen/_29_5dp"
+                        app:layout_constraintDimensionRatio="1:0.704"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/my_user_profile_cl"
+                        app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
+                        app:layout_constraintWidth_percent="0.517">
+
+                        <TextView
+                            android:id="@+id/today_plogging_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/today_plogging_tx"
+                            android:gravity="center"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:textSize="16dp"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/my_user_distance_total_cl"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/my_user_time_total_cl"
+                            app:layout_constraintHeight_percent="0.5"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="spread"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.306">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/my_user_distance_tt_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toTopOf="@+id/my_user_distance_cl"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.25"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_chainStyle="spread_inside">
+
+                                <ImageView
+                                    android:id="@+id/my_user_distance_tt_iv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/icon_thumb_up_drawable"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/my_user_distance_tt_tv"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/my_user_distance_tt_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:includeFontPadding="false"
+                                    android:text="활동 거리"
+                                    android:gravity="center"
+                                    app:layout_constraintWidth_percent="0.78"
+                                    android:theme="@style/regularBlackTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toEndOf="@+id/my_user_distance_tt_iv"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.0" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/my_user_distance_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="@dimen/_13dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.5"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="@+id/my_user_distance_tt_cl"
+                                app:layout_constraintTop_toBottomOf="@+id/my_user_distance_tt_cl">
+
+                                <TextView
+                                    android:id="@+id/my_user_distance_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="30dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:includeFontPadding="false"
+                                    android:text="200"
+                                    android:gravity="end|center"
+                                    android:theme="@style/boldBlueTextTheme"
+
+                                    app:layout_constraintBottom_toBottomOf="@+id/my_user_distance_unit_tv"
+                                    app:layout_constraintEnd_toStartOf="@+id/my_user_distance_unit_tv"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintWidth_percent="0.65" />
+
+                                <TextView
+                                    android:id="@+id/my_user_distance_unit_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:includeFontPadding="false"
+                                    android:text="/km"
+                                    android:gravity="center"
+                                    app:layout_constraintDimensionRatio="1:0.56"
+
+                                    android:theme="@style/regularBlackTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHeight_percent="0.5"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toEndOf="@+id/my_user_distance_tv" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/my_user_time_total_cl"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/my_user_distance_total_cl"
+                            app:layout_constraintHeight_percent="0.5"
+                            app:layout_constraintHorizontal_chainStyle="spread"
+                            app:layout_constraintWidth_percent="0.306">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/my_user_time_tt_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toTopOf="@+id/my_user_time_cl"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHeight_percent="0.25"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_chainStyle="spread_inside">
+
+                                <ImageView
+                                    android:id="@+id/my_user_time_tt_iv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/icon_more_time_drawable"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/my_user_time_tt_tv"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/my_user_time_tt_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:text="활동 시간"
+                                    android:theme="@style/regularBlackTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toEndOf="@+id/my_user_time_tt_iv"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintWidth_percent="0.78" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/my_user_time_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="@dimen/_13dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/my_user_time_tt_cl"
+                                app:layout_constraintHeight_percent="0.5"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="@+id/my_user_time_tt_cl"
+                                app:layout_constraintTop_toBottomOf="@+id/my_user_time_tt_cl">
+
+                                <TextView
+                                    android:id="@+id/my_user_time_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:autoSizeMaxTextSize="30dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:gravity="end|center_vertical"
+                                    android:includeFontPadding="false"
+                                    android:text="120"
+                                    android:theme="@style/boldBlueTextTheme"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintDimensionRatio="1:0.64"
+                                    app:layout_constraintEnd_toStartOf="@+id/my_user_time_unit_tv"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/my_user_time_unit_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:autoSizeMaxTextSize="20dp"
+                                    android:autoSizeMinTextSize="1dp"
+                                    android:autoSizeStepGranularity="1dp"
+                                    android:autoSizeTextType="uniform"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:text="/min"
+                                    android:theme="@style/regularBlackTextTheme"
+
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHeight_percent="0.5"
+                                    app:layout_constraintHorizontal_bias="0.5"
+                                    app:layout_constraintStart_toEndOf="@+id/my_user_time_tv" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/my_plogging_list_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/_23dp"
+                        android:background="@drawable/login_btn_background_drawable"
+                        android:elevation="2dp"
+                        app:layout_constraintHeight_percent="0.19"
+                        app:layout_constraintStart_toStartOf="@+id/my_user_profile_cl"
+                        app:layout_constraintTop_toBottomOf="@+id/my_user_profile_cl"
+                        app:layout_constraintWidth_percent="0.412">
+
+                        <TextView
+                            android:id="@+id/my_plogging_list_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:autoSizeMaxTextSize="20dp"
+                            android:autoSizeMinTextSize="1dp"
+                            android:autoSizeStepGranularity="1dp"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:gravity="center"
+                            android:text="@string/my_plogging_list_tx"
+                            android:textColor="@color/white"
+                            app:layout_constraintBottom_toTopOf="@+id/my_plogging_list_iv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.23"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            app:layout_constraintWidth_percent="0.53" />
+
+                        <ImageView
+                            android:id="@+id/my_plogging_list_iv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:adjustViewBounds="true"
+                            android:layout_marginTop="@dimen/_14_4dp"
+                            android:src="@drawable/icon_my_plogging_list_drawable"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.339"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/my_plogging_list_tv"
+                            app:layout_constraintWidth_percent="0.19" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/my_notice_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        app:layout_constraintEnd_toEndOf="@+id/my_user_do_history_cl"
+                        app:layout_constraintHeight_percent="0.067"
+                        app:layout_constraintTop_toTopOf="@+id/my_plogging_list_cl"
+                        app:layout_constraintWidth_percent="0.412">
+
+                        <TextView
+                            android:id="@+id/my_notice_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:autoSizeMaxTextSize="16dp"
+                            android:autoSizeMinTextSize="1dp"
+                            android:autoSizeStepGranularity="1dp"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:text="@string/my_plogging_notice_tx"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/my_plogging_notice_iv"
+                            app:layout_constraintHeight_percent="0.45"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.37" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/my_plogging_notice_iv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:src="@drawable/icon_my_plogging_notice_drawable"
+                            android:layout_marginLeft="@dimen/_6_8dp"
+                            android:adjustViewBounds="true"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.367"
+                            app:layout_constraintStart_toEndOf="@+id/my_notice_tv"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.107" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/my_plogging_community_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintHeight_percent="0.19"
+                        android:layout_marginTop="@dimen/_23dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/my_plogging_list_cl"
+                        app:layout_constraintTop_toBottomOf="@+id/my_notice_cl"
+                        app:layout_constraintWidth_percent="0.412">
+
+                        <TextView
+                            android:id="@+id/my_plogging_community_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:autoSizeMaxTextSize="20dp"
+                            android:autoSizeMinTextSize="1dp"
+                            android:autoSizeStepGranularity="1dp"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:text="@string/my_plogging_community_tx"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toTopOf="@+id/my_plogging_community_iv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.23"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            app:layout_constraintWidth_percent="0.4" />
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/my_plogging_community_iv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:src="@drawable/icon_my_plogging_community_drawable"
+                            android:layout_marginTop="@dimen/_15_8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.309"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/my_plogging_community_tv"
+                            app:layout_constraintWidth_percent="0.219" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/my_plogging_event_cl"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/my_plogging_community_cl"
+                        app:layout_constraintDimensionRatio="1:0.29"
+                        app:layout_constraintEnd_toEndOf="@+id/my_plogging_list_cl"
+                        app:layout_constraintStart_toStartOf="@+id/my_plogging_list_cl"
+                        app:layout_constraintWidth_percent="0.412">
+
+                        <TextView
+                            android:id="@+id/my_plogging_event_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:autoSizeMaxTextSize="16dp"
+                            android:autoSizeMinTextSize="1dp"
+                            android:autoSizeStepGranularity="1dp"
+                            android:autoSizeTextType="uniform"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:text="@string/my_plogging_evnet_tx"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/my_plogging_event_iv"
+                            app:layout_constraintHeight_percent="0.43"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.3" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/my_plogging_event_iv"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/icon_my_plogging_event_drawable"
+                            android:layout_marginStart="@dimen/_10_6dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_percent="0.423"
+                            app:layout_constraintStart_toEndOf="@+id/my_plogging_event_tv"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.123" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/my_plogging_logout_bt"
+                        android:layout_width="0dp"
+                        app:layout_constraintWidth_percent="0.862"
+                        app:layout_constraintDimensionRatio="1:0.125"
+                        android:background="@drawable/login_background_drawable"
+                        android:elevation="2dp"
+                        android:layout_height="0dp"
+                        android:text="@string/my_plogging_logout_tx"
+                        android:textColor="@color/black"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeMaxTextSize="15dp"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:layout_marginBottom="@dimen/_44_2dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
