@@ -4,16 +4,13 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -31,7 +28,6 @@ import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
-import java.util.*
 import kotlin.collections.HashMap
 
 class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
@@ -51,23 +47,6 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
     //onCurrentLocationUpdate()를 통해 받아온 위도, 경도 변수
     private var mCurrentLat: Double = 0.0
     private var mCurrentLng: Double = 0.0
-
-    //1초전의 사용자의 위치 변수
-    private var beforeLat: Double = 0.0
-    private var beforeLng: Double = 0.0
-
-    //플로깅을 시작했는지 안했는지 관련 변수
-    private var plogging_start: Boolean = false
-
-    //time
-    var recentTime: Int = 0
-    var startTime: Int = 0
-
-    //distance
-    var totalDistance: Double = 0.0
-
-    //speed
-    var speed: String = ""
 
     //클린하우스 범위 관련 변수
     var cleanhouse_distance: Double = 2.0
@@ -111,87 +90,51 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
         polyline = MapPolyline()
         polyline.tag = 1000
 
-        viewModel.liveFlag.observe(this, Observer {
+        viewModel.isSwitchOn.observe(this, Observer {
             showchm = it
         })
 
 
-//        binding.chmRadius500mBtn.setOnClickListener {
-//            mapView.removeAllPOIItems()
-//        }
-//
-//        binding.chmRadius1kmBtn.setOnClickListener {
-//            mapView.removeAllPOIItems()
-//        }
-//
-//        binding.chmRadius2kmBtn.setOnClickListener {
-//            mapView.removeAllPOIItems()
-//        }
-//
-//        binding.chmRadius3kmBtn.setOnClickListener {
-//            mapView.removeAllPOIItems()
-//        }
-//
-//        val timer = Timer()
-//
-//        val TT: TimerTask = object : TimerTask() {
-//            override fun run() {
-//                if (showchm && binding.chmRadius500mBtn.isChecked) {
-//                    cleanhouse_distance = 0.5
-//                    chm_start(cleanhouse_distance)
-//                }else if(showchm && binding.chmRadius1kmBtn.isChecked){
-//                    cleanhouse_distance = 1.0
-//                    chm_start(cleanhouse_distance)
-//                }else if(showchm && binding.chmRadius2kmBtn.isChecked){
-//                    cleanhouse_distance = 2.0
-//                    chm_start(cleanhouse_distance)
-//                }
-//                else if(showchm && binding.chmRadius3kmBtn.isChecked){
-//                    cleanhouse_distance = 3.0
-//                    chm_start(cleanhouse_distance)
-//                }
-//                else{
-//                    mapView.removeAllPOIItems()
-//                }
-//            }
-//        }
-//
-//
-//        timer.schedule(TT, 0, 10) //Timer 실행
-
-        //타이머 종료
-//        timer.cancel()
-
+        // radioButton Event Listener : 500, 1km, 2km, 3km 버튼 클릭시 Live distance 변수의 값 변경
         binding.chmRadiusRg.setOnCheckedChangeListener{RadioButton, isCheck ->
             when(isCheck){
-                R.id.chm_radius_500m_btn -> cleanhouse_distance = 0.5
-                R.id.chm_radius_1km_btn -> cleanhouse_distance = 1.0
-                R.id.chm_radius_2km_btn -> cleanhouse_distance = 2.0
-                R.id.chm_radius_3km_btn -> cleanhouse_distance = 3.0
+                R.id.chm_radius_500m_btn -> viewModel.updateDistance(0.5)
+                R.id.chm_radius_1km_btn -> viewModel.updateDistance(1.0)
+                R.id.chm_radius_2km_btn -> viewModel.updateDistance(2.0)
+                R.id.chm_radius_3km_btn -> viewModel.updateDistance(3.0)
             }
         }
 
-        viewModel.liveFlag.observe(this, Observer {
-            if(it) {
-                chm_start(cleanhouse_distance)
+        //Live Data(isSwitchOn)변수 감시하고 값이 변경되면 updateCleanHouseMarkerObserve에 저장
+        viewModel.isSwitchOn.observe(this, Observer {
+            viewModel.updateCleanHouseMarkerObserve(viewModel.isSwitchOn.value!!, viewModel.distance.value!!)
+        })
+
+        //Live Data(distance)변수 감시하고 값이 변경되면 updateCleanHouseMarkerObserve에 저장
+        viewModel.distance.observe(this, Observer {
+            viewModel.updateCleanHouseMarkerObserve(viewModel.isSwitchOn.value!!, viewModel.distance.value!!)
+        })
+
+        // Live Data(cleanHouseMarkerObserve)감시후 ShowCleanHouseMarker 함수 실행
+        viewModel.cleanHouseMarkerObserve.observe(this, Observer {
+            if(it.first){
+                ShowCleanHouseMarker(it.second)
             }else{
                 mapView.removeAllPOIItems()
             }
         })
-
-
-
         //클린하우스 마커 눌렀을 때 ( 클린하우스 마커 switch 이벤트 처리 )
         binding.chmSwitchBtn.setOnClickListener {
-            viewModel.updateLiveFlag()
+            viewModel.updateIsSwitchOn()
         }
-
-
     }
 
     override fun onPause() {
         super.onPause()
 
+        viewModel.cleanHouseMarkerObserve.removeObservers(this)
+        viewModel.isSwitchOn.removeObservers(this)
+        viewModel.distance.removeObservers(this)
         mapViewContainer.removeAllViews()
     }
 
@@ -204,14 +147,6 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
 
         //ViewModel
         binding.cleanhouseVm = viewModel
-
-
-        //툴바
-//        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
-//        setSupportActionBar(toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_plogging_back_main_bt)
-//        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // 위치추적 버튼
         if (checkLocationService()) {
@@ -391,40 +326,6 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
         mCurrentLat = mapPointGeo.latitude //현재 위치 위도
         mCurrentLng = mapPointGeo.longitude //현재 위치 경도
 
-        //플로깅 시작했을 때
-        if (plogging_start) {
-            polyline!!.lineColor = Color.argb(70, 0, 0, 255) // Polyline 컬러 지정.
-            polyline!!.addPoint(MapPoint.mapPointWithGeoCoord(mCurrentLat, mCurrentLng))
-            mapView!!.addPolyline(polyline)
-
-            if (mCurrentLat != 0.0 && mCurrentLng != 0.0) {
-                recentTime = System.currentTimeMillis().toInt()
-                totalDistance += distance(mCurrentLat, mCurrentLng, beforeLat, beforeLng, "meter")
-            }
-        }
-
-        var passing_time = (recentTime - startTime) / 1000
-        //속력을 00 : 00으로 포맷
-        if (passing_time == 0) {
-            passing_time = 1
-        }
-        speed = String.format("%05.2f", totalDistance / passing_time)
-
-
-        //속도 관련 변수 log
-        Log.d(
-            "ex",
-            "totalDistance : ${totalDistance}, passing_time : ${(passing_time / 1000)}, speed : ${speed}"
-        )
-
-
-        //speed를 .대신 `로 표시
-        speed = speed.replace(".", "`")
-
-        beforeLat = mCurrentLat
-        beforeLng = mCurrentLng
-
-        Log.d("lhjlocation", "${mCurrentLng} ${mCurrentLng}")
     }
 
     override fun onCurrentLocationDeviceHeadingUpdate(p0: MapView?, p1: Float) {
@@ -532,7 +433,9 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
         return dist
     }
 
-    private fun chm_start(chmDistance: Double) {
+    private fun ShowCleanHouseMarker(chmDistance: Double) {
+        mapView.removeAllPOIItems()
+
         val thread = NetworkThread()
         thread.start()
         thread.join()

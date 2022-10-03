@@ -13,10 +13,14 @@ class CleanhouseViewModel : ViewModel() {
     val distance: LiveData<Double>
         get() = _distance
 
+    private var _cleanHouseMarkerObserve = MutableLiveData<Pair<Boolean, Double>>()
+    val cleanHouseMarkerObserve : LiveData<Pair<Boolean, Double>>
+        get() = _cleanHouseMarkerObserve
 
     init {
         _isSwitchOn.value = false
-        _distance.value = 1.0
+        _distance.value = 0.0
+        _cleanHouseMarkerObserve.value = Pair(false, 1.0)
     }
 
     fun updateDistance(inputDistance:Double){
@@ -26,4 +30,9 @@ class CleanhouseViewModel : ViewModel() {
     fun updateIsSwitchOn() {
         _isSwitchOn.value = !isSwitchOn.value!!
     }
+
+    fun updateCleanHouseMarkerObserve(first_value : Boolean, second_value : Double){
+        _cleanHouseMarkerObserve.value = Pair(first_value, second_value)
+    }
+
 }
