@@ -51,7 +51,8 @@
 
     <style name="inputTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/pretendard_regular</item>
-
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">16.7sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
@@ -65,7 +66,6 @@
 
     <style name="buttonTextTheme" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/pretendard_semibold</item>
-
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">19.7dp</item>
@@ -73,6 +73,7 @@
 
     <style name="signUpInputTextTheme" parent="Widget.AppCompat.EditText">
         <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:textSize">18sp</item>
     </style>
 

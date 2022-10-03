@@ -17,11 +17,19 @@
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_register1.xml" value="0.21024280492810232" />
         <entry key="../../To_Be_Young/Jubgging/app/src/main/res/layout/activity_register2.xml" value="0.20655017797497735" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable-xxxhdpi/ic_more_time_48px.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable-xxxhdpi/icon_more_time_drawable.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/blue_button_drawable.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/button_enable_selector.xml" value="0.1285" />
+=======
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/button_enable_selector.xml" value="0.1285" />
+        <entry key="app/src/main/res/drawable/chm_radius_btn_drawable.xml" value="0.2255" />
+        <entry key="app/src/main/res/drawable/chm_radius_btn_on_drawable.xml" value="0.2255" />
+        <entry key="app/src/main/res/drawable/chmap_filter_btn_drawable.xml" value="0.2255" />
+>>>>>>> feature/cleanhouse_map
         <entry key="app/src/main/res/drawable/community_group_profile_drawable.xml" value="0.3485" />
         <entry key="app/src/main/res/drawable/grey_dim_button_background.xml" value="0.1285" />
         <entry key="app/src/main/res/drawable/grey_square_btn_drawable.xml" value="0.3485" />
@@ -31,8 +39,11 @@
         <entry key="app/src/main/res/drawable/ic_cleanhouse_toggle_btn.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_jupgging_logo_img.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2175" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable/ic_more_time_48px.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/ic_plogging.xml" value="0.2035" />
+=======
+>>>>>>> feature/cleanhouse_map
         <entry key="app/src/main/res/drawable/ic_plogging_back_main_bt.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_marker.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/ic_plogging_cleanhouse_off_bt.xml" value="0.2175" />
@@ -41,6 +52,7 @@
         <entry key="app/src/main/res/drawable/ic_plogging_distance.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_plogging_pace.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_plogging_time.xml" value="0.2085" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable/ic_recommend_route.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/ic_recycler_trash.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/ic_round_navigate_next_24.xml" value="0.3485" />
@@ -50,11 +62,19 @@
         <entry key="app/src/main/res/drawable/icon_app_title_drawable.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/icon_good_drawable.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/icon_more_time_drawable.xml" value="0.2035" />
+=======
+        <entry key="app/src/main/res/drawable/ic_round_navigate_next_24.xml" value="0.3485" />
+        <entry key="app/src/main/res/drawable/ic_splash_icon.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_unchecked_rb.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/icon_app_title_drawable.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/icon_good_drawable.xml" value="0.182" />
+>>>>>>> feature/cleanhouse_map
         <entry key="app/src/main/res/drawable/icon_my_drawable.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/icon_plogging_distance_drawable.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/icon_plogging_drawable.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/icon_plogging_pace_drawable.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/icon_plogging_time_drawable.xml" value="0.2085" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable/icon_recommend_route_drawable.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/icon_recycler_trash_drawable.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/icon_round_navigate_drawable.xml" value="0.3485" />
@@ -121,6 +141,12 @@
         <entry key="app/src/main/res/drawable/icon_time_fast_drawable.xml" value="0.207" />
 >>>>>>> feature/home_ui
 >>>>>>> feature/my_ui
+=======
+        <entry key="app/src/main/res/drawable/icon_round_navigate_drawable.xml" value="0.3485" />
+        <entry key="app/src/main/res/drawable/imsi.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/imsi_imsi.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/jupgging_logo_drawable.xml" value="0.2175" />
+>>>>>>> feature/cleanhouse_map
         <entry key="app/src/main/res/drawable/login_background_drawable.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/login_btn_background_drawable.xml" value="0.1285" />
         <entry key="app/src/main/res/drawable/login_kakao_btn_background_drawable.xml" value="0.5805" />
@@ -135,6 +161,7 @@
         <entry key="app/src/main/res/drawable/plogging_pause_btn_background_drawable.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/plogging_stop_btn_background_drawable.xml" value="0.2175" />
         <entry key="app/src/main/res/drawable/plogging_store_btn_background_drawable.xml" value="0.2175" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable/signup_authenfication_btn_background_drawable.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/signup_gender_radio_btn.xml" value="0.42080535888671877" />
 <<<<<<< HEAD
@@ -154,6 +181,16 @@
         <entry key="app/src/main/res/drawable/user_profile_outline_drawable.xml" value="0.131" />
 >>>>>>> feature/home_ui
 >>>>>>> feature/my_ui
+=======
+        <entry key="app/src/main/res/drawable/sample.xml" value="0.2255" />
+        <entry key="app/src/main/res/drawable/signup_authenfication_btn_background_drawable.xml" value="0.2605" />
+        <entry key="app/src/main/res/drawable/signup_gender_radio_btn.xml" value="0.42080535888671877" />
+        <entry key="app/src/main/res/drawable/square_btn_enable_selector.xml" value="0.243" />
+        <entry key="app/src/main/res/drawable/user_profile_outline_drawable.xml" value="0.182" />
+        <entry key="app/src/main/res/drawable/white_square_btn_drawable.xml" value="0.3485" />
+        <entry key="app/src/main/res/layout/activity_cleanhouse_map.xml" value="0.26752777099609376" />
+        <entry key="app/src/main/res/layout/activity_community_group_list.xml" value="0.3676843433333493" />
+>>>>>>> feature/cleanhouse_map
         <entry key="app/src/main/res/layout/activity_easy_signup_first.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_easy_signup_second.xml" value="0.5120468139648438" />
         <entry key="app/src/main/res/layout/activity_find_account.xml" value="0.22" />
@@ -165,14 +202,22 @@
         <entry key="app/src/main/res/layout/activity_plogging_history.xml" value="0.2507988664033808" />
         <entry key="app/src/main/res/layout/activity_plogging_history_item.xml" value="0.44982604980468754" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.5901041666666667" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.7675226683785294" />
+=======
+        <entry key="app/src/main/res/layout/activity_signup_account.xml" value="0.4857584471871232" />
+>>>>>>> feature/cleanhouse_map
         <entry key="app/src/main/res/layout/activity_signup_auth.xml" value="0.17143554687500007" />
         <entry key="app/src/main/res/layout/activity_signup_first.xml" value="0.44374718008951247" />
         <entry key="app/src/main/res/layout/activity_signup_second.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_signup_third.xml" value="0.3211050724637681" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.1699909218663386" />
         <entry key="app/src/main/res/layout/activity_user_info.xml" value="0.34692028985507245" />
+=======
+        <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.5978824623936824" />
+>>>>>>> feature/cleanhouse_map
         <entry key="app/src/main/res/layout/ballon_layout.xml" value="0.3808876811594203" />
         <entry key="app/src/main/res/layout/dialog_finish_signup.xml" value="0.2114914425427873" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.6077865600585938" />
@@ -181,11 +226,16 @@
         <entry key="app/src/main/res/layout/fragment_find_pw.xml" value="0.21725395313207652" />
         <entry key="app/src/main/res/layout/fragment_find_pw_fin.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37904510498046873" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/fragment_my.xml" value="0.41986180135648543" />
+=======
+        <entry key="app/src/main/res/layout/fragment_my.xml" value="0.29393115942028986" />
+>>>>>>> feature/cleanhouse_map
         <entry key="app/src/main/res/layout/item_community_event.xml" value="0.2695419311523438" />
         <entry key="app/src/main/res/layout/item_community_group.xml" value="0.41014709472656236" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.3885416666666667" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.1274062816616008" />
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_signup_user_info.xml" value="0.6027175903320312" />
@@ -202,6 +252,8 @@
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.1274062816616008" />
 >>>>>>> feature/home_ui
 >>>>>>> feature/my_ui
+=======
+>>>>>>> feature/cleanhouse_map
       </map>
     </option>
   </component>

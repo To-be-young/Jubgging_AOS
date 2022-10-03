@@ -8,7 +8,7 @@
 
         <variable
             name="signUpAccount"
-            type="com.example.jubgging.view.SignUpAccountActivity" />
+            type="com.example.jubgging.view.SignUpActivity" />
 
         <variable
             name="signUpVm"

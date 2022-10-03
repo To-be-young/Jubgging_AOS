@@ -15,20 +15,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.jubgging.R
-import com.example.jubgging.databinding.ActivitySignupAccountBinding
+import com.example.jubgging.databinding.ActivitySignupBinding
 import com.example.jubgging.network.data.request.EmailCodeAuthRequest
 import com.example.jubgging.network.data.request.EmailRequest
 import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.viewmodel.SignUpViewModel
 
-class SignUpAccountActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignupAccountBinding
+class SignUpActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySignupBinding
     private val viewModel: SignUpViewModel by viewModels()
     private lateinit var dialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_signup_account)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
         binding.lifecycleOwner = this
         binding.signUpVm = viewModel
 

@@ -31,4 +31,6 @@
     <string name="my_plogging_community_tx">함께 줍깅</string>
     <string name="my_plogging_evnet_tx">이벤트</string>
     <string name="my_plogging_logout_tx">로그아웃</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
 </resources>

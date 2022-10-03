@@ -1,5 +1,8 @@
 package com.example.jubgging.adapter
 
+import android.view.Gravity
+import android.view.View
+import androidx.appcompat.widget.SwitchCompat
 import android.util.Log
 import android.util.Patterns
 import android.widget.Button
@@ -330,6 +333,28 @@ object BindingConversions {
 
     }
 
+    @JvmStatic
+    @BindingAdapter("setOnTextView", "setOffTextView")
+    fun setSwitchText(
+        switch: SwitchCompat,
+        onTextView: TextView,
+        offTextView: TextView,
+    ) {
+        onTextView.gravity = Gravity.CENTER_VERTICAL
+        offTextView.gravity = Gravity.CENTER_VERTICAL
+        switch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                onTextView.setText(R.string.off)
+                onTextView.visibility = View.VISIBLE
+                offTextView.visibility = View.GONE
+            } else {
+
+                offTextView.setText(R.string.on)
+                offTextView.visibility = View.VISIBLE
+                onTextView.visibility = View.GONE
+            }
+        }
+    }
 
     //phone Number Regex
     private fun matchPhoneNumberRegex(phoneNumber: String): Boolean {
@@ -349,5 +374,3 @@ object BindingConversions {
         return pwd.matches(regex.toRegex())
     }
 }
-
-

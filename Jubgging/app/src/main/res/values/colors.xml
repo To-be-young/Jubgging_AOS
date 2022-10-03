@@ -8,9 +8,9 @@
     <color name="red">#ff0000</color>
     <color name="lightish_blue">#335aff</color>
     <color name="grey">#c1c1c1</color>
-    <color name="brownish_grey">#747474</color>
     <color name="greyish_brown">#404040</color>
     <color name="teal">#009a77</color>
     <color name="pumpkin_orange">#ff8900</color>
     <color name="warm_pink">#ff5388</color>
+    <color name="brownish_grey">#747474</color>
 </resources>
