@@ -1,5 +1,6 @@
 package com.example.jubgging.view
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -53,12 +54,16 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         pathwayViewMoodel.pathway(IntentRecordId!!.toInt(), ::showToast)
         Log.d("success_pathway", "${IntentRecordId.toInt()}")
 
-        val toolbar = binding.chmTb
+        binding.ploggingBackBt.setOnClickListener{
+            val intent = Intent(this, PloggingHistoryActivity::class.java)
+            startActivity(intent)
+        }
 
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(true)
-        toolbar.title = "날짜"
+        binding.ploggingHomeBt.setOnClickListener{
+            val intent = Intent(this, PloggingActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
     }

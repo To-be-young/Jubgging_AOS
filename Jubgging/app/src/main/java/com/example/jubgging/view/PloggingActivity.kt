@@ -168,6 +168,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                     speed,
                     pathway = ploggingList), ::showToast)
 
+            Log.d("PloggingRequest", "${ploggingList}")
             binding.ploggingDistanceContextTv.text = "0Km"
             binding.ploggingPaceContextTv.text = "00`00"
 
@@ -453,24 +454,32 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         //플로깅 시작했을 때
         if (plogging_start) {
             polyline!!.lineColor = Color.argb(70, 0, 0, 255) // Polyline 컬러 지정.
-            polyline!!.addPoint(MapPoint.mapPointWithGeoCoord(mCurrentLat, mCurrentLng))
-            mapView!!.addPolyline(polyline)
+
 
             if (mCurrentLat != 0.0 && mCurrentLng != 0.0) {
+
+
+
                 recentTime = System.currentTimeMillis().toInt()
                 totalDistance += distance(mCurrentLat, mCurrentLng, beforeLat, beforeLng, "meter")
 
                 val current = LocalDateTime.now()
-                val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss")
                 val formatted = current.format(formatter)
 
-                ploggingList.add(index, PloggingModel(mCurrentLat, mCurrentLng, formatted))
 
-                index++
+                if(distance(mCurrentLat, mCurrentLng, beforeLat, beforeLng, "meter") < 2){
+                    polyline!!.addPoint(MapPoint.mapPointWithGeoCoord(mCurrentLat, mCurrentLng))
+                    mapView.addPolyline(polyline)
+                    ploggingList.add(index, PloggingModel(mCurrentLat, mCurrentLng, formatted))
 
+                    index++
+                }
+
+                Log.d("ploggingList", "${ploggingList}")
+
+                Log.d("index", "$index")
             }
-
-
         }
 
         var passing_time = (recentTime - startTime) / 1000
