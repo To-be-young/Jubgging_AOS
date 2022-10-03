@@ -1,41 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="logo_top">46dp</dimen>
-    <dimen name="layout_side">35.7dp</dimen>
-    <dimen name="button_margin_bottom">37dp</dimen>
-    <dimen name="layout_input_margin_space">28dp</dimen>
-    <dimen name="input_layout_padding_horizontal">37.2dp</dimen>
-    <dimen name="input_layout_margin_top">36.7dp</dimen>
-    <dimen name="input_layout_padding_vertical">37.2dp</dimen>
-    <dimen name="_56dp">50.4dp</dimen> <!--44.8 39.2-->
-    <dimen name="_10_2dp">9.18dp</dimen> <!--8.16 7.14-->
-    <dimen name="_25dp">22.5dp</dimen> <!--20 17.5-->
-    <dimen name="_8dp">7.2dp</dimen> <!--6.4 5.6-->
-    <dimen name="_32dp">28.8dp</dimen> <!--25.6 22.4-->
-    <dimen name="_65dp">58.5dp</dimen> <!--52-->
-    <dimen name="_19dp">17.1dp</dimen>
-    <dimen name="_30dp">27dp</dimen>
-    <dimen name="_15dp">13.5dp</dimen>
-    <dimen name="_70dp">63dp</dimen>
-    <dimen name="_64dp">57.6dp</dimen>
-    <dimen name="_45dp">40.5dp</dimen>
-    <dimen name="_3_5dp">3.15dp</dimen>
-    <dimen name="_3dp">2.7dp</dimen>
-    <dimen name="_63dp">56.7dp</dimen>
-    <dimen name="_31dp">27.9dp</dimen>
-    <dimen name="_27dp">24.3dp</dimen>
-    <dimen name="_24dp">21.6dp</dimen>
-    <dimen name="_14_6dp">13.14dp</dimen>
-    <dimen name="_73dp">65.7dp</dimen>
-    <dimen name="_41dp">36.9dp</dimen>
-    <dimen name="_109dp">90.8dp</dimen>
-    <dimen name="_29_8dp">26.82dp</dimen>
-    <dimen name="_9dp">8.1dp</dimen>
-    <dimen name="_16dp">14.4dp</dimen>
-    <dimen name="_14dp">12.6dp</dimen>
-    <dimen name="_48dp">43.2dp</dimen>
-    <dimen name="_5dp">4.5dp</dimen>
-    <dimen name="_6dp">5.4dp</dimen>
-    <dimen name="_20dp">20dp</dimen>
-    <dimen name="_10dp">10dp</dimen>
+
 </resources>

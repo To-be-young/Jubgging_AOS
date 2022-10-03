@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="logo_top">46dp</dimen>
-    <dimen name="layout_side">35.7dp</dimen>
-    <dimen name="button_margin_bottom">37dp</dimen>
-    <dimen name="layout_input_margin_space">28dp</dimen>
-    <dimen name="input_layout_padding_horizontal">37.2dp</dimen>
-    <dimen name="input_layout_margin_top">36.7dp</dimen>
-    <dimen name="input_layout_padding_vertical">37.2dp</dimen>
-    <dimen name="_20dp">20dp</dimen>
-    <dimen name="_10dp">10dp</dimen>
+
 </resources>
