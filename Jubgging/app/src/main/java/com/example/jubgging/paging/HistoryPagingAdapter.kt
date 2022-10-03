@@ -1,7 +1,5 @@
-package com.example.jubgging.adapter
+package com.example.jubgging.paging
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +7,8 @@ import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityPloggingHistoryItemBinding
 import com.example.jubgging.model.HistoryGroup
-import com.example.jubgging.network.PloggingReceive
-import com.example.jubgging.view.PloggingDetailActivity
-import com.example.jubgging.view.PloggingHistoryActivity
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

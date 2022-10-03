@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.jubgging.adapter.HistoryPagingAdapter
+import com.example.jubgging.paging.HistoryPagingAdapter
 import com.example.jubgging.databinding.ActivityPloggingHistoryBinding
 import com.example.jubgging.model.HistoryGroup
 import com.example.jubgging.viewmodel.CleanhouseViewModel
@@ -31,7 +31,7 @@ class PloggingHistoryActivity : AppCompatActivity() {
         binding.ploggingHistotyRv.adapter = adapter
         binding.ploggingHistotyRv.layoutManager = LinearLayoutManager(this)
 
-        adapter.setOnItemClickListener(object:HistoryPagingAdapter.OnItemClickListener{
+        adapter.setOnItemClickListener(object: HistoryPagingAdapter.OnItemClickListener{
             override fun onItemClick(v: View, data: HistoryGroup, pos: Int) {
                 val intent = Intent(this@PloggingHistoryActivity, PloggingDetailActivity::class.java)
                 intent.putExtra("date",data.date)

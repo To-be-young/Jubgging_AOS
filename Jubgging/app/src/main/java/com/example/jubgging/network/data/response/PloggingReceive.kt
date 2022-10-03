@@ -1,4 +1,4 @@
-package com.example.jubgging.network
+package com.example.jubgging.network.data.response
 
 data class PloggingReceive(
     val recordId : Int,

@@ -42,7 +42,6 @@ android {
         dataBinding = true
     }
 }
-
 dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0'
 
@@ -82,11 +81,6 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
 
-    //RxAndroid와 RxJava , RxKotlin 추가
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
-
     //coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
@@ -94,6 +88,13 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.2"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.2"
 
+    //RxAndroid와 RxJava , RxKotlin 추가
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+
+
     //paging
     implementation "androidx.paging:paging-runtime:3.1.1"
 }
+
