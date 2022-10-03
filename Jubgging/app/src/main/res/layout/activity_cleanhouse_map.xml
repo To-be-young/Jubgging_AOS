@@ -44,7 +44,7 @@
             android:id="@+id/chm_radius_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_20dp"
+            android:layout_marginTop="20dp"
             android:autoSizeMaxTextSize="16dp"
             android:autoSizeMinTextSize="2dp"
             android:autoSizeStepGranularity="1dp"

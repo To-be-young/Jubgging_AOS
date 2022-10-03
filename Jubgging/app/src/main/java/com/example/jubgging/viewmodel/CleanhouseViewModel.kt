@@ -4,16 +4,26 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CleanhouseViewModel : ViewModel(){
-    private var _liveFlag = MutableLiveData<Boolean>()
-    val liveFlag : LiveData<Boolean>
-        get() = _liveFlag
+class CleanhouseViewModel : ViewModel() {
+    private var _isSwitchOn = MutableLiveData<Boolean>()
+    val isSwitchOn: LiveData<Boolean>
+        get() = _isSwitchOn
+
+    private var _distance = MutableLiveData<Double>()
+    val distance: LiveData<Double>
+        get() = _distance
+
 
     init {
-        _liveFlag.value = false
+        _isSwitchOn.value = false
+        _distance.value = 1.0
     }
 
-    fun updateLiveFlag(){
-        _liveFlag.value = !liveFlag.value!!
+    fun updateDistance(inputDistance:Double){
+        _distance.value = inputDistance
+    }
+
+    fun updateIsSwitchOn() {
+        _isSwitchOn.value = !isSwitchOn.value!!
     }
 }

@@ -56,10 +56,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-    //kakao map
-    implementation files('libs/libDaumMapAndroid.jar')
     // Gson
     implementation 'com.google.code.gson:gson:2.8.6'
+    //kakao map
+    implementation files('libs/libDaumMapAndroid.jar')
     // Retrofit2
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     // Retrofit2-Gson converter
