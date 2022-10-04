@@ -19,5 +19,9 @@ class OssNoticeActivity : AppCompatActivity() {
         binding.noticeOssBtn.setOnClickListener {
             startActivity(Intent(this, OssLicensesMenuActivity::class.java))
         }
+
+        binding.noticeOssEtcBtn.setOnClickListener{
+            startActivity(Intent(this, EtcOssActivity::class.java))
+        }
     }
 }

@@ -35,6 +35,23 @@
         android:text="오픈소스 라이선스"
         app:layout_constraintTop_toBottomOf="@id/notice_tool_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-      />
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/notice_oss_etc_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:elevation="2dp"
+        android:background="@drawable/square_btn_enable_selector"
+        app:layout_constraintDimensionRatio="1:0.126"
+        app:layout_constraintWidth_percent="0.861"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="외부 오픈소스 라이선스"
+        app:layout_constraintTop_toBottomOf="@id/notice_oss_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

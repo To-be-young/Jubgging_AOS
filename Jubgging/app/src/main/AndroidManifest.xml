@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
         <activity
-            android:name=".ImsiActivity"
+            android:name=".view.EtcOssActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
