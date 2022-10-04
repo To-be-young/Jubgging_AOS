@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:elevation="1.5dp"
-            android:title="날짜"
+            android:title="@string/plogging_detail_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -35,14 +35,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_btn_background_drawable"
-                android:text="뒤로가기"/>
+                android:text="@string/plogging_back_btn"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/plogging_home_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_btn_background_drawable"
-                android:text="홈으로"/>
+                android:text="@string/plogging_home_btn"/>
         </Toolbar>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,7 +78,7 @@
                     android:autoSizeStepGranularity="1dp"
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/pretendard_regular"
-                    android:text="2022년 11월 28일"
+                    android:text="@string/history_date"
                     android:textColor="@color/brownish_grey"
                     app:layout_constraintHeight_percent="0.13"
                     app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +147,7 @@
                     android:autoSizeTextType="uniform"
                     android:gravity="top"
                     android:includeFontPadding="false"
-                    android:text="00:00"
+                    android:text="@string/history_time_00_00"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/login_border_v"
                     app:layout_constraintHeight_percent="0.3"
@@ -180,7 +180,7 @@
                     android:autoSizeTextType="uniform"
                     android:gravity="top"
                     android:includeFontPadding="false"
-                    android:text="0.0km"
+                    android:text="@string/history_distance_0_0km"
                     app:layout_constraintBottom_toBottomOf="@+id/history_time_tv"
                     app:layout_constraintEnd_toStartOf="@+id/login_border1_v"
                     app:layout_constraintHeight_percent="0.3"
@@ -306,7 +306,7 @@
                     android:autoSizeTextType="uniform"
                     android:gravity="top"
                     android:includeFontPadding="false"
-                    android:text="00`00"
+                    android:text="@string/history_pace_00_00"
                     app:layout_constraintBottom_toBottomOf="@+id/history_distance_tv"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.3"

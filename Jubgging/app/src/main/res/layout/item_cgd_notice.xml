@@ -12,7 +12,7 @@
         android:id="@+id/item_cgd_tv"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="가나다라마바사아자차카타파하"
+        android:text="@string/item_cgd_tx"
         android:autoSizeMaxTextSize="13dp"
         android:autoSizeMinTextSize="10dp"
         android:autoSizeStepGranularity="1dp"

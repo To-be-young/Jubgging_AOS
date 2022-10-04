@@ -183,7 +183,7 @@
                     android:autoSizeMinTextSize="2dp"
                     android:autoSizeStepGranularity="1dp"
                     android:autoSizeTextType="uniform"
-                    android:text="/"
+                    android:text="@string/login_slash"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/login_find_pwd_tv"
                     app:layout_constraintStart_toEndOf="@+id/login_find_id_tv"
