@@ -11,6 +11,8 @@ import com.example.jubgging.network.ApiInterface
 
 class PagingRepository(private val apiInterface: ApiInterface){
 
+    private val NETWORK_PAGE_SIZE:Int = 10
+
     fun getCommunities():LiveData<PagingData<CommunityGroup>>{
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
@@ -25,7 +27,4 @@ class PagingRepository(private val apiInterface: ApiInterface){
     }
 
 
-    companion object {
-        private const val NETWORK_PAGE_SIZE = 10
-    }
 }

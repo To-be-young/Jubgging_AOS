@@ -48,6 +48,10 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
     private var mCurrentLat: Double = 0.0
     private var mCurrentLng: Double = 0.0
 
+    //map center Point Location
+    private var mapCenterLat : Double = 0.0
+    private var mapCenterLng : Double = 0.0
+
     //클린하우스 범위 관련 변수
     var cleanhouse_distance: Double = 2.0
     var showchm: Boolean = false
@@ -375,7 +379,8 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
     }
 
     override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {
-
+        mapCenterLat = mapView.mapCenterPoint.mapPointGeoCoord.latitude
+        mapCenterLng = mapView.mapCenterPoint.mapPointGeoCoord.longitude
 
     }
 
@@ -460,8 +465,8 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
             val distanceKiloMeter: Double = distance(
                 marker_Lat,
                 marker_Lon,
-                mCurrentLat,
-                mCurrentLng,
+                mapCenterLat,
+                mapCenterLng,
                 "kilometer"
             )
 

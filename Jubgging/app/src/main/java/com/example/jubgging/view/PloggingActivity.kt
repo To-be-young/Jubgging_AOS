@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.LocationManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -18,6 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -35,8 +35,6 @@ import java.net.URL
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 import kotlin.concurrent.timer
 
 class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
@@ -57,6 +55,10 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     //onCurrentLocationUpdate()를 통해 받아온 위도, 경도 변수
     private var mCurrentLat: Double = 0.0
     private var mCurrentLng: Double = 0.0
+
+    //map center Point Location
+    private var mapCenterLat : Double = 0.0
+    private var mapCenterLng : Double = 0.0
 
     //1초전의 사용자의 위치 변수
     private var beforeLat: Double = 0.0
@@ -223,8 +225,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                     val distanceKiloMeter: Double = distance(
                         marker_Lat,
                         marker_Lon,
-                        mCurrentLat,
-                        mCurrentLng,
+                        mapCenterLat,
+                        mapCenterLng,
                         "kilometer"
                     )
 
@@ -258,6 +260,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
     override fun onPause() {
         super.onPause()
+        viewModel.isSwitchOn.removeObservers(this)
         mapViewContainer.removeAllViews()
     }
 
@@ -562,6 +565,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
     override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {
 
+        mapCenterLat = mapView.mapCenterPoint.mapPointGeoCoord.latitude
+        mapCenterLng = mapView.mapCenterPoint.mapPointGeoCoord.longitude
 
     }
 

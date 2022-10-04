@@ -108,6 +108,7 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
 
     override fun onPause() {
         super.onPause()
+        pathwayViewMoodel.PathwayData.removeObservers(this)
         mapViewContainer.removeAllViews()
     }
 
