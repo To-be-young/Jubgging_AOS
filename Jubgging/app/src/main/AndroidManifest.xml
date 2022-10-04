@@ -3,10 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.jubgging">
 
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 외부 저장소 사용 권한 설정 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -32,9 +30,19 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.PloggingActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.PloggingDetailActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".view.PloggingHistoryActivity"
+            android:exported="true"/>
+        <activity
             android:name=".view.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,9 +52,7 @@
         <activity
             android:name=".view.MainActivity"
             android:exported="true" />
-        <activity
-            android:name=".view.InstagramShareActivity"
-            android:exported="true" />
+
         <activity
             android:name=".view.OssNoticeActivity"
             android:exported="true" />
@@ -76,6 +82,7 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="${kakaoSdkAppkey}" />
+
     </application>
 
 </manifest>

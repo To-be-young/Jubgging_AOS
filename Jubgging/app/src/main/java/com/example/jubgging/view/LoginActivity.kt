@@ -27,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
             ) {
                 viewModel.login(LoginRequest(binding.loginUserEmailEt.text.toString().trim(),
                     binding.loginUserPwdEt.text.toString().trim()), ::moveToMain, ::showToast)
+
             } else {
                 showToast(2)
             }
@@ -52,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun moveToMain() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, PloggingActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
         finish()
         startActivity(intent)

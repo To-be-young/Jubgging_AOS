@@ -18,21 +18,19 @@ import kotlinx.coroutines.launch
 
 class SignUpViewModel : ViewModel() {
     private val signUpRepository = SignUpRepositoryImpl()
-    val overlapType:Pair<String,String> = Pair("email","nickname")
 
     companion object {
         var accessToken: String = ""
     }
 
 
-
     // 중복이면 1, 통과하면 0, default -1
     private val _eOverlapFlag = MutableLiveData<Int>()
-    val eOverlapFlag:LiveData<Int>
+    val eOverlapFlag: LiveData<Int>
         get() = _eOverlapFlag
 
     private val _nOverlapFlag = MutableLiveData<Int>()
-    val nOverlapFlag:LiveData<Int>
+    val nOverlapFlag: LiveData<Int>
         get() = _nOverlapFlag
 
     //인증코드 발송 여부 flag
@@ -88,10 +86,12 @@ class SignUpViewModel : ViewModel() {
     private fun updateEmailPassFlag(flag: Int) {
         _emailPassFlag.value = flag
     }
-    private fun updateEOverlapFlag(flag: Int){
+
+    private fun updateEOverlapFlag(flag: Int) {
         _eOverlapFlag.value = flag
     }
-    private fun updateNOverlapFlag(flag: Int){
+
+    private fun updateNOverlapFlag(flag: Int) {
         _nOverlapFlag.value = flag
     }
 
@@ -242,16 +242,18 @@ class SignUpViewModel : ViewModel() {
         )
     }
 
-
     //login Api
     @SuppressLint("CheckResult")
     fun login(loginRequest: LoginRequest, moveToMain: () -> Unit, showToast: (tag: Int) -> Unit) {
         signUpRepository.login(loginRequest).subscribeBy(onSuccess = {
             if (it.code == 0) {
+                updateJwtToken(it.data.accessToken)
+
                 moveToMain().apply {
                     showToast(0)
                     updateJwtToken(it.data.accessToken)
                 }
+
             } else {
                 showToast(1)
             }
@@ -259,6 +261,7 @@ class SignUpViewModel : ViewModel() {
             it.printStackTrace()
         })
     }
+
     private fun updateJwtToken(inputToken: String?) {
         if (inputToken != null) {
             accessToken = inputToken

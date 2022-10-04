@@ -1,13 +1,12 @@
 package com.example.jubgging.adapter
 
+import android.util.Patterns
 import android.view.Gravity
 import android.view.View
-import androidx.appcompat.widget.SwitchCompat
-import android.util.Log
-import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.BindingAdapter
 import com.example.jubgging.R
 
@@ -110,54 +109,6 @@ object BindingConversions {
         }
     }
 
-/*
-
-    //SignupAuth 관련
-    //send
-    @JvmStatic
-    @BindingAdapter("setPhoneNumberNoticeTv", "setInputPhoneNumber")
-    fun setEnablePnumCodeSendBtn(
-        pnumSendCodeBtn: Button,
-        pnumNoticeTv: TextView,
-        phoneNumber: String,
-    ) {
-        if (phoneNumber.isNotBlank()) {
-            //phoneNumber is Not null
-            if (matchPhoneNumberRegex(phoneNumber)) {
-                //phoneNumber matches Regex
-                pnumSendCodeBtn.isEnabled = true
-                pnumSendCodeBtn.setTextColor(pnumSendCodeBtn.context.getColor(R.color.green_blue))
-
-                pnumNoticeTv.text = "인증 버튼을 눌러 인증 과정을 완료하세요."
-                pnumNoticeTv.setTextColor(pnumNoticeTv.context.getColor(R.color.green_blue))
-            } else {
-                //phoneNumber is not match Regex
-                pnumSendCodeBtn.isEnabled = false
-                pnumSendCodeBtn.setTextColor(pnumSendCodeBtn.context.getColor(R.color.brownish_grey))
-
-                pnumNoticeTv.text = "전화번호 형식에 맞지 않습니다. 정확한 번호를 입력해주세요."
-                pnumNoticeTv.setTextColor(pnumNoticeTv.context.getColor(R.color.red))
-            }
-        }
-    }
-*/
-
-
-    //pnumAuthCode 전송 여부, userInput null 여부에 따른 pnumAuthBtn enable 관리
-/*    @JvmStatic
-    @BindingAdapter("setSentCodeFlag", "setPnumAuthCode")
-    fun setEnablePnumAuthBtn(pnumAuthBtn: Button, sentCodeFlag: Boolean, pnumAuthCode: String) {
-        // pnum-auth code is not null, matches Regex and pnumAuthCode was sent
-        if (pnumAuthCode.isNotBlank() && pnumAuthCode.length == 6 && sentCodeFlag) {
-            pnumAuthBtn.isEnabled = true
-            pnumAuthBtn.setTextColor(pnumAuthBtn.context.getColor(R.color.green_blue))
-        } else {
-            // pnum-auth code is null, is not match Regex, pnumAuthCode was not sent
-            pnumAuthBtn.isEnabled = false
-            pnumAuthBtn.setTextColor(pnumAuthBtn.context.getColor(R.color.brownish_grey))
-        }
-    }*/
-
     //userInput null 여부에 따른 nickname 중복 검사 btn enable 관리
     @JvmStatic
     @BindingAdapter("setInputNickname")
@@ -172,7 +123,7 @@ object BindingConversions {
     }
 
     //닉네임 중복 여부, pnum auth 과정 완료 여부에 따른 signupFinBtn enable 관리
-    @JvmStatic
+/*    @JvmStatic
     @BindingAdapter("setPassAuthFlag", "setOverlapFlag")
     fun setEnableSignUpFinBtn(finBtn: Button, passAuthFlag: Int, overlapFlag: Int) {
         if (passAuthFlag == 0 && overlapFlag == 0) {
@@ -182,7 +133,7 @@ object BindingConversions {
             finBtn.isEnabled = false
             finBtn.setTextColor(finBtn.context.getColor(R.color.brownish_grey))
         }
-    }
+    }*/
 
     //email, pnum Auth 공통
     //codeSent여부에 따른 Editext 및 button enable 관리
@@ -332,6 +283,7 @@ object BindingConversions {
         }
 
     }
+
 
     @JvmStatic
     @BindingAdapter("setOnTextView", "setOffTextView")

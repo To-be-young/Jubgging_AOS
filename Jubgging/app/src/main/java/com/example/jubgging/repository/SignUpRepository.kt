@@ -12,6 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 interface SignUpRepository {
+
     fun signUp(signUpRequest: SignUpRequest): Single<BaseResponse<String>>
     fun checkNicknameOverlap(nickname: String): Single<BaseResponse<Boolean>>
     fun login(loginRequest: LoginRequest):Single<BaseResponse<LoginResponse>>
@@ -22,6 +23,7 @@ interface SignUpRepository {
 }
 
 class SignUpRepositoryImpl : SignUpRepository {
+
     override fun signUp(signUpRequest: SignUpRequest): Single<BaseResponse<String>> {
         return ApiClient.api.signUp(signUpRequest).subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread()).map { it }

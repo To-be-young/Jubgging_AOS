@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/ic_recycling_48px_grey"
-    android:width="17dp"
-        android:height="17dp"/>
+        android:width="15.2dp"
+        android:height="15.2dp"/>
 </layer-list>

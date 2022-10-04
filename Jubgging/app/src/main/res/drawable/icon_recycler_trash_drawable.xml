@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:width="@dimen/_44_2dp"
-        android:height="@dimen/_46dp"
+    <item android:width="44.2dp"
+        android:height="46dp"
         android:drawable="@drawable/ic_recycler_trash"/>
 </layer-list>

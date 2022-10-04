@@ -66,4 +66,8 @@
     <dimen name="_18_2dp">18.2dp</dimen>
     <dimen name="_10_6dp">10.6dp</dimen>
     <dimen name="_14_4dp">14.4dp</dimen>
+    <dimen name="_14_9dp">14.9dp</dimen>
+    <dimen name="_7_8dp">7.8dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="_2dp">2dp</dimen>
 </resources>
