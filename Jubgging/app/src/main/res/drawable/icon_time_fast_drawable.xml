@@ -3,5 +3,5 @@
     <item
         android:width="11dp"
         android:height="11dp"
-        android:drawable="@drawable/ic_time_fast" />
+        android:drawable="@drawable/ic_more_time_48px" />
 </layer-list>

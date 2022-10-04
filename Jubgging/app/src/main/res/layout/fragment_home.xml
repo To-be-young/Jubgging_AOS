@@ -469,6 +469,7 @@
                             app:layout_constraintHorizontal_bias="0.5"
 
                             app:layout_constraintStart_toEndOf="@+id/home_rm_route_tv"
+                            app:layout_constraintTop_toTopOf="@+id/home_rm_route_tv"
                             app:layout_constraintWidth_percent="0.2" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -516,8 +517,8 @@
 
                         <ImageView
                             android:id="@+id/home_ch_map_iv"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_27_8dp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/icon_recycler_trash_drawable"

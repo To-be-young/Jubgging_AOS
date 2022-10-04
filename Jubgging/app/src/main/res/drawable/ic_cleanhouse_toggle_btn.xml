@@ -21,7 +21,7 @@
     <item
         android:width="@dimen/_45dp"
         android:height="@dimen/_45dp"
-        android:drawable="@drawable/icon_target"
+        android:drawable="@drawable/ic_my_location_48px"
         />
 
 </layer-list>

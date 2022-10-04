@@ -12,9 +12,9 @@ import com.example.jubgging.R
 import com.example.jubgging.databinding.FragmentMyBinding
 import com.example.jubgging.viewmodel.UserInfoViewModel
 
-class MyFragment: Fragment() {
+class MyFragment : Fragment() {
     private lateinit var binding: FragmentMyBinding
-    private val viewModel:UserInfoViewModel by viewModels()
+    private val viewModel: UserInfoViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,12 +31,16 @@ class MyFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.myUserProfileCl.setOnClickListener {
-            val intent = Intent(requireContext(),UserProfileActivity::class.java)
+            val intent = Intent(requireContext(), UserProfileActivity::class.java)
             startActivity(intent)
         }
 
         binding.myNoticeCl.setOnClickListener {
-            val intent = Intent(requireContext(),OssNoticeActivity::class.java)
+            val intent = Intent(requireContext(), OssNoticeActivity::class.java)
+            startActivity(intent)
+        }
+        binding.myPloggingListCl.setOnClickListener {
+            val intent = Intent(requireContext(),PloggingHistoryActivity::class.java)
             startActivity(intent)
         }
     }

@@ -447,8 +447,8 @@
 
                         <ImageView
                             android:id="@+id/my_plogging_list_iv"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:layout_marginTop="@dimen/_14_4dp"
                             android:src="@drawable/icon_my_plogging_list_drawable"
@@ -492,16 +492,16 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/my_plogging_notice_iv"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:src="@drawable/icon_my_plogging_notice_drawable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_6_8dp"
                             android:adjustViewBounds="true"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:src="@drawable/icon_my_plogging_notice_drawable"
+                            app:layout_constraintBottom_toBottomOf="@+id/my_notice_tv"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHeight_percent="0.367"
                             app:layout_constraintStart_toEndOf="@+id/my_notice_tv"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/my_notice_tv"
                             app:layout_constraintWidth_percent="0.107" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -540,8 +540,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/my_plogging_community_iv"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:src="@drawable/icon_my_plogging_community_drawable"
                             android:layout_marginTop="@dimen/_15_8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -586,8 +586,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/my_plogging_event_iv"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:src="@drawable/icon_my_plogging_event_drawable"
                             android:layout_marginStart="@dimen/_10_6dp"

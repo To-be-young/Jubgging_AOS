@@ -262,7 +262,7 @@
                         android:autoSizeMinTextSize="@dimen/_3dp"
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
-                        android:fontFamily="@font/nanumgothic_bold"
+                        android:fontFamily="@font/pretendard_semibold"
                         android:gravity="center_horizontal"
                         android:text="@{signUpVm.ETimeoutText}"
                         android:textColor="@color/red"
