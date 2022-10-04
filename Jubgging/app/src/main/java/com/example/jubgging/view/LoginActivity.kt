@@ -21,6 +21,8 @@ class LoginActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.signUpVm = viewModel
 
+
+
         binding.loginFinBtn.setOnClickListener {
             if (binding.loginUserEmailEt.text.toString()
                     .isNotEmpty() && binding.loginUserPwdEt.text.toString().isNotEmpty()
@@ -53,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun moveToMain() {
-        val intent = Intent(this, PloggingActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
         finish()
         startActivity(intent)

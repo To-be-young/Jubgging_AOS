@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="communityJoin"
+            type="com.example.jubgging.view.CommunityJoinActivity" />
+        <variable
+            name="communityVm"
+            type="com.example.jubgging.viewmodel.CommunityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/cgj_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            app:layout_constraintDimensionRatio="1:0.13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextAppearance="@style/toolbarTextTheme" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cgj_tool_bar">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="30dp"
+                >
+
+
+                <TextView
+                    android:id="@+id/cgj_user_info_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:autoSizeMaxTextSize="25dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:text="신청자 정보"
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.05"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <TextView
+                    android:id="@+id/cgj_user_name_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="@{communityVm.nickname}"
+                    android:gravity="center"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    app:layout_constraintDimensionRatio="1:0.346"
+                    app:layout_constraintEnd_toStartOf="@+id/cgj_user_pnum_tv"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@+id/cgj_user_info_tv"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_user_info_tv"
+                    app:layout_constraintWidth_percent="0.289" />
+
+                <TextView
+                    android:id="@+id/cgj_user_pnum_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:textColor="@color/black"
+                    android:text="@{communityVm.email}"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/cgj_user_name_tv"
+                    app:layout_constraintEnd_toEndOf="@+id/cgj_user_info_tv"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cgj_user_name_tv"
+                    app:layout_constraintTop_toTopOf="@id/cgj_user_name_tv"
+                    app:layout_constraintWidth_percent="0.536" />
+
+                <TextView
+                    android:id="@+id/cgj_pnum_notice_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:autoSizeMaxTextSize="20dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:text="* 참여 신청 후, 노쇼 방지 및 원활한 활동을 위해 커뮤니티 운영자에게 이메일이 제공됩니다."
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.06"
+                    app:layout_constraintEnd_toEndOf="@id/cgj_user_pnum_tv"
+                    app:layout_constraintStart_toStartOf="@id/cgj_user_name_tv"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_user_pnum_tv" />
+
+                <TextView
+                    android:id="@+id/cgj_community_notice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:autoSizeMaxTextSize="25dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:text="커뮤니티 활동 조건 및 안내사항"
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.05"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_pnum_notice_tv"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <TextView
+                    android:id="@+id/cgj_notice_first_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    android:text="@{communityVm.communityNotice0}"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.113"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_community_notice"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <TextView
+                    android:id="@+id/cgj_notice_second_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    android:text="@{communityVm.communityNotice1}"
+
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.113"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_notice_first_tv"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <TextView
+                    android:id="@+id/cgj_notice_third_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    android:text="@{communityVm.communityNotice2}"
+
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.113"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_notice_second_tv"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cgj_time_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintDimensionRatio="1:0.05"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cgj_notice_third_tv"
+                    app:layout_constraintWidth_percent="0.861">
+
+                    <ImageView
+                        android:id="@+id/cgj_time_icon_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_baseline_access_time_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toStartOf="@id/cgj_time_tv"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.05" />
+
+                    <TextView
+                        android:id="@+id/cgj_time_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="5dp"
+                        android:autoSizeMaxTextSize="30dp"
+                        android:autoSizeMinTextSize="10dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="집결 시간(날짜, 시작 시간, 종료 시간)"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/cgj_time_icon_iv"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/cgj_date_cnt_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="10dp"
+                    android:text="@{communityVm.communityDate}"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:elevation="2dp"
+                    app:layout_constraintDimensionRatio="1:0.304"
+                    app:layout_constraintEnd_toStartOf="@+id/cgj_start_time_cnt_tv"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@+id/cgj_time_cl"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_time_cl"
+                    app:layout_constraintWidth_percent="0.319" />
+
+                <TextView
+                    android:id="@+id/cgj_start_time_cnt_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    android:text="@{communityVm.communitySTime}"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cgj_date_cnt_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/cgj_end_time_cnt_tv"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cgj_date_cnt_tv"
+                    app:layout_constraintTop_toTopOf="@+id/cgj_date_cnt_tv"
+                    app:layout_constraintWidth_percent="0.214" />
+
+                <TextView
+                    android:id="@+id/cgj_end_time_cnt_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    android:text="@{communityVm.communityETime}"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cgj_start_time_cnt_tv"
+                    app:layout_constraintEnd_toEndOf="@+id/cgj_time_cl"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cgj_start_time_cnt_tv"
+                    app:layout_constraintTop_toTopOf="@+id/cgj_start_time_cnt_tv"
+                    app:layout_constraintWidth_percent="0.214" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cgj_place_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintDimensionRatio="1:0.05"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_date_cnt_tv"
+                    app:layout_constraintWidth_percent="0.861">
+
+                    <ImageView
+                        android:id="@+id/cgj_place_icon_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_outline_flag_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toStartOf="@id/cgj_place_tv"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.05" />
+
+                    <TextView
+                        android:id="@+id/cgj_place_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="5dp"
+                        android:autoSizeMaxTextSize="30dp"
+                        android:autoSizeMinTextSize="10dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="집결 장소"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/cgj_place_icon_iv"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/cgj_place_cnt_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="10dp"
+                    android:text="@{communityVm.communityPlace}"
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.113"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_place_cl"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <TextView
+                    android:id="@+id/cgj_group_owner_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:autoSizeMaxTextSize="25dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:text="운영자 정보"
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.05"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_place_cnt_tv"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <TextView
+                    android:id="@+id/cgj_group_owner_cnt_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:elevation="2dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="10dp"
+                    android:text="@{communityVm.communityNickname}"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:layout_constraintDimensionRatio="1:0.266"
+                    app:layout_constraintStart_toStartOf="@id/cgj_group_owner_tv"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_group_owner_tv"
+                    app:layout_constraintWidth_percent="0.367"/>
+
+                <TextView
+                    android:id="@+id/cgj_group_read_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:autoSizeMaxTextSize="25dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:text="필독"
+                    android:textColor="@color/black"
+                    app:layout_constraintDimensionRatio="1:0.05"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_group_owner_cnt_tv"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <TextView
+                    android:id="@+id/cgj_group_read_cnt_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:gravity="center_vertical|start"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="15dp"
+                    android:text="@{communityVm.communityEtc}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_group_read_tv"
+                    app:layout_constraintWidth_percent="0.861" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cgj_join_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:autoSizeMaxTextSize="20dp"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:background="@drawable/greenblue_square_btn_selector"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:paddingVertical="5dp"
+                    android:text="참여하기"
+                    android:textColor="@color/white"
+                    app:layout_constraintDimensionRatio="1:0.126"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cgj_group_read_cnt_tv"
+                    app:layout_constraintWidth_percent="0.861" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

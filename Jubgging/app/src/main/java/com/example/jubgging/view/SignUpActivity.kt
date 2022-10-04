@@ -81,7 +81,6 @@ class SignUpActivity : AppCompatActivity() {
     }
     private fun moveToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
         startActivity(intent)
     }

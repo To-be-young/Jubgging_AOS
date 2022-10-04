@@ -314,7 +314,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:background="@drawable/chm_radius_btn_drawable"
+                        android:background="@drawable/chm_radius_btn_selector"
                         android:elevation="10dp"
                         android:padding="6dp"
                         android:src="@drawable/icon_my_location_drawable"

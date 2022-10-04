@@ -67,7 +67,7 @@ class CleanhouseViewModel : ViewModel() {
 
     fun getList(): LiveData<PagingData<HistoryGroup>> {
         val newResultLiveData: LiveData<PagingData<HistoryGroup>> =
-            PagingRepository(ApiClient.api).getCommunities().cachedIn(viewModelScope)
+            PagingRepository(ApiClient.api).getPloggingHistories().cachedIn(viewModelScope)
         PloggingData = newResultLiveData
         return newResultLiveData
     }

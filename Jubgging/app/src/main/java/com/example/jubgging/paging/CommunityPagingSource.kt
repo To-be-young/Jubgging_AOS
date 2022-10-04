@@ -2,19 +2,19 @@ package com.example.jubgging.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.jubgging.model.HistoryGroup
+import com.example.jubgging.model.CommunityGroup
 import com.example.jubgging.network.ApiInterface
 
 class CommunityPagingSource(private val apiInterface: ApiInterface) :
-    PagingSource<Int, HistoryGroup>() {
-    override fun getRefreshKey(state: PagingState<Int, HistoryGroup>): Int? {
+    PagingSource<Int, CommunityGroup>() {
+    override fun getRefreshKey(state: PagingState<Int, CommunityGroup>): Int? {
         return state.anchorPosition
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, HistoryGroup> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CommunityGroup> {
         return try {
             val pageIdx = params.key ?: 0
-            val response = apiInterface.getPloggingList(page = pageIdx)
+            val response = apiInterface.getCommunityList(page = pageIdx)
             val communities = response.body()?.data?.content
             LoadResult.Page(
                 data = communities!!,

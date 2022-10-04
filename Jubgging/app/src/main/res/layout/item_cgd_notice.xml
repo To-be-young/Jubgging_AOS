@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    android:background="@color/light_grey"
+    android:elevation="2dp"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/item_cgd_tv"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="가나다라마바사아자차카타파하"
+        android:autoSizeMaxTextSize="13dp"
+        android:autoSizeMinTextSize="10dp"
+        android:autoSizeStepGranularity="1dp"
+        android:autoSizeTextType="uniform"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_regular"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/white_square_et_drawable"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.cardview.widget.CardView>

@@ -1,5 +1,7 @@
 package com.example.jubgging.network
 
+import com.example.jubgging.model.Communities
+import com.example.jubgging.model.CommunityGroup
 import com.example.jubgging.model.Histories
 import com.example.jubgging.model.UserInfo
 import com.example.jubgging.network.data.request.*
@@ -30,14 +32,14 @@ interface ApiInterface {
     @POST("/api/sign/refreshCode")
     fun reSendEmailCode(@Body emailRequest: EmailRequest): Single<BaseResponse<Boolean>>
 
+    @GET("api/user/get-user-nick")
+    fun getUserNicknameEmail(): Single<BaseResponse<UserNicknameEmailResponse>>
+
     @POST("api/sign/verifyCode")
     fun verifyEmailCode(@Body emailCodeAuthRequest: EmailCodeAuthRequest): Single<BaseResponse<Boolean>>
 
     @GET("api/user/get-user-info")
     fun getUserInfo(): Single<BaseResponse<UserInfo>>
-
-    @GET("api/user/get-user-nick")
-    fun getUserNicknameEmail(): Single<BaseResponse<UserNicknameEmailResponse>>
 
 
     @POST("api/plogging/finish")
@@ -48,4 +50,16 @@ interface ApiInterface {
 
     @GET("api/plogging/log_pathway")
     fun pathway(@Query("recordId") recordId: Int): Single<BaseResponse<List<PathwayResponse>>>
+
+    @GET("api/community/get-postList")
+    suspend fun getCommunityList(@Query("page") page: Int): Response<BaseResponse<Communities>>
+
+    @POST("api/community/posting")
+    fun postCommunity(@Body postCommunityRequest: PostCommunityRequest): Single<BaseResponse<CommunityGroup>>
+
+    @GET("api/community/get-post")
+    fun getCommunityDetail(@Query("postId") postId: Int): Single<BaseResponse<CommunityGroup>>
+
+    @POST("api/community/join-community")
+    fun joinCommunity(@Query("postId") postId: Int): Single<BaseResponse<CommunityJoinResponse<CommunityGroup>>>
 }

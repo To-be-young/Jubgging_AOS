@@ -1,5 +1,6 @@
 package com.example.jubgging.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,8 +27,21 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.homeChMapCl.setOnClickListener {
+            val intent = Intent(requireContext(),CleanHouseMapActivity::class.java)
+            startActivity(intent)
+        }
+        binding.homePloggingCl.setOnClickListener {
+            val intent = Intent(requireContext(),PloggingActivity::class.java)
+            startActivity(intent)
+        }
+    }
     override fun onResume() {
         super.onResume()
         viewModel.getUserNickname()
+
     }
 }

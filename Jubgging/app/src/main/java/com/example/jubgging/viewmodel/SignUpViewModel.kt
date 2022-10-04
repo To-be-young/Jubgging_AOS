@@ -19,11 +19,10 @@ import kotlinx.coroutines.launch
 class SignUpViewModel : ViewModel() {
     private val signUpRepository = SignUpRepositoryImpl()
 
+
     companion object {
         var accessToken: String = ""
     }
-
-
     // 중복이면 1, 통과하면 0, default -1
     private val _eOverlapFlag = MutableLiveData<Int>()
     val eOverlapFlag: LiveData<Int>
@@ -32,6 +31,7 @@ class SignUpViewModel : ViewModel() {
     private val _nOverlapFlag = MutableLiveData<Int>()
     val nOverlapFlag: LiveData<Int>
         get() = _nOverlapFlag
+
 
     //인증코드 발송 여부 flag
     private val _codeSentFlag = MutableLiveData<Boolean>()
@@ -42,7 +42,6 @@ class SignUpViewModel : ViewModel() {
     private val _timeoutFlag = MutableLiveData<Boolean>()
     val timeoutFlag: LiveData<Boolean>
         get() = _timeoutFlag
-
 
     //인증 성공 여부 Flag
     // 실패하면 1, 통과하면 0, default -1
@@ -69,6 +68,14 @@ class SignUpViewModel : ViewModel() {
         _eTimeoutText.value = "3:00"
     }
 
+    private fun updateJwtToken(inputToken: String?) {
+        if (inputToken != null) {
+            accessToken = inputToken
+        } else {
+            accessToken = ""
+        }
+
+    }
 
     private fun eTimerStop() {
         if (::timerJob.isInitialized) timerJob.cancel()
@@ -89,8 +96,8 @@ class SignUpViewModel : ViewModel() {
 
     private fun updateEOverlapFlag(flag: Int) {
         _eOverlapFlag.value = flag
-    }
 
+    }
     private fun updateNOverlapFlag(flag: Int) {
         _nOverlapFlag.value = flag
     }
@@ -262,12 +269,4 @@ class SignUpViewModel : ViewModel() {
         })
     }
 
-    private fun updateJwtToken(inputToken: String?) {
-        if (inputToken != null) {
-            accessToken = inputToken
-        } else {
-            accessToken = ""
-        }
-
-    }
 }

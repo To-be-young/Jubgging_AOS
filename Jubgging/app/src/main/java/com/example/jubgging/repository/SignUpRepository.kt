@@ -7,6 +7,7 @@ import com.example.jubgging.network.data.request.LoginRequest
 import com.example.jubgging.network.data.request.SignUpRequest
 import com.example.jubgging.network.data.response.BaseResponse
 import com.example.jubgging.network.data.response.LoginResponse
+import com.example.jubgging.network.data.response.UserNicknameEmailResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -53,5 +54,4 @@ class SignUpRepositoryImpl : SignUpRepository {
     override fun verifyEmailCode(emailCodeAuthRequest: EmailCodeAuthRequest): Single<BaseResponse<Boolean>> {
         return ApiClient.api.verifyEmailCode(emailCodeAuthRequest).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).map { it }
     }
-
 }

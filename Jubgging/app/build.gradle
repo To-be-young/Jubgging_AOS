@@ -71,12 +71,7 @@ dependencies {
 
     //kakao map
     implementation files('libs/libDaumMapAndroid.jar')
-    //firebase
-    implementation 'com.google.firebase:firebase-common-ktx:20.1.2'
-    implementation platform('com.google.firebase:firebase-bom:30.3.2')
-    implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.8'
-    implementation 'com.google.firebase:firebase-analytics-ktx'
+
 
     //kakao map
     implementation files('libs/libDaumMapAndroid.jar')
@@ -106,13 +101,24 @@ dependencies {
     //coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
-    //Jetpack Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
-    implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
+
     // library 추가
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
     //paging
     implementation "androidx.paging:paging-runtime:3.1.1"
+
+    // alternatively - without Android dependencies for tests
+    testImplementation "androidx.paging:paging-common:3.1.1"
+
+    // optional - RxJava2 support
+    implementation "androidx.paging:paging-rxjava2:3.1.1"
+
+    // optional - RxJava3 support
+    implementation "androidx.paging:paging-rxjava3:3.1.1"
+
+    // optional - Guava ListenableFuture support
+    implementation "androidx.paging:paging-guava:3.1.1"
+
+    // optional - Jetpack Compose integration
+    implementation "androidx.paging:paging-compose:1.0.0-alpha16"
 }
-
-

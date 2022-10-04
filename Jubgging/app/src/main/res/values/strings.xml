@@ -41,4 +41,6 @@
     <string name="my_plogging_logout_tx">로그아웃</string>
     <string name="on">ON</string>
     <string name="off">OFF</string>
+    <string name="community_group_ing"><![CDATA[ 모집중인 커뮤니티]]></string>
+    <string name="community_group_all"><![CDATA[ 모두보기]]></string>
 </resources>

@@ -11,7 +11,6 @@ class ApiInterceptor:Interceptor {
         val builder = chain.request().newBuilder()
         if(accessToken.isNotEmpty()){
             builder.addHeader("X-AUTH-TOKEN", accessToken)
-
         }else{
             Log.d("TAG", "intercept: token null")
         }
