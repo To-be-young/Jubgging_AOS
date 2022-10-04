@@ -190,11 +190,11 @@
                             android:layout_height="0dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/my_user_time_total_cl"
-                            app:layout_constraintHeight_percent="0.5"
+                            app:layout_constraintHeight_percent="0.54"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintHorizontal_chainStyle="spread"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintWidth_percent="0.306">
+                            app:layout_constraintWidth_percent="0.34">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/my_user_distance_tt_cl"
@@ -202,7 +202,7 @@
                                 android:layout_height="0dp"
                                 app:layout_constraintBottom_toTopOf="@+id/my_user_distance_cl"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHeight_percent="0.25"
+                                app:layout_constraintHeight_percent="0.3"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -233,7 +233,7 @@
                                     android:text="활동 거리"
                                     android:gravity="center"
                                     app:layout_constraintWidth_percent="0.78"
-                                    android:theme="@style/regularBlackTextTheme"
+                                    style="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.5"
@@ -246,10 +246,10 @@
                                 android:id="@+id/my_user_distance_cl"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_marginTop="@dimen/_13dp"
+                                android:layout_marginTop="10dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHeight_percent="0.5"
+                                app:layout_constraintHeight_percent="0.54"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="@+id/my_user_distance_tt_cl"
                                 app:layout_constraintTop_toBottomOf="@+id/my_user_distance_tt_cl">
@@ -265,8 +265,7 @@
                                     android:includeFontPadding="false"
                                     android:text="200"
                                     android:gravity="end|center"
-                                    android:theme="@style/boldBlueTextTheme"
-
+                                    style="@style/boldBlueTextTheme"
                                     app:layout_constraintBottom_toBottomOf="@+id/my_user_distance_unit_tv"
                                     app:layout_constraintEnd_toStartOf="@+id/my_user_distance_unit_tv"
                                     app:layout_constraintHorizontal_bias="0.5"
@@ -288,7 +287,7 @@
                                     android:gravity="center"
                                     app:layout_constraintDimensionRatio="1:0.56"
 
-                                    android:theme="@style/regularBlackTextTheme"
+                                    style="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHeight_percent="0.5"
@@ -308,9 +307,9 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/my_user_distance_total_cl"
-                            app:layout_constraintHeight_percent="0.5"
+                            app:layout_constraintHeight_percent="0.54"
                             app:layout_constraintHorizontal_chainStyle="spread"
-                            app:layout_constraintWidth_percent="0.306">
+                            app:layout_constraintWidth_percent="0.34">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/my_user_time_tt_cl"
@@ -318,7 +317,7 @@
                                 android:layout_height="0dp"
                                 app:layout_constraintBottom_toTopOf="@+id/my_user_time_cl"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHeight_percent="0.25"
+                                app:layout_constraintHeight_percent="0.3"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -348,7 +347,7 @@
                                     android:gravity="center"
                                     android:includeFontPadding="false"
                                     android:text="활동 시간"
-                                    android:theme="@style/regularBlackTextTheme"
+                                    style="@style/regularBlackTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.5"
@@ -364,7 +363,7 @@
                                 android:layout_marginTop="@dimen/_13dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="@+id/my_user_time_tt_cl"
-                                app:layout_constraintHeight_percent="0.5"
+                                app:layout_constraintHeight_percent="0.54"
                                 app:layout_constraintHorizontal_bias="0.5"
                                 app:layout_constraintStart_toStartOf="@+id/my_user_time_tt_cl"
                                 app:layout_constraintTop_toBottomOf="@+id/my_user_time_tt_cl">
@@ -380,7 +379,7 @@
                                     android:gravity="end|center_vertical"
                                     android:includeFontPadding="false"
                                     android:text="120"
-                                    android:theme="@style/boldBlueTextTheme"
+                                    style="@style/boldBlueTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintDimensionRatio="1:0.64"
                                     app:layout_constraintEnd_toStartOf="@+id/my_user_time_unit_tv"
@@ -400,7 +399,7 @@
                                     android:gravity="center"
                                     android:includeFontPadding="false"
                                     android:text="/min"
-                                    android:theme="@style/regularBlackTextTheme"
+                                    style="@style/regularBlackTextTheme"
 
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"

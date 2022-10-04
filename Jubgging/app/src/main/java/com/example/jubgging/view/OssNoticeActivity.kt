@@ -16,8 +16,12 @@ class OssNoticeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.btnOpensourceLicense.setOnClickListener {
+        binding.noticeOssBtn.setOnClickListener {
             startActivity(Intent(this, OssLicensesMenuActivity::class.java))
+        }
+
+        binding.noticeOssEtcBtn.setOnClickListener{
+            startActivity(Intent(this, EtcOssActivity::class.java))
         }
     }
 }

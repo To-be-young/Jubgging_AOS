@@ -34,6 +34,11 @@ class MyFragment: Fragment() {
             val intent = Intent(requireContext(),UserProfileActivity::class.java)
             startActivity(intent)
         }
+
+        binding.myNoticeCl.setOnClickListener {
+            val intent = Intent(requireContext(),OssNoticeActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

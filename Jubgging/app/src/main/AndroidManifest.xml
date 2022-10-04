@@ -3,10 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.jubgging">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-
-    <!-- 외부 저장소 사용 권한 설정 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 외부 저장소 사용 권한 설정 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -28,6 +25,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
         <activity
+            android:name=".view.EtcOssActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
@@ -45,13 +49,11 @@
             android:exported="true" />
         <activity
             android:name=".view.OssNoticeActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".view.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".view.UserProfileActivity"
             android:exported="true"
@@ -59,12 +61,9 @@
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
             android:exported="true" />
-
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
-            android:exported="true" />
-
-        <!-- 외부 저장소 사용을 위한 FileProvider auth 추가. -->
+            android:exported="true" /> <!-- 외부 저장소 사용을 위한 FileProvider auth 추가. -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.jubgging.fileprovider"
@@ -72,10 +71,11 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/path"/>
+                android:resource="@xml/path" />
         </provider>
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="${kakaoSdkAppkey}" />
     </application>
+
 </manifest>
