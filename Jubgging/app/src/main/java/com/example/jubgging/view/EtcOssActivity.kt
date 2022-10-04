@@ -30,3 +30,4 @@ class EtcOssActivity : AppCompatActivity() {
         return fi
     }
 }
+

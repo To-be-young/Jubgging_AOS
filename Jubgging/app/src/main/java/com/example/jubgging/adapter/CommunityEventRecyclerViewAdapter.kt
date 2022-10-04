@@ -3,14 +3,13 @@ package com.example.jubgging.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jubgging.R
 import com.example.jubgging.model.CommunityEvent
 
 class CommunityEventRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    companion object {
-        const val ITEM_COUNT = 6
-    }
 
     private var communityEventList: List<CommunityEvent>? = null
 
@@ -26,15 +25,19 @@ class CommunityEventRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.View
     }
 
     override fun getItemCount(): Int {
-        return ITEM_COUNT
-    }
+        return communityEventList!!.size
+  }
     fun submitCommunityEventList(list: List<CommunityEvent>) {
         communityEventList = list
         notifyDataSetChanged()
     }
     class CommunityEventViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val item : TextView = itemView.findViewById(R.id.item_event_tv)
+        val img : ImageView = itemView.findViewById(R.id.item_event_iv)
         fun bind(communityEvent: CommunityEvent) {
-            communityEvent.eventName = "제주대학교"
+            item.text = communityEvent.eventName
+            img.setImageDrawable(communityEvent.img)
         }
     }
 }

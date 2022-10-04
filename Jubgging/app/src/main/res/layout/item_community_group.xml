@@ -244,7 +244,7 @@
             android:autoSizeMinTextSize="1dp"
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
-            android:background="@drawable/login_btn_background_drawable"
+            android:background="@drawable/greenblue_square_btn_selector"
             android:fontFamily="@font/pretendard_semibold"
             android:paddingHorizontal="9dp"
             android:paddingVertical="1.5dp"
