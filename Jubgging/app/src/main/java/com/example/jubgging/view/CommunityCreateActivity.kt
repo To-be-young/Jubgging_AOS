@@ -8,12 +8,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.DatePicker
-import android.widget.TimePicker
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import com.example.jubgging.R
 import com.example.jubgging.databinding.ActivityCommunityGroupCreateBinding
 import com.example.jubgging.network.data.request.PostCommunityRequest
@@ -40,7 +38,7 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
         binding.cgcCreateBtn.setOnClickListener {
             val title = binding.cgcNameEt.text.toString()
             val content = binding.cgcDescEt.text.toString()
-            val qualification = binding.cgcNoticeFirstEt.text.toString()
+            val qualification = arrayListOf<String>(binding.cgcNoticeFirstEt.text.toString(),binding.cgcNoticeSecondEt.text.toString(),binding.cgcNoticeThirdEt.text.toString())
             val userId = viewModel.email.value.toString()
             val gatheringTime: String =
                 "${viewModel.date.value.toString()} ${viewModel.sTime.value.toString()}:00"
@@ -58,9 +56,10 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
             val etc = binding.cgcEtcEt.text.toString()
             val postImage = "null"
 
-            if (title.isNotEmpty() && userId.isNotEmpty() && content.isNotEmpty() && qualification.isNotEmpty() && binding.cgcStartTimeTv.text.isNotEmpty() && binding.cgcStartTimeTv.text.isNotEmpty() && gatheringPlace.isNotEmpty() && capacity.isNotEmpty() && etc.isNotEmpty() && postImage.isNotEmpty()) {
-                viewModel.postingCommunity(postCommunityRequest = PostCommunityRequest(title,
+            if (title.isNotEmpty() && userId.isNotEmpty() && content.isNotEmpty() && qualification[0].isNotEmpty() &&qualification[1].isNotEmpty()&&qualification[2].isNotEmpty() && binding.cgcStartTimeTv.text.isNotEmpty() && binding.cgcStartTimeTv.text.isNotEmpty() && gatheringPlace.isNotEmpty() && capacity.isNotEmpty() && etc.isNotEmpty() && postImage.isNotEmpty()) {
+                viewModel.postingCommunity(postCommunityRequest = PostCommunityRequest(
                     userId,
+                    title,
                     content,
                     qualification,
                     gatheringTime,
@@ -74,7 +73,7 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-        viewModel.postingSuccess.observe(this) {
+        viewModel.isSuccess.observe(this) {
             if (it) {
                 showToast("성공하였습니다.")
                 moveToCommunityList()
@@ -85,7 +84,7 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.postingSuccess.removeObservers(this)
+        viewModel.isSuccess.removeObservers(this)
     }
 
 

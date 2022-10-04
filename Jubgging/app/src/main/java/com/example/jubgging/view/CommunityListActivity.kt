@@ -2,7 +2,6 @@ package com.example.jubgging.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -11,8 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jubgging.R
 import com.example.jubgging.adapter.CommunitiesPagingAdapter
 import com.example.jubgging.databinding.ActivityCommunityGroupListBinding
-import com.example.jubgging.network.ApiClient
-import com.example.jubgging.network.ApiInterface
 import com.example.jubgging.viewmodel.CommunityViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

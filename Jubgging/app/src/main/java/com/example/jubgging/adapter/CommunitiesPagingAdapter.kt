@@ -21,7 +21,7 @@ class CommunitiesPagingAdapter :
         val data = getItem(position)
         holder.binding.itemGroupJoinBtn.setOnClickListener { v ->
             val intent = Intent(v.context,CommunityDetailActivity::class.java)
-            intent.putExtra("postId",data?.postId)
+            intent.putExtra("postId",data!!.postId)
             v.context?.startActivity(intent)
         }
 
@@ -40,7 +40,7 @@ class CommunitiesPagingAdapter :
             binding.itemGroupDateTv.text = setDateText(data?.gatheringTime.toString())
             binding.itemGroupPlaceTv.text = data?.gatheringPlace.toString()
             binding.itemGroupNameTv.text = data?.title.toString()
-            binding.itemGroupOwnerNameTv.text = data?.userId.toString()
+            binding.itemGroupOwnerNameTv.text = data?.nickname.toString()
             binding.itemGroupPeopleTv.text = data?.participant.toString()
             binding.itemGroupPeopleTtTv.text = data?.capacity.toString()
             //날짜 계산  -> 모집 여부 enable 처리

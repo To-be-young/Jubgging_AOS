@@ -15,6 +15,8 @@ import com.example.jubgging.paging.PagingRepository
 import com.example.jubgging.repository.CommunityRepositoryImpl
 import com.example.jubgging.repository.UserRepositoryImpl
 import io.reactivex.rxkotlin.subscribeBy
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CommunityViewModel() : ViewModel() {
     private val communityRepository = CommunityRepositoryImpl()
@@ -34,9 +36,31 @@ class CommunityViewModel() : ViewModel() {
     val eTime: LiveData<String>
         get() = _eTime
 
-    private var _postingSuccess = MutableLiveData<Boolean>()
-    val postingSuccess: LiveData<Boolean>
-        get() = _postingSuccess
+
+    private var _isSuccess = MutableLiveData<Boolean>()
+    val isSuccess: LiveData<Boolean>
+        get() = _isSuccess
+
+    private var _postId = MutableLiveData<Int>()
+    val postId:LiveData<Int>
+        get() = _postId
+
+    private var _communityDate = MutableLiveData<String>()
+    val communityDate: LiveData<String>
+        get() = _communityDate
+
+    private var _communitySTime = MutableLiveData<String>()
+    val communitySTime: LiveData<String>
+        get() = _communitySTime
+
+    private var _communityETime = MutableLiveData<String>()
+    val communityETime: LiveData<String>
+        get() = _communityETime
+
+
+    private var _communityNickname = MutableLiveData<String>()
+    val communityNickname: LiveData<String>
+        get() = _communityNickname
 
     private var _communityTitle = MutableLiveData<String>()
     val communityTitle: LiveData<String>
@@ -46,9 +70,17 @@ class CommunityViewModel() : ViewModel() {
     val communityDesc: LiveData<String>
         get() = _communityDesc
 
-    private var _communityNotice = MutableLiveData<String>()
-    val communityNotice: LiveData<String>
-        get() = _communityNotice
+    private var _communityNotice0 = MutableLiveData<String>()
+    val communityNotice0: LiveData<String>
+        get() = _communityNotice0
+
+    private var _communityNotice1 = MutableLiveData<String>()
+    val communityNotice1: LiveData<String>
+        get() = _communityNotice1
+
+    private var _communityNotice2 = MutableLiveData<String>()
+    val communityNotice2: LiveData<String>
+        get() = _communityNotice2
 
     private var _communityPlace = MutableLiveData<String>()
     val communityPlace: LiveData<String>
@@ -75,14 +107,16 @@ class CommunityViewModel() : ViewModel() {
         get() = _email
 
 
+
     init {
         _date.value = ""
         _sTime.value = ""
         _eTime.value = ""
-        _postingSuccess.value = false
+        _isSuccess.value = false
         _eTime.value = ""
         _nickname.value = ""
         _email.value = ""
+        _postId.value = 0
     }
 
     fun updateSTime(selectedSTime: String) {
@@ -97,15 +131,39 @@ class CommunityViewModel() : ViewModel() {
         _date.value = selectedDate
         Log.d("TAG", "updateDate: ${_date.value} ")
     }
+    fun updatePostId(inputPostId:Int){
+        _postId.value = inputPostId
+    }
 
-    fun updateDetailData(title:String,desc:String,notice:String,place:String,capacity:Int,participant:Int,etc:String){
+    fun updateDetailData(
+        title: String,
+        desc: String,
+        notice0: String,
+        notice1: String,
+        notice2: String,
+        place: String,
+        capacity: Int,
+        participant: Int,
+        etc: String,
+        date: String,
+        sTime: String,
+        eTime: String,
+        nickname: String,
+    ) {
+        _communityNickname.value = nickname
         _communityTitle.value = title
         _communityDesc.value = desc
-        _communityNotice.value = notice
+        _communityNotice0.value = notice0
+        _communityNotice1.value = notice1
+        _communityNotice2.value = notice2
         _communityPlace.value = place
         _communityCapacity.value = capacity
         _communityParticipant.value = participant
+        _communityDate.value = date
+        _communitySTime.value = sTime
+        _communityETime.value = eTime
         _communityEtc.value = etc
+
     }
 
     fun updateEmailNickname(email: String, nickname: String) {
@@ -124,9 +182,7 @@ class CommunityViewModel() : ViewModel() {
     fun postingCommunity(postCommunityRequest: PostCommunityRequest) {
         communityRepository.postCommunity(postCommunityRequest).subscribeBy(
             onSuccess = {
-                _postingSuccess.value = it.success
-                Log.d("TAG", "postingCommunity: ${it.success} ")
-                Log.d("TAG", "postingCommunity: ${it.msg}")
+                _isSuccess.value = it.success
             },
             onError = {
                 it.printStackTrace()
@@ -140,13 +196,19 @@ class CommunityViewModel() : ViewModel() {
             .subscribeBy(
                 onSuccess = {
                     if (it.success) {
-                        _communityTitle.value = it.data.title
-                        _communityDesc.value = it.data.content
-                        _communityNotice.value = it.data.qualification
-                        _communityCapacity.value = it.data.capacity
-                        _communityParticipant.value = it.data.participant
-                        _communityPlace.value = it.data.gatheringPlace
-                        _communityEtc.value = it.data.etc
+                        _communityNickname.value = it.data.nickname!!
+                        _communityTitle.value = it.data.title!!
+                        _communityDesc.value = it.data.content!!
+                        _communityNotice0.value = it.data.qualification!![0]
+                        _communityNotice1.value = it.data.qualification!![1]
+                        _communityNotice2.value = it.data.qualification!![2]
+                        _communityCapacity.value = it.data.capacity!!
+                        _communityParticipant.value = it.data.participant!!
+                        _communityPlace.value = it.data.gatheringPlace!!
+                        _communityEtc.value = it.data.etc!!
+                        _communityDate.value = formattingDate(it.data.gatheringTime!!)
+                        _communitySTime.value = formattingTime(it.data.gatheringTime)
+                        _communityETime.value = formattingTime(it.data.endingTime!!)
 
 
                     } else {
@@ -173,4 +235,30 @@ class CommunityViewModel() : ViewModel() {
             }
         )
     }
+
+    @SuppressLint("CheckResult")
+    fun joinCommunity(postId: Int) {
+        communityRepository.joinCommunity(postId).subscribeBy(
+            onSuccess = {
+                _isSuccess.value = it.success
+            },
+            onError = {
+                it.printStackTrace()
+            }
+        )
+    }
+
+
+    private fun formattingDate(inputDate: String): String {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+        val date = simpleDateFormat.parse(inputDate) as Date
+        return simpleDateFormat.format(date)
+    }
+
+    private fun formattingTime(inputTime: String): String {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA)
+        val date = simpleDateFormat.parse(inputTime) as Date
+        return SimpleDateFormat("HH:mm", Locale.KOREA).format(date)
+    }
+
 }

@@ -4,6 +4,7 @@ import com.example.jubgging.model.Communities
 import com.example.jubgging.model.CommunityGroup
 import com.example.jubgging.network.data.request.*
 import com.example.jubgging.network.data.response.BaseResponse
+import com.example.jubgging.network.data.response.CommunityJoinResponse
 import com.example.jubgging.network.data.response.LoginResponse
 import com.example.jubgging.network.data.response.UserNicknameEmailResponse
 import io.reactivex.Single
@@ -46,4 +47,6 @@ interface ApiInterface {
 
     @GET("api/community/get-post")
     fun getCommunityDetail(@Query("postId") postId:Int):Single<BaseResponse<CommunityGroup>>
+    @POST("api/community/join-community")
+    fun joinCommunity(@Query("postId") postId: Int):Single<BaseResponse<CommunityJoinResponse<CommunityGroup>>>
 }

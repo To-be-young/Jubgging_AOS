@@ -3,11 +3,12 @@ package com.example.jubgging.network.data.request
 import com.google.gson.annotations.SerializedName
 
 data class PostCommunityRequest (
-    val title: String,
     @SerializedName("userId")
     val userId: String,
+    @SerializedName("title")
+    val title: String,
     val content: String,
-    val qualification: String,
+    val qualification: ArrayList<String>,
     val gatheringTime: String,
     val endingTime: String,
     val gatheringPlace: String,
