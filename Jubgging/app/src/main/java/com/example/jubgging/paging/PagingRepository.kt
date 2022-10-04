@@ -12,15 +12,5 @@ import java.util.concurrent.Flow
 
 class PagingRepository(private val apiInterface: ApiInterface){
 
-    fun getCommunities():LiveData<PagingData<HistoryGroup>>{
-        return Pager(
-            config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
-            pagingSourceFactory = {CommunityPagingSource(apiInterface)}
-        ).liveData
-    }
 
-
-    companion object {
-        private const val NETWORK_PAGE_SIZE = 10
-    }
 }
