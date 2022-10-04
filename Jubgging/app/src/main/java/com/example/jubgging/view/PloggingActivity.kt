@@ -258,6 +258,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
     override fun onPause() {
         super.onPause()
+        viewModel.isSwitchOn.removeObservers(this)
         mapViewContainer.removeAllViews()
     }
 
