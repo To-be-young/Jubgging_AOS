@@ -67,9 +67,10 @@
                     <ImageView
                         android:id="@+id/plogging_time_icon"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:src="@drawable/icon_plogging_time_drawable"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/plogging_fix_time_tv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -86,6 +87,8 @@
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
                         android:text="@string/plogging_time_tx"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/plogging_time_icon"
@@ -141,14 +144,16 @@
                     <ImageView
                         android:id="@+id/plogging_distance_icon"
                         android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:src="@drawable/icon_plogging_distance_drawable"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/plogging_fix_distance_tv"
                         app:layout_constraintHeight_percent="0.923"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintWidth_percent="0.393" />
+                        app:layout_constraintWidth_percent="0.393"
+                        app:tint="@color/green_blue" />
 
 
                     <TextView
@@ -162,8 +167,8 @@
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
                         android:text="@string/plogging_distance_tx"
-                        android:gravity="center_vertical|center_horizontal"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:gravity="center"
+                        android:textColor="@color/black"                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/plogging_distance_icon"
                         app:layout_constraintTop_toTopOf="parent"
@@ -230,7 +235,7 @@
                     <ImageView
                         android:id="@+id/plogging_pace_icon"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:src="@drawable/icon_plogging_pace_drawable"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -251,7 +256,7 @@
                         android:autoSizeStepGranularity="1dp"
                         android:autoSizeTextType="uniform"
                         android:gravity="center"
-                        android:text="@string/plogging_pace_tx"
+                        android:textColor="@color/black"                        android:text="@string/plogging_pace_tx"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/plogging_pace_icon"
@@ -297,84 +302,86 @@
                 app:layout_constraintTop_toBottomOf="@+id/plogging_distance_cl"
                 app:layout_constraintWidth_percent="0.862">
 
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/chm_my_location_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/chm_radius_btn_selector"
+                    android:elevation="10dp"
+                    android:padding="6dp"
+                    android:src="@drawable/icon_my_location_drawable"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/chm_switch_cl" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/chm_switch_cl"
+                    android:layout_width="73dp"
+                    android:layout_height="41dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/chmap_switch_cl_drawable"
+                    android:elevation="10dp"
+                    app:layout_constraintEnd_toEndOf="@id/plogging_map_cl"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/chm_switch_btn"
+                        setOffTextView="@{chmSwitchOffTv}"
+                        setOnTextView="@{chmSwitchOnTv}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:thumb="@drawable/chmap_switch_thumb_selector"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:switchMinWidth="0dp"
+                        app:track="@drawable/chmap_switch_track_selector" />
+
+                    <TextView
+                        android:id="@+id/chm_switch_off_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center"
+                        android:text="@string/on"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                    <TextView
+                        android:id="@+id/chm_switch_on_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/plogging_kakao_map_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/login_background_drawable"
-                    android:backgroundTint="@color/lightish_blue"
+                    android:backgroundTint="@color/light_grey"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/chm_my_location_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/chm_radius_btn_selector"
-                        android:elevation="10dp"
-                        android:padding="6dp"
-                        android:src="@drawable/icon_my_location_drawable"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/chm_switch_cl"
-                        android:layout_width="73dp"
-                        android:layout_height="41dp"
-                        android:layout_marginTop="17dp"
-                        android:background="@drawable/chmap_switch_cl_drawable"
-                        android:elevation="10dp"
-                        app:layout_constraintEnd_toEndOf="@id/chm_my_location_btn"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintWidth_percent="0.2">
-
-                        <androidx.appcompat.widget.SwitchCompat
-                            android:id="@+id/chm_switch_btn"
-                            setOffTextView="@{chmSwitchOffTv}"
-                            setOnTextView="@{chmSwitchOnTv}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:thumb="@drawable/chmap_switch_thumb_selector"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:switchMinWidth="0dp"
-                            app:track="@drawable/chmap_switch_track_selector" />
-
-                        <TextView
-                            android:id="@+id/chm_switch_off_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="15dp"
-                            android:fontFamily="@font/pretendard_semibold"
-                            android:gravity="center"
-                            android:text="@string/on"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-                        <TextView
-                            android:id="@+id/chm_switch_on_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:fontFamily="@font/pretendard_semibold"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
