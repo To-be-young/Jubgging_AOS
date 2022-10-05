@@ -1,4 +1,4 @@
-package jubgging.example.jubgging
+package com.tobeyoung.jubgging
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

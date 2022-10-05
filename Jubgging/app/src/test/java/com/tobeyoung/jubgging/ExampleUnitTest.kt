@@ -1,4 +1,4 @@
-package jubgging.example.jubgging
+package com.tobeyoung.jubgging
 
 import org.junit.Test
 

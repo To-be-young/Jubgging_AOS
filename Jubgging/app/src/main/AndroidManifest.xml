@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.tobeyoung.jubgging">
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,24 +22,24 @@
         android:usesCleartextTraffic="true"
         >
         <activity
-            android:name=".view.EtcOssActivity"
+            android:name="com.tobeyoung.jubgging.view.EtcOssActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.PloggingActivity"
+            android:name="com.tobeyoung.jubgging.view.PloggingActivity"
             android:exported="true" />
         <activity
-            android:name=".view.PloggingDetailActivity"
+            android:name="com.tobeyoung.jubgging.view.PloggingDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".view.PloggingHistoryActivity"
+            android:name="com.tobeyoung.jubgging.view.PloggingHistoryActivity"
             android:exported="true" />
 
         <activity
-            android:name=".view.LoginActivity"
+            android:name="com.tobeyoung.jubgging.view.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -53,18 +52,18 @@
         </activity>
 
         <activity
-            android:name=".view.MainActivity"
+            android:name="com.tobeyoung.jubgging.view.MainActivity"
             android:exported="true" />
 
         <activity
-            android:name=".view.OssNoticeActivity"
+            android:name="com.tobeyoung.jubgging.view.OssNoticeActivity"
             android:exported="true" />
         <activity
-            android:name=".view.SignUpActivity"
+            android:name="com.tobeyoung.jubgging.view.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".view.UserProfileActivity"
+            android:name="com.tobeyoung.jubgging.view.UserProfileActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
@@ -75,7 +74,7 @@
             android:exported="true" /> <!-- 외부 저장소 사용을 위한 FileProvider auth 추가. -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.jubgging.fileprovider"
+            android:authorities="com.tobeyoung.jubgging.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -87,23 +86,23 @@
             android:value="${kakaoSdkAppkey}" />
 
         <activity
-            android:name=".view.CleanHouseMapActivity"
+            android:name="com.tobeyoung.jubgging.view.CleanHouseMapActivity"
             android:exported="true" />
 
         <activity
-            android:name=".view.CommunityListActivity"
+            android:name="com.tobeyoung.jubgging.view.CommunityListActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".view.CommunityCreateActivity"
+            android:name="com.tobeyoung.jubgging.view.CommunityCreateActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".view.CommunityDetailActivity"
+            android:name="com.tobeyoung.jubgging.view.CommunityDetailActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".view.CommunityJoinActivity"
+            android:name="com.tobeyoung.jubgging.view.CommunityJoinActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
     </application>

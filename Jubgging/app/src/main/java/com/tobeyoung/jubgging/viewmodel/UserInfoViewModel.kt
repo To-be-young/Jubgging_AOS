@@ -5,8 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.rxkotlin.subscribeBy
+
 import com.tobeyoung.jubgging.repository.UserRepositoryImpl
+import io.reactivex.rxkotlin.subscribeBy
 
 class UserInfoViewModel :ViewModel() {
     private val userRepository = UserRepositoryImpl()

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.tobeyoung.jubgging.databinding.ActivityOssNoticeBinding
 
-
 class OssNoticeActivity : AppCompatActivity() {
     private val binding: ActivityOssNoticeBinding by lazy {
         ActivityOssNoticeBinding.inflate(layoutInflater)
