@@ -7,11 +7,11 @@
 
         <variable
             name="communityCreate"
-            type="com.example.jubgging.view.CommunityCreateActivity" />
+            type="com.tobeyoung.jubgging.view.CommunityCreateActivity" />
 
         <variable
             name="communityVm"
-            type="com.example.jubgging.viewmodel.CommunityViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.CommunityViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

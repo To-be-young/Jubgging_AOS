@@ -7,10 +7,10 @@
 
         <variable
             name="home"
-            type="com.example.jubgging.view.HomeFragment" />
+            type="com.tobeyoung.jubgging.view.HomeFragment" />
         <variable
             name="homeVm"
-            type="com.example.jubgging.viewmodel.HomeViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

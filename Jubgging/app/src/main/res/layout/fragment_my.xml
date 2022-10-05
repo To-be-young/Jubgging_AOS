@@ -6,10 +6,10 @@
     <data>
         <variable
             name="my"
-            type="com.example.jubgging.view.MyFragment" />
+            type="com.tobeyoung.jubgging.view.MyFragment" />
         <variable
             name="userVm"
-            type="com.example.jubgging.viewmodel.UserInfoViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.UserInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

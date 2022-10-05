@@ -6,11 +6,11 @@
     <data>
         <variable
             name="ploggingHistory"
-            type="com.example.jubgging.view.PloggingHistoryActivity" />
+            type="com.tobeyoung.jubgging.view.PloggingHistoryActivity" />
 
         <variable
             name="cleanhouseVm"
-            type="com.example.jubgging.viewmodel.CleanhouseViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.CleanhouseViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

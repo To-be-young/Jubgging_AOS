@@ -15,7 +15,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.jubgging"
+        applicationId "com.tobeyoung.jubgging"
         minSdk 28
         targetSdk 33
         versionCode 1
