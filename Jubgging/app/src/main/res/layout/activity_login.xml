@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="login"
+            type="com.tobeyoung.jubgging.view.LoginActivity" />
+
+        <variable
+            name="signUpVm"
+            type="com.tobeyoung.jubgging.viewmodel.SignUpViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            tools:context=".view.LoginActivity">
+
+            <ImageView
+                android:id="@+id/app_title_iv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_app_title_drawable"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.264" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/login_user_input_cl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25dp"
+                android:background="@drawable/login_background_drawable"
+                android:elevation="2dp"
+                android:paddingVertical="@dimen/_22_5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
+                app:layout_constraintWidth_percent="0.861">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/login_input_id_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@+id/login_input_pw_cl"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.87">
+
+
+                    <TextView
+                        android:id="@+id/login_user_email_tv"
+                        style="@style/inputTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="2dp"
+                        android:autoSizeMaxTextSize="15dp"
+                        android:autoSizeMinTextSize="2dp"
+                        android:autoSizeStepGranularity="2dp"
+                        android:autoSizeTextType="uniform"
+                        android:text="@string/login_email"
+                        android:textAlignment="textStart"
+                        app:layout_constraintBottom_toTopOf="@+id/login_user_email_et"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.285"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/login_user_email_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textAlignment="textStart"
+                        android:textSize="16dp"
+                        android:theme="@style/inputEditTextTheme"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_user_email_tv" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/login_input_pw_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_19dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/login_input_id_cl"
+                    app:layout_constraintWidth_percent="0.87">
+
+                    <TextView
+                        android:id="@+id/login_user_pwd_tv"
+                        style="@style/inputTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="2dp"
+                        android:autoSizeMaxTextSize="15dp"
+                        android:autoSizeMinTextSize="2dp"
+                        android:autoSizeStepGranularity="2dp"
+                        android:autoSizeTextType="uniform"
+                        android:text="@string/login_password"
+                        android:textAlignment="textStart"
+                        app:layout_constraintBottom_toTopOf="@+id/login_user_pwd_et"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.285"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <EditText
+                        android:id="@+id/login_user_pwd_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:textSize="16dp"
+                        android:inputType="textPassword"
+                        android:theme="@style/inputEditTextTheme"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_user_pwd_tv" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/login_find_acc_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_10dp"
+                app:layout_constraintEnd_toEndOf="@+id/login_user_input_cl"
+                app:layout_constraintHeight_percent="0.03"
+                app:layout_constraintTop_toBottomOf="@+id/login_user_input_cl"
+                app:layout_constraintWidth_percent="0.364">
+
+
+                <TextView
+                    android:id="@+id/login_find_id_tv"
+                    style="@style/logoTextTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:autoSizeMaxTextSize="15dp"
+                    android:autoSizeMinTextSize="2dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center_horizontal"
+                    android:text="@string/login_find_id"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/login_slash_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.428" />
+
+                <TextView
+                    android:id="@+id/login_slash_tv"
+                    style="@style/logoTextTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_2_5dp"
+                    android:autoSizeMaxTextSize="15dp"
+                    android:autoSizeMinTextSize="2dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:text="/"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/login_find_pwd_tv"
+                    app:layout_constraintStart_toEndOf="@+id/login_find_id_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/login_find_pwd_tv"
+                    style="@style/logoTextTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:autoSizeMaxTextSize="15dp"
+                    android:autoSizeMinTextSize="2dp"
+                    android:autoSizeStepGranularity="1dp"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center_horizontal"
+                    android:text="@string/login_find_pwd"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/login_slash_tv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.504" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_fin_btn"
+                style="@style/buttonTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/login_btn_background_drawable"
+                android:paddingHorizontal="@dimen/_105dp"
+                android:paddingVertical="@dimen/_12_5dp"
+                android:text="@string/login_login_btn"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintDimensionRatio="1:0.13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_find_acc_cl"
+                app:layout_constraintWidth_percent="0.862" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_sign_up_btn"
+                style="@style/buttonTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="2dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@drawable/login_background_drawable"
+                android:elevation="2dp"
+                android:paddingHorizontal="@dimen/_105dp"
+                android:paddingVertical="@dimen/_12_5dp"
+                android:text="@string/login_signup_btn"
+                android:textColor="@color/green_blue"
+                android:textSize="16dp"
+                app:layout_constraintDimensionRatio="1:0.13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_fin_btn"
+                app:layout_constraintWidth_percent="0.862" />
+
+            <View
+                android:id="@+id/login_border_v"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="#1A000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_sign_up_btn"
+                app:layout_constraintWidth_percent="0.862" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_kakao_btn"
+                style="@style/buttonTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="2dp"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/login_kakao_btn_background_drawable"
+                android:elevation="2dp"
+                android:paddingHorizontal="@dimen/_105dp"
+                android:paddingVertical="@dimen/_12_5dp"
+                android:text="@string/login_kakao_login"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintDimensionRatio="1:0.13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_border_v"
+                app:layout_constraintWidth_percent="0.862" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_naver_btn"
+                style="@style/buttonTextTheme"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_18dp"
+                android:background="@drawable/login_naver_btn_background_drawable"
+                android:elevation="2dp"
+                android:paddingHorizontal="@dimen/_105dp"
+                android:paddingVertical="@dimen/_12_5dp"
+                android:text="@string/login_naver_login"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintDimensionRatio="1:0.13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_kakao_btn"
+                app:layout_constraintWidth_percent="0.862" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

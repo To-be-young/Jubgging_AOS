@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_finish_signup_drawable">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dcgj_notice_cl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/dcgj_move_btn"
+        app:layout_constraintStart_toStartOf="@+id/dcgj_move_btn"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/dcgj_success_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_semibold"
+            android:text="신청이 성공적으로 완료되었습니다."
+            android:textColor="@color/lightish_blue"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dcgj_notice_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:autoSizeMaxTextSize="14dp"
+            android:autoSizeMinTextSize="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:autoSizeStepGranularity="1dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/pretendard_regular"
+            android:gravity="center_vertical|center"
+            android:textAlignment="center"
+            android:text="참여 신청 후, 운영자에게 이메일이 공개되며 \n노쇼 방지와 원활한 소통을 위해 사용됩니다."
+            android:textColor="@color/black"
+            android:lineSpacingMultiplier="1.2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.53"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dcgj_success_tv" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="* 커뮤니티 참여 신청이 완료되면 My페이지의 함께 줍깅 목록에서 확인할 수 있습니다."
+            android:textSize="8dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dcgj_notice_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dcgj_move_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_signup_finish_btn_drawable"
+        android:fontFamily="@font/pretendard_semibold"
+        android:minWidth="1dp"
+        android:minHeight="1dp"
+        android:paddingHorizontal="91dp"
+        android:paddingVertical="12.5dp"
+        android:stateListAnimator="@null"
+        android:text="함께 줍깅에서 확인하기"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dcgj_notice_cl" />
+</androidx.constraintlayout.widget.ConstraintLayout>

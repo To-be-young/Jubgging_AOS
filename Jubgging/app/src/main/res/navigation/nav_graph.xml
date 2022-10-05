@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main_home">
+
+    <fragment
+        android:id="@+id/main_community"
+        android:name="com.tobeyoung.jubgging.view.CommunityFragment"
+        android:label="fragment_one"
+        tools:layout="@layout/fragment_community" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/main_home"
+        android:name="com.tobeyoung.jubgging.view.HomeFragment"
+        android:label="fragment_two"
+        tools:layout="@layout/fragment_home" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/main_my"
+        android:name="com.tobeyoung.jubgging.view.MyFragment"
+        android:label="fragment_three"
+        tools:layout="@layout/fragment_my" >
+    </fragment>
+
+</navigation>

@@ -1,23 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jubgging">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.to_be_young_jubgging">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher_jubgging"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_jubgging_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Jubgging">
+        android:theme="@style/Theme.Jubgging"
+        android:usesCleartextTraffic="true"
+        >
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name="com.tobeyoung.jubgging.view.EtcOssActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.tobeyoung.jubgging.view.PloggingActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.tobeyoung.jubgging.view.PloggingDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.tobeyoung.jubgging.view.PloggingHistoryActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.tobeyoung.jubgging.view.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.tobeyoung.jubgging.view.MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.tobeyoung.jubgging.view.OssNoticeActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.tobeyoung.jubgging.view.SignUpActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.tobeyoung.jubgging.view.UserProfileActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:exported="true" /> <!-- 외부 저장소 사용을 위한 FileProvider auth 추가. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.tobeyoung.jubgging.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/path" />
+        </provider>
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="${kakaoSdkAppkey}" />
+
+        <activity
+            android:name="com.tobeyoung.jubgging.view.CleanHouseMapActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.tobeyoung.jubgging.view.CommunityListActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.tobeyoung.jubgging.view.CommunityCreateActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.tobeyoung.jubgging.view.CommunityDetailActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.tobeyoung.jubgging.view.CommunityJoinActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
