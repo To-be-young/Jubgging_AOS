@@ -7,10 +7,10 @@
 
         <variable
             name="community"
-            type="com.example.jubgging.view.CommunityFragment" />
+            type="com.tobeyoung.jubgging.view.CommunityFragment" />
         <variable
             name="communityVm"
-            type="com.example.jubgging.viewmodel.CommunityViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.CommunityViewModel" />
     </data>
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"

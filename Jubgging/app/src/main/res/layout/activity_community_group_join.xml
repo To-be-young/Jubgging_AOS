@@ -6,10 +6,10 @@
     <data>
         <variable
             name="communityJoin"
-            type="com.example.jubgging.view.CommunityJoinActivity" />
+            type="com.tobeyoung.jubgging.view.CommunityJoinActivity" />
         <variable
             name="communityVm"
-            type="com.example.jubgging.viewmodel.CommunityViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.CommunityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

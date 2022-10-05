@@ -8,11 +8,11 @@
 
         <variable
             name="signUpAccount"
-            type="com.example.jubgging.view.SignUpActivity" />
+            type="com.tobeyoung.jubgging.view.SignUpActivity" />
 
         <variable
             name="signUpVm"
-            type="com.example.jubgging.viewmodel.SignUpViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.SignUpViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

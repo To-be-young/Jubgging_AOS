@@ -6,11 +6,11 @@
 
         <variable
             name="userProfile"
-            type="com.example.jubgging.view.UserProfileActivity" />
+            type="com.tobeyoung.jubgging.view.UserProfileActivity" />
 
         <variable
             name="userInfoVm"
-            type="com.example.jubgging.viewmodel.UserInfoViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.UserInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

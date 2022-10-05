@@ -7,11 +7,11 @@
 
         <variable
             name="login"
-            type="com.example.jubgging.view.LoginActivity" />
+            type="com.tobeyoung.jubgging.view.LoginActivity" />
 
         <variable
             name="signUpVm"
-            type="com.example.jubgging.viewmodel.SignUpViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.SignUpViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

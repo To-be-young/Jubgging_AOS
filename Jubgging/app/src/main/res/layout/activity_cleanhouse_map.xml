@@ -8,10 +8,10 @@
     <data>
         <variable
             name="cleanhouse_map"
-            type="com.example.jubgging.view.CleanHouseMapActivity" />
+            type="com.tobeyoung.jubgging.view.CleanHouseMapActivity" />
         <variable
             name="cleanhouseVm"
-            type="com.example.jubgging.viewmodel.CleanhouseViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.CleanhouseViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

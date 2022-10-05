@@ -5,11 +5,11 @@
     <data>
         <variable
             name="communityGroup"
-            type="com.example.jubgging.view.CommunityListActivity" />
+            type="com.tobeyoung.jubgging.view.CommunityListActivity" />
 
         <variable
             name="communityVm"
-            type="com.example.jubgging.viewmodel.CommunityViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.CommunityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

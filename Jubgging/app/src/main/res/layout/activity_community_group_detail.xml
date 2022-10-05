@@ -7,11 +7,11 @@
 
         <variable
             name="communityDetail"
-            type="com.example.jubgging.view.CommunityDetailActivity" />
+            type="com.tobeyoung.jubgging.view.CommunityDetailActivity" />
 
         <variable
             name="communityVm"
-            type="com.example.jubgging.viewmodel.CommunityViewModel" />
+            type="com.tobeyoung.jubgging.viewmodel.CommunityViewModel" />
     </data>
 
 
