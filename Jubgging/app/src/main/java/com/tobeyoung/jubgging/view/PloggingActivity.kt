@@ -3,6 +3,7 @@ package com.tobeyoung.jubgging.view
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.LocationManager
@@ -659,5 +660,13 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 }
