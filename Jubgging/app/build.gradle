@@ -59,11 +59,13 @@ dependencies {
 
     //viewModel lifeCycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
-    //LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
 
     //kakao map
     implementation files('libs/libDaumMapAndroid.jar')
+
+    //LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+
     // Gson
     implementation 'com.google.code.gson:gson:2.8.9'
     // Retrofit2
