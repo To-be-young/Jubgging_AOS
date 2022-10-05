@@ -29,20 +29,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/plogging_back_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_btn_background_drawable"
-                android:text="뒤로가기"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/plogging_home_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_btn_background_drawable"
-                android:text="홈으로"/>
         </Toolbar>
 
         <androidx.constraintlayout.widget.ConstraintLayout

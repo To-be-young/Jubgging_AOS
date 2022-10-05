@@ -54,18 +54,6 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         pathwayViewMoodel.pathway(IntentRecordId!!.toInt(), ::showToast)
         Log.d("success_pathway", "${IntentRecordId.toInt()}")
 
-        binding.ploggingBackBt.setOnClickListener{
-            val intent = Intent(this, PloggingHistoryActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.ploggingHomeBt.setOnClickListener{
-            val intent = Intent(this, PloggingActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
     }
 
     override fun onResume() {
@@ -188,5 +176,12 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, PloggingHistoryActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 }

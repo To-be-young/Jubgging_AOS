@@ -9,6 +9,7 @@
         android:id="@+id/main_community"
         android:name="com.example.jubgging.view.CommunityFragment"
         android:label="fragment_one"
+        android:menuCategory="secondary"
         tools:layout="@layout/fragment_community" >
     </fragment>
 
@@ -23,6 +24,7 @@
         android:id="@+id/main_my"
         android:name="com.example.jubgging.view.MyFragment"
         android:label="fragment_three"
+        android:menuCategory="secondary"
         tools:layout="@layout/fragment_my" >
     </fragment>
 
