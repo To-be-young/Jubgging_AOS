@@ -109,8 +109,13 @@ dependencies {
     // optional - Guava ListenableFuture support
     implementation "androidx.paging:paging-guava:3.1.1"
 
+    //photoEditor
+    implementation 'com.burhanrashid52:photoeditor:2.0.0'
+
     // optional - Jetpack Compose integration
     implementation "androidx.paging:paging-compose:1.0.0-alpha16"
+
+
 }
 
 
