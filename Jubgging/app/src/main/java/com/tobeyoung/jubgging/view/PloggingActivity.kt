@@ -3,6 +3,7 @@ package com.tobeyoung.jubgging.view
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.LocationManager
@@ -147,6 +148,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             binding.ploggingStopBt.visibility = View.INVISIBLE
             binding.ploggingPauseBt.visibility = View.INVISIBLE
             binding.ploggingStoreBt.visibility = View.VISIBLE
+
+            mapView.addPolyline(polyline)
 
             stopTimer()
 
@@ -473,7 +476,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
                 if(distance(mCurrentLat, mCurrentLng, beforeLat, beforeLng, "meter") < 2){
                     polyline!!.addPoint(MapPoint.mapPointWithGeoCoord(mCurrentLat, mCurrentLng))
-                    mapView.addPolyline(polyline)
+
                     ploggingList.add(index, PloggingModel(mCurrentLat, mCurrentLng, formatted))
 
                     index++
@@ -659,5 +662,13 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 }
