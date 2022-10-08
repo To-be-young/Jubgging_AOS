@@ -1,6 +1,7 @@
 package com.tobeyoung.jubgging.view
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -52,19 +53,6 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
 
         pathwayViewMoodel.pathway(IntentRecordId!!.toInt(), ::showToast)
         Log.d("success_pathway", "${IntentRecordId.toInt()}")
-
-        binding.ploggingBackBt.setOnClickListener{
-            val intent = Intent(this, PloggingHistoryActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.ploggingHomeBt.setOnClickListener{
-            val intent = Intent(this, PloggingActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
     }
 
     override fun onResume() {
@@ -187,5 +175,12 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, PloggingHistoryActivity::class.java)
+        intent.flags = FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 }

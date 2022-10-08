@@ -9,6 +9,7 @@
         android:id="@+id/main_community"
         android:name="com.tobeyoung.jubgging.view.CommunityFragment"
         android:label="fragment_one"
+        android:menuCategory="secondary"
         tools:layout="@layout/fragment_community" >
     </fragment>
 
@@ -16,6 +17,7 @@
         android:id="@+id/main_home"
         android:name="com.tobeyoung.jubgging.view.HomeFragment"
         android:label="fragment_two"
+        android:menuCategory="secondary"
         tools:layout="@layout/fragment_home" >
     </fragment>
 
@@ -23,6 +25,7 @@
         android:id="@+id/main_my"
         android:name="com.tobeyoung.jubgging.view.MyFragment"
         android:label="fragment_three"
+        android:menuCategory="secondary"
         tools:layout="@layout/fragment_my" >
     </fragment>
 

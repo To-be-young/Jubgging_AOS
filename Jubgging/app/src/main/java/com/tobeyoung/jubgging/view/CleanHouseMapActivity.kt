@@ -33,7 +33,8 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
     MapView.MapViewEventListener,
     MapView.POIItemEventListener {
 
-    private lateinit var binding: ActivityCleanhouseMapBinding
+    private lateinit var binding : ActivityCleanhouseMapBinding
+
     private val viewModel: CleanhouseViewModel by viewModels()
 
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
