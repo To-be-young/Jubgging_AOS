@@ -41,15 +41,7 @@
         <activity
             android:name="com.tobeyoung.jubgging.view.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name="com.tobeyoung.jubgging.view.MainActivity"
@@ -105,6 +97,21 @@
             android:name="com.tobeyoung.jubgging.view.CommunityJoinActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
+
+
+        <activity android:name=".view.PhotoShareActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".view.PhotoEditActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>
