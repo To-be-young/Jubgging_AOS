@@ -149,6 +149,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             binding.ploggingPauseBt.visibility = View.INVISIBLE
             binding.ploggingStoreBt.visibility = View.VISIBLE
 
+            mapView.addPolyline(polyline)
+
             stopTimer()
 
             plogging_start = false
@@ -474,7 +476,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
                 if(distance(mCurrentLat, mCurrentLng, beforeLat, beforeLng, "meter") < 2){
                     polyline!!.addPoint(MapPoint.mapPointWithGeoCoord(mCurrentLat, mCurrentLng))
-                    mapView.addPolyline(polyline)
+
                     ploggingList.add(index, PloggingModel(mCurrentLat, mCurrentLng, formatted))
 
                     index++
