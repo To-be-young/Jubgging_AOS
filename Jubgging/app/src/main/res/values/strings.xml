@@ -43,4 +43,18 @@
     <string name="off">OFF</string>
     <string name="community_group_ing"><![CDATA[ 모집중인 커뮤니티]]></string>
     <string name="community_group_all"><![CDATA[ 모두보기]]></string>
+    <string name="theme_course_tx">테마별 코스</string>
+    <string name="region_course_tx">지역별 코스</string>
+    <string name="recommend_rise_tx">오름</string>
+    <string name="recommend_olleroad_tx">올레길</string>
+    <string name="recommend_sea_tx">바다</string>
+    <string name="recommend_tour_tx">관광명소</string>
+    <string name="jeju_west_tx">제주시 서부</string>
+    <string name="jejusi_tx">제주시</string>
+    <string name="jeju_east_tx">제주시 동부</string>
+    <string name="seogwipo_west_tx">서귀포시 서부</string>
+    <string name="segipo_tx">서귀포시</string>
+    <string name="seogwipo_east_tx">서귀포시 동부</string>
+    <string name="plogging_guide_tx">플로깅이 처음이라면?</string>
+
 </resources>
