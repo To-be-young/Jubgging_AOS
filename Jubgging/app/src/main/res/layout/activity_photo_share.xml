@@ -141,7 +141,7 @@
             android:elevation="2dp"
             android:fontFamily="@font/pretendard_semibold"
             android:paddingVertical="5dp"
-            android:text="인스타 스토라 공유하기"
+            android:text="인스타 스토리 공유하기"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:0.13"

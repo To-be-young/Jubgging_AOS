@@ -189,12 +189,11 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             resetTimer()
 
 
-            //screen capture && 자르고
 
-            //내부 이미지로 저장
+            //intent로 path 보내서 이미지화
+            //intent 기록 - 거리, 속력, 시간 전달 후 이미지화
 
             val intent = Intent(this, PhotoShareActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             startActivity(intent)
 

@@ -83,7 +83,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.2"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.2"
 
-    //RxAndroid와 RxJava , RxKotlin 추가
+    //RxAndroid, RxJava , RxKotlin 추가
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
@@ -93,13 +93,13 @@ dependencies {
     // library 추가
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
     //paging
-    implementation "androidx.paging:paging-runtime:3.1.1"
+    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
 
     // alternatively - without Android dependencies for tests
-    testImplementation "androidx.paging:paging-common:3.1.1"
+    testImplementation "androidx.paging:paging-common-ktx:3.1.1"
 
     // optional - RxJava2 support
-    implementation "androidx.paging:paging-rxjava2:3.1.1"
+    implementation "androidx.paging:paging-rxjava2-ktx:3.1.1"
 
     // optional - RxJava3 support
     implementation "androidx.paging:paging-rxjava3:3.1.1"
@@ -114,7 +114,12 @@ dependencies {
 
     // optional - Jetpack Compose integration
     implementation "androidx.paging:paging-compose:1.0.0-alpha16"
-    
+
+    implementation 'com.github.CanHub:Android-Image-Cropper:4.3.1'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    kapt 'com.github.bumptech.glide:compiler:4.14.2'
+
 }
 
 
