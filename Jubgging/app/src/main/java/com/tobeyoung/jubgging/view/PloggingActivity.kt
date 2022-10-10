@@ -195,6 +195,10 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
             val intent = Intent(this, PhotoShareActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+            intent.putExtra("km",totalDistance)
+            intent.putExtra("time",time)
+            intent.putExtra("speed",speed)
+            intent.putExtra("pathway",ploggingList)
             startActivity(intent)
 
         }

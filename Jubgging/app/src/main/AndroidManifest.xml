@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.tobeyoung.jubgging">
+
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28"
@@ -22,8 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_jubgging_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Jubgging"
-        android:usesCleartextTraffic="true"
-        >
+        android:usesCleartextTraffic="true">
         <activity
             android:name="com.tobeyoung.jubgging.view.EtcOssActivity"
             android:exported="false">
@@ -44,7 +44,15 @@
         <activity
             android:name="com.tobeyoung.jubgging.view.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.tobeyoung.jubgging.view.MainActivity"
@@ -102,21 +110,16 @@
             android:windowSoftInputMode="adjustResize" />
 
 
-        <activity android:name=".view.PhotoShareActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".view.PhotoShareActivity"
+            android:exported="true" />
 
-        <activity android:name=".view.PhotoEditActivity"
-            android:exported="true"/>
-        <activity android:name="com.canhub.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
+        <activity
+            android:name=".view.PhotoEditActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.canhub.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>

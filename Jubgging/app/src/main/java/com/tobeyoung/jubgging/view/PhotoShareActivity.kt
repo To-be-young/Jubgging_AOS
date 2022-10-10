@@ -1,7 +1,15 @@
 package com.tobeyoung.jubgging.view
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.ContentResolver
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -12,18 +20,24 @@ import com.canhub.cropper.CropImageView
 import com.canhub.cropper.options
 import com.tobeyoung.jubgging.R
 import com.tobeyoung.jubgging.databinding.ActivityPhotoShareBinding
+import com.tobeyoung.jubgging.model.PloggingModel
 import com.tobeyoung.jubgging.viewmodel.PhotoShareViewModel
+import java.io.InputStream
+import java.io.Serializable
 
 class PhotoShareActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPhotoShareBinding
     private val viewModel: PhotoShareViewModel by viewModels()
-
+    private  var uri: Uri =  Uri.parse("android.resource://com.tobeyoung.jubgging/drawable/temp_edit_image")
 
     private val cropImage = registerForActivityResult(CropImageContract()) { result ->
         if (result.isSuccessful) {
             // use the returned uri
             val uriContent = result.uriContent
             Glide.with(this).load(uriContent).into(binding.psPhotoIv)
+            if (uriContent != null) {
+                uri = uriContent
+            }
 
         } else {
             // an error occurred
@@ -43,6 +57,14 @@ class PhotoShareActivity : AppCompatActivity() {
         //기본 이미지 로드
         Glide.with(this).load(R.drawable.temp_edit_image).into(binding.psPhotoIv)
 
+        val speed = intent.getStringExtra("speed")
+        val distance = intent.getDoubleExtra("distance",0.0)
+        val time = intent.getIntExtra("time",0)
+        val pathway = intent.parcelableArrayList<PloggingModel>("pathway")
+
+
+
+        Log.d("TAG", "onCreate: $speed, $distance, $time")
         //load & crop
         binding.psPhotoIv.setOnLongClickListener {
             startCrop()
@@ -52,6 +74,11 @@ class PhotoShareActivity : AppCompatActivity() {
         //사진 편집하기
         binding.psEditPhotoCl.setOnClickListener {
             val intent = Intent(this, PhotoEditActivity::class.java)
+            intent.putExtra("photoUri",uri.toString())
+            intent.putExtra("speed",speed)
+            intent.putExtra("distance",distance)
+            intent.putExtra("time",time)
+            intent.putExtra("pathway",pathway)
             startActivity(intent)
         }
 
@@ -71,5 +98,11 @@ class PhotoShareActivity : AppCompatActivity() {
             }
         )
 
+    }
+
+
+    private inline fun <reified T : Parcelable> Intent.parcelableArrayList(key: String): ArrayList<T>? = when {
+        SDK_INT >= 33 -> getParcelableArrayListExtra(key, T::class.java)
+        else -> @Suppress("DEPRECATION") getParcelableArrayListExtra(key)
     }
 }
