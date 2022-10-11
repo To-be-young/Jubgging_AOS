@@ -34,8 +34,8 @@ class PhotoShareActivity : AppCompatActivity() {
         if (result.isSuccessful) {
             // use the returned uri
             val uriContent = result.uriContent
-            Glide.with(this).load(uriContent).into(binding.psPhotoIv)
             if (uriContent != null) {
+                Glide.with(this).load(uriContent).into(binding.psPhotoIv)
                 uri = uriContent
             }
 
@@ -59,7 +59,7 @@ class PhotoShareActivity : AppCompatActivity() {
 
         val speed = intent.getStringExtra("speed")
         val distance = intent.getDoubleExtra("distance",0.0)
-        val time = intent.getIntExtra("time",0)
+        val time = intent.getStringExtra("time")
         val pathway = intent.parcelableArrayList<PloggingModel>("pathway")
 
 

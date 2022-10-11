@@ -180,11 +180,11 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                     pathway = ploggingList), ::showToast)
 
             Log.d("PloggingRequest", "${ploggingList}")
-            binding.ploggingDistanceContextTv.text = "0Km"
-            binding.ploggingPaceContextTv.text = "00`00"
-
-            totalDistance = 0.0
-            speed = "00`00"
+//            binding.ploggingDistanceContextTv.text = "0Km"
+//            binding.ploggingPaceContextTv.text = "00`00"
+//
+//            totalDistance = 0.0
+//            speed = "00`00"
 
             resetTimer()
 
@@ -194,11 +194,10 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             //intent 기록 - 거리, 속력, 시간 전달 후 이미지화
 
             val intent = Intent(this, PhotoShareActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             intent.putExtra("km",totalDistance)
-            intent.putExtra("time",time)
+            intent.putExtra("time",userActivityTime)
             intent.putExtra("speed",speed)
-            intent.putExtra("pathway",ploggingList)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             startActivity(intent)
 
         }
