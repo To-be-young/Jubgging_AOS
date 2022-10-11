@@ -60,7 +60,6 @@ class PhotoShareActivity : AppCompatActivity() {
         val speed = intent.getStringExtra("speed")
         val distance = intent.getDoubleExtra("distance",0.0)
         val time = intent.getStringExtra("time")
-        val pathway = intent.parcelableArrayList<PloggingModel>("pathway")
 
 
 
@@ -78,7 +77,6 @@ class PhotoShareActivity : AppCompatActivity() {
             intent.putExtra("speed",speed)
             intent.putExtra("distance",distance)
             intent.putExtra("time",time)
-            intent.putExtra("pathway",pathway)
             startActivity(intent)
         }
 

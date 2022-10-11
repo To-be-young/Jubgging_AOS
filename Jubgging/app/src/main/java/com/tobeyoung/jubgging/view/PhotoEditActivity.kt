@@ -31,17 +31,14 @@ class PhotoEditActivity : AppCompatActivity(), View.OnClickListener {
         val uriString = intent.getStringExtra("photoUri")
 
         val photoUri = Uri.parse(uriString)
-        /* val speed = intent.getStringExtra("speed")
-         val distance = intent.getDoubleExtra("distance", 0.0)
-         val time = intent.getStringExtra("time")*/
+         val speed = intent.getStringExtra("speed")
+         val distance = intent.getDoubleExtra("distance", 0.0).toString()
+         val time = intent.getStringExtra("time")
 
         color = getColor(R.color.black)
 
-        val speed = "01`00"
-        val distance = "1.00"
-        val time = "00:50"
-
         val photoEditorView = findViewById<PhotoEditorView>(R.id.pe_v)
+
         val pretendardFont = ResourcesCompat.getFont(this, R.font.pretendard_semibold)
 
         val photoEditor = PhotoEditor.Builder(this, photoEditorView)
