@@ -194,10 +194,9 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             //intent 기록 - 거리, 속력, 시간 전달 후 이미지화
 
             val intent = Intent(this, PhotoShareActivity::class.java)
-            intent.putExtra("km",totalDistance)
+            intent.putExtra("distance",formattedTotalDistance)
             intent.putExtra("time",userActivityTime)
             intent.putExtra("speed",speed)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             startActivity(intent)
 
         }
@@ -681,7 +680,6 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         super.onBackPressed()
 
         val intent = Intent(this, MainActivity::class.java)
-        intent.flags = FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
 }

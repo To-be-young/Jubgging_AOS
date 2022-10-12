@@ -1,16 +1,11 @@
 package com.tobeyoung.jubgging.view
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -20,10 +15,7 @@ import com.canhub.cropper.CropImageView
 import com.canhub.cropper.options
 import com.tobeyoung.jubgging.R
 import com.tobeyoung.jubgging.databinding.ActivityPhotoShareBinding
-import com.tobeyoung.jubgging.model.PloggingModel
 import com.tobeyoung.jubgging.viewmodel.PhotoShareViewModel
-import java.io.InputStream
-import java.io.Serializable
 
 class PhotoShareActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPhotoShareBinding
@@ -58,7 +50,7 @@ class PhotoShareActivity : AppCompatActivity() {
         Glide.with(this).load(R.drawable.temp_edit_image).into(binding.psPhotoIv)
 
         val speed = intent.getStringExtra("speed")
-        val distance = intent.getDoubleExtra("distance",0.0)
+        val distance = intent.getStringExtra("distance")
         val time = intent.getStringExtra("time")
 
 

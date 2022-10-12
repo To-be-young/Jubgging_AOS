@@ -32,7 +32,7 @@ class PhotoEditActivity : AppCompatActivity(), View.OnClickListener {
 
         val photoUri = Uri.parse(uriString)
          val speed = intent.getStringExtra("speed")
-         val distance = intent.getDoubleExtra("distance", 0.0).toString()
+         val distance = intent.getStringExtra("distance")
          val time = intent.getStringExtra("time")
 
         color = getColor(R.color.black)
@@ -84,7 +84,7 @@ class PhotoEditActivity : AppCompatActivity(), View.OnClickListener {
             binding.peWhiteBtn -> {color = getColor(R.color.white)}
             binding.peRedBtn -> {color = getColor(R.color.red)}
             binding.peGreenBtn -> {color = getColor(R.color.green_blue)}
-            binding.peBlueBtn -> {color = getColor(R.color.brownish_grey)}
+            binding.peBlueBtn -> {color = getColor(R.color.lightish_blue)}
             binding.peYellowBtn -> {color = getColor(R.color.marigold)}
 
         }
