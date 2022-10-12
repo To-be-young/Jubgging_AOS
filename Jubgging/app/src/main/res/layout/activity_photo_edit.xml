@@ -54,7 +54,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.87" />
+                app:layout_constraintWidth_percent="0.925" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -65,8 +65,8 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/white_square_et_drawable"
             android:elevation="2dp"
-            android:autoSizeMaxTextSize="18dp"
-            android:autoSizeMinTextSize="16dp"
+            android:autoSizeMaxTextSize="16dp"
+            android:autoSizeMinTextSize="12dp"
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/pretendard_semibold"
@@ -74,36 +74,35 @@
             android:maxLines="1"
             android:text="플로깅 시간"
             android:textColor="@color/black"
-            app:layout_constraintDimensionRatio="1:0.314"
-            app:layout_constraintEnd_toStartOf="@+id/pe_get_distance_btn"
+            app:layout_constraintDimensionRatio="1:0.32"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="@+id/ps_image_cl"
             app:layout_constraintTop_toBottomOf="@id/ps_image_cl"
-            app:layout_constraintWidth_percent="0.25" />
+            app:layout_constraintWidth_percent="0.22" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/pe_get_distance_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/white_square_et_drawable"
-            android:elevation="2dp"
-            android:autoSizeMaxTextSize="18dp"
-            android:autoSizeMinTextSize="16dp"
+            android:autoSizeMaxTextSize="16dp"
+            android:autoSizeMinTextSize="12dp"
+            android:layout_marginStart="15dp"
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
+            android:background="@drawable/white_square_et_drawable"
+            android:elevation="2dp"
             android:fontFamily="@font/pretendard_semibold"
             android:gravity="center"
             android:maxLines="1"
             android:text="플로깅 거리"
             android:textColor="@color/black"
-            app:layout_constraintDimensionRatio="1:0.314"
-            app:layout_constraintEnd_toStartOf="@+id/pe_get_speed_btn"
+            app:layout_constraintDimensionRatio="1:0.32"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/pe_get_time_btn"
-            app:layout_constraintTop_toBottomOf="@id/ps_image_cl"
-            app:layout_constraintWidth_percent="0.25" />
+            app:layout_constraintTop_toBottomOf="@+id/ps_image_cl"
+            app:layout_constraintWidth_percent="0.22" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -113,56 +112,102 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/white_square_et_drawable"
             android:elevation="2dp"
-            android:autoSizeMaxTextSize="18dp"
-            android:autoSizeMinTextSize="16dp"
+            android:layout_marginStart="15dp"
+            android:autoSizeMaxTextSize="16dp"
+            android:autoSizeMinTextSize="12dp"
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/pretendard_semibold"
             android:maxLines="1"
             android:text="플로깅 속력"
             android:textColor="@color/black"
-            app:layout_constraintDimensionRatio="1:0.314"
-            app:layout_constraintEnd_toEndOf="@+id/ps_image_cl"
+            app:layout_constraintDimensionRatio="1:0.32"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/pe_get_distance_btn"
             app:layout_constraintTop_toBottomOf="@id/ps_image_cl"
-            app:layout_constraintWidth_percent="0.25" />
+            app:layout_constraintWidth_percent="0.22" />
+
+        <TextView
+            android:id="@+id/pe_logo_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:autoSizeMaxTextSize="20dp"
+            android:autoSizeMinTextSize="12dp"
+            android:autoSizeStepGranularity="1dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/pretendard_semibold"
+            android:gravity="center_vertical|start"
+            android:includeFontPadding="false"
+            android:text="로고 색상 선택"
+            android:textColor="@color/black"
+            app:layout_constraintDimensionRatio="1:0.25"
+            app:layout_constraintWidth_percent="0.18"
+            app:layout_constraintTop_toBottomOf="@id/pe_get_time_btn"
+            app:layout_constraintStart_toStartOf="@id/pe_get_time_btn"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/pe_logo_black_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/round_color_pick_btn_drawable"
+            android:elevation="2dp"
+            android:backgroundTint="@color/black"
+            app:layout_constraintWidth_percent="0.067"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@id/pe_logo_tv"
+            app:layout_constraintStart_toStartOf="@id/pe_logo_tv"
+            app:layout_constraintDimensionRatio="1:1"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/pe_logo_white_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/round_color_pick_btn_drawable"
+            android:backgroundTint="@color/white"
+            android:elevation="2dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toEndOf="@id/pe_logo_black_btn"
+            app:layout_constraintTop_toTopOf="@+id/pe_logo_black_btn"
+            app:layout_constraintWidth_percent="0.067" />
 
         <TextView
             android:id="@+id/pe_pick_color_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="15dp"
             android:autoSizeMaxTextSize="20dp"
-            android:autoSizeMinTextSize="16dp"
+            android:autoSizeMinTextSize="12dp"
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/pretendard_semibold"
-            android:gravity="center"
-            android:text="색상 선택"
-            android:textColor="@color/black"
+            android:gravity="center_vertical|start"
             android:includeFontPadding="false"
-            app:layout_constraintBottom_toBottomOf="@+id/pe_black_btn"
-            app:layout_constraintDimensionRatio="1:0.32"
+            android:text="기록 색상 선택"
+            android:textColor="@color/black"
+            app:layout_constraintDimensionRatio="1:0.25"
 
-            app:layout_constraintStart_toStartOf="@id/pe_get_time_btn"
-            app:layout_constraintTop_toTopOf="@+id/pe_black_btn"
+            app:layout_constraintStart_toStartOf="@id/pe_logo_black_btn"
+            app:layout_constraintTop_toBottomOf="@+id/pe_logo_black_btn"
             app:layout_constraintWidth_percent="0.18" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/pe_black_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/round_color_pick_btn_drawable"
             android:backgroundTint="@color/black"
             android:elevation="2dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/pe_white_btn"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/pe_pick_color_tv"
 
-            app:layout_constraintTop_toBottomOf="@id/pe_get_time_btn"
+            app:layout_constraintStart_toStartOf="@+id/pe_pick_color_tv"
+            app:layout_constraintTop_toBottomOf="@+id/pe_pick_color_tv"
             app:layout_constraintWidth_percent="0.067" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -172,7 +217,7 @@
             android:layout_marginStart="7dp"
             android:background="@drawable/round_color_pick_btn_drawable"
             android:backgroundTint="@color/white"
-            android:elevation="5dp"
+            android:elevation="2dp"
             app:layout_constraintBottom_toBottomOf="@+id/pe_black_btn"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/pe_red_btn"
@@ -250,7 +295,7 @@
             android:layout_height="39dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/blue_button_drawable"
-            android:text="emoji"
+            android:text="save"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

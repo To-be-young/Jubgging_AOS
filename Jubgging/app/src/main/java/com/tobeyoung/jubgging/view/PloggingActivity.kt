@@ -523,7 +523,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
 
         //speed를 .대신 `로 표시
-        speed = speed.replace(".", "`")
+        speed = speed.replace(".", "'")
 
         binding.ploggingPaceContextTv.text = speed
         beforeLat = mCurrentLat
