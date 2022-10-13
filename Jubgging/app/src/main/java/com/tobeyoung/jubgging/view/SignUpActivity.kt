@@ -80,8 +80,9 @@ class SignUpActivity : AppCompatActivity() {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
     private fun moveToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        finish()
         startActivity(intent)
     }
 
@@ -90,7 +91,7 @@ class SignUpActivity : AppCompatActivity() {
         nicknameTv.text = binding.signupNicknameEt.text.toString()
         dialog.show()
         dialog.findViewById<Button>(R.id.ds_move_login_btn).setOnClickListener {
-            moveToLogin()
+            finish()
             dialog.dismiss()
         }
     }
