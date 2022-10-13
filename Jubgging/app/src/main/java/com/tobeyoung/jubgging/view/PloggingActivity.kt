@@ -5,7 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Picture
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
@@ -19,6 +23,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -31,6 +36,7 @@ import net.daum.mf.map.api.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
+import java.io.ByteArrayOutputStream
 import java.io.InputStreamReader
 import java.net.URL
 import java.time.LocalDateTime
@@ -174,17 +180,23 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                     pathway = ploggingList), ::showToast)
 
             Log.d("PloggingRequest", "${ploggingList}")
-            binding.ploggingDistanceContextTv.text = "0Km"
-            binding.ploggingPaceContextTv.text = "00`00"
-
-            totalDistance = 0.0
-            speed = "00`00"
+//            binding.ploggingDistanceContextTv.text = "0Km"
+//            binding.ploggingPaceContextTv.text = "00`00"
+//
+//            totalDistance = 0.0
+//            speed = "00`00"
 
             resetTimer()
 
-            val intent = Intent(this, PloggingHistoryActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+
+
+            //intent로 path 보내서 이미지화
+            //intent 기록 - 거리, 속력, 시간 전달 후 이미지화
+
+            val intent = Intent(this, PhotoShareActivity::class.java)
+            intent.putExtra("distance",formattedTotalDistance)
+            intent.putExtra("time",userActivityTime)
+            intent.putExtra("speed",speed)
             startActivity(intent)
 
         }
@@ -511,7 +523,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
 
         //speed를 .대신 `로 표시
-        speed = speed.replace(".", "`")
+        speed = speed.replace(".", "'")
 
         binding.ploggingPaceContextTv.text = speed
         beforeLat = mCurrentLat
@@ -668,7 +680,6 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         super.onBackPressed()
 
         val intent = Intent(this, MainActivity::class.java)
-        intent.flags = FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
 }
