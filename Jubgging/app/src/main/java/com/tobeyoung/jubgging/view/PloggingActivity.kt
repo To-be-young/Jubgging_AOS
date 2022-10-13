@@ -16,10 +16,12 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -36,13 +38,13 @@ import net.daum.mf.map.api.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
-import java.io.ByteArrayOutputStream
 import java.io.InputStreamReader
 import java.net.URL
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.concurrent.timer
+
 
 class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
     MapView.MapViewEventListener,
@@ -285,12 +287,6 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        //툴바
-//        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
-//        setSupportActionBar(toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_plogging_back_main_bt)
-//        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // 위치추적 버튼
         if (checkLocationService()) {
@@ -300,6 +296,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             // GPS가 꺼져있을 경우
             Toast.makeText(this, "GPS를 켜주세요", Toast.LENGTH_SHORT).show()
         }
+
+
 
     }
 
@@ -676,10 +674,11 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
-
         val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
-}
+    }

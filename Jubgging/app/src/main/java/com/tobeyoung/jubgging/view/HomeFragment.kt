@@ -1,10 +1,12 @@
 package com.tobeyoung.jubgging.view
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,9 +14,10 @@ import com.tobeyoung.jubgging.R
 import com.tobeyoung.jubgging.databinding.FragmentHomeBinding
 import com.tobeyoung.jubgging.viewmodel.HomeViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), MainActivity.onBackPressedListener {
     private lateinit var binding: FragmentHomeBinding
     private  val viewModel: HomeViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,11 +33,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.homeChMapCl.setOnClickListener {
-            val intent = Intent(requireContext(), CleanHouseMapActivity::class.java)
+            val intent = Intent(requireContext(),CleanHouseMapActivity::class.java)
+            intent.flags = FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
         binding.homePloggingCl.setOnClickListener {
-            val intent = Intent(requireContext(), PloggingActivity::class.java)
+            val intent = Intent(requireContext(),PloggingActivity::class.java)
+            intent.flags = FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
     }
@@ -42,5 +47,10 @@ class HomeFragment : Fragment() {
         super.onResume()
         viewModel.getUserNickname()
 
+    }
+
+    override fun onBackPressed() {
+        requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
+        requireActivity().supportFragmentManager.popBackStack()
     }
 }

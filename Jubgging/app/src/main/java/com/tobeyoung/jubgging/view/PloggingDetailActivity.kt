@@ -180,7 +180,7 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this, PloggingHistoryActivity::class.java)
-        intent.flags = FLAG_ACTIVITY_CLEAR_TOP
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
 }
