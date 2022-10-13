@@ -46,16 +46,18 @@ class PhotoShareActivity : AppCompatActivity() {
         binding.photoShareVm = viewModel
         binding.lifecycleOwner = this
 
-        //기본 이미지 로드
-        Glide.with(this).load(R.drawable.temp_edit_image).into(binding.psPhotoIv)
-
         val speed = intent.getStringExtra("speed")
         val distance = intent.getStringExtra("distance")
         val time = intent.getStringExtra("time")
 
+        val uriString = intent.getStringExtra("uriString")
 
+        //기본 이미지 로드
+        if(uriString!= null){
+            uri = Uri.parse(uriString)
+        }
+        Glide.with(this).load(uri).into(binding.psPhotoIv)
 
-        Log.d("TAG", "onCreate: $speed, $distance, $time")
         //load & crop
         binding.psPhotoIv.setOnLongClickListener {
             startCrop()
@@ -63,7 +65,7 @@ class PhotoShareActivity : AppCompatActivity() {
         }
 
         //사진 편집하기
-        binding.psEditPhotoCl.setOnClickListener {
+        binding.psEditPhotoBtn.setOnClickListener {
             val intent = Intent(this, PhotoEditActivity::class.java)
             intent.putExtra("photoUri",uri.toString())
             intent.putExtra("speed",speed)
@@ -72,11 +74,6 @@ class PhotoShareActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        //instagram story share
-        binding.psInstagramStoryShareBtn.setOnClickListener {
-
-        }
     }
 
     private fun startCrop() {

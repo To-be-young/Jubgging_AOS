@@ -79,57 +79,8 @@
             app:layout_constraintTop_toBottomOf="@id/ps_photo_cl"
             app:layout_constraintEnd_toEndOf="@id/ps_photo_cl"/>
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ps_edit_photo_cl"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/white_square_btn_drawable"
-            android:elevation="2dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintDimensionRatio="1:0.31"
-            app:layout_constraintEnd_toEndOf="@id/ps_photo_cl"
-            app:layout_constraintTop_toBottomOf="@+id/ps_notice_tv"
-            app:layout_constraintWidth_percent="0.27">
-
-            <TextView
-                android:id="@+id/ps_photo_edit_tv"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:autoSizeMaxTextSize="16dp"
-                android:autoSizeMinTextSize="10dp"
-                android:autoSizeStepGranularity="1dp"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/pretendard_semibold"
-                android:gravity="center"
-                android:paddingVertical="5dp"
-                android:text="사진 편집하기"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ps_photo_edit_iv"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.7" />
-
-            <ImageView
-                android:id="@+id/ps_photo_edit_iv"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_baseline_edit_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/ps_photo_edit_tv"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.15" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/ps_instagram_story_share_btn"
+            android:id="@+id/ps_edit_photo_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="30dp"
@@ -141,7 +92,7 @@
             android:elevation="2dp"
             android:fontFamily="@font/pretendard_semibold"
             android:paddingVertical="5dp"
-            android:text="인스타 스토리 공유하기"
+            android:text="사진 편집하기"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:0.13"
