@@ -39,7 +39,9 @@ class CommunityFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.communityGroupRv.adapter = adapter
-        binding.communityGroupRv.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.communityGroupRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+
 
         startGetlist()
 
