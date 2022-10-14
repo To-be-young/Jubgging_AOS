@@ -1,16 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="myCommunity"
             type="com.tobeyoung.jubgging.view.MyCommunityActivity" />
+
         <variable
-            name="userVm"
+            name="communityVm"
             type="com.tobeyoung.jubgging.viewmodel.CommunityViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/light_grey">
+
+        <Toolbar
+            android:id="@+id/my_community_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            android:paddingHorizontal="10dp"
+            android:title="함께 줍깅"
+            android:titleTextAppearance="@style/toolbarTextTheme"
+            app:layout_constraintDimensionRatio="1:0.13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            setCommunityViewPager="@{myCommunityVp}"
+            setTabName="@{communityVm.myCommunityTabItems}"
+            android:id="@+id/my_community_tl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            app:layout_constraintDimensionRatio="1:0.13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/my_community_tool_bar"
+            app:tabTextAppearance="@style/MyCommunityTabTextTheme">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/my_community_joined_tab"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="참여 중인 커뮤니티" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/my_community_created_tab"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="개설한 커뮤니티" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/my_community_vp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/my_community_tl"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

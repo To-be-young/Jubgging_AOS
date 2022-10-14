@@ -113,4 +113,8 @@
     <style name="MyTimePickerTheme" parent="android:Widget.Material.Light.TimePicker">
         <item name="android:timePickerMode">spinner</item>
     </style>
+    <style name="MyCommunityTabTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>

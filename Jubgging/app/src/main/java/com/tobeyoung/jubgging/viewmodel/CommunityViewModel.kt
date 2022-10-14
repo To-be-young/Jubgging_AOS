@@ -21,6 +21,7 @@ import java.util.*
 class CommunityViewModel() : ViewModel() {
     private val communityRepository = CommunityRepositoryImpl()
     private var currentResultLiveData: LiveData<PagingData<CommunityGroup>>? = null
+    val myCommunityTabItems = listOf("참여 중인 커뮤니티", "개설한 커뮤니티")
 
     private val userRepository = UserRepositoryImpl()
 

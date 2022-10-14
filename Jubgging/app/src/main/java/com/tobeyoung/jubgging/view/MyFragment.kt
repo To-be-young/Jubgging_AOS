@@ -43,6 +43,11 @@ class MyFragment : Fragment() {
             val intent = Intent(requireContext(), PloggingHistoryActivity::class.java)
             startActivity(intent)
         }
+        binding.myPloggingCommunityCl.setOnClickListener{
+            val intent = Intent(requireContext(),MyCommunityActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onResume() {
