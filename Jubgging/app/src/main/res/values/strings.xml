@@ -56,5 +56,16 @@
     <string name="segipo_tx">서귀포시</string>
     <string name="seogwipo_east_tx">서귀포시 동부</string>
     <string name="plogging_guide_tx">플로깅이 처음이라면?</string>
+    <string name="recommend_route_info_tx">코스 관련 정보</string>
+    <string name="recommend_route_map_tx">코스 지도</string>
+    <string name="recommend_guide_tx">안내 및 문의</string>
+    <string name="recommend_route_fix_time_tx">예상 소요시간</string>
+    <string name="recommend_route_time_tx">약 5시간</string>
+    <string name="recommend_route_fix_distance_tx">총 구간 거리</string>
+    <string name="recommend_route_distance_tx">약 17.6km</string>
+    <string name="recommend_route_guide_tx1">제주올래 여행자센터</string>
+    <string name="recommend_route_guide_tx2">- 주소 : 제주특별자치도 서귀포시 중정로 22</string>
+    <string name="recommend_route_guide_tx3">- 전화 : 064-746-2167</string>
+    <string name="recommend_route_guide_tx4">- 운영시간 : 08:00 ~ 23:00 (연중무휴)</string>
 
 </resources>

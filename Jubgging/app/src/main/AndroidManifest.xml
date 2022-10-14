@@ -22,8 +22,15 @@
         android:theme="@style/Theme.Jubgging"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.RecommendRouteDetailActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.RecommendRounteMainActivity"
-            android:exported="tr">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
