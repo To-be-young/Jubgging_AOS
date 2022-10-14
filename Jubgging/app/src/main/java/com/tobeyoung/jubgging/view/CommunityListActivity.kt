@@ -46,7 +46,7 @@ class CommunityListActivity : AppCompatActivity() {
     private fun startGetlist() {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            viewModel.getList().observe(this@CommunityListActivity) {
+            viewModel.getCommunityList().observe(this@CommunityListActivity) {
                 adapter.submitData(this@CommunityListActivity.lifecycle, it)
             }
         }

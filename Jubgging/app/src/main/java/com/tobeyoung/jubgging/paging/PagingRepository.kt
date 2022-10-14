@@ -25,6 +25,11 @@ class PagingRepository(private val apiInterface: ApiInterface){
             pagingSourceFactory = { PloggingPagingSource(apiInterface) }
         ).liveData
     }
-
+    fun getMyCommunities():LiveData<PagingData<CommunityGroup>>{
+        return Pager(
+            config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
+            pagingSourceFactory = { MyCommunityCreatedPagingSource(apiInterface) }
+        ).liveData
+    }
 
 }

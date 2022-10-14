@@ -172,13 +172,18 @@ class CommunityViewModel() : ViewModel() {
         _nickname.value = nickname
     }
 
-    fun getList(): LiveData<PagingData<CommunityGroup>> {
+    fun getCommunityList(): LiveData<PagingData<CommunityGroup>> {
         val newResultLiveData: LiveData<PagingData<CommunityGroup>> =
             PagingRepository(ApiClient.api).getCommunities().cachedIn(viewModelScope)
         currentResultLiveData = newResultLiveData
         return newResultLiveData
     }
-
+    fun getMyCommunityList(): LiveData<PagingData<CommunityGroup>> {
+        val newResultLiveData: LiveData<PagingData<CommunityGroup>> =
+            PagingRepository(ApiClient.api).getMyCommunities().cachedIn(viewModelScope)
+        currentResultLiveData = newResultLiveData
+        return newResultLiveData
+    }
     @SuppressLint("CheckResult")
     fun postingCommunity(postCommunityRequest: PostCommunityRequest) {
         communityRepository.postCommunity(postCommunityRequest).subscribeBy(

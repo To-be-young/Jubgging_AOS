@@ -66,7 +66,7 @@ class CommunityFragment : Fragment() {
     private fun startGetlist() {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            viewModel.getList().observe(requireActivity()) {
+            viewModel.getCommunityList().observe(requireActivity()) {
                 adapter.submitData(requireActivity().lifecycle, it)
             }
         }
