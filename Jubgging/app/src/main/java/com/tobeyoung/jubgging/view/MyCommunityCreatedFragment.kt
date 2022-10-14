@@ -39,6 +39,10 @@ class MyCommunityCreatedFragment : Fragment() {
         binding.mccRv.adapter = adapter
         binding.mccRv.layoutManager = LinearLayoutManager(requireContext())
 
+    }
+
+    override fun onResume() {
+        super.onResume()
         startGetlist()
     }
     private fun startGetlist() {

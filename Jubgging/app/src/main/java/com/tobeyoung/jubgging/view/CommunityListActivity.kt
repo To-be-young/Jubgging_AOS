@@ -30,18 +30,17 @@ class CommunityListActivity : AppCompatActivity() {
         binding.communityGroupListRv.adapter = adapter
         binding.communityGroupListRv.layoutManager = LinearLayoutManager(this)
 
-        startGetlist()
 
         binding.cglCreateCommunityBtn.setOnClickListener {
             //이동
             val intent = Intent(this, CommunityCreateActivity::class.java)
             startActivity(intent)
         }
+    }
 
-
-
-
-
+    override fun onResume() {
+        super.onResume()
+        startGetlist()
     }
     private fun startGetlist() {
         searchJob?.cancel()
