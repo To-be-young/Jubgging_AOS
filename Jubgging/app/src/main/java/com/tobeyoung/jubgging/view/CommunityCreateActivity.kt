@@ -187,4 +187,5 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
+
 }

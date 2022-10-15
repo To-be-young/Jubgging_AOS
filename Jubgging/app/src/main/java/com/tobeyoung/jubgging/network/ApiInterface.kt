@@ -65,4 +65,7 @@ interface ApiInterface {
 
     @GET("api/community/get-myPost")
     suspend fun getMyCommunityList(@Query("page") page: Int): Response<BaseResponse<Communities>>
+
+    @GET(" api/community/get-myJoinCommunity")
+    suspend fun getMyJoinCommunityList(@Query("page") page: Int): Response<BaseResponse<CommunityJoinListResponse<CommunityGroup>>>
 }

@@ -485,7 +485,12 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
                 mapView.addPOIItem(marker[i])
             }
         }
+    }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
 
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -73,12 +73,19 @@ class CommunityJoinActivity : AppCompatActivity() {
         dialog.show()
         dialog.findViewById<Button>(R.id.dcgj_move_btn).setOnClickListener {
             //나중에 함께 줍깅으로 옮길 예정
-            moveToCommunityList()
+            moveToMyCommunity()
         }
     }
-    private fun moveToCommunityList() {
-        val intent = Intent(this, CommunityListActivity::class.java)
+    private fun moveToMyCommunity() {
+        val intent = Intent(this, MyCommunityActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        finish()
+        startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, CommunityListActivity::class.java)
         startActivity(intent)
     }
 }

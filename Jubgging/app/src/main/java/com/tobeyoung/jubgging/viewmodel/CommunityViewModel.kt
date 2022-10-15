@@ -11,6 +11,7 @@ import androidx.paging.cachedIn
 import com.tobeyoung.jubgging.model.CommunityGroup
 import com.tobeyoung.jubgging.network.ApiClient
 import com.tobeyoung.jubgging.network.data.request.PostCommunityRequest
+import com.tobeyoung.jubgging.network.data.response.CommunityJoinResponse
 import com.tobeyoung.jubgging.paging.PagingRepository
 import com.tobeyoung.jubgging.repository.CommunityRepositoryImpl
 import com.tobeyoung.jubgging.repository.UserRepositoryImpl
@@ -21,6 +22,8 @@ import java.util.*
 class CommunityViewModel() : ViewModel() {
     private val communityRepository = CommunityRepositoryImpl()
     private var currentResultLiveData: LiveData<PagingData<CommunityGroup>>? = null
+    private var currentResultJoinLiveData: LiveData<PagingData<CommunityJoinResponse<CommunityGroup>>>? = null
+
     val myCommunityTabItems = listOf("참여 중인 커뮤니티", "개설한 커뮤니티")
 
     private val userRepository = UserRepositoryImpl()
@@ -182,6 +185,12 @@ class CommunityViewModel() : ViewModel() {
         val newResultLiveData: LiveData<PagingData<CommunityGroup>> =
             PagingRepository(ApiClient.api).getMyCommunities().cachedIn(viewModelScope)
         currentResultLiveData = newResultLiveData
+        return newResultLiveData
+    }
+    fun getMyJoinedCommunityList():LiveData<PagingData<CommunityJoinResponse<CommunityGroup>>> {
+        val newResultLiveData: LiveData<PagingData<CommunityJoinResponse<CommunityGroup>>> =
+            PagingRepository(ApiClient.api).getMyJoinedCommunities().cachedIn(viewModelScope)
+        currentResultJoinLiveData = newResultLiveData
         return newResultLiveData
     }
     @SuppressLint("CheckResult")

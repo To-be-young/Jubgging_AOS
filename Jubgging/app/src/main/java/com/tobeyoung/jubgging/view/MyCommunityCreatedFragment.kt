@@ -38,6 +38,7 @@ class MyCommunityCreatedFragment : Fragment() {
 
         binding.mccRv.adapter = adapter
         binding.mccRv.layoutManager = LinearLayoutManager(requireContext())
+        startGetlist()
 
     }
 

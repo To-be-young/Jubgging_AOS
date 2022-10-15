@@ -30,6 +30,7 @@ class CommunityListActivity : AppCompatActivity() {
         binding.communityGroupListRv.adapter = adapter
         binding.communityGroupListRv.layoutManager = LinearLayoutManager(this)
 
+        startGetlist()
 
         binding.cglCreateCommunityBtn.setOnClickListener {
             //이동
@@ -49,5 +50,12 @@ class CommunityListActivity : AppCompatActivity() {
                 adapter.submitData(this@CommunityListActivity.lifecycle, it)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
