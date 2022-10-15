@@ -1,6 +1,7 @@
 package com.tobeyoung.jubgging.view
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -32,5 +33,21 @@ class RecommendRounteMainActivity : AppCompatActivity() {
 
         ploggingGuideRecyclerViewAdapter.submitploggingGuideList(list)
 
+        binding.recommendOlleroadCl.setOnClickListener{
+            val intent = Intent(this,ActivityRecommendRouteOlleList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendSeaCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteOceanList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendTourCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteAttractionList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendOreumCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteOreumList::class.java)
+            startActivity(intent)
+        }
     }
 }

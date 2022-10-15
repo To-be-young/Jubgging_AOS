@@ -54,7 +54,7 @@
                 app:layout_constraintWidth_percent="0.187" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/recommend_rise_cl"
+                android:id="@+id/recommend_oreum_cl"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
@@ -67,7 +67,7 @@
                 app:layout_constraintWidth_percent="0.412">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/recommend_ineer_rise_cl"
+                    android:id="@+id/recommend_ineer_oreum_cl"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -78,7 +78,7 @@
                     app:layout_constraintWidth_percent="0.29">
 
                     <TextView
-                        android:id="@+id/recomeend_rise_tv"
+                        android:id="@+id/recomeend_oreum_tv"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:autoSizeMaxTextSize="15dp"
@@ -90,20 +90,20 @@
                         android:text="@string/recommend_rise_tx"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/recomeend_rise_iv"
+                        app:layout_constraintEnd_toStartOf="@+id/recomeend_oreum_iv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent="0.59" />
 
                     <ImageView
-                        android:id="@+id/recomeend_rise_iv"
+                        android:id="@+id/recomeend_oreum_iv"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:src="@drawable/icon_recommned_rise_drawable"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/recomeend_rise_tv"
+                        app:layout_constraintStart_toEndOf="@+id/recomeend_oreum_tv"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent="0.36" />
 
@@ -120,8 +120,8 @@
                 android:elevation="2dp"
                 app:layout_constraintDimensionRatio="1:0.25"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/recommend_rise_cl"
-                app:layout_constraintTop_toTopOf="@+id/recommend_rise_cl"
+                app:layout_constraintStart_toEndOf="@+id/recommend_oreum_cl"
+                app:layout_constraintTop_toTopOf="@+id/recommend_oreum_cl"
                 app:layout_constraintWidth_percent="0.412">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -179,7 +179,7 @@
                 app:layout_constraintDimensionRatio="1:0.25"
                 app:layout_constraintEnd_toStartOf="@+id/recommend_olleroad_cl"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recommend_rise_cl"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_oreum_cl"
                 app:layout_constraintWidth_percent="0.412">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -236,7 +236,7 @@
                 android:elevation="2dp"
                 app:layout_constraintDimensionRatio="1:0.25"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/recommend_rise_cl"
+                app:layout_constraintStart_toEndOf="@+id/recommend_oreum_cl"
                 app:layout_constraintTop_toTopOf="@+id/recommend_sea_cl"
                 app:layout_constraintWidth_percent="0.412">
 
