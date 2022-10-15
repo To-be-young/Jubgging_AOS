@@ -7,7 +7,7 @@
 
         <variable
             name="recommendMain"
-            type="com.tobeyoung.jubgging.view.RecommendRounteMainActivity" />
+            type="com.tobeyoung.jubgging.view.RecommendRouteMainActivity" />
 
     </data>
 
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/light_grey"
-            tools:context=".view.RecommendRounteMainActivity">
+            tools:context=".view.RecommendRouteMainActivity">
 
             <ImageView
                 android:id="@+id/app_title_iv"

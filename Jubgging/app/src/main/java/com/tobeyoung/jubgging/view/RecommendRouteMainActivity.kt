@@ -1,17 +1,15 @@
 package com.tobeyoung.jubgging.view
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tobeyoung.jubgging.R
 import com.tobeyoung.jubgging.adapter.PloggingGuideRecyclerViewAdapter
 import com.tobeyoung.jubgging.databinding.ActivityRecommendRounteMainBinding
 import com.tobeyoung.jubgging.model.PloggingGuide
 
-class RecommendRounteMainActivity : AppCompatActivity() {
+class RecommendRouteMainActivity : AppCompatActivity() {
     private val adapter = PloggingGuideRecyclerViewAdapter()
     private lateinit var binding : ActivityRecommendRounteMainBinding
     
@@ -47,6 +45,34 @@ class RecommendRounteMainActivity : AppCompatActivity() {
         }
         binding.recommendOreumCl.setOnClickListener {
             val intent = Intent(this,ActivityRecommendRouteOreumList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendOreumCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteOreumList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendJejuCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteJejusiList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendJejuEastCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteJejusiEasternList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendJejuWestCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteJejusiWesternList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendSeogwipoCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteSeogwipoList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendSeogwipoEastCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteSeogwipoEasternList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendSeogwipoWestCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendRouteSeogwipoWesternList::class.java)
             startActivity(intent)
         }
     }
