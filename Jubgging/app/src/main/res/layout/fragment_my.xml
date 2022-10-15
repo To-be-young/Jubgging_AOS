@@ -10,6 +10,7 @@
         <variable
             name="userVm"
             type="com.tobeyoung.jubgging.viewmodel.UserInfoViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -264,7 +265,7 @@
                                     android:autoSizeStepGranularity="1dp"
                                     android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
-                                    android:text="200"
+                                    android:text="@{userVm.totalDistance.toString()}"
                                     android:gravity="end|center"
                                     style="@style/boldBlueTextTheme"
                                     app:layout_constraintBottom_toBottomOf="@+id/my_user_distance_unit_tv"
@@ -379,7 +380,7 @@
                                     android:autoSizeTextType="uniform"
                                     android:gravity="end|center_vertical"
                                     android:includeFontPadding="false"
-                                    android:text="120"
+                                    android:text="@{userVm.totalTime.toString()}"
                                     style="@style/boldBlueTextTheme"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintDimensionRatio="1:0.64"

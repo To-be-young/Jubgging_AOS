@@ -252,7 +252,7 @@
                                     android:autoSizeStepGranularity="1dp"
                                     android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
-                                    android:text="2.1"
+                                    android:text="@{homeVm.totalDistance.toString()}"
                                     android:gravity="end|center"
                                     style="@style/boldBlueTextTheme"
 
@@ -366,7 +366,7 @@
                                     android:autoSizeStepGranularity="1dp"
                                     android:autoSizeTextType="uniform"
                                     android:includeFontPadding="false"
-                                    android:text="43"
+                                    android:text="@{homeVm.totalTime.toString()}"
                                     android:gravity="end|center_vertical"
                                     app:layout_constraintDimensionRatio="1:0.64"
                                     style="@style/boldBlueTextTheme"

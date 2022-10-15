@@ -42,11 +42,18 @@ class HomeFragment : Fragment(), MainActivity.onBackPressedListener {
             intent.flags = FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
+        viewModel.getUserNickname()
+        viewModel.getPloggingTotalData()
+        binding.homeUserDoHistoryBtn.setOnClickListener{
+            val intent = Intent(requireContext(),PloggingHistoryActivity::class.java)
+            startActivity(intent)
+        }
+
     }
     override fun onResume() {
         super.onResume()
         viewModel.getUserNickname()
-
+        viewModel.getPloggingTotalData()
     }
 
     override fun onBackPressed() {

@@ -18,14 +18,26 @@ class UserInfoViewModel :ViewModel() {
     private val _nickname = MutableLiveData<String>()
     val nickname: LiveData<String>
         get() = _nickname
+    private var _totalTime = MutableLiveData<Int>()
+    val totalTime: LiveData<Int>
+        get() = _totalTime
 
+    private var _totalDistance = MutableLiveData<Double>()
+    val totalDistance: LiveData<Double>
+        get() = _totalDistance
     init {
         _email.value = ""
         _nickname.value = ""
+        _totalTime.value = 0
+        _totalDistance.value = 0.0
     }
     private fun updateUserInfo(email:String, nickname:String){
         _email.value = email
         _nickname.value = nickname
+    }
+    fun updatePloggingTotalData(time: Int, distance: Double) {
+        _totalTime.value = time
+        _totalDistance.value = distance
     }
 
     @SuppressLint("CheckResult")
@@ -40,5 +52,17 @@ class UserInfoViewModel :ViewModel() {
             }
         )
     }
-
+    @SuppressLint("CheckResult")
+    fun getPloggingTotalData() {
+        userRepository.getPloggingTotalData().subscribeBy(
+            onSuccess = {
+                if (it.isSuccess()) {
+                    updatePloggingTotalData(it.data.activityTime, it.data.distance)
+                }
+            },
+            onError = {
+                it.printStackTrace()
+            }
+        )
+    }
 }

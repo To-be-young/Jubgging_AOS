@@ -47,12 +47,14 @@ class MyFragment : Fragment() {
             val intent = Intent(requireContext(),MyCommunityActivity::class.java)
             startActivity(intent)
         }
-
+        viewModel.getUserInfo()
+        viewModel.getPloggingTotalData()
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getUserInfo()
+        viewModel.getPloggingTotalData()
     }
 
 }
