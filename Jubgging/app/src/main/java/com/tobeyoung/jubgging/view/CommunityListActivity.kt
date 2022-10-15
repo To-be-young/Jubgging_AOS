@@ -37,18 +37,25 @@ class CommunityListActivity : AppCompatActivity() {
             val intent = Intent(this, CommunityCreateActivity::class.java)
             startActivity(intent)
         }
+    }
 
-
-
-
-
+    override fun onResume() {
+        super.onResume()
+        startGetlist()
     }
     private fun startGetlist() {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            viewModel.getList().observe(this@CommunityListActivity) {
+            viewModel.getCommunityList().observe(this@CommunityListActivity) {
                 adapter.submitData(this@CommunityListActivity.lifecycle, it)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -20,7 +20,7 @@ import com.tobeyoung.jubgging.viewmodel.CommunityViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class CommunityFragment : Fragment() {
+class CommunityFragment : Fragment(), MainActivity.onBackPressedListener {
     private lateinit var binding: FragmentCommunityBinding
     private val viewModel: CommunityViewModel by viewModels()
     private val adapter = CommunityGroupPagingAdapter()
@@ -43,7 +43,6 @@ class CommunityFragment : Fragment() {
         binding.communityGroupRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
 
-        startGetlist()
 
         binding.communityGroupMoreCl.setOnClickListener {
             val intent = Intent(requireContext(), CommunityListActivity::class.java)
@@ -63,12 +62,23 @@ class CommunityFragment : Fragment() {
 
         communityEventRecyclerViewAdapter.submitCommunityEventList(list)
     }
+
+    override fun onResume() {
+        super.onResume()
+        startGetlist()
+
+    }
     private fun startGetlist() {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            viewModel.getList().observe(requireActivity()) {
+            viewModel.getCommunityList().observe(requireActivity()) {
                 adapter.submitData(requireActivity().lifecycle, it)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
     }
 }

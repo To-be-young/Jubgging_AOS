@@ -11,7 +11,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
-import com.tobeyoung.jubgging.model.CommunityGroup as CommunityGroup1
+import com.tobeyoung.jubgging.model.CommunityGroup
 
 interface ApiInterface {
     @POST("api/sign/signup")
@@ -55,11 +55,17 @@ interface ApiInterface {
     suspend fun getCommunityList(@Query("page") page: Int): Response<BaseResponse<Communities>>
 
     @POST("api/community/posting")
-    fun postCommunity(@Body postCommunityRequest: PostCommunityRequest): Single<BaseResponse<CommunityGroup1>>
+    fun postCommunity(@Body postCommunityRequest: PostCommunityRequest): Single<BaseResponse<CommunityGroup>>
 
     @GET("api/community/get-post")
-    fun getCommunityDetail(@Query("postId") postId: Int): Single<BaseResponse<CommunityGroup1>>
+    fun getCommunityDetail(@Query("postId") postId: Int): Single<BaseResponse<CommunityGroup>>
 
     @POST("api/community/join-community")
-    fun joinCommunity(@Query("postId") postId: Int): Single<BaseResponse<CommunityJoinResponse<CommunityGroup1>>>
+    fun joinCommunity(@Query("postId") postId: Int): Single<BaseResponse<CommunityJoinResponse<CommunityGroup>>>
+
+    @GET("api/community/get-myPost")
+    suspend fun getMyCommunityList(@Query("page") page: Int): Response<BaseResponse<Communities>>
+
+    @GET(" api/community/get-myJoinCommunity")
+    suspend fun getMyJoinCommunityList(@Query("page") page: Int): Response<BaseResponse<CommunityJoinListResponse<CommunityGroup>>>
 }

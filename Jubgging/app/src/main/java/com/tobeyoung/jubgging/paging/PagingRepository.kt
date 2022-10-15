@@ -8,6 +8,7 @@ import androidx.paging.liveData
 import com.tobeyoung.jubgging.model.CommunityGroup
 import com.tobeyoung.jubgging.model.HistoryGroup
 import com.tobeyoung.jubgging.network.ApiInterface
+import com.tobeyoung.jubgging.network.data.response.CommunityJoinResponse
 
 class PagingRepository(private val apiInterface: ApiInterface){
 
@@ -25,6 +26,16 @@ class PagingRepository(private val apiInterface: ApiInterface){
             pagingSourceFactory = { PloggingPagingSource(apiInterface) }
         ).liveData
     }
-
-
+    fun getMyCommunities():LiveData<PagingData<CommunityGroup>>{
+        return Pager(
+            config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
+            pagingSourceFactory = { MyCommunityCreatedPagingSource(apiInterface) }
+        ).liveData
+    }
+    fun getMyJoinedCommunities():LiveData<PagingData<CommunityJoinResponse<CommunityGroup>>>{
+        return Pager(
+            config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
+            pagingSourceFactory = { MyCommunityJoinedPagingSource(apiInterface) }
+        ).liveData
+    }
 }

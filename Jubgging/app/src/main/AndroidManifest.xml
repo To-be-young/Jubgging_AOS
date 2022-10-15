@@ -120,6 +120,8 @@
         <activity
             android:name="com.canhub.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
+        <activity android:name=".view.MyCommunityActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

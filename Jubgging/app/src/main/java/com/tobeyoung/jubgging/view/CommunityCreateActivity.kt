@@ -180,10 +180,12 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
     private fun moveToCommunityList() {
         val intent = Intent(this, CommunityListActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        finish()
         startActivity(intent)
     }
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
+
 }
