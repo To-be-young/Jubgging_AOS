@@ -14,5 +14,9 @@ class ActivityRecommendRouteOlleList:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_rm_olle_list)
 
+
+        binding.rmOlleCl.setOnClickListener {
+
+        }
     }
 }

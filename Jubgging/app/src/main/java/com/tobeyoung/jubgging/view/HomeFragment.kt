@@ -37,6 +37,10 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), PloggingActivity::class.java)
             startActivity(intent)
         }
+        binding.homeRmRouteCl.setOnClickListener {
+            val intent = Intent(requireContext(), RecommendRouteMainActivity::class.java)
+            startActivity(intent)
+        }
     }
     override fun onResume() {
         super.onResume()

@@ -63,9 +63,9 @@
     <string name="recommend_route_time_tx">약 5시간</string>
     <string name="recommend_route_fix_distance_tx">총 구간 거리</string>
     <string name="recommend_route_distance_tx">약 17.6km</string>
-    <string name="recommend_route_guide_tx1">제주올래 여행자센터</string>
-    <string name="recommend_route_guide_tx2">- 주소 : 제주특별자치도 서귀포시 중정로 22</string>
-    <string name="recommend_route_guide_tx3">- 전화 : 064-746-2167</string>
-    <string name="recommend_route_guide_tx4">- 운영시간 : 08:00 ~ 23:00 (연중무휴)</string>
+    <string name="recommend_route_guide_tx1">제주 관광공사</string>
+    <string name="recommend_route_guide_tx2">- 주소 : 제주특별자치도 제주시 선덕로 23(연동)</string>
+    <string name="recommend_route_guide_tx3">- 전화 : 064- 740-6000</string>
+    <string name="recommend_route_guide_tx4">- 운영시간 : 10:00 ~ 19:00 (연중무휴)</string>
 
 </resources>

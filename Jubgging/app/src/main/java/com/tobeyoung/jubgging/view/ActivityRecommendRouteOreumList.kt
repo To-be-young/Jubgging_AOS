@@ -1,5 +1,6 @@
 package com.tobeyoung.jubgging.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,5 +13,9 @@ class ActivityRecommendRouteOreumList:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_rm_oreum_list)
 
+        binding.rmOreumCl.setOnClickListener {
+            val intent = Intent(this, RmJejusiActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

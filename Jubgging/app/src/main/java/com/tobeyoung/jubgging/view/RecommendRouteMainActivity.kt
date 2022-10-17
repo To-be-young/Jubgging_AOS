@@ -47,10 +47,6 @@ class RecommendRouteMainActivity : AppCompatActivity() {
             val intent = Intent(this,ActivityRecommendRouteOreumList::class.java)
             startActivity(intent)
         }
-        binding.recommendOreumCl.setOnClickListener {
-            val intent = Intent(this,ActivityRecommendRouteOreumList::class.java)
-            startActivity(intent)
-        }
         binding.recommendJejuCl.setOnClickListener {
             val intent = Intent(this,ActivityRecommendRouteJejusiList::class.java)
             startActivity(intent)
@@ -75,5 +71,12 @@ class RecommendRouteMainActivity : AppCompatActivity() {
             val intent = Intent(this,ActivityRecommendRouteSeogwipoWesternList::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

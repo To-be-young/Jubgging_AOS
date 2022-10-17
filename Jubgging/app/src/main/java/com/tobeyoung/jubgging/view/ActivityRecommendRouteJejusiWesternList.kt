@@ -1,5 +1,6 @@
 package com.tobeyoung.jubgging.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -17,5 +18,9 @@ class ActivityRecommendRouteJejusiWesternList:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_rm_jejusi_western_list)
 
+        binding.rmJejusiWesternCl.setOnClickListener {
+            val intent = Intent(this, RmJejusiWesternActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
