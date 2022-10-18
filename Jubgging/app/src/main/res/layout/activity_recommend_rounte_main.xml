@@ -13,11 +13,12 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:background="@color/light_grey"
             tools:context=".view.RecommendRouteMainActivity">
 
@@ -44,14 +45,14 @@
                 android:autoSizeMinTextSize="1dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="1:0.24"
                 android:fontFamily="@font/pretendard_semibold"
-                android:gravity="center"
+                android:gravity="center_vertical|start"
                 android:text="@string/theme_course_tx"
                 android:textColor="@color/black"
-                app:layout_constraintHeight_percent="0.028"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
-                app:layout_constraintWidth_percent="0.187" />
+                app:layout_constraintWidth_percent="0.2" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/recommend_oreum_cl"
@@ -72,7 +73,7 @@
                     android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.39"
+                    app:layout_constraintHeight_percent="0.45"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintWidth_percent="0.29">
@@ -93,7 +94,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/recomeend_oreum_iv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintWidth_percent="0.59" />
+                        app:layout_constraintWidth_percent="0.6" />
 
                     <ImageView
                         android:id="@+id/recomeend_oreum_iv"
@@ -130,7 +131,7 @@
                     android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.39"
+                    app:layout_constraintHeight_percent="0.45"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintWidth_percent="0.37">
@@ -151,7 +152,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/recomeend_olleroad_iv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintWidth_percent="0.59" />
+                        app:layout_constraintWidth_percent="0.6" />
 
                     <ImageView
                         android:id="@+id/recomeend_olleroad_iv"
@@ -188,7 +189,7 @@
                     android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.39"
+                    app:layout_constraintHeight_percent="0.45"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintWidth_percent="0.31">
@@ -246,7 +247,7 @@
                     android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.39"
+                    app:layout_constraintHeight_percent="0.45"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintWidth_percent="0.452">
@@ -295,21 +296,21 @@
                 android:autoSizeMinTextSize="1dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="1:0.24"
+                android:gravity="center_vertical|start"
                 android:fontFamily="@font/pretendard_semibold"
-                android:gravity="center"
                 android:text="@string/region_course_tx"
                 android:textColor="@color/black"
-                app:layout_constraintHeight_percent="0.028"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recommend_sea_cl"
-                app:layout_constraintWidth_percent="0.187" />
+                app:layout_constraintWidth_percent="0.2" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/recommend_jeju_west_cl"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:autoSizeMaxTextSize="12dp"
+                android:autoSizeMaxTextSize="15dp"
                 android:autoSizeMinTextSize="1dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
@@ -328,7 +329,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:autoSizeMaxTextSize="12dp"
+                android:autoSizeMaxTextSize="15dp"
                 android:autoSizeMinTextSize="1dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
@@ -348,7 +349,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:autoSizeMaxTextSize="12dp"
+                android:autoSizeMaxTextSize="15dp"
                 android:autoSizeMinTextSize="1dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
@@ -367,7 +368,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:autoSizeMaxTextSize="12dp"
+                android:autoSizeMaxTextSize="15dp"
                 android:autoSizeMinTextSize="1dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
@@ -385,7 +386,7 @@
                 android:id="@+id/recommend_seogwipo_cl"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:autoSizeMaxTextSize="12dp"
+                android:autoSizeMaxTextSize="15dp"
                 android:autoSizeMinTextSize="1dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
@@ -404,7 +405,7 @@
                 android:id="@+id/recommend_seogwipo_east_cl"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:autoSizeMaxTextSize="12dp"
+                android:autoSizeMaxTextSize="15dp"
                 android:autoSizeMinTextSize="1dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
@@ -430,10 +431,11 @@
                 android:fontFamily="@font/pretendard_semibold"
                 android:text="@string/plogging_guide_tx"
                 android:textColor="@color/black"
-                app:layout_constraintHeight_percent="0.028"
+                app:layout_constraintDimensionRatio="1:0.24"
+                android:gravity="center_vertical|start"
                 app:layout_constraintStart_toStartOf="@+id/recommend_region_course_tv"
                 app:layout_constraintTop_toBottomOf="@+id/recommend_seogwipo_west_cl"
-                app:layout_constraintWidth_percent="0.334" />
+                app:layout_constraintWidth_percent="0.3" />
 
 
             <androidx.recyclerview.widget.RecyclerView
