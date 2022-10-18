@@ -5,5 +5,6 @@ data class HistoryGroup(
     val userId : Int,
     val date : String,
     val distance : Double,
+    val pace : String,
     val activityTime : String
 )

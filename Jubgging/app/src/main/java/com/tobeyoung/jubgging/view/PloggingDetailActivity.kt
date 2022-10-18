@@ -42,6 +42,7 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         val IntenTime = intent.getStringExtra("activityTime")
         val IntentDistance = intent.getStringExtra("distance")
         val IntentRecordId = intent.getStringExtra("recordId")
+        val IntentPace = intent.getStringExtra("pace")
 
         var data_str = LocalDateTime.parse(IntentDate)
         val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
@@ -50,6 +51,7 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         binding.historyDateTv.text = formatted
         binding.historyTimeTv.text = IntenTime
         binding.historyDistanceTv.text = IntentDistance
+        binding.historyPaceTv.text = IntentPace
 
         pathwayViewMoodel.pathway(IntentRecordId!!.toInt(), ::showToast)
         Log.d("success_pathway", "${IntentRecordId.toInt()}")

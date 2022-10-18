@@ -39,6 +39,7 @@ class PloggingHistoryActivity : AppCompatActivity() {
                 intent.putExtra("date",data.date)
                 intent.putExtra("activityTime",data.activityTime)
                 intent.putExtra("distance",data.distance.toString())
+                intent.putExtra("pace", data.pace)
                 intent.putExtra("recordId", data.recordId.toString())
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
