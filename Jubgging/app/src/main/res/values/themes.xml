@@ -117,4 +117,9 @@
         <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="recommendMainTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textAppearance">@color/black</item>
+    </style>
 </resources>

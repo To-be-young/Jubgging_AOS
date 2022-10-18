@@ -43,4 +43,29 @@
     <string name="off">OFF</string>
     <string name="community_group_ing"><![CDATA[ 모집중인 커뮤니티]]></string>
     <string name="community_group_all"><![CDATA[ 모두보기]]></string>
+    <string name="theme_course_tx">테마별 코스</string>
+    <string name="region_course_tx">지역별 코스</string>
+    <string name="recommend_rise_tx">오름</string>
+    <string name="recommend_olleroad_tx">올레길</string>
+    <string name="recommend_sea_tx">바다</string>
+    <string name="recommend_tour_tx">관광명소</string>
+    <string name="jeju_west_tx">제주시 서부</string>
+    <string name="jejusi_tx">제주시</string>
+    <string name="jeju_east_tx">제주시 동부</string>
+    <string name="seogwipo_west_tx">서귀포시 서부</string>
+    <string name="segipo_tx">서귀포시</string>
+    <string name="seogwipo_east_tx">서귀포시 동부</string>
+    <string name="plogging_guide_tx">플로깅이 처음이라면?</string>
+    <string name="recommend_route_info_tx">코스 관련 정보</string>
+    <string name="recommend_route_map_tx">코스 지도</string>
+    <string name="recommend_guide_tx">안내 및 문의</string>
+    <string name="recommend_route_fix_time_tx">예상 소요시간</string>
+    <string name="recommend_route_time_tx">약 5시간</string>
+    <string name="recommend_route_fix_distance_tx">총 구간 거리</string>
+    <string name="recommend_route_distance_tx">약 17.6km</string>
+    <string name="recommend_route_guide_tx1">제주 관광공사</string>
+    <string name="recommend_route_guide_tx2">- 주소 : 제주특별자치도 제주시 선덕로 23(연동)</string>
+    <string name="recommend_route_guide_tx3">- 전화 : 064- 740-6000</string>
+    <string name="recommend_route_guide_tx4">- 운영시간 : 10:00 ~ 19:00 (연중무휴)</string>
+
 </resources>
