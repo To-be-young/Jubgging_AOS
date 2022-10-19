@@ -10,7 +10,6 @@ import com.tobeyoung.jubgging.databinding.ActivityRecommendRounteMainBinding
 import com.tobeyoung.jubgging.model.PloggingGuide
 
 class RecommendRouteMainActivity : AppCompatActivity() {
-    private val adapter = PloggingGuideRecyclerViewAdapter()
     private lateinit var binding : ActivityRecommendRounteMainBinding
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,18 +17,11 @@ class RecommendRouteMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.recommendPloggingGuideRv.adapter = adapter
-        binding.recommendPloggingGuideRv.layoutManager = LinearLayoutManager(this)
-
-
-        val ploggingGuideRecyclerViewAdapter = PloggingGuideRecyclerViewAdapter()
-        binding.recommendPloggingGuideRv.adapter = ploggingGuideRecyclerViewAdapter
 
         var list : MutableList<PloggingGuide> = mutableListOf<PloggingGuide>()
         list.add(0, PloggingGuide("걸으멍 도르멍 주시멍", resources.getDrawable(R.drawable.plogging_poster1)))
 
 
-        ploggingGuideRecyclerViewAdapter.submitploggingGuideList(list)
 
         binding.recommendOlleroadCl.setOnClickListener{
             val intent = Intent(this,ActivityRecommendRouteOlleList::class.java)
@@ -69,6 +61,10 @@ class RecommendRouteMainActivity : AppCompatActivity() {
         }
         binding.recommendSeogwipoWestCl.setOnClickListener {
             val intent = Intent(this,ActivityRecommendRouteSeogwipoWesternList::class.java)
+            startActivity(intent)
+        }
+        binding.recommendPloggingGuideCl.setOnClickListener {
+            val intent = Intent(this,ActivityRecommendGuide::class.java)
             startActivity(intent)
         }
     }

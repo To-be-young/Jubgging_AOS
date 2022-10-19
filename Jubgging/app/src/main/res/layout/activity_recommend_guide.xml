@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey">
+
+        <Toolbar
+            android:id="@+id/recommend_guide_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:elevation="2dp"
+            android:title="플로깅 초보 Guide"
+            app:layout_constraintDimensionRatio="1:0.13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recommend_guide_tool_bar">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/white_square_et_drawable"
+                    android:elevation="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.861">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+                    <TextView
+                        android:id="@+id/plogging_guide_title_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="20dp"
+                        android:autoSizeMaxTextSize="18dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center"
+                        android:text="@string/plogging_guide_title_tx"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/plogging_guide_v"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.04"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <View
+                        android:id="@+id/plogging_guide_v"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="#40000000"
+                        app:layout_constraintBottom_toTopOf="@+id/plogging_guide_need_title_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plogging_guide_title_tv"
+                        app:layout_constraintWidth_percent="0.8" />
+
+                    <TextView
+                        android:id="@+id/plogging_guide_need_title_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="30dp"
+                        android:autoSizeMaxTextSize="16dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center_vertical"
+                        android:text="@string/plogging_guide_need_title_tx"
+                        android:textColor="@color/black"
+                        app:layout_constraintHeight_percent="0.04"
+                        app:layout_constraintStart_toStartOf="@+id/plogging_guide_v"
+                        app:layout_constraintTop_toTopOf="@+id/plogging_guide_v"
+                        app:layout_constraintWidth_percent="0.21" />
+
+                    <View
+                        android:id="@+id/plogging_guide_need_v"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#26000000"
+                        app:layout_constraintEnd_toEndOf="@+id/plogging_guide_need_title_tv"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/plogging_guide_need_title_tv"
+                        app:layout_constraintTop_toBottomOf="@+id/plogging_guide_need_title_tv" />
+
+                    <TextView
+                        android:id="@+id/plogging_guide_need_tv1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:autoSizeMaxTextSize="12dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:lineSpacingExtra="2dp"
+                        android:text="플로깅의 준비물은 아주 간단합니다! \n쓰레기를 담을 수 있는 봉투와 쓰레기를 집을 장갑만 있으면 \n준비 끝!"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="@+id/plogging_guide_v"
+                        app:layout_constraintStart_toStartOf="@+id/plogging_guide_v"
+                        app:layout_constraintTop_toBottomOf="@+id/plogging_guide_need_v" />
+
+                    <TextView
+                        android:id="@+id/plogging_guide_need_tv2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:autoSizeMaxTextSize="12dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:lineSpacingExtra="6dp"
+                        android:text="• 쓰레기를 담을 수 있는 '봉투' \n• 손을 보호해줄 '장갑' \n• '편안한 복장'과 마실 '물' \n• 필요하다면 '모자'"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="@+id/plogging_guide_v"
+                        app:layout_constraintStart_toStartOf="@+id/plogging_guide_v"
+                        app:layout_constraintTop_toBottomOf="@+id/plogging_guide_need_tv1" />
+
+                    <TextView
+                        android:id="@+id/plogging_guide_need_tv3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:autoSizeMaxTextSize="12dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:lineSpacingExtra="4dp"
+                        android:text="쓰레기를 모으다 보면, 어느새 봉투가 꽉 차서 무거워요... \n쓰레기를 줍겠다는 의지도 정말 좋지만, 플로깅은 여유로운 산책을 하며 환경보호에도 힘 쓰는 것으로 생각하는것이 좋습니다."
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="@+id/plogging_guide_v"
+                        app:layout_constraintStart_toStartOf="@+id/plogging_guide_v"
+                        app:layout_constraintTop_toBottomOf="@+id/plogging_guide_need_tv2" />
+
+                    <TextView
+                        android:id="@+id/plogging_guide_how_title_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="30dp"
+                        android:autoSizeMaxTextSize="16dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center_vertical"
+                        android:text="플로깅 방법"
+                        android:textColor="@color/black"
+                        app:layout_constraintHeight_percent="0.04"
+                        app:layout_constraintStart_toStartOf="@+id/plogging_guide_v"
+                        app:layout_constraintTop_toBottomOf="@+id/plogging_guide_need_tv3"
+                        app:layout_constraintWidth_percent="0.18" />
+
+                    <View
+                        android:id="@+id/plogging_guide_how_v"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#26000000"
+                        app:layout_constraintEnd_toEndOf="@+id/plogging_guide_how_title_tv"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/plogging_guide_need_title_tv"
+                        app:layout_constraintTop_toBottomOf="@+id/plogging_guide_how_title_tv" />
+
+                    <TextView
+                        android:id="@+id/plogging_guide_how_tv1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:autoSizeMaxTextSize="12dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:lineSpacingExtra="6dp"
+                        android:text="• 시작전 가벼운 스트레칭은 필수!! \n• 봉투와 집게를 들고 가벼운 조깅~ \n• 쓰레기를 발견하면 봉투에 쏙! \n• 플로깅이 끝난 후 분리수거는 필수"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="@+id/plogging_guide_v"
+                        app:layout_constraintStart_toStartOf="@+id/plogging_guide_v"
+                        app:layout_constraintTop_toBottomOf="@+id/plogging_guide_how_v" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.core.widget.NestedScrollView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
