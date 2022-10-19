@@ -438,18 +438,42 @@
                 app:layout_constraintWidth_percent="0.3" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recommend_plogging_guide_rv"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recommend_plogging_guide_cl"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/white_square_et_drawable"
+                android:elevation="2dp"
+                android:paddingTop="10dp"
+                app:layout_constraintDimensionRatio="1:0.96"
+                app:layout_constraintStart_toStartOf="@+id/recommend_plogging_guide_tv"
                 app:layout_constraintTop_toBottomOf="@id/recommend_plogging_guide_tv"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_community_event" />
+                app:layout_constraintWidth_percent="0.431" >
+                <ImageView
+                    android:id="@+id/recommend_plogging_guide_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@color/black"
+                    app:layout_constraintWidth_percent="0.9"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintDimensionRatio="1:0.8"/>
+                <TextView
+                    android:id="@+id/recommend_plogging_guide_cnt_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:text="플로깅 초보 Guide"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/pretendard_semibold"
+                    app:layout_constraintTop_toBottomOf="@id/recommend_plogging_guide_iv"
+                    app:layout_constraintStart_toStartOf="@id/recommend_plogging_guide_iv"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
