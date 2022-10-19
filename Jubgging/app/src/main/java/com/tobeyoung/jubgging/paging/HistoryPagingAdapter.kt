@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.to_be_young_jubgging.databinding.ActivityPloggingHistoryItemBinding
+import com.tobeyoung.jubgging.databinding.ActivityPloggingHistoryItemBinding
 import com.tobeyoung.jubgging.model.HistoryGroup
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -47,7 +47,6 @@ class HistoryPagingAdapter :
         private val historyTime : TextView = binding.historyTimeTv
         private val historyDistance : TextView = binding.historyDistanceTv
         private val historyPace : TextView = binding.historyPaceTv
-
         fun bind(data: HistoryGroup?) {
 //            binding.itemGroupNameTv.text = data?.title.toString()
 //            Log.d("TAG", "bind: ${data?.title.toString()}")
@@ -60,7 +59,9 @@ class HistoryPagingAdapter :
             historyData.text = formatted
             historyTime.text = data.activityTime
             historyDistance.text = data.distance.toString()
-            historyPace.text = "00`00"
+            var tpace = ""
+            tpace = data.pace.replace(".", "'")
+            historyPace.text = tpace
 
 
             val pos = adapterPosition

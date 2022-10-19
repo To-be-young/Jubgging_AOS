@@ -6,9 +6,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ActivityLoginBinding
-
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.ActivityLoginBinding
 import com.tobeyoung.jubgging.network.data.request.LoginRequest
 import com.tobeyoung.jubgging.viewmodel.SignUpViewModel
 

@@ -5,8 +5,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ActivityUserInfoBinding
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.ActivityUserInfoBinding
 import com.tobeyoung.jubgging.viewmodel.UserInfoViewModel
 
 class UserProfileActivity : AppCompatActivity() {

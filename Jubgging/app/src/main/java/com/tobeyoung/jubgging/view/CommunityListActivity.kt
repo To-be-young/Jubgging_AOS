@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ActivityCommunityGroupListBinding
+import com.tobeyoung.jubgging.R
 import com.tobeyoung.jubgging.adapter.CommunitiesPagingAdapter
+import com.tobeyoung.jubgging.databinding.ActivityCommunityGroupListBinding
 import com.tobeyoung.jubgging.viewmodel.CommunityViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -37,18 +37,25 @@ class CommunityListActivity : AppCompatActivity() {
             val intent = Intent(this, CommunityCreateActivity::class.java)
             startActivity(intent)
         }
+    }
 
-
-
-
-
+    override fun onResume() {
+        super.onResume()
+        startGetlist()
     }
     private fun startGetlist() {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            viewModel.getList().observe(this@CommunityListActivity) {
+            viewModel.getCommunityList().observe(this@CommunityListActivity) {
                 adapter.submitData(this@CommunityListActivity.lifecycle, it)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

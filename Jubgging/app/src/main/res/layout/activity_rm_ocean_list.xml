@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="oceanList"
+            type="com.tobeyoung.jubgging.view.ActivityRecommendRouteOceanList"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/rm_ocean_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            app:layout_constraintDimensionRatio="1:0.13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="바다"
+            app:titleTextAppearance="@style/toolbarTextTheme" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rm_ocean_cl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/white_square_et_drawable"
+            android:elevation="2dp"
+            app:layout_constraintDimensionRatio="1:0.323"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rm_ocean_tool_bar"
+            app:layout_constraintWidth_percent="0.861">
+
+            <TextView
+                android:id="@+id/rm_ocean_title_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="24dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="start|center_vertical"
+                android:includeFontPadding="false"
+                android:text="곽지해수욕장"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/rm_ocean_v"
+                app:layout_constraintDimensionRatio="1:0.08"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintWidth_percent="0.9" />
+
+            <View
+                android:id="@+id/rm_ocean_v"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/rm_ocean_info_cl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rm_ocean_title_tv"
+                app:layout_constraintWidth_percent="0.9" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rm_ocean_info_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:0.17"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rm_ocean_v"
+                app:layout_constraintWidth_percent="0.9">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rm_ocean_time_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/rm_ocean_distance_cl"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.45"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="spread_inside">
+
+                    <ImageView
+                        android:id="@+id/rm_ocean_time_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_baseline_timer_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <TextView
+                        android:id="@+id/rm_ocean_time_tt_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="4dp"
+                        app:layout_constraintWidth_percent="0.25"
+                        android:text="예상 소요 시간"
+                        android:maxLines="1"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/brownish_grey"
+                        android:gravity="center_vertical|start"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMaxTextSize="18dp"
+                        android:autoSizeMinTextSize="1dp"
+                        app:layout_constraintStart_toEndOf="@id/rm_ocean_time_iv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                    <TextView
+                        android:id="@+id/rm_ocean_time_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:text="약 20분"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/black"
+                        android:gravity="center_vertical|start"
+                        app:layout_constraintWidth_percent="0.3"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeMaxTextSize="17dp"
+                        android:autoSizeStepGranularity="1dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/rm_ocean_time_tt_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rm_ocean_distance_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.45"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rm_ocean_time_cl">
+
+                    <ImageView
+                        android:id="@+id/rm_ocean_distance_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_outline_flag_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <TextView
+                        android:id="@+id/rm_ocean_distance_tt_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="4dp"
+                        app:layout_constraintWidth_percent="0.25"
+                        android:text="총 구간 거리"
+                        android:maxLines="1"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/brownish_grey"
+                        android:gravity="center_vertical|start"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMaxTextSize="16dp"
+                        android:autoSizeMinTextSize="1dp"
+                        app:layout_constraintStart_toEndOf="@id/rm_ocean_distance_iv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                    <TextView
+                        android:id="@+id/rm_ocean_distance_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:text="약 1.1km"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/black"
+                        android:gravity="center_vertical|start"
+                        app:layout_constraintWidth_percent="0.3"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeMaxTextSize="17dp"
+                        android:autoSizeStepGranularity="1dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/rm_ocean_distance_tt_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

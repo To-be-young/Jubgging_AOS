@@ -1,7 +1,6 @@
 package com.tobeyoung.jubgging.network
 
 import com.tobeyoung.jubgging.model.Communities
-import com.tobeyoung.jubgging.model.CommunityGroup
 import com.tobeyoung.jubgging.model.Histories
 import com.tobeyoung.jubgging.model.UserInfo
 import com.tobeyoung.jubgging.network.data.request.*
@@ -12,6 +11,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
+import com.tobeyoung.jubgging.model.CommunityGroup
 
 interface ApiInterface {
     @POST("api/sign/signup")
@@ -62,4 +62,13 @@ interface ApiInterface {
 
     @POST("api/community/join-community")
     fun joinCommunity(@Query("postId") postId: Int): Single<BaseResponse<CommunityJoinResponse<CommunityGroup>>>
+
+    @GET("api/community/get-myPost")
+    suspend fun getMyCommunityList(@Query("page") page: Int): Response<BaseResponse<Communities>>
+
+    @GET("api/community/get-myJoinCommunity")
+    suspend fun getMyJoinCommunityList(@Query("page") page: Int): Response<BaseResponse<CommunityJoinListResponse<CommunityGroup>>>
+
+    @GET("api/user/userpage/plogging-status")
+    fun getUserPloggingTotalData():Single<BaseResponse<PloggingTotalResponse>>
 }

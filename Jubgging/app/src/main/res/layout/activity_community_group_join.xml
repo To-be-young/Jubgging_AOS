@@ -474,7 +474,7 @@
                     android:background="@drawable/greenblue_square_btn_selector"
                     android:fontFamily="@font/pretendard_semibold"
                     android:paddingVertical="5dp"
-                    android:text="참여하기"
+                    android:text="신청 완료"
                     android:textColor="@color/white"
                     app:layout_constraintDimensionRatio="1:0.126"
                     app:layout_constraintEnd_toEndOf="parent"

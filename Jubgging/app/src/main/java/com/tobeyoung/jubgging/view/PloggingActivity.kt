@@ -3,26 +3,34 @@ package com.tobeyoung.jubgging.view
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Picture
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ActivityPloggingBinding
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.ActivityPloggingBinding
 import com.tobeyoung.jubgging.model.PloggingModel
 import com.tobeyoung.jubgging.network.data.request.PloggingRequest
 import com.tobeyoung.jubgging.viewmodel.CleanhouseViewModel
@@ -36,6 +44,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.concurrent.timer
+
 
 class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
     MapView.MapViewEventListener,
@@ -148,6 +157,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             binding.ploggingPauseBt.visibility = View.INVISIBLE
             binding.ploggingStoreBt.visibility = View.VISIBLE
 
+            mapView.addPolyline(polyline)
+
             stopTimer()
 
             plogging_start = false
@@ -171,17 +182,23 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
                     pathway = ploggingList), ::showToast)
 
             Log.d("PloggingRequest", "${ploggingList}")
-            binding.ploggingDistanceContextTv.text = "0Km"
-            binding.ploggingPaceContextTv.text = "00`00"
-
-            totalDistance = 0.0
-            speed = "00`00"
+//            binding.ploggingDistanceContextTv.text = "0Km"
+//            binding.ploggingPaceContextTv.text = "00`00"
+//
+//            totalDistance = 0.0
+//            speed = "00`00"
 
             resetTimer()
 
-            val intent = Intent(this, PloggingHistoryActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+
+
+            //intent로 path 보내서 이미지화
+            //intent 기록 - 거리, 속력, 시간 전달 후 이미지화
+
+            val intent = Intent(this, PhotoShareActivity::class.java)
+            intent.putExtra("distance",formattedTotalDistance)
+            intent.putExtra("time",userActivityTime)
+            intent.putExtra("speed",speed)
             startActivity(intent)
 
         }
@@ -270,12 +287,6 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        //툴바
-//        val toolbar : androidx.appcompat.widget.Toolbar = binding.chmTb
-//        setSupportActionBar(toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_plogging_back_main_bt)
-//        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // 위치추적 버튼
         if (checkLocationService()) {
@@ -285,6 +296,8 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
             // GPS가 꺼져있을 경우
             Toast.makeText(this, "GPS를 켜주세요", Toast.LENGTH_SHORT).show()
         }
+
+
 
     }
 
@@ -473,7 +486,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
                 if(distance(mCurrentLat, mCurrentLng, beforeLat, beforeLng, "meter") < 2){
                     polyline!!.addPoint(MapPoint.mapPointWithGeoCoord(mCurrentLat, mCurrentLng))
-                    mapView.addPolyline(polyline)
+
                     ploggingList.add(index, PloggingModel(mCurrentLat, mCurrentLng, formatted))
 
                     index++
@@ -508,7 +521,7 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
 
 
         //speed를 .대신 `로 표시
-        speed = speed.replace(".", "`")
+        speed = speed.replace(".", "'")
 
         binding.ploggingPaceContextTv.text = speed
         beforeLat = mCurrentLat
@@ -660,4 +673,12 @@ class PloggingActivity : AppCompatActivity(), MapView.CurrentLocationEventListen
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
-}
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+    }
+    }

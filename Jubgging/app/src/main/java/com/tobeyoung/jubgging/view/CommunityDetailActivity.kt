@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ActivityCommunityGroupDetailBinding
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.ActivityCommunityGroupDetailBinding
 import com.tobeyoung.jubgging.viewmodel.CommunityViewModel
 
 class CommunityDetailActivity:AppCompatActivity() {
@@ -25,7 +25,7 @@ class CommunityDetailActivity:AppCompatActivity() {
 
 
         binding.cgdJoinBtn.setOnClickListener {
-            val intent = Intent(this,CommunityJoinActivity::class.java)
+            val intent = Intent(this, CommunityJoinActivity::class.java)
             intent.putExtra("title",viewModel.communityTitle.value)
             intent.putExtra("desc",viewModel.communityDesc.value)
             intent.putExtra("notice0",viewModel.communityNotice0.value)
@@ -47,5 +47,11 @@ class CommunityDetailActivity:AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

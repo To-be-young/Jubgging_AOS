@@ -1,16 +1,18 @@
 package com.tobeyoung.jubgging.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.to_be_young_jubgging.databinding.ActivityPloggingHistoryBinding
-import com.tobeyoung.jubgging.paging.HistoryPagingAdapter
+import com.tobeyoung.jubgging.databinding.ActivityPloggingHistoryBinding
 import com.tobeyoung.jubgging.model.HistoryGroup
+import com.tobeyoung.jubgging.paging.HistoryPagingAdapter
 import com.tobeyoung.jubgging.viewmodel.CleanhouseViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -37,6 +39,7 @@ class PloggingHistoryActivity : AppCompatActivity() {
                 intent.putExtra("date",data.date)
                 intent.putExtra("activityTime",data.activityTime)
                 intent.putExtra("distance",data.distance.toString())
+                intent.putExtra("pace", data.pace)
                 intent.putExtra("recordId", data.recordId.toString())
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="photoShare"
+            type="com.tobeyoung.jubgging.view.PhotoShareActivity" />
+
+        <variable
+            name="photoShareVm"
+            type="com.tobeyoung.jubgging.viewmodel.PhotoShareViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/ps_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            app:layout_constraintDimensionRatio="1:0.13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="공유하기"
+            app:titleTextAppearance="@style/toolbarTextTheme"
+
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ps_photo_cl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/white_square_et_drawable"
+            android:elevation="2dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ps_tool_bar"
+            app:layout_constraintWidth_percent="0.861">
+
+            <ImageView
+                android:id="@+id/ps_photo_iv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.87" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/ps_notice_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="*사진을 길게 누르면 기기에서 사진을 가져올 수 있습니다."
+            android:maxLines="1"
+            android:layout_marginTop="5dp"
+            android:autoSizeMinTextSize="5dp"
+            android:autoSizeMaxTextSize="17dp"
+            android:autoSizeStepGranularity="1dp"
+            android:autoSizeTextType="uniform"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pretendard_regular"
+            android:gravity="center_vertical|end"
+            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintDimensionRatio="1:0.08"
+            app:layout_constraintTop_toBottomOf="@id/ps_photo_cl"
+            app:layout_constraintEnd_toEndOf="@id/ps_photo_cl"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ps_edit_photo_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="30dp"
+            android:autoSizeMaxTextSize="20dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="1dp"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/greenblue_square_btn_selector"
+            android:elevation="2dp"
+            android:fontFamily="@font/pretendard_semibold"
+            android:paddingVertical="5dp"
+            android:text="사진 편집하기"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:0.13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.861" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

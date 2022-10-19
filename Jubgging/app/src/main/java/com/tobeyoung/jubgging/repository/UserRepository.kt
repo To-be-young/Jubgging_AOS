@@ -1,9 +1,9 @@
 package com.tobeyoung.jubgging.repository
 
 import com.tobeyoung.jubgging.model.UserInfo
-
 import com.tobeyoung.jubgging.network.ApiClient
 import com.tobeyoung.jubgging.network.data.response.BaseResponse
+import com.tobeyoung.jubgging.network.data.response.PloggingTotalResponse
 import com.tobeyoung.jubgging.network.data.response.UserNicknameEmailResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 interface UserRepository {
     fun getUserInfo(): Single<BaseResponse<UserInfo>>
     fun getUserNicknameEmail(): Single<BaseResponse<UserNicknameEmailResponse>>
-
+    fun getPloggingTotalData():Single<BaseResponse<PloggingTotalResponse>>
 }
 
 class UserRepositoryImpl : UserRepository {
@@ -23,6 +23,11 @@ class UserRepositoryImpl : UserRepository {
 
     override fun getUserNicknameEmail(): Single<BaseResponse<UserNicknameEmailResponse>> {
         return ApiClient.api.getUserNicknameEmail().subscribeOn(Schedulers.computation()).observeOn(
+            AndroidSchedulers.mainThread()).map { it }
+    }
+
+    override fun getPloggingTotalData(): Single<BaseResponse<PloggingTotalResponse>> {
+        return ApiClient.api.getUserPloggingTotalData().subscribeOn(Schedulers.computation()).observeOn(
             AndroidSchedulers.mainThread()).map { it }
     }
 }

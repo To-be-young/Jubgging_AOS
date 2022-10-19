@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recommendMain"
+            type="com.tobeyoung.jubgging.view.RecommendRouteMainActivity" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/light_grey"
+            tools:context=".view.RecommendRouteMainActivity">
+
+            <ImageView
+                android:id="@+id/app_title_iv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_app_title_drawable"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.264" />
+
+
+            <TextView
+                android:id="@+id/recommend_theme_course_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="21dp"
+                android:autoSizeMaxTextSize="17dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="1:0.24"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center_vertical|start"
+                android:text="@string/theme_course_tx"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/app_title_iv"
+                app:layout_constraintWidth_percent="0.2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recommend_oreum_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                app:layout_constraintDimensionRatio="1:0.25"
+                app:layout_constraintEnd_toStartOf="@+id/recommend_olleroad_cl"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_theme_course_tv"
+                app:layout_constraintWidth_percent="0.412">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recommend_ineer_oreum_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.45"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.29">
+
+                    <TextView
+                        android:id="@+id/recomeend_oreum_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:autoSizeMaxTextSize="15dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center"
+                        android:text="@string/recommend_rise_tx"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/recomeend_oreum_iv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.6" />
+
+                    <ImageView
+                        android:id="@+id/recomeend_oreum_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/icon_recommned_rise_drawable"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/recomeend_oreum_tv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.36" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recommend_olleroad_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                app:layout_constraintDimensionRatio="1:0.25"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/recommend_oreum_cl"
+                app:layout_constraintTop_toTopOf="@+id/recommend_oreum_cl"
+                app:layout_constraintWidth_percent="0.412">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recommend_ineer_olleroad_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.45"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.37">
+
+                    <TextView
+                        android:id="@+id/recomeend_olleroad_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:autoSizeMaxTextSize="15dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center"
+                        android:text="@string/recommend_olleroad_tx"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/recomeend_olleroad_iv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.6" />
+
+                    <ImageView
+                        android:id="@+id/recomeend_olleroad_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/icon_recommend_olleroad_drawable"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/recomeend_olleroad_tv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.36" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recommend_sea_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                app:layout_constraintDimensionRatio="1:0.25"
+                app:layout_constraintEnd_toStartOf="@+id/recommend_olleroad_cl"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_oreum_cl"
+                app:layout_constraintWidth_percent="0.412">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recommend_ineer_sea_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.45"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.31">
+
+                    <TextView
+                        android:id="@+id/recomeend_sea_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:autoSizeMaxTextSize="15dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center"
+                        android:text="@string/recommend_sea_tx"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/recomeend_sea_iv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.62" />
+
+                    <ImageView
+                        android:id="@+id/recomeend_sea_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/icon_recommend_sea_drawable"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_percent="0.9"
+                        app:layout_constraintStart_toEndOf="@+id/recomeend_sea_tv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.36" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recommend_tour_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                app:layout_constraintDimensionRatio="1:0.25"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/recommend_oreum_cl"
+                app:layout_constraintTop_toTopOf="@+id/recommend_sea_cl"
+                app:layout_constraintWidth_percent="0.412">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recommend_ineer_tour_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.45"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.452">
+
+                    <TextView
+                        android:id="@+id/recomeend_tour_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:autoSizeMaxTextSize="15dp"
+                        android:autoSizeMinTextSize="1dp"
+                        android:autoSizeStepGranularity="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:gravity="center"
+                        android:text="@string/recommend_tour_tx"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/recomeend_tour_iv"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.66" />
+
+                    <ImageView
+                        android:id="@+id/recomeend_tour_iv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/icon_recommend_tour_drawable"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/recomeend_tour_tv"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.31" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/recommend_region_course_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="15dp"
+                android:autoSizeMaxTextSize="17dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="1:0.24"
+                android:gravity="center_vertical|start"
+                android:fontFamily="@font/pretendard_semibold"
+                android:text="@string/region_course_tx"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_sea_cl"
+                app:layout_constraintWidth_percent="0.2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/recommend_jeju_west_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center"
+                android:text="@string/jeju_west_tx"
+                app:layout_constraintDimensionRatio="1:0.38"
+                app:layout_constraintStart_toStartOf="@+id/recommend_sea_cl"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_region_course_tv"
+                app:layout_constraintWidth_percent="0.264" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/recommend_jeju_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center"
+                android:text="@string/jejusi_tx"
+                app:layout_constraintDimensionRatio="1:0.38"
+                app:layout_constraintEnd_toStartOf="@+id/recommend_jeju_east_cl"
+                app:layout_constraintStart_toEndOf="@+id/recommend_jeju_west_cl"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_region_course_tv"
+                app:layout_constraintWidth_percent="0.264" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/recommend_jeju_east_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center"
+                android:text="@string/jeju_east_tx"
+                app:layout_constraintDimensionRatio="1:0.38"
+                app:layout_constraintEnd_toEndOf="@+id/recommend_tour_cl"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_region_course_tv"
+                app:layout_constraintWidth_percent="0.264" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/recommend_seogwipo_west_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center"
+                android:text="@string/seogwipo_west_tx"
+                app:layout_constraintDimensionRatio="1:0.38"
+                app:layout_constraintStart_toStartOf="@+id/recommend_sea_cl"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_jeju_west_cl"
+                app:layout_constraintWidth_percent="0.264" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/recommend_seogwipo_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center"
+                android:text="@string/segipo_tx"
+                app:layout_constraintDimensionRatio="1:0.38"
+                app:layout_constraintEnd_toStartOf="@+id/recommend_jeju_east_cl"
+                app:layout_constraintStart_toEndOf="@+id/recommend_jeju_west_cl"
+                app:layout_constraintTop_toTopOf="@+id/recommend_seogwipo_west_cl"
+                app:layout_constraintWidth_percent="0.264" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/recommend_seogwipo_east_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="15dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/plogging_background_drawable"
+                android:elevation="2dp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:gravity="center"
+                android:text="@string/seogwipo_west_tx"
+                app:layout_constraintDimensionRatio="1:0.38"
+                app:layout_constraintEnd_toEndOf="@+id/recommend_tour_cl"
+                app:layout_constraintTop_toTopOf="@+id/recommend_seogwipo_west_cl"
+                app:layout_constraintWidth_percent="0.264" />
+
+            <TextView
+                android:id="@+id/recommend_plogging_guide_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:autoSizeMaxTextSize="17dp"
+                android:autoSizeMinTextSize="1dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/pretendard_semibold"
+                android:text="@string/plogging_guide_tx"
+                android:textColor="@color/black"
+                app:layout_constraintDimensionRatio="1:0.24"
+                android:gravity="center_vertical|start"
+                app:layout_constraintStart_toStartOf="@+id/recommend_region_course_tv"
+                app:layout_constraintTop_toBottomOf="@+id/recommend_seogwipo_west_cl"
+                app:layout_constraintWidth_percent="0.3" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recommend_plogging_guide_cl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_square_et_drawable"
+                android:elevation="2dp"
+                android:paddingTop="10dp"
+                app:layout_constraintDimensionRatio="1:0.96"
+                app:layout_constraintStart_toStartOf="@+id/recommend_plogging_guide_tv"
+                app:layout_constraintTop_toBottomOf="@id/recommend_plogging_guide_tv"
+                app:layout_constraintWidth_percent="0.431" >
+                <ImageView
+                    android:id="@+id/recommend_plogging_guide_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@color/black"
+                    app:layout_constraintWidth_percent="0.9"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintDimensionRatio="1:0.8"/>
+                <TextView
+                    android:id="@+id/recommend_plogging_guide_cnt_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:text="플로깅 초보 Guide"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/pretendard_semibold"
+                    app:layout_constraintTop_toBottomOf="@id/recommend_plogging_guide_iv"
+                    app:layout_constraintStart_toStartOf="@id/recommend_plogging_guide_iv"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

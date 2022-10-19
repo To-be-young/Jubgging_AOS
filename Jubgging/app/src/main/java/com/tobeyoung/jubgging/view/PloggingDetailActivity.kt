@@ -1,15 +1,16 @@
 package com.tobeyoung.jubgging.view
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.to_be_young_jubgging.databinding.ActivityPloggingDetailBinding
+import com.tobeyoung.jubgging.databinding.ActivityPloggingDetailBinding
 import com.tobeyoung.jubgging.viewmodel.PathwayViewModel
 import net.daum.mf.map.api.*
 import java.time.LocalDateTime
@@ -41,6 +42,7 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         val IntenTime = intent.getStringExtra("activityTime")
         val IntentDistance = intent.getStringExtra("distance")
         val IntentRecordId = intent.getStringExtra("recordId")
+        val IntentPace = intent.getStringExtra("pace")
 
         var data_str = LocalDateTime.parse(IntentDate)
         val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
@@ -49,22 +51,10 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
         binding.historyDateTv.text = formatted
         binding.historyTimeTv.text = IntenTime
         binding.historyDistanceTv.text = IntentDistance
+        binding.historyPaceTv.text = IntentPace
 
         pathwayViewMoodel.pathway(IntentRecordId!!.toInt(), ::showToast)
         Log.d("success_pathway", "${IntentRecordId.toInt()}")
-
-        binding.ploggingBackBt.setOnClickListener{
-            val intent = Intent(this, PloggingHistoryActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.ploggingHomeBt.setOnClickListener{
-            val intent = Intent(this, PloggingActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
     }
 
     override fun onResume() {
@@ -187,5 +177,12 @@ class PloggingDetailActivity : AppCompatActivity(), MapView.CurrentLocationEvent
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, PloggingHistoryActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 }

@@ -12,8 +12,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ActivityCommunityGroupCreateBinding
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.ActivityCommunityGroupCreateBinding
 import com.tobeyoung.jubgging.network.data.request.PostCommunityRequest
 import com.tobeyoung.jubgging.viewmodel.CommunityViewModel
 import java.util.*
@@ -180,10 +180,12 @@ class CommunityCreateActivity : AppCompatActivity(), View.OnClickListener {
     private fun moveToCommunityList() {
         val intent = Intent(this, CommunityListActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        finish()
         startActivity(intent)
     }
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
+
 }

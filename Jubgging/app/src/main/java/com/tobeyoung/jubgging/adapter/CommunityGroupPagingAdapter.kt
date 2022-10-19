@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ItemCommunityGroupBinding
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.ItemCommunityGroupBinding
 import com.tobeyoung.jubgging.model.CommunityGroup
 import com.tobeyoung.jubgging.view.CommunityDetailActivity
 import java.text.SimpleDateFormat
@@ -20,7 +20,7 @@ class CommunityGroupPagingAdapter :
     override fun onBindViewHolder(holder: CommunityGroupViewHolder, position: Int) {
         val data = getItem(position)
         holder.binding.itemGroupJoinBtn.setOnClickListener { v ->
-            val intent = Intent(v.context,CommunityDetailActivity::class.java)
+            val intent = Intent(v.context, CommunityDetailActivity::class.java)
             intent.putExtra("postId",data!!.postId)
             v.context?.startActivity(intent)
         }

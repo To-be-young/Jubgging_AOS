@@ -1,10 +1,9 @@
 package com.tobeyoung.jubgging.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ActivityEtcOssBinding
-
+import androidx.appcompat.app.AppCompatActivity
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.ActivityEtcOssBinding
 
 class EtcOssActivity : AppCompatActivity() {
     private lateinit var binding : ActivityEtcOssBinding

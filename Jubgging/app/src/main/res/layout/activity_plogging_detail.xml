@@ -7,7 +7,7 @@
     <data>
         <variable
             name="ploggingDetail"
-            type="com.tobeyoung.jubgging.view.PloggingHistoryActivity" />
+            type="com.tobeyoung.jubgging.view.PloggingDetailActivity" />
 
         <variable
             name="cleanhouseVm"
@@ -27,23 +27,10 @@
             android:elevation="1.5dp"
             android:title="날짜"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/plogging_back_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_btn_background_drawable"
-                android:text="뒤로가기"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/plogging_home_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_btn_background_drawable"
-                android:text="홈으로"/>
-        </Toolbar>
+            app:layout_constraintTop_toTopOf="parent"/>
+        />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

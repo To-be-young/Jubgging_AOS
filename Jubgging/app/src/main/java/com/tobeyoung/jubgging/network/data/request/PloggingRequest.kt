@@ -8,5 +8,4 @@ data class PloggingRequest(
     val activity_time: String,
     val pace : String,
     val pathway: List<PloggingModel>
-
 )

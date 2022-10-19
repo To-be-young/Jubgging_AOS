@@ -4,8 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
-import com.to_be_young_jubgging.databinding.ActivityOssNoticeBinding
-
+import com.tobeyoung.jubgging.databinding.ActivityOssNoticeBinding
 
 class OssNoticeActivity : AppCompatActivity() {
     private val binding: ActivityOssNoticeBinding by lazy {

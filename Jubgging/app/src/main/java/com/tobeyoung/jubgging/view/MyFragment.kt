@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.FragmentMyBinding
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.FragmentMyBinding
 import com.tobeyoung.jubgging.viewmodel.UserInfoViewModel
 
 class MyFragment : Fragment() {
@@ -40,14 +40,21 @@ class MyFragment : Fragment() {
             startActivity(intent)
         }
         binding.myPloggingListCl.setOnClickListener {
-            val intent = Intent(requireContext(),PloggingHistoryActivity::class.java)
+            val intent = Intent(requireContext(), PloggingHistoryActivity::class.java)
             startActivity(intent)
         }
+        binding.myPloggingCommunityCl.setOnClickListener{
+            val intent = Intent(requireContext(),MyCommunityActivity::class.java)
+            startActivity(intent)
+        }
+        viewModel.getUserInfo()
+        viewModel.getPloggingTotalData()
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getUserInfo()
+        viewModel.getPloggingTotalData()
     }
 
 }

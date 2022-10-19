@@ -11,18 +11,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.FragmentCommunityBinding
+import com.tobeyoung.jubgging.R
 import com.tobeyoung.jubgging.adapter.CommunityEventRecyclerViewAdapter
 import com.tobeyoung.jubgging.adapter.CommunityGroupPagingAdapter
+import com.tobeyoung.jubgging.databinding.FragmentCommunityBinding
 import com.tobeyoung.jubgging.model.CommunityEvent
 import com.tobeyoung.jubgging.viewmodel.CommunityViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class CommunityFragment : Fragment() {
+class CommunityFragment : Fragment(), MainActivity.onBackPressedListener {
     private lateinit var binding: FragmentCommunityBinding
-    private val viewModel:CommunityViewModel by viewModels()
+    private val viewModel: CommunityViewModel by viewModels()
     private val adapter = CommunityGroupPagingAdapter()
     private var searchJob: Job? = null
     override fun onCreateView(
@@ -39,12 +39,13 @@ class CommunityFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.communityGroupRv.adapter = adapter
-        binding.communityGroupRv.layoutManager = LinearLayoutManager(requireContext())
 
-        startGetlist()
+        binding.communityGroupRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+
+
 
         binding.communityGroupMoreCl.setOnClickListener {
-            val intent = Intent(requireContext(),CommunityListActivity::class.java)
+            val intent = Intent(requireContext(), CommunityListActivity::class.java)
             startActivity(intent)
         }
 
@@ -61,12 +62,23 @@ class CommunityFragment : Fragment() {
 
         communityEventRecyclerViewAdapter.submitCommunityEventList(list)
     }
+
+    override fun onResume() {
+        super.onResume()
+        startGetlist()
+
+    }
     private fun startGetlist() {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            viewModel.getList().observe(requireActivity()) {
+            viewModel.getCommunityList().observe(requireActivity()) {
                 adapter.submitData(requireActivity().lifecycle, it)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
     }
 }

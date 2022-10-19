@@ -14,14 +14,29 @@ class HomeViewModel : ViewModel() {
     val nickname: LiveData<String>
         get() = _nickname
 
+    private var _totalTime = MutableLiveData<Int>()
+    val totalTime: LiveData<Int>
+        get() = _totalTime
+
+    private var _totalDistance = MutableLiveData<Double>()
+    val totalDistance: LiveData<Double>
+        get() = _totalDistance
+
     init {
         _nickname.value = ""
+        _totalTime.value = 0
+        _totalDistance.value = 0.0
     }
 
     fun updateUserNickname(inputNickname: String) {
         if (inputNickname.isNotEmpty()) {
             _nickname.value = inputNickname
         }
+    }
+
+    fun updatePloggingTotalData(time: Int, distance: Double) {
+        _totalTime.value = time
+        _totalDistance.value = distance
     }
 
 
@@ -33,8 +48,23 @@ class HomeViewModel : ViewModel() {
                     updateUserNickname(it.data.nickname)
                 }
             },
-            onError = {}
+            onError = {
+                it.printStackTrace()
+            }
         )
     }
 
+    @SuppressLint("CheckResult")
+    fun getPloggingTotalData() {
+        userRepository.getPloggingTotalData().subscribeBy(
+            onSuccess = {
+                if (it.isSuccess()) {
+                    updatePloggingTotalData(it.data.activityTime, it.data.distance)
+                }
+            },
+            onError = {
+                it.printStackTrace()
+            }
+        )
+    }
 }

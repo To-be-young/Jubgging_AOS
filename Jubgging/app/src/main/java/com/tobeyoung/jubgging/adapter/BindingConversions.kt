@@ -3,12 +3,16 @@ package com.tobeyoung.jubgging.adapter
 import android.util.Patterns
 import android.view.Gravity
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.BindingAdapter
-import com.to_be_young_jubgging.R
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.tobeyoung.jubgging.R
 
 object BindingConversions {
 
@@ -19,7 +23,7 @@ object BindingConversions {
     fun checkEmailNullRegex(emailCheckBtn: Button, emailNoticeTv: TextView, userEmail: String) {
         if (userEmail.isNotEmpty()) {
             //email is not null
-            if (matchEmailRegex(userEmail)) {
+            if (com.tobeyoung.jubgging.adapter.BindingConversions.matchEmailRegex(userEmail)) {
                 //email matches regex
                 emailCheckBtn.isEnabled = true
                 emailCheckBtn.setTextColor(emailCheckBtn.context.getColor(R.color.green_blue))
@@ -46,7 +50,7 @@ object BindingConversions {
     fun setPwdNullRegex(pwdNoticeTv: TextView, pwd: String) {
         //pwd is not null
         if (pwd.isNotEmpty()) {
-            if (matchPwdRegex(pwd)) {
+            if (com.tobeyoung.jubgging.adapter.BindingConversions.matchPwdRegex(pwd)) {
                 //pwd matches regex
                 pwdNoticeTv.text = "사용가능한 비밀번호입니다."
                 pwdNoticeTv.setTextColor(pwdNoticeTv.context.getColor(R.color.green_blue))
@@ -91,7 +95,9 @@ object BindingConversions {
             //email 인증 성공
             if (userPwd.isNotEmpty() && userPwdChk.isNotEmpty()) {
                 //pwd, pwdChk is not null, match Regex
-                if (userPwd == userPwdChk && matchPwdRegex(userPwd)) {
+                if (userPwd == userPwdChk && com.tobeyoung.jubgging.adapter.BindingConversions.matchPwdRegex(
+                        userPwd)
+                ) {
                     accountFinBtn.isEnabled = true
                     accountFinBtn.setTextColor(accountFinBtn.context.getColor(R.color.green_blue))
                 } else {
@@ -307,6 +313,24 @@ object BindingConversions {
             }
         }
     }
+
+    //MyCommunity 관련
+    @JvmStatic
+    @BindingAdapter("setCommunityViewPager", "setTabName", requireAll = false)
+    fun TabLayout.MyCommunityViewPagerAdpater(viewPager: ViewPager2, tabItem: List<String>?) {
+        viewPager.viewTreeObserver?.addOnGlobalLayoutListener(object :
+            ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                TabLayoutMediator(this@MyCommunityViewPagerAdpater, viewPager) { tab, pos ->
+                    tab.text = pos.let { tabItem?.get(it) }
+                }.attach()
+                viewPager.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
+    }
+
+
+
 
     //phone Number Regex
     private fun matchPhoneNumberRegex(phoneNumber: String): Boolean {

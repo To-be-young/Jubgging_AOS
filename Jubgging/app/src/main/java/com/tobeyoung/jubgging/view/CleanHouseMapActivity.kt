@@ -19,8 +19,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import com.to_be_young_jubgging.R
-import com.to_be_young_jubgging.databinding.ActivityCleanhouseMapBinding
+import com.tobeyoung.jubgging.R
+import com.tobeyoung.jubgging.databinding.ActivityCleanhouseMapBinding
 import com.tobeyoung.jubgging.viewmodel.CleanhouseViewModel
 import net.daum.mf.map.api.*
 import org.json.JSONArray
@@ -28,13 +28,13 @@ import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
-import kotlin.collections.HashMap
 
 class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventListener,
     MapView.MapViewEventListener,
     MapView.POIItemEventListener {
 
-    private lateinit var binding: ActivityCleanhouseMapBinding
+    private lateinit var binding : ActivityCleanhouseMapBinding
+
     private val viewModel: CleanhouseViewModel by viewModels()
 
     private val ACCESS_FINE_LOCATION = 1000     // Request Code
@@ -485,7 +485,12 @@ class CleanHouseMapActivity : AppCompatActivity(), MapView.CurrentLocationEventL
                 mapView.addPOIItem(marker[i])
             }
         }
+    }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
 
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
