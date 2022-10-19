@@ -67,5 +67,7 @@
     <string name="recommend_route_guide_tx2">- 주소 : 제주특별자치도 제주시 선덕로 23(연동)</string>
     <string name="recommend_route_guide_tx3">- 전화 : 064- 740-6000</string>
     <string name="recommend_route_guide_tx4">- 운영시간 : 10:00 ~ 19:00 (연중무휴)</string>
+    <string name="plogging_guide_title_tx">플로깅 가이드</string>
+    <string name="plogging_guide_need_title_tx">플로깅 준비물</string>
 
 </resources>
